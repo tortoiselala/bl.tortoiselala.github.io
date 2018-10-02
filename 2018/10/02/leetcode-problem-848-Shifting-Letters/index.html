@@ -108,21 +108,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="sitemap">
-<meta property="og:url" content="http://tortoiselala.github.com/sitemap/index.html">
+  <meta name="description" content="Question DescriptionWe have a string S of lowercase letters, and an integer array shifts. Call the shift of a letter, the next letter in the alphabet, (wrapping around so that &amp;#39;z&amp;#39; becomes &amp;#39">
+<meta name="keywords" content="leetcode solution">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode problem 848 Shifting Letters">
+<meta property="og:url" content="http://tortoiselala.github.com/2018/10/02/leetcode-problem-848-Shifting-Letters/index.html">
 <meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="Question DescriptionWe have a string S of lowercase letters, and an integer array shifts. Call the shift of a letter, the next letter in the alphabet, (wrapping around so that &amp;#39;z&amp;#39; becomes &amp;#39">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-19T00:15:11.931Z">
+<meta property="og:updated_time" content="2018-10-02T14:00:47.642Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="sitemap">
+<meta name="twitter:title" content="leetcode problem 848 Shifting Letters">
+<meta name="twitter:description" content="Question DescriptionWe have a string S of lowercase letters, and an integer array shifts. Call the shift of a letter, the next letter in the alphabet, (wrapping around so that &amp;#39;z&amp;#39; becomes &amp;#39">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/sitemap/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/2018/10/02/leetcode-problem-848-Shifting-Letters/"/>
 
 
 
@@ -132,7 +136,7 @@
   };
 </script>
 
-  <title>sitemap | tortoiselala</title>
+  <title>leetcode problem 848 Shifting Letters | tortoiselala</title>
   
 
 
@@ -277,34 +281,6 @@
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -331,43 +307,172 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/02/leetcode-problem-848-Shifting-Letters/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">sitemap</h1>
-
-<div class="post-meta">
-  
-  
-
-
-
-</div>
-
-</header>
-
-      
-      
-      
-      <div class="post-body">
         
         
+          <h1 class="post-title" itemprop="name headline">leetcode problem 848 Shifting Letters
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-02 19:00:17 / Modified: 22:00:47" itemprop="dateCreated datePublished" datetime="2018-10-02T19:00:17+08:00">2018-10-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
           
-        
-      </div>
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
       
       
+
+      
+        <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>We have a string <code>S</code> of lowercase letters, and an integer array <code>shifts</code>.</p>
+<p>Call the <em>shift</em> of a letter, the next letter in the alphabet, (wrapping around so that <code>&#39;z&#39;</code> becomes <code>&#39;a&#39;</code>). </p>
+<p>For example, <code>shift(&#39;a&#39;) = &#39;b&#39;</code>, <code>shift(&#39;t&#39;) = &#39;u&#39;</code>, and <code>shift(&#39;z&#39;) = &#39;a&#39;</code>.</p>
+<p>Now for each <code>shifts[i] = x</code>, we want to shift the first <code>i+1</code> letters of <code>S</code>, <code>x</code> times.</p>
+<p>Return the final string after all such shifts to <code>S</code> are applied.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">Output: &quot;rpl&quot;</span><br><span class="line">Explanation: </span><br><span class="line">We start with &quot;abc&quot;.</span><br><span class="line">After shifting the first 1 letters of S by 3, we have &quot;dbc&quot;.</span><br><span class="line">After shifting the first 2 letters of S by 5, we have &quot;igc&quot;.</span><br><span class="line">After shifting the first 3 letters of S by 9, we have &quot;rpl&quot;, the answer.</span><br></pre></td></tr></table></figure>
+<p><strong>Note:</strong></p>
+<ol>
+<li><p><code>1 &lt;= S.length = shifts.length &lt;= 20000</code></p>
+</li>
+<li><p><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></p>
+</li>
+</ol>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h2 id="Approach1"><a href="#Approach1" class="headerlink" title="Approach1 :"></a>Approach1 :</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">shiftingLetters</span><span class="params">(String S, <span class="keyword">int</span>[] shifts)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">char</span>[] sToCharArray = S.toCharArray();</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = shifts.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			sum += shifts[i];</span><br><span class="line">			sum %= <span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>;</span><br><span class="line">			sToCharArray[i] += sum;</span><br><span class="line">			sToCharArray[i] = (<span class="keyword">char</span>) (sToCharArray[i] &gt; <span class="string">'z'</span> ? sToCharArray[i] - (<span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>) : sToCharArray[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> String(sToCharArray);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
-    
-
-
 
     
+
     
     
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/leetcode-solution/" rel="tag"># leetcode solution</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/01/leetcode-problem-11-Container-with-Most-Water/" rel="next" title="leetcode problem 11:Container with Most Water">
+                <i class="fa fa-chevron-left"></i> leetcode problem 11:Container with Most Water
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
   </div>
 
 
@@ -397,8 +502,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -470,6 +584,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Question-Description"><span class="nav-number">1.</span> <span class="nav-text">Question Description</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">2.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Approach1"><span class="nav-number">3.</span> <span class="nav-text">Approach1 :</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
