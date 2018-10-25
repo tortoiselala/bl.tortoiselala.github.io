@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 ###伪代码描述 123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-">
+  <meta name="description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 伪代码描述123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-1]	i">
 <meta name="keywords" content="Introduction to Algorithms">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Insertion sort . Introduction to Algorithms">
 <meta property="og:url" content="http://tortoiselala.github.com/2018/10/24/Insertion-sort-Introduction-to-Algorithms/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 ###伪代码描述 123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-">
+<meta property="og:description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 伪代码描述123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-1]	i">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-24T15:16:20.001Z">
+<meta property="og:updated_time" content="2018-10-24T15:18:23.544Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Insertion sort . Introduction to Algorithms">
-<meta name="twitter:description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 ###伪代码描述 123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-">
+<meta name="twitter:description" content="插入排序插入排序(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。 伪代码描述123456789INSERTION-SORT(A)for j = 2 to A.length	key = A[j]	//Insert A[j] into the sorted sequance A[1m..j-1]	i">
 
 
 
@@ -363,7 +363,7 @@
                 
               
 
-              <time title="Created: 2018-10-24 22:26:49 / Modified: 23:16:20" itemprop="dateCreated datePublished" datetime="2018-10-24T22:26:49+08:00">2018-10-24</time>
+              <time title="Created: 2018-10-24 22:26:49 / Modified: 23:18:23" itemprop="dateCreated datePublished" datetime="2018-10-24T22:26:49+08:00">2018-10-24</time>
             
 
             
@@ -402,8 +402,7 @@
 
       
         <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><strong>插入排序</strong>(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-<p>###伪代码描述</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	<span class="comment">//Insert A[j] into the sorted sequance A[1m..j-1]</span></span><br><span class="line">	i = j - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &gt; key</span><br><span class="line">		A[i + <span class="number">1</span>] = A[i]</span><br><span class="line">		i = i -<span class="number">1</span></span><br><span class="line">	A[i + <span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
+<h3 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	<span class="comment">//Insert A[j] into the sorted sequance A[1m..j-1]</span></span><br><span class="line">	i = j - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &gt; key</span><br><span class="line">		A[i + <span class="number">1</span>] = A[i]</span><br><span class="line">		i = i -<span class="number">1</span></span><br><span class="line">	A[i + <span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
 <h3 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sort</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertionSort</span><span class="params">(<span class="keyword">int</span>[] A)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; A.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> key = A[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; A[i] &gt; key)&#123;</span><br><span class="line">                A[i+<span class="number">1</span>] = A[i];</span><br><span class="line">                i = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            A[i + <span class="number">1</span>] = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
@@ -447,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" rel="prev" title="Merge Sort . Introduction to Algorithms">
+                Merge Sort . Introduction to Algorithms <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -516,7 +519,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-count">9</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -585,7 +588,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">1.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Java实现"><span class="nav-number">1.1.</span> <span class="nav-text">Java实现</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序"><span class="nav-number">1.</span> <span class="nav-text">插入排序</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#伪代码描述"><span class="nav-number">1.1.</span> <span class="nav-text">伪代码描述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Java实现"><span class="nav-number">1.2.</span> <span class="nav-text">Java实现</span></a></li></ol></li></ol></div>
             
 
           </div>
