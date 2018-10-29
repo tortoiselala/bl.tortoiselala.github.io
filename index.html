@@ -363,7 +363,7 @@
                 
               
 
-              <time title="Created: 2018-10-29 14:53:48 / Modified: 17:36:49" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
+              <time title="Created: 2018-10-29 14:53:48 / Modified: 18:26:27" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
             
 
             
@@ -403,16 +403,52 @@
       
         
           
-            <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列<script type="math/tex">K=<k_1, k_2, ..., k_n></script>（因此$ k_1&lt;k_2&lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。对于所有的关键字与伪关键字的频率满足如下公式：</p>
-<script type="math/tex; mode=display">\sum_{i = 1}^{n}{p_i} + \sum_{i = 0}^{n}{q_i} = 1</script><center>
+            <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列<script type="math/tex">K=<k_1, k_2, ..., k_n></script>（因此$ k_1&lt;k_2&lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。图a与图b显示了对于一个$n=5$个关键字的集合构造的两棵二叉搜索树。么个关键字$k_i$是一个内部节点，每个伪关键字$d_i$是一个叶节点。每次要么搜索成功（找到某个关键字$k_i$），要么失败（找到某个伪关键字$d_i$)，对于所有的关键字与伪关键字的频率满足如下公式：</p>
+<script type="math/tex; mode=display">\sum_{i = 1}^{n}{p_i} + \sum_{i = 0}^{n}{q_i} = 1</script><center><p>
 <img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%202.jpg" width="25%" height="25%">
-Figure (a). 
+    Figure (a) 期望搜索代价为2.80的二叉搜索树</p><br>
 <img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%201.jpg" width="25%" height="25%">
-Figure (b)
+Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 </center>
 
+<p>对于一个$n=5$的关键字集合及如下的搜索概率，构造的两棵二叉搜索树：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$i$</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$ p_i $</td>
+<td></td>
+<td>0.15</td>
+<td>0.10</td>
+<td>0.05</td>
+<td>0.10</td>
+<td>0.20</td>
+</tr>
+<tr>
+<td>$ q_i $</td>
+<td>0.05</td>
+<td>0.10</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.05</td>
+<td>0.10</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>由于我们知道每个关键字和伪关键字的搜索概率，因而可以确定在一棵给定的二叉搜索树$T$中进行一次搜索的期望代价。假定一次搜索的代价等于访问的节点数，即此次搜索找到的节点在$T$中的深度再加1.那么在$T$中进行一次搜索的期望代价为：</p>
-<script type="math/tex; mode=display">E[T中的搜索代价] = \sum_{i = 1}^{n}(depth_T(k_i)+1) \cdot p_i + \sum_{i = 0}^n(depth_T(d_i) + 1)\cdot q_i</script><script type="math/tex; mode=display">= 1+\sum_{i = 1}^n{depth}_T \cdot {p_i} + \sum_{i = 0}^n {depth}_T(d_i) \cdot q_i</script><p>其中${depth}_T​$表示一个节点在树$T​$中的深度。</p>
+<script type="math/tex; mode=display">E[T中的搜索代价] = \sum_{i = 1}^{n}(depth_T(k_i)+1) \cdot p_i + \sum_{i = 0}^n(depth_T(d_i) + 1)\cdot q_i</script><script type="math/tex; mode=display">= 1+\sum_{i = 1}^n{depth}_T \cdot {p_i} + \sum_{i = 0}^n {depth}_T(d_i) \cdot q_i</script><p>其中${depth}_T$表示一个节点在树$T$中的深度    。</p>
 <p>对于给定的概率集合，我们希望构造一棵期望搜索代价最小的二叉搜索树，我们称之为最优二叉搜索树。</p>
 
           
