@@ -427,6 +427,7 @@
 <p>代表元素。例如，如果构建一个字符串数组列表，那么初始化为<code>ArrayList&lt;String&gt; stringList = new ArrayList&lt;String&gt;();</code>类构造函数</p>
 </li>
 </ul>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -449,7 +450,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h3><table>
+</div>
+<h3 id="类方法"><a href="#类方法" class="headerlink" title="类方法"></a>类方法</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>S.N.</th>
@@ -539,6 +542,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 
         
       </div>
@@ -997,7 +1001,24 @@
         }, 300)
       }).append(e)
     })
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 </body>

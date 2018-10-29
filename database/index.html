@@ -360,7 +360,8 @@
           <p>database</p>
 <h1 id="数据库学习笔记"><a href="#数据库学习笔记" class="headerlink" title="数据库学习笔记"></a>数据库学习笔记</h1><h2 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-sever</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line"></span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
 <h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -u root -p</span><br><span class="line">#-u为用户选项后加用户名</span><br><span class="line">#-p为密码选项表示该用户需要密码回车之后会出现密码输入提示</span><br><span class="line">mysql&gt;</span><br><span class="line">#输入密码正确后进入mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h3 id="linux平台下MySQL安装目录"><a href="#linux平台下MySQL安装目录" class="headerlink" title="linux平台下MySQL安装目录"></a>linux平台下MySQL安装目录</h3><table>
+<h3 id="linux平台下MySQL安装目录"><a href="#linux平台下MySQL安装目录" class="headerlink" title="linux平台下MySQL安装目录"></a>linux平台下MySQL安装目录</h3><div class="table-container">
+<table>
 <thead>
 <tr>
 <th>文件夹</th>
@@ -402,6 +403,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h2 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h2><ul>
 <li>查看当前存在的数据库<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure></li>
 <li>创建数据库<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE database_name;</span><br></pre></td></tr></table></figure></li>
@@ -432,7 +434,7 @@
 <h3 id="使用默认约束"><a href="#使用默认约束" class="headerlink" title="使用默认约束"></a>使用默认约束</h3><p>默认约束（Default Constraint）是指某列的默认值。例如，男性同学较多，性别就可以默认为‘男’。如果插入一条新的记录时没有为这个字段赋值，那么系统会自动为这个字段赋值为‘男’。<br>语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 DEFAULT 默认值</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">22</span>)</span> NOT NULL,</span></span><br><span class="line"><span class="function">	deptId <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>, DEFAULT 1111,</span></span><br><span class="line"><span class="function">	salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure></p>
 <h3 id="设置表的属性值自动增加"><a href="#设置表的属性值自动增加" class="headerlink" title="设置表的属性值自动增加"></a>设置表的属性值自动增加</h3><p>在某些时候希望插入新的记录的时候，系统能自动生成字段的主键值。可以通过为表添加AUTO_INCREMENT 关键字来实现。默认的，在MySQL中AUTO_INCREMENT的初始值为1，每新增一条记录，字段值自动加1.一个表中只能有一个字段使用AUTO_INCREMENT约束，且该字段必须为主键的一部分。AUTO_INCREMENT约束的字段可以是任何整数类型（TINYINT, SMALLINT, INT, BIGINT）等。</p>
 <p>设置表的属性值自动增加的语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 AUTO_INCREMENT</span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY AUTO_INCRMENT,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span> NOT NULL,</span></span><br><span class="line"><span class="function">	deptId <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">	salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="查看数据表结构"><a href="#查看数据表结构" class="headerlink" title="查看数据表结构"></a>查看数据表结构</h3><p>查看表基本结构语句DESCRIBE<br>DESCRIBE/DESC语句可以查看表的字段信息，包括字段名、字段类型数据、是否为主键、是否有默认值等。语法规则如下：<br><figure class="highlight java"><figcaption><span>:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DESCRIBE 表名；</span><br><span class="line">#简写：</span><br><span class="line">DESC 表名;</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">mysql&gt; desc student;</span><br></pre></td></tr></table></figure><br>+——–+————-+——+—–+———+——-+<br>| Field  | Type        | Null | Key | Default | Extra |<br>+——–+————-+——+—–+———+——-+<br>| id     | int(11)     | YES  |     | NULL    |       |<br>| name   | varchar(25) | YES  |     | NULL    |       |<br>| deptid | int(11)     | YES  |     | NULL    |       |<br>| salary | float       | YES  |     | NULL    |       |<br>+——–+————-+——+—–+———+——-+<br>4 rows in set (0.00 sec)</p>
+<h3 id="查看数据表结构"><a href="#查看数据表结构" class="headerlink" title="查看数据表结构"></a>查看数据表结构</h3><p>查看表基本结构语句DESCRIBE<br>DESCRIBE/DESC语句可以查看表的字段信息，包括字段名、字段类型数据、是否为主键、是否有默认值等。语法规则如下：<br><figure class="highlight java"><figcaption><span>:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DESCRIBE 表名；</span><br><span class="line">#简写：</span><br><span class="line">DESC 表名;</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">mysql&gt; desc student;</span><br></pre></td></tr></table></figure><br>+————+——————-+———+——-+————-+———-+<br>| Field  | Type        | Null | Key | Default | Extra |<br>+————+——————-+———+——-+————-+———-+<br>| id     | int(11)     | YES  |     | NULL    |       |<br>| name   | varchar(25) | YES  |     | NULL    |       |<br>| deptid | int(11)     | YES  |     | NULL    |       |<br>| salary | float       | YES  |     | NULL    |       |<br>+————+——————-+———+——-+————-+———-+<br>4 rows in set (0.00 sec)</p>
 <p>mysql&gt; </p>
 <p>其中，各个字段的含义分别解释如下：</p>
 <p>Null：表示该列是否可以存储NULL值<br>Key：表示该列是否已编制索引。PRI表示该列是表主键的一部分；UNI表示该列是UNIQUE的索引的一部分；MUL表示在列中某个给定值允许出现多次<br>Default：表示该列是否有默认值，如果有的话是多少​<br>Extra：表示可以获取的与给定列有关的附加信息，例如AUTO_INCREMENT</p>
@@ -860,7 +862,24 @@
         }, 300)
       }).append(e)
     })
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 </body>

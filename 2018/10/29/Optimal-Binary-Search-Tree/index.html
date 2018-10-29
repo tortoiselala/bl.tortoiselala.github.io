@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=&amp;lt;k_1, k_2, …, k_n&amp;gt;$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d">
+  <meta name="description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Optimal Binary Search Tree">
 <meta property="og:url" content="http://tortoiselala.github.com/2018/10/29/Optimal-Binary-Search-Tree/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=&amp;lt;k_1, k_2, …, k_n&amp;gt;$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d">
+<meta property="og:description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-29T07:12:03.670Z">
+<meta property="og:updated_time" content="2018-10-29T07:39:48.103Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optimal Binary Search Tree">
-<meta name="twitter:description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=&amp;lt;k_1, k_2, …, k_n&amp;gt;$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d">
+<meta name="twitter:description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列$K=$（因此$k_1&amp;lt;k_2&amp;lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小">
 
 
 
@@ -362,7 +362,7 @@
                 
               
 
-              <time title="Created: 2018-10-29 14:53:48 / Modified: 15:12:03" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
+              <time title="Created: 2018-10-29 14:53:48 / Modified: 15:39:48" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
             
 
             
@@ -400,7 +400,7 @@
       
 
       
-        <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列$K=&lt;k_1, k_2, …, k_n&gt;$（因此$k_1&lt;k_2&lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。对于所有的关键字与伪关键字的频率满足如下公式：</p>
+        <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列$K=<k_1, k_2,="" ...,="" k_n="">$（因此$k_1&lt;k_2&lt;…k_n$），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$n+1$个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。对于所有的关键字与伪关键字的频率满足如下公式：</k_1,></p>
 <center>$\sum_{i = 1}^{n}{p_i} + \sum_{i = 0}^{n}{q_i} = 1$</center>
 
 
@@ -761,6 +761,30 @@
   
 
   
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
 
 
   
@@ -842,7 +866,24 @@
         }, 300)
       }).append(e)
     })
-  </script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 </body>
