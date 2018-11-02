@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="钢条切割某公司出售一段长度为i英寸的钢条的价格为Pi（i=1，2…单位：美元），下面给出了价格表     长度$i$ 1 2 3 4 5 6 7 8 9 10     价格$ p_i $ 1 5 8 9 10 17 17 20 24 30     问题描述给定一段长度为$n$英寸的钢条与价格表$p_i(i = 1, 2, \cdot\cdot \cdot, n)$，求钢条切割方案，是的销售收益$r">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-02T02:45:17.398Z">
+<meta property="og:updated_time" content="2018-11-02T03:04:04.958Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="钢条切割.Introduction to Algorithms">
 <meta name="twitter:description" content="钢条切割某公司出售一段长度为i英寸的钢条的价格为Pi（i=1，2…单位：美元），下面给出了价格表     长度$i$ 1 2 3 4 5 6 7 8 9 10     价格$ p_i $ 1 5 8 9 10 17 17 20 24 30     问题描述给定一段长度为$n$英寸的钢条与价格表$p_i(i = 1, 2, \cdot\cdot \cdot, n)$，求钢条切割方案，是的销售收益$r">
@@ -363,7 +363,7 @@
                 
               
 
-              <time title="Created: 2018-11-02 09:41:00 / Modified: 10:45:17" itemprop="dateCreated datePublished" datetime="2018-11-02T09:41:00+08:00">2018-11-02</time>
+              <time title="Created: 2018-11-02 09:41:00 / Modified: 11:04:04" itemprop="dateCreated datePublished" datetime="2018-11-02T09:41:00+08:00">2018-11-02</time>
             
 
             
@@ -444,6 +444,15 @@
 <p>将钢条切割为长度分别为$ i_1, i_2, \cdot\cdot\cdot, i_k$的小段，得到最大收益</p>
 <script type="math/tex; mode=display">r_n = p_1 + p_2 + \cdot\cdot\cdot + p_n</script><p>更一般的，我们使用下面的公式来描述$r_n(n\geq1)$：</p>
 <script type="math/tex; mode=display">r_n = max(p_n, r_1 + r_{n-1}, r_2 + r_{n-2}, \cdot\cdot\cdot, r_{n_1} + r_1)</script><p>第一个参数$p_n$表示不切割，其他$n-1$个参数对应另外$n-1$中方案：对于每个$i = 1, 2, \cdot\cdot\cdot, n-1$，首先将钢条切割为长度为$i$和$n-i$的两段，接着求解这两段的最优切割收益$r_i$和$r_{n-i}$。选择$n$中方案中收益最大的作为最终切割方案。</p>
+<h3 id="Approach-2：Dynamic-Programming"><a href="#Approach-2：Dynamic-Programming" class="headerlink" title="Approach 2：Dynamic Programming"></a>Approach 2：Dynamic Programming</h3><p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">	q = INT_MIN</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">		q = max(q, p[i]+r[j-i])</span><br><span class="line">	r[j] = q</span><br><span class="line"><span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">result</span><span class="params">(<span class="keyword">int</span>[] p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] r = <span class="keyword">new</span> <span class="keyword">int</span>[p.length+<span class="number">1</span>];</span><br><span class="line">        r[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">            <span class="keyword">int</span> q = Integer.min;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; ++i)&#123;</span><br><span class="line">                q = max(q, p[i] + r[j-i]);</span><br><span class="line">            &#125;</span><br><span class="line">            r[j] = q;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Approach-3：重构-Approach-2"><a href="#Approach-3：重构-Approach-2" class="headerlink" title="Approach 3：重构 Approach 2"></a>Approach 3：重构 Approach 2</h3><p>重写算法，使得计算最优解的过程中能够记录下具体的切割方案。</p>
+<p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">EXTENDED-CUT-ROD(p,n)</span><br><span class="line">    let r[<span class="number">0</span>...n] and s[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">	r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">		q = INT_MIN</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">			<span class="keyword">if</span> q &lt; p[i] + r[j-i]</span><br><span class="line">				q =  p[i]+r[j-i]</span><br><span class="line">				s[j] = i</span><br><span class="line">		r[j] = q</span><br><span class="line">	<span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
+<p>打印切割方案的伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PRINT-CUT-ROD-SOLUTION(s,n)</span><br><span class="line">	<span class="keyword">while</span> n&gt;<span class="number">0</span></span><br><span class="line">		print s[n]</span><br><span class="line">		n = n - s[n]</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -477,8 +486,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/11/02/Dynamic-Programming-Introduction-to-Algorithms/" rel="next" title="Dynamic Programming">
-                <i class="fa fa-chevron-left"></i> Dynamic Programming
+              <a href="/2018/11/02/Dynamic-Programming/" rel="next" title="Dynamic Programming.Introduction to Algorithms">
+                <i class="fa fa-chevron-left"></i> Dynamic Programming.Introduction to Algorithms
               </a>
             
           </div>
@@ -624,7 +633,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题求解"><span class="nav-number">1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#钢条切割"><span class="nav-number">1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#问题描述"><span class="nav-number">1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题求解"><span class="nav-number">1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-2：Dynamic-Programming"><span class="nav-number">1.2.2.</span> <span class="nav-text">Approach 2：Dynamic Programming</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-3：重构-Approach-2"><span class="nav-number">1.2.3.</span> <span class="nav-text">Approach 3：重构 Approach 2</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
