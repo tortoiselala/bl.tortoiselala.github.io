@@ -363,7 +363,7 @@
                 
               
 
-              <time title="Created: 2018-11-02 11:08:43 / Modified: 14:05:36" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
+              <time title="Created: 2018-11-02 11:08:43 / Modified: 14:43:56" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
             
 
             
@@ -405,7 +405,18 @@
           
             <h1 id="矩阵链乘法问题"><a href="#矩阵链乘法问题" class="headerlink" title="矩阵链乘法问题"></a>矩阵链乘法问题</h1><p>矩阵链乘法是可用动态规划解决的最佳化问题。</p>
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定 <script type="math/tex">n</script> 个矩阵的链 &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
+<p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2 \cdot\cdot\cdot, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
+<p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
+<script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$中可能。因此得到下面公式：</p>
+<script type="math/tex; mode=display">
+m[i, j] =
+\begin{cases} 
+0 
+\atop  
+min\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
+\end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]$来存储$k$值。</p>
+<h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3>
           
         
       
