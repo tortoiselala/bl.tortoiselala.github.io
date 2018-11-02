@@ -317,6 +317,145 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Longest-Common-Subsequence-Problem-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/Longest-Common-Subsequence-Problem-Introduction-to-Algorithms/" itemprop="url">
+                  Longest Common Subsequence Problem.Introduction to Algorithms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-02 15:06:28 / Modified: 15:09:00" itemprop="dateCreated datePublished" datetime="2018-11-02T15:06:28+08:00">2018-11-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Matrix-chain-multiplication-Introduction-to-Algorithms/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -363,7 +502,7 @@
                 
               
 
-              <time title="Created: 2018-11-02 11:08:43 / Modified: 14:43:56" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
+              <time title="Created: 2018-11-02 11:08:43 / Modified: 15:04:33" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
             
 
             
@@ -407,8 +546,8 @@
 <h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定 <script type="math/tex">n</script> 个矩阵的链 &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
 <p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2 \cdot\cdot\cdot, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
-<p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
-<script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$中可能。因此得到下面公式：</p>
+<p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
+<script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$种可能。因此得到下面公式：</p>
 <script type="math/tex; mode=display">
 m[i, j] =
 \begin{cases} 
@@ -416,7 +555,9 @@ m[i, j] =
 \atop  
 min\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
 \end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]$来存储$k$值。</p>
-<h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3>
+<h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3><p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATRIX-CHAN-ORDER(p)</span><br><span class="line">	n = p.length - <span class="number">1</span></span><br><span class="line">	let m[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">1</span>..n] and s[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">2</span>..n] be <span class="keyword">new</span> tables</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">		m[i, i] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> l = <span class="number">2</span> to n</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n - l + <span class="number">1</span></span><br><span class="line">			j = i + l -<span class="number">1</span></span><br><span class="line">			m[i, j] = MAX_INT</span><br><span class="line">			<span class="keyword">for</span> k = i to j - <span class="number">1</span></span><br><span class="line">				q = m[i, k] + m[k + <span class="number">1</span>, j] + p[i-<span class="number">1</span>]*p[k]*p[j]</span><br><span class="line">			<span class="keyword">if</span> q &lt; m[i, j]</span><br><span class="line">				m[i, j] = q</span><br><span class="line">				s[i, j] = k</span><br></pre></td></tr></table></figure>
+
           
         
       
@@ -1729,165 +1870,6 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/" itemprop="url">
-                  leetcode problem 871 Minimum Number of Refueling Stops
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-03 11:04:16 / Modified: 18:25:44" itemprop="dateCreated datePublished" datetime="2018-10-03T11:04:16+08:00">2018-10-03</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p>
-<p>Along the way, there are gas stations.  Each <code>station[i]</code> represents a gas station that is <code>station[i][0]</code> miles east of the starting position, and has <code>station[i][1]</code> liters of gas.</p>
-<p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.</p>
-<p>When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p>
-<p>What is the least number of refueling stops the car must make in order to reach its destination?  If it cannot reach the destination, return <code>-1</code>.</p>
-<p>Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there.  If the car reaches the destination with 0 fuel left, it is still considered to have arrived.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 1, startFuel = 1, stations = []</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: We can reach the target without refueling.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 1, stations = [[10,100]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: We can&apos;t reach the target (or even the first gas station).</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">We start with 10 liters of fuel.</span><br><span class="line">We drive to position 10, expending 10 liters of fuel.  We refuel from 0 liters to 60 liters of gas.</span><br><span class="line">Then, we drive from position 10 to position 60 (expending 50 liters of fuel),</span><br><span class="line">and refuel from 10 liters to 50 liters of gas.  We then drive to and reach the target.</span><br><span class="line">We made 2 refueling stops along the way, so we return 2.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>1 &lt;= target, startFuel, stations[i][1] &lt;= 10^9</code></li>
-<li><code>0 &lt;= stations.length &lt;= 500</code></li>
-<li><code>0 &lt; stations[0][0] &lt; stations[1][0] &lt; ... &lt; stations[stations.length-1][0] &lt; target</code></li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-Dymanic-Programming-Time-Limited"><a href="#Approach-1-Dymanic-Programming-Time-Limited" class="headerlink" title="Approach 1:Dymanic Programming(Time Limited)"></a>Approach 1:Dymanic Programming(Time Limited)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations, <span class="keyword">int</span> sumStation, <span class="keyword">int</span> indexStations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (startFuel &gt;= target) &#123;</span><br><span class="line">			<span class="keyword">if</span> (sumStation &lt; min) &#123;</span><br><span class="line">				min = sumStation;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (indexStations &gt;= stations.length) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (startFuel &gt;= stations[indexStations][<span class="number">0</span>]) &#123;</span><br><span class="line">				minRefuelStops(target, startFuel, stations, sumStation, ++indexStations);</span><br><span class="line">				--indexStations;</span><br><span class="line">				startFuel += stations[indexStations][<span class="number">1</span>];</span><br><span class="line">				minRefuelStops(target, startFuel, stations, ++sumStation, ++indexStations);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Dymanic-Programming-Accepted"><a href="#Approach-2-Dymanic-Programming-Accepted" class="headerlink" title="Approach 2:Dymanic Programming(Accepted)"></a>Approach 2:Dymanic Programming(Accepted)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span>[] dp = <span class="keyword">new</span> <span class="keyword">long</span>[stations.length + <span class="number">1</span>];</span><br><span class="line">		dp[<span class="number">0</span>] = startFuel;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stations.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[j] &gt;= stations[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					dp[j + <span class="number">1</span>] = Math.max(dp[j + <span class="number">1</span>], dp[j] + (<span class="keyword">long</span>) stations[i][<span class="number">1</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i] &gt;= target) &#123;</span><br><span class="line">				<span class="keyword">return</span> i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1935,7 +1917,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2168,9 +2150,9 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
   
     
       
-        
-      
     
+      
+        
       
     
       
