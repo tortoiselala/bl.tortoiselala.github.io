@@ -363,12 +363,24 @@
                 
               
 
-              <time title="Created: 2018-11-08 22:36:55 / Modified: 23:47:46" itemprop="dateCreated datePublished" datetime="2018-11-08T22:36:55+08:00">2018-11-08</time>
+              <time title="Created: 2018-11-08 22:36:55" itemprop="dateCreated datePublished" datetime="2018-11-08T22:36:55+08:00">2018-11-08</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-09 22:09:44" itemprop="dateModified" datetime="2018-11-09T22:09:44+08:00">2018-11-09</time>
               
             
           </span>
@@ -438,9 +450,13 @@
 </ul>
 <h2 id="转发和路由选择"><a href="#转发和路由选择" class="headerlink" title="转发和路由选择"></a>转发和路由选择</h2><p>网络层提供的功能看似极为简单：将分组从一台发送主机移动到一台接收主机。为此，需要两种重要的网络层功能：</p>
 <ul>
-<li>转发</li>
-<li>路由选择</li>
+<li><p>转发。当一个分组到达路由器的一条输入链路时，路由器必须将改分组移动到合适的输出链路。</p>
+</li>
+<li><p>路由选择。当分组从发送方流向接收方时，网络层必须决定这些分组所采用的路由或路径。计算这些路径的算法被称为路由选择算法$(rounting  algorithm)$。</p>
+</li>
 </ul>
+<p>每台路由器都有一张<strong>转发表</strong>($forwardning  table$)。转发表是由路由选择算法计算得出的。路由选择算法可能是集中式的，或是分布式的</p>
+<p>分组交换机是指一台通用分别分组交换设备。它根据分组首部字段中的值，从输入链路到输出链路接口转移分组。某些分组交换机称为<strong>链路层交换机</strong>$(link-layer switches)$。</p>
 
           
         
