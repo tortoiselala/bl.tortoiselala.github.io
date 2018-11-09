@@ -380,7 +380,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-09 23:04:37" itemprop="dateModified" datetime="2018-11-09T23:04:37+08:00">2018-11-09</time>
+                <time title="Modified: 2018-11-09 23:21:57" itemprop="dateModified" datetime="2018-11-09T23:21:57+08:00">2018-11-09</time>
               
             
           </span>
@@ -466,6 +466,16 @@
 </ul>
 <h2 id="虚电路网络"><a href="#虚电路网络" class="headerlink" title="虚电路网络"></a>虚电路网络</h2><h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><h1 id="路由器的工作原理"><a href="#路由器的工作原理" class="headerlink" title="路由器的工作原理"></a>路由器的工作原理</h1><h1 id="网际协议：因特网中的转发和编址"><a href="#网际协议：因特网中的转发和编址" class="headerlink" title="网际协议：因特网中的转发和编址"></a>网际协议：因特网中的转发和编址</h1><p>因特网编址和转发是网际协议$（IP）$的重要组件。目前有两个版本的$IP$在使用。$IP$协议版本4，简称为$IPv4$；$IPv6$。</p>
 <h2 id="数据报格式"><a href="#数据报格式" class="headerlink" title="数据报格式"></a>数据报格式</h2><p>网络层分组被称为<strong>数据报</strong>。$IPv4$数据报格式如下：</p>
+<p><img src="https://github.com/tortoiselala/tortoiselala.github.io/blob/master/src/img/ipv4-datagram-type.png?raw=true" alt="IPv4数据报格式"></p>
+<script type="math/tex; mode=display">
+IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Bytes$可选组成。</p>
+<p>$IPv4$数据报中的关键字段如下：</p>
+<ul>
+<li><strong>版本(号)</strong>。版本号占用了4个$bits$，规定了数据报的$IP$协议版本，即$IPv4$或$IPv6$。</li>
+<li><strong>首部长度</strong>。一个$IPv4$数据报可包含一些可变数量的选项，所以需要使用4个$bits$来确定数据报中数据部分实际从哪里开始。大多数的$IP$数据报不包含该选项，所以一般的$IP$数据报包含20个字节的首部。</li>
+<li><strong>服务类型</strong>。该选项并不为所有的路由器所支持，所以该选项基本没用。</li>
+<li><strong>数据报长度</strong>。指明$IP$数据报</li>
+</ul>
 
           
         
