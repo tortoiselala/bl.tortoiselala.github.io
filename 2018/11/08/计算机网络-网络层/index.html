@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-09T14:48:20.526Z">
+<meta property="og:updated_time" content="2018-11-09T15:04:37.095Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-网络层">
 <meta name="twitter:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
@@ -380,7 +380,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-09 22:48:20" itemprop="dateModified" datetime="2018-11-09T22:48:20+08:00">2018-11-09</time>
+                <time title="Modified: 2018-11-09 23:04:37" itemprop="dateModified" datetime="2018-11-09T23:04:37+08:00">2018-11-09</time>
               
             
           </span>
@@ -459,10 +459,11 @@
 <h1 id="虚电路和数据报网络"><a href="#虚电路和数据报网络" class="headerlink" title="虚电路和数据报网络"></a>虚电路和数据报网络</h1><p>在运输层中，每个应用程序都能够选择两种服务：UDP，一种无连接的服务；TCP，一种面向连接的服务。类似的，网络层也能够在两台主机间提供无连接服务或者连接服务。网络层的连接和无连接服务在许多方面与运输层的面向连接和无连接服务类似。但是虽然运输层与网络层在这方面拥有相似性，但是，依然存在巨大差异：</p>
 <ul>
 <li>在网络层中，这种服务是由网络层想运输层提供的主机到主机的服务。在运输层，这些服务则是运输层向应用层提供的进程到进程的服务。</li>
-<li>至今为止的所有主要的计算机网络体系结构中，网络层或者提供了主机到主机之间的无连接服务，或者提供了主机到主机之间的有连接服务，但是不同时提供这两种服务。提供连接的计算机网络成为<strong>虚电路</strong>$Virtual-Circuit\, VC$<strong>网络</strong>；仅在网络层提供无连接服务的计算机网络成为<strong>数据报网络</strong>$datagram\, network$。</li>
+<li>至今为止的所有主要的计算机网络体系结构中，网络层或者提供了主机到主机之间的无连接服务，或者提供了主机到主机之间的有连接服务，但是不同时提供这两种服务。提供连接的计算机网络成为<strong>虚电路</strong>$(Virtual-Circuit\, VC)$<strong>网络</strong>；仅在网络层提供无连接服务的计算机网络成为<strong>数据报网络</strong>($datagram\, network)。$</li>
 <li>在运输层实现面向连接的服务与在网络层实现连接服务是根本不同的。运输层面向连接是在位于网络边缘的端系统中实现的；网络层连接服务除了在端系统中，也在位于网络核心的路由器实现。</li>
-<li></li>
 </ul>
+<h2 id="虚电路网络"><a href="#虚电路网络" class="headerlink" title="虚电路网络"></a>虚电路网络</h2><h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><h1 id="路由器的工作原理"><a href="#路由器的工作原理" class="headerlink" title="路由器的工作原理"></a>路由器的工作原理</h1><h1 id="网际协议：因特网中的转发和编址"><a href="#网际协议：因特网中的转发和编址" class="headerlink" title="网际协议：因特网中的转发和编址"></a>网际协议：因特网中的转发和编址</h1><p>因特网编址和转发是网际协议$（IP）$的重要组件。目前有两个版本的$IP$在使用。$IP$协议版本4，简称为$IPv4$；$IPv6$。</p>
+<h2 id="数据报格式"><a href="#数据报格式" class="headerlink" title="数据报格式"></a>数据报格式</h2><p>网络层分组被称为<strong>数据报</strong>。$IPv4$数据报格式如下：</p>
 
       
     </div>
@@ -647,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚电路网络"><span class="nav-number">2.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报网络"><span class="nav-number">2.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的工作原理"><span class="nav-number">3.</span> <span class="nav-text">路由器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网际协议：因特网中的转发和编址"><span class="nav-number">4.</span> <span class="nav-text">网际协议：因特网中的转发和编址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">4.1.</span> <span class="nav-text">数据报格式</span></a></li></ol></li></ol></div>
             
 
           </div>
