@@ -117,7 +117,8 @@
 <meta property="og:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/tortoiselala/tortoiselala.github.io/blob/master/src/img/ipv4-datagram-type.png?raw=true">
-<meta property="og:updated_time" content="2018-11-10T08:55:52.952Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/IP-classification.png">
+<meta property="og:updated_time" content="2018-11-10T09:33:08.751Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-网络层">
 <meta name="twitter:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
@@ -382,7 +383,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-10 16:55:52" itemprop="dateModified" datetime="2018-11-10T16:55:52+08:00">2018-11-10</time>
+                <time title="Modified: 2018-11-10 17:33:08" itemprop="dateModified" datetime="2018-11-10T17:33:08+08:00">2018-11-10</time>
               
             
           </span>
@@ -492,6 +493,37 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
 <p>每个$IP$地址长度为32比特（等价为4字节），因此总共有$2^{32}$个可能的$IP$地址。这些地址一般按所谓<strong>点分十进制</strong>（$dotted-decimal\, notation$）书写。</p>
 <h2 id="IP-地址的结构"><a href="#IP-地址的结构" class="headerlink" title="$IP$地址的结构"></a>$IP$地址的结构</h2><p>$IP$地址 = 网络号（$Net-id$） + 主机号（$Host-id$）.</p>
 <p>$IP$地址依据格式分为5类：$A类， B类， C类， D类， E类$。</p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/IP-classification.png" alt="IP分类"></p>
+<center>IP分类</center>
+
+<p>$A类地址范围$:1.0.0.0-127.255.255.255（7位网络号+24位主机号）</p>
+<p>$B类地址范围$:128.0.0.0-191.255.255.255（14位网络号+16位主机号）</p>
+<p>$C类地址范围$:192.0.0.0-223.255.255.255（21位网络号+8位主机号）</p>
+<p>$D类地址范围$:224.0.0.0-239.255.255.255（28位组播地址）</p>
+<p>$E类地址范围$:240.0.0.0-247.255.255.255.</p>
+<p>主机号全0称为网络地址。</p>
+<p>主机号全1称为广播地址。</p>
+<p>同一局域网中的主机或路由器的$IP$地址中的网络号必须是一致的。</p>
+<h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><p>子网掩码是用来区别网络位与主机位的。用1表示网络位，用0表示主机位。</p>
+<p>比如$A$类地址的掩码:</p>
+<center>11111111.00000000.00000000.00000000</center>
+
+<p>也可以用</p>
+<center>/8</center>
+
+<p>来表示，表示前8位为网络号。</p>
+<p>子网掩码可以向外隐藏子网的存在，对内指示网络号和主机号的位置。</p>
+<p>所以对于$IP$地址，存在这样的划分：两级$IP$地址， 三级$IP$地址。</p>
+<p>两级$IP$地址:$Net-id$ + $Host -id$</p>
+<p>三级$IP$地址:$Net-id + SubNet-id+Host-id$.</p>
+<p>在网络地址运算中，可以使用子网掩码与$IP$地址进行$AND$运算获得网络号。</p>
+<p>在引入子网掩码之后，路由器的寻址过程将演变为一个两级寻址过程：</p>
+<ul>
+<li><p>检查分组目的$IP$地址中的网络号：若网络号不是本网络，则从路由表中找出相应的转发节点地址将其转发出去。</p>
+</li>
+<li><p>检查子网号：当网络号是本网络时，路由器将检查子网号，向相应的子网转发此分组。</p>
+</li>
+</ul>
 
       
     </div>
@@ -676,7 +708,7 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚电路网络"><span class="nav-number">2.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报网络"><span class="nav-number">2.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的工作原理"><span class="nav-number">3.</span> <span class="nav-text">路由器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网际协议：因特网中的转发和编址"><span class="nav-number">4.</span> <span class="nav-text">网际协议：因特网中的转发和编址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">4.1.</span> <span class="nav-text">数据报格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP数据报分片"><span class="nav-number">4.1.1.</span> <span class="nav-text">IP数据报分片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.2.</span> <span class="nav-text">$IPv4$编址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-地址的结构"><span class="nav-number">4.3.</span> <span class="nav-text">$IP$地址的结构</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚电路网络"><span class="nav-number">2.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报网络"><span class="nav-number">2.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的工作原理"><span class="nav-number">3.</span> <span class="nav-text">路由器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网际协议：因特网中的转发和编址"><span class="nav-number">4.</span> <span class="nav-text">网际协议：因特网中的转发和编址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">4.1.</span> <span class="nav-text">数据报格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP数据报分片"><span class="nav-number">4.1.1.</span> <span class="nav-text">IP数据报分片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.2.</span> <span class="nav-text">$IPv4$编址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-地址的结构"><span class="nav-number">4.3.</span> <span class="nav-text">$IP$地址的结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#子网划分"><span class="nav-number">4.4.</span> <span class="nav-text">子网划分</span></a></li></ol></li></ol></div>
             
 
           </div>

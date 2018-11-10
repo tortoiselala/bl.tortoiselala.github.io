@@ -380,7 +380,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-10 16:55:52" itemprop="dateModified" datetime="2018-11-10T16:55:52+08:00">2018-11-10</time>
+                <time title="Modified: 2018-11-10 17:33:08" itemprop="dateModified" datetime="2018-11-10T17:33:08+08:00">2018-11-10</time>
               
             
           </span>
@@ -492,6 +492,37 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
 <p>每个$IP$地址长度为32比特（等价为4字节），因此总共有$2^{32}$个可能的$IP$地址。这些地址一般按所谓<strong>点分十进制</strong>（$dotted-decimal\, notation$）书写。</p>
 <h2 id="IP-地址的结构"><a href="#IP-地址的结构" class="headerlink" title="$IP$地址的结构"></a>$IP$地址的结构</h2><p>$IP$地址 = 网络号（$Net-id$） + 主机号（$Host-id$）.</p>
 <p>$IP$地址依据格式分为5类：$A类， B类， C类， D类， E类$。</p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/IP-classification.png" alt="IP分类"></p>
+<center>IP分类</center>
+
+<p>$A类地址范围$:1.0.0.0-127.255.255.255（7位网络号+24位主机号）</p>
+<p>$B类地址范围$:128.0.0.0-191.255.255.255（14位网络号+16位主机号）</p>
+<p>$C类地址范围$:192.0.0.0-223.255.255.255（21位网络号+8位主机号）</p>
+<p>$D类地址范围$:224.0.0.0-239.255.255.255（28位组播地址）</p>
+<p>$E类地址范围$:240.0.0.0-247.255.255.255.</p>
+<p>主机号全0称为网络地址。</p>
+<p>主机号全1称为广播地址。</p>
+<p>同一局域网中的主机或路由器的$IP$地址中的网络号必须是一致的。</p>
+<h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><p>子网掩码是用来区别网络位与主机位的。用1表示网络位，用0表示主机位。</p>
+<p>比如$A$类地址的掩码:</p>
+<center>11111111.00000000.00000000.00000000</center>
+
+<p>也可以用</p>
+<center>/8</center>
+
+<p>来表示，表示前8位为网络号。</p>
+<p>子网掩码可以向外隐藏子网的存在，对内指示网络号和主机号的位置。</p>
+<p>所以对于$IP$地址，存在这样的划分：两级$IP$地址， 三级$IP$地址。</p>
+<p>两级$IP$地址:$Net-id$ + $Host -id$</p>
+<p>三级$IP$地址:$Net-id + SubNet-id+Host-id$.</p>
+<p>在网络地址运算中，可以使用子网掩码与$IP$地址进行$AND$运算获得网络号。</p>
+<p>在引入子网掩码之后，路由器的寻址过程将演变为一个两级寻址过程：</p>
+<ul>
+<li><p>检查分组目的$IP$地址中的网络号：若网络号不是本网络，则从路由表中找出相应的转发节点地址将其转发出去。</p>
+</li>
+<li><p>检查子网号：当网络号是本网络时，路由器将检查子网号，向相应的子网转发此分组。</p>
+</li>
+</ul>
 
           
         
