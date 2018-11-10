@@ -117,7 +117,7 @@
 <meta property="og:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://github.com/tortoiselala/tortoiselala.github.io/blob/master/src/img/ipv4-datagram-type.png?raw=true">
-<meta property="og:updated_time" content="2018-11-10T07:14:04.534Z">
+<meta property="og:updated_time" content="2018-11-10T08:55:52.952Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="计算机网络-网络层">
 <meta name="twitter:description" content="前言：  两种用于构造网络层分组交付的方法，即数据包模式和虚电路模式 编址 网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。 网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。 网络地址转换">
@@ -382,7 +382,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-11-10 15:14:04" itemprop="dateModified" datetime="2018-11-10T15:14:04+08:00">2018-11-10</time>
+                <time title="Modified: 2018-11-10 16:55:52" itemprop="dateModified" datetime="2018-11-10T16:55:52+08:00">2018-11-10</time>
               
             
           </span>
@@ -488,7 +488,10 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
 <p>在到达端系统之后进行重新组装。组装的依据便是数据报头部的表示、标志以及片偏移字段。</p>
 <p>分片得到的数据报片与原始数据报具有相同的原地址、目的地址和标识号。目的主机进行组装是就会通过相同的标识号确定哪些片是属于一个大的数据报的。为了保证能够准确的接收到所有的分片以及确定接收到最后一个分片，最后一个片的标志比特将被置为0，其他片的标志比特将被置为1。偏移字段指明某一片应该处于原始数据报的位置（按照正确顺序组装）。值得注意的是，片偏移是以8字节为一单位的。即片偏移$offset = 100$则表明。该片数据属于原数据报第$100 \times 8 = 800$个字节的地方</p>
 <p>当数据报到达目的主机时，分片的数据报会在$IP$层完全组装完成后再交付给运输层。如果出现分片丢失，该数据报会被丢弃，不会交给运输层。</p>
-<h2 id="IPv4-编址"><a href="#IPv4-编址" class="headerlink" title="$IPv4$编址"></a>$IPv4$编址</h2><p>一台主机通常只有一条链路连接到网络。</p>
+<h2 id="IPv4-编址"><a href="#IPv4-编址" class="headerlink" title="$IPv4$编址"></a>$IPv4$编址</h2><p>一台主机通常只有一条链路连接到网络。主机与物理链路之间的边界叫<strong>接口</strong>（$interface$）。一台路由器有多个接口，每个接口有其链路，所以一个$IP$地址技术上是与接口相关联的，而不是与主机或路由器相关联的。</p>
+<p>每个$IP$地址长度为32比特（等价为4字节），因此总共有$2^{32}$个可能的$IP$地址。这些地址一般按所谓<strong>点分十进制</strong>（$dotted-decimal\, notation$）书写。</p>
+<h2 id="IP-地址的结构"><a href="#IP-地址的结构" class="headerlink" title="$IP$地址的结构"></a>$IP$地址的结构</h2><p>$IP$地址 = 网络号（$Net-id$） + 主机号（$Host-id$）.</p>
+<p>$IP$地址依据格式分为5类：$A类， B类， C类， D类， E类$。</p>
 
       
     </div>
@@ -673,7 +676,7 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚电路网络"><span class="nav-number">2.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报网络"><span class="nav-number">2.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的工作原理"><span class="nav-number">3.</span> <span class="nav-text">路由器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网际协议：因特网中的转发和编址"><span class="nav-number">4.</span> <span class="nav-text">网际协议：因特网中的转发和编址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">4.1.</span> <span class="nav-text">数据报格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP数据报分片"><span class="nav-number">4.1.1.</span> <span class="nav-text">IP数据报分片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.2.</span> <span class="nav-text">$IPv4$编址</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#转发和路由选择"><span class="nav-number">1.1.</span> <span class="nav-text">转发和路由选择</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#虚电路和数据报网络"><span class="nav-number">2.</span> <span class="nav-text">虚电路和数据报网络</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#虚电路网络"><span class="nav-number">2.1.</span> <span class="nav-text">虚电路网络</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报网络"><span class="nav-number">2.2.</span> <span class="nav-text">数据报网络</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#路由器的工作原理"><span class="nav-number">3.</span> <span class="nav-text">路由器的工作原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#网际协议：因特网中的转发和编址"><span class="nav-number">4.</span> <span class="nav-text">网际协议：因特网中的转发和编址</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据报格式"><span class="nav-number">4.1.</span> <span class="nav-text">数据报格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#IP数据报分片"><span class="nav-number">4.1.1.</span> <span class="nav-text">IP数据报分片</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IPv4-编址"><span class="nav-number">4.2.</span> <span class="nav-text">$IPv4$编址</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IP-地址的结构"><span class="nav-number">4.3.</span> <span class="nav-text">$IP$地址的结构</span></a></li></ol></li></ol></div>
             
 
           </div>
