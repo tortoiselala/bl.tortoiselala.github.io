@@ -317,6 +317,302 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/14/Single-source-Shortest-Path-Problem-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/Single-source-Shortest-Path-Problem-Introduction-to-Algorithms/" itemprop="url">
+                  Single-source Shortest Path Problem  -Introduction-to-Algorithms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-14 21:30:45 / Modified: 22:45:11" itemprop="dateCreated datePublished" datetime="2018-11-14T21:30:45+08:00">2018-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="单源最短路径"><a href="#单源最短路径" class="headerlink" title="单源最短路径"></a>单源最短路径</h1><pre><code>在单源最短路径问题中，我们给定一个带权重的有向图$G = (V, E)$和权重函数$w:E-&gt;R$，该权重函数将每条边都映射到实数值的权重上。图中一条路径$p = &lt;v_0, v_1\cdots v_k&gt;$的权重$w(p)$是构成该路径的所有边的权重之和：
+</code></pre><script type="math/tex; mode=display">
+\begin{equation}
+w(p) = \sum_{i=1}^{k}w(v_{i-1}, v_{i})
+\end{equation}</script><p>定义从结点$u$到结点$v$的<strong>最短路径权重</strong>$\delta(u, v)$如下：</p>
+<script type="math/tex; mode=display">
+\delta(u, v)
+=\begin{cases}
+min\{w(p):u \rightarrow v\}\\
+\infty
+\end{cases}</script><h2 id="单源最短路径的几个变体"><a href="#单源最短路径的几个变体" class="headerlink" title="单源最短路径的几个变体"></a>单源最短路径的几个变体</h2><p><strong>单目的地最短路径问题</strong>：</p>
+<p><strong>单节点对最短路径问题</strong>：</p>
+<p><strong>所有节点对最短路径问题</strong>：</p>
+<h2 id="基础准备"><a href="#基础准备" class="headerlink" title="基础准备"></a>基础准备</h2><h3 id="最短路径的最优子结构"><a href="#最短路径的最优子结构" class="headerlink" title="最短路径的最优子结构"></a>最短路径的最优子结构</h3><h3 id="负权重的边"><a href="#负权重的边" class="headerlink" title="负权重的边"></a>负权重的边</h3><h3 id="环路"><a href="#环路" class="headerlink" title="环路"></a>环路</h3><h3 id="如何表示最短路径"><a href="#如何表示最短路径" class="headerlink" title="如何表示最短路径"></a>如何表示最短路径</h3><h3 id="松弛操作"><a href="#松弛操作" class="headerlink" title="松弛操作"></a>松弛操作</h3><h2 id="Bellman-Ford算法"><a href="#Bellman-Ford算法" class="headerlink" title="Bellman-Ford算法"></a>Bellman-Ford算法</h2><h2 id="有向无环图中的单源最短路径"><a href="#有向无环图中的单源最短路径" class="headerlink" title="有向无环图中的单源最短路径"></a>有向无环图中的单源最短路径</h2><h2 id="Dijkstra算法"><a href="#Dijkstra算法" class="headerlink" title="Dijkstra算法"></a>Dijkstra算法</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/14/greedy-algorithm-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/greedy-algorithm-Introduction-to-Algorithms/" itemprop="url">
+                  greedy-algorithm-Introduction-to-Algorithms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-14 21:19:04 / Modified: 21:28:05" itemprop="dateCreated datePublished" datetime="2018-11-14T21:19:04+08:00">2018-11-14</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h1><pre><code>求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。&lt;strong&gt;贪心算法&lt;/strong&gt;$(greedy\, algorthm)$算法可以在每一步都做出看起来是&quot;当时最佳的选择&quot;。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。
+
+贪心算法并不能保证得到最优解，但是某些问题确实可以求得最优解。
+
+我们可以利用贪心策略设计出很多非常好的算法，若：Dijkstra单源最短路径算法。
+</code></pre><h2 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h2><h2 id="区间着色问题"><a href="#区间着色问题" class="headerlink" title="区间着色问题"></a>区间着色问题</h2><h2 id="分数背包问题"><a href="#分数背包问题" class="headerlink" title="分数背包问题"></a>分数背包问题</h2><h2 id="哈夫曼编码问题"><a href="#哈夫曼编码问题" class="headerlink" title="哈夫曼编码问题"></a>哈夫曼编码问题</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/10/计算机网络-运输层/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1058,12 +1354,24 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
                 
               
 
-              <time title="Created: 2018-11-02 11:08:43 / Modified: 15:04:33" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
+              <time title="Created: 2018-11-02 11:08:43" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-14 21:03:21" itemprop="dateModified" datetime="2018-11-14T21:03:21+08:00">2018-11-14</time>
               
             
           </span>
@@ -1099,9 +1407,26 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
         
           
             <h1 id="矩阵链乘法问题"><a href="#矩阵链乘法问题" class="headerlink" title="矩阵链乘法问题"></a>矩阵链乘法问题</h1><p>矩阵链乘法是可用动态规划解决的最佳化问题。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定 <script type="math/tex">n</script> 个矩阵的链 &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
-<p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2 \cdot\cdot\cdot, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><pre><code>给定一个$n$个矩阵的序列（矩阵链） &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，我们希望计算它们的乘积
+</code></pre><script type="math/tex; mode=display">
+\begin{equation}
+A_1A_2\cdots A_3
+\label{eq:公式1}
+\end{equation}</script><pre><code>为了计算公式$\eqref {eq:公式1}$，我们可以先用括号明确计算次序，然后利用标准矩阵相乘算法进行计算。矩阵乘法是满足结合律的，因此任何加括号的方法都会得到相同的计算结果。
+</code></pre><p>我们称具有如下性质的矩阵乘积链为<strong>完全括号化的(</strong>$fully\, parenthesized$)：它是单一矩阵，或者是两个完全括号化的矩阵乘积链的积，且已外加括号。例如对于4个矩阵的序列，有如下完全括号化的方法：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+(A_1(A_2A_3A_4)))\\
+(A_1((A_2A_3)A_4))\\
+((A_1A_2)(A_3A_4))\\
+((A_1A_2A_3))A_4)\\
+(((A_1A_2)A_3)A_4)\\
+\label{eq:公式2}
+\end{equation}</script><pre><code>对矩阵链加括号的方法会对乘积运算的代价产生巨大影响。两个矩阵相乘的代价取决于相乘的两个矩阵的矩阵规模，若矩阵$A, B$的规模分别为$p\times q, q\times r$，则计算矩阵乘积的代价由进行的标量乘法所决定，即：$pqr$.
+
+矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。
+</code></pre><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
+<p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2\cdots, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
 <p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
 <script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$种可能。因此得到下面公式：</p>
 <script type="math/tex; mode=display">
@@ -1109,8 +1434,8 @@ m[i, j] =
 \begin{cases} 
 0 
 \atop  
-min\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
-\end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]$来存储$k$值。</p>
+min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
+\end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]​$来存储$k​$值。</p>
 <h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3><p>伪代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATRIX-CHAN-ORDER(p)</span><br><span class="line">	n = p.length - <span class="number">1</span></span><br><span class="line">	let m[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">1</span>..n] and s[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">2</span>..n] be <span class="keyword">new</span> tables</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">		m[i, i] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> l = <span class="number">2</span> to n</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n - l + <span class="number">1</span></span><br><span class="line">			j = i + l -<span class="number">1</span></span><br><span class="line">			m[i, j] = MAX_INT</span><br><span class="line">			<span class="keyword">for</span> k = i to j - <span class="number">1</span></span><br><span class="line">				q = m[i, k] + m[k + <span class="number">1</span>, j] + p[i-<span class="number">1</span>]*p[k]*p[j]</span><br><span class="line">			<span class="keyword">if</span> q &lt; m[i, j]</span><br><span class="line">				m[i, j] = q</span><br><span class="line">				s[i, j] = k</span><br></pre></td></tr></table></figure>
 
@@ -1686,333 +2011,6 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/Merge-Sort-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" itemprop="url">
-                  Merge Sort . Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-24 23:19:45" itemprop="dateCreated datePublished" datetime="2018-10-24T23:19:45+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-25 00:30:30" itemprop="dateModified" datetime="2018-10-25T00:30:30+08:00">2018-10-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>将原问题分解为几个规模较小大但类似于原问题的子问题，递归的求解这些子问题，然后再合并这些子问题的解来建立原问题的解。</p>
-<p>分治模式在每层递归时都有三个步骤：</p>
-<ul>
-<li><strong>分解</strong>原问题为若干子问题，这些子问题是原问题的规模较小的实例。</li>
-<li><strong>解决</strong>这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解。</li>
-<li><strong>合并</strong>这些子问题成原问题的解</li>
-</ul>
-<p><strong>归并排序</strong>算法完全遵循分治模式。直观上其操作如下：</p>
-<ul>
-<li><p><strong>分解</strong>：分解待排序的n个元素的序列成各具$n/2$个元素的两个子序列。</p>
-</li>
-<li><p><strong>解决</strong>：使用归并排序递归地排序两个子序列。</p>
-</li>
-<li><p><strong>合并</strong>：合并两个已排序的子序列以 产生已排序的答案。</p>
-<p>当待排序的序列长度达到可分解的最小单元长度时，递归“开始回升”。</p>
-<p>归并排序算法的关键操作是“合并”步骤中两个已排序序列的合并。</p>
-<p><strong>合并过程伪代码描述</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A, p, q, r)</span><br><span class="line">n_front = q - p + <span class="number">1</span></span><br><span class="line">n_back = r - q</span><br><span class="line">let L[<span class="number">1</span>..n_front + <span class="number">1</span>] and R[<span class="number">1</span>..n_back + <span class="number">1</span>]be <span class="keyword">new</span> arrays</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n_front</span><br><span class="line">	L[i] = A[p + i - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n_back</span><br><span class="line">	R[j] = A[q + j]</span><br><span class="line">L[n_front + <span class="number">1</span>] = MAX_INTEGER</span><br><span class="line">R[n_back + <span class="number">1</span>] = MAX_INTEGER</span><br><span class="line">i = <span class="number">1</span></span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> k = p to r</span><br><span class="line">	<span class="keyword">if</span> L[i] &lt;= R[j]</span><br><span class="line">		A[k] = L[i]</span><br><span class="line">		i = i + <span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		A[k] = R[j]</span><br><span class="line">		j = j + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>将过程$MERGE$作为归并排序的一个子程序用。使用伪代码$MERGE-SORT$来描述归并排序的过程，其中p大于等于r时，分得的子数组最多只有一个元素，所以已经排好序。否则，继续分解。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MERGE-SORT(A, p, r)</span><br><span class="line"><span class="keyword">if</span> p &lt; r</span><br><span class="line">	q = (p + r) / <span class="number">2</span></span><br><span class="line">	MERGE-SORT(A, p, q)</span><br><span class="line">	MERGE-SORT(A, q + <span class="number">1</span>, r)</span><br><span class="line">	MERGE(A, p, q, r)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>  对于递归问题总能够找到合适的递归方程式或递归式来描述其运行方式。</p>
-<p>  归并算法的时间复杂度分析$O(nlg n)$</p>
-<h3 id="使用分治算法求解最大子数组问题"><a href="#使用分治算法求解最大子数组问题" class="headerlink" title="使用分治算法求解最大子数组问题"></a>使用分治算法求解最大子数组问题</h3><p>求解序列$A[low, high]$的最大子数组。使用分治算法意味着我们需要将数组A划分为大小相同的两部分，$ A[low, mid], A[mid, high]$考虑序列$A$的最大子数组$ A[i, j] $出现的位置为如下三种情况之一：</p>
-<ul>
-<li><p>完全位于子数组$ A[low，mid] $中，因此$ low &lt;= i &lt;= j &lt;= mid$。</p>
-</li>
-<li><p>完全位于子数组$ A[mid, high] $中，因此$ mid &lt;= i &lt;= j &lt;= high$。</p>
-</li>
-<li><p>跨越了中点，因此$ low &lt;= i &lt;= mid &lt;= j &lt;= high $</p>
-</li>
-</ul>
-<p>我们可以递归的求解</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/Insertion-sort-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/Insertion-sort-Introduction-to-Algorithms/" itemprop="url">
-                  Insertion sort . Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-24 22:26:49 / Modified: 23:18:23" itemprop="dateCreated datePublished" datetime="2018-10-24T22:26:49+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><strong>插入排序</strong>(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-<h3 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	<span class="comment">//Insert A[j] into the sorted sequance A[1m..j-1]</span></span><br><span class="line">	i = j - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &gt; key</span><br><span class="line">		A[i + <span class="number">1</span>] = A[i]</span><br><span class="line">		i = i -<span class="number">1</span></span><br><span class="line">	A[i + <span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
-<h3 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sort</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertionSort</span><span class="params">(<span class="keyword">int</span>[] A)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; A.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> key = A[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; A[i] &gt; key)&#123;</span><br><span class="line">                A[i+<span class="number">1</span>] = A[i];</span><br><span class="line">                i = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            A[i + <span class="number">1</span>] = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2060,7 +2058,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2297,9 +2295,9 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
   
     
       
-    
-      
         
+      
+    
       
     
       
