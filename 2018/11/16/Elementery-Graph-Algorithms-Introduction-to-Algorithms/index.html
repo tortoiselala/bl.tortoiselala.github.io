@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="ArrayList notes">
-<meta name="keywords" content="java notes">
-<meta property="og:type" content="website">
-<meta property="og:title" content="util Notes">
-<meta property="og:url" content="http://tortoiselala.github.com/javadoc-and-notes/notes/util/index.html">
+  <meta name="description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
+<meta name="keywords" content="Introduction-to-Algorithms">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elementery Graph Algorithms Introduction to Algorithms">
+<meta property="og:url" content="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="ArrayList notes">
+<meta property="og:description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-09-19T15:11:39.887Z">
+<meta property="og:updated_time" content="2018-11-16T03:50:20.065Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="util Notes">
-<meta name="twitter:description" content="ArrayList notes">
+<meta name="twitter:title" content="Elementery Graph Algorithms Introduction to Algorithms">
+<meta name="twitter:description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/javadoc-and-notes/notes/util/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>util Notes | tortoiselala</title>
+  <title>Elementery Graph Algorithms Introduction to Algorithms | tortoiselala</title>
   
 
 
@@ -268,7 +268,7 @@
         
         
           
-          <li class="menu-item menu-item-javadoc-and-notes menu-item-active">
+          <li class="menu-item menu-item-javadoc-and-notes">
     <a href="/javadoc-and-notes/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-java"></i> <br />javadoc and notes</a>
   </li>
@@ -280,34 +280,6 @@
 
   
     
-
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
 
   
 
@@ -335,116 +307,165 @@
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">util Notes</h1>
-
-<div class="post-meta">
-  
-  
-
-
-  
-  
-  <ul class="breadcrumb">
-    
-      
-      
         
-          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
+        
+          <h1 class="post-title" itemprop="name headline">Elementery Graph Algorithms Introduction to Algorithms
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-16 10:55:20 / Modified: 11:50:20" itemprop="dateCreated datePublished" datetime="2018-11-16T10:55:20+08:00">2018-11-16</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
           
             
           
-        
-      
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/notes/">NOTES</a></li>
+
           
-            
           
-        
-      
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      
-      
-        
-          <li>UTIL</li>
-        
-      
+
     
-      
-      
     
-  </ul>
-
-
-</div>
-
-</header>
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
-      <div class="post-body">
-        
-        
-          <p><a href="https://tortoiselala.github.io/Java/util/arrayListNotes/" target="_blank" rel="noopener">ArrayList notes</a></p>
 
-        
-      </div>
       
-      
+        <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>稀疏图：边的条数$|E|$远远小于$|V^2|$的图</p>
+<p>稠密图：$|E|$接近$|V^2|$的图</p>
+<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>对于图$G=(V,E)$，可以用两种标准方法表示。</p>
+<ul>
+<li>邻接表</li>
+<li>邻接矩阵</li>
+</ul>
+<p>两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单，所以大多数情况下，我们使用临界矩阵。</p>
+<h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2>
       
     </div>
+
     
 
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Introduction-to-Algorithms/" rel="tag"># Introduction-to-Algorithms</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/11/14/Single-source-Shortest-Path-Problem-Introduction-to-Algorithms/" rel="next" title="Single-source Shortest Path Problem  -Introduction-to-Algorithms">
+                <i class="fa fa-chevron-left"></i> Single-source Shortest Path Problem  -Introduction-to-Algorithms
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
   
   
-  <ul class="breadcrumb">
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
-          
-            
-          
-        
-      
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/notes/">NOTES</a></li>
-          
-            
-          
-        
-      
-    
-      
-      
-        
-          <li>UTIL</li>
-        
-      
-    
-      
-      
-    
-  </ul>
+  
+  </article>
 
 
-    
-    
-    
   </div>
 
 
@@ -474,8 +495,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -553,6 +583,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">1.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的表示"><span class="nav-number">1.2.</span> <span class="nav-text">图的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.3.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.4.</span> <span class="nav-text">深度优先搜索</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -730,6 +776,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
