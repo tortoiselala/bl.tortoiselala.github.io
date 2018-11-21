@@ -108,21 +108,24 @@
 
 
 
-  <meta property="og:type" content="website">
+  <meta name="description" content="排序算法排序算法是。。。。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。对于排序问题，我们给出这样的一般性形式化定义： 输入：$n$个数的一个序列$$。 输出：输入序列的一个排列$$，满足$$。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 对于插">
+<meta property="og:type" content="website">
 <meta property="og:title" content="sorting algorithm">
-<meta property="og:url" content="http://tortoiselala.github.com/Algorithm-Course/Tony/20181121/sorting-algorithm.html">
+<meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181121/sorting-algorithm.html">
 <meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="排序算法排序算法是。。。。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。对于排序问题，我们给出这样的一般性形式化定义： 输入：$n$个数的一个序列$$。 输出：输入序列的一个排列$$，满足$$。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 对于插">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-19T11:47:30.033Z">
+<meta property="og:updated_time" content="2018-11-20T17:24:37.592Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sorting algorithm">
+<meta name="twitter:description" content="排序算法排序算法是。。。。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。对于排序问题，我们给出这样的一般性形式化定义： 输入：$n$个数的一个序列$$。 输出：输入序列的一个排列$$，满足$$。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 对于插">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/Algorithm-Course/Tony/20181121/sorting-algorithm.html"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/algorithm-course/tony/20181121/sorting-algorithm.html"/>
 
 
 
@@ -350,7 +353,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/">ALGORITHM-COURSE</a></li>
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
           
             
           
@@ -360,7 +363,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/">TONY</a></li>
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
@@ -377,7 +380,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/sorting-algorithm.html/">SORTING-ALGORITHM.HTML</a></li>
+          <li><a href="/algorithm-course/tony/sorting-algorithm.html/">SORTING-ALGORITHM.HTML</a></li>
           
             
           
@@ -397,7 +400,43 @@
       <div class="post-body">
         
         
-          
+          <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>排序算法是。。。。</p>
+<h2 id="插入排序-Insertion-Sort"><a href="#插入排序-Insertion-Sort" class="headerlink" title="插入排序(Insertion Sort)"></a>插入排序(Insertion Sort)</h2><p>我们开始讲解的第一个排序算法是插入排序。对于排序问题，我们给出这样的一般性形式化定义：</p>
+<p><strong>输入：</strong>$n$个数的一个序列$<a_1, a_2,="" a_3,\cdots="" a_n="">$。</a_1,></p>
+<p><strong>输出：</strong>输入序列的一个排列$<a_1^`, a_2^`,="" \cdots,="" a_n^`="">$，满足$<a_1^`\leq a_2^`\leq="" \cdots="" a_n^`="">$。</a_1^`\leq></a_1^`,></p>
+<p>对于<strong>少量</strong>元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。</p>
+<p>对于插入排序，我们通常使用的是<strong>原址排序</strong>$inplace-sort$.</p>
+<p>我们下面给出该算法的$Java$代码描述：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">sort</span><span class="params">(<span class="keyword">int</span>[] array)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> arrayLength = array.length;</span><br><span class="line">		<span class="keyword">if</span> (arrayLength == <span class="number">0</span> || arrayLength == <span class="number">1</span>) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; arrayLength; ++i) &#123;</span><br><span class="line">			<span class="keyword">int</span> key = array[i];</span><br><span class="line">			<span class="comment">// 将array[j]插入到array[0...j-1]</span></span><br><span class="line">			<span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">			<span class="keyword">while</span> (j &gt; <span class="number">0</span> &amp;&amp; array[j] &gt; key) &#123;</span><br><span class="line">				array[j + <span class="number">1</span>] = array[j];</span><br><span class="line">				j = j - <span class="number">1</span>;</span><br><span class="line">			&#125;</span><br><span class="line">			array[j + <span class="number">1</span>] = key;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看得出来，每一次插入“元素”都是在之前排序好的序列中插入，直到所有的元素均被操作一遍。</p>
+<p>时间复杂度分析：</p>
+<ul>
+<li>遍历耗时：n个元素，全部访问一遍。</li>
+<li>插入耗时：每个元素要插入到已排好序的序列中<ul>
+<li>最好情况：不移动，即该元素是已排好序序列中最大的</li>
+<li>最坏情况：移动$k-1$次（该元素下标为k）。</li>
+<li>平均情况：$k/2$。</li>
+</ul>
+</li>
+<li>时间复杂度：$O(n^2)$</li>
+</ul>
+<p>空间复杂度分析：原址排序，$O(1)$.</p>
+<h2 id="选择排序"><a href="#选择排序" class="headerlink" title="选择排序"></a>选择排序</h2><h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><h2 id="一个定理"><a href="#一个定理" class="headerlink" title="一个定理"></a>一个定理</h2><p>在这里，我们给出一个定理：</p>
+<p>任何基于比较的排序算法都需要做$nlgn$次比较。</p>
+<h2 id="一个推论"><a href="#一个推论" class="headerlink" title="一个推论"></a>一个推论</h2><p>堆排序和归并排序都是渐进最优的比较排序算法。</p>
+<h2 id="计数排序（Counting-Sort）"><a href="#计数排序（Counting-Sort）" class="headerlink" title="计数排序（Counting Sort）"></a>计数排序（Counting Sort）</h2><p><strong>计数排序</strong>假设输入的$n$个元素每个都是在0到$k$区间内的一个整数，其中$k$为某个整数。当$k = O(n)$时，排序的运行时间为$O(n)$。</p>
+<p>为了浅显的描述这个算法的执行过程，我们假设有k个存储单元，每个存储单元的初始值均为0。每当输入一个小于$k$的值时，我们就在相应的存储单元加一。</p>
+<p>下面使用$Java$代码给出这个执行过程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Arrays;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CountingSort</span> </span>&#123;</span><br><span class="line">	<span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">int</span>[] sort(<span class="keyword">int</span>[] array, <span class="keyword">int</span> k) &#123;</span><br><span class="line">		<span class="keyword">int</span> arrayLength = array.length;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span>[] bucketArray = <span class="keyword">new</span> <span class="keyword">int</span>[k];</span><br><span class="line">		<span class="keyword">int</span>[] sortResult = <span class="keyword">new</span> <span class="keyword">int</span>[arrayLength];</span><br><span class="line"></span><br><span class="line">		Arrays.fill(bucketArray, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; arrayLength; ++i) &#123;</span><br><span class="line">			bucketArray[array[i]] = bucketArray[array[i]] + <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; k; ++i) &#123;</span><br><span class="line">			bucketArray[i] = bucketArray[i] + bucketArray[i - <span class="number">1</span>];</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = arrayLength; i &gt;= <span class="number">0</span>; --i) &#123;</span><br><span class="line">			sortResult[bucketArray[array[i]]] = array[i];</span><br><span class="line">			bucketArray[array[i]] = bucketArray[array[i]] - <span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> sortResult;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>时间复杂度分析：</p>
+<ul>
+<li>统计耗时：$T(n)$.</li>
+<li>整合数组耗时：$T(n)$.</li>
+<li>生成结果数组耗时：$T(n)$.</li>
+<li>时间复杂度：$3T(n) = O(n)$.</li>
+</ul>
+<p>空间复杂度：$O(n)$.</p>
+<h2 id="桶排序"><a href="#桶排序" class="headerlink" title="桶排序"></a>桶排序</h2><h2 id="基数排序"><a href="#基数排序" class="headerlink" title="基数排序"></a>基数排序</h2><h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h2 id="逆序对问题"><a href="#逆序对问题" class="headerlink" title="逆序对问题"></a>逆序对问题</h2><h2 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h2><h2 id="时间复杂度对比"><a href="#时间复杂度对比" class="headerlink" title="时间复杂度对比"></a>时间复杂度对比</h2>
         
       </div>
       
@@ -414,7 +453,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/">ALGORITHM-COURSE</a></li>
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
           
             
           
@@ -424,7 +463,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/">TONY</a></li>
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
@@ -441,7 +480,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/sorting-algorithm.html/">SORTING-ALGORITHM.HTML</a></li>
+          <li><a href="/algorithm-course/tony/sorting-algorithm.html/">SORTING-ALGORITHM.HTML</a></li>
           
             
           
@@ -483,8 +522,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -562,6 +610,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#排序算法"><span class="nav-number">1.</span> <span class="nav-text">排序算法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#插入排序-Insertion-Sort"><span class="nav-number">1.1.</span> <span class="nav-text">插入排序(Insertion Sort)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#选择排序"><span class="nav-number">1.2.</span> <span class="nav-text">选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.3.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个定理"><span class="nav-number">1.4.</span> <span class="nav-text">一个定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个推论"><span class="nav-number">1.5.</span> <span class="nav-text">一个推论</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计数排序（Counting-Sort）"><span class="nav-number">1.6.</span> <span class="nav-text">计数排序（Counting Sort）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#桶排序"><span class="nav-number">1.7.</span> <span class="nav-text">桶排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基数排序"><span class="nav-number">1.8.</span> <span class="nav-text">基数排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">1.9.</span> <span class="nav-text">快速排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">1.10.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆序对问题"><span class="nav-number">1.11.</span> <span class="nav-text">逆序对问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#稳定性分析"><span class="nav-number">1.12.</span> <span class="nav-text">稳定性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时间复杂度对比"><span class="nav-number">1.13.</span> <span class="nav-text">时间复杂度对比</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       

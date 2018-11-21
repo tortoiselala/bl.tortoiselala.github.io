@@ -111,11 +111,11 @@
   <meta name="description" content="高精度计算严格的来说，高精度计算并不算是一种算法，只是作为一种扩充的计算方法。先来看一下wiki上对于高精度计算的定义： 高精度计算是一种程序设计的算法。由于中央处理器的字长)限制，如32位CPU中一个整数最大只能取值4,294,967,295 $2^{32}$ 。 因此在进行更大范围的数值计算中，往往要采取模拟手段。通常通过分离字符的方法通过数字数组进行输入。通过数组倒序输出。通过模拟竖式计算进">
 <meta property="og:type" content="website">
 <meta property="og:title" content="bignum arithmetic">
-<meta property="og:url" content="http://tortoiselala.github.com/Algorithm-Course/Tony/20181121/bignum-arithmetic.html">
+<meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181121/bignum-arithmetic.html">
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="高精度计算严格的来说，高精度计算并不算是一种算法，只是作为一种扩充的计算方法。先来看一下wiki上对于高精度计算的定义： 高精度计算是一种程序设计的算法。由于中央处理器的字长)限制，如32位CPU中一个整数最大只能取值4,294,967,295 $2^{32}$ 。 因此在进行更大范围的数值计算中，往往要采取模拟手段。通常通过分离字符的方法通过数字数组进行输入。通过数组倒序输出。通过模拟竖式计算进">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-19T11:47:17.299Z">
+<meta property="og:updated_time" content="2018-11-20T15:07:01.457Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bignum arithmetic">
 <meta name="twitter:description" content="高精度计算严格的来说，高精度计算并不算是一种算法，只是作为一种扩充的计算方法。先来看一下wiki上对于高精度计算的定义： 高精度计算是一种程序设计的算法。由于中央处理器的字长)限制，如32位CPU中一个整数最大只能取值4,294,967,295 $2^{32}$ 。 因此在进行更大范围的数值计算中，往往要采取模拟手段。通常通过分离字符的方法通过数字数组进行输入。通过数组倒序输出。通过模拟竖式计算进">
@@ -125,7 +125,7 @@
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/Algorithm-Course/Tony/20181121/bignum-arithmetic.html"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/algorithm-course/tony/20181121/bignum-arithmetic.html"/>
 
 
 
@@ -353,7 +353,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/">ALGORITHM-COURSE</a></li>
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
           
             
           
@@ -363,7 +363,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/">TONY</a></li>
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
@@ -380,7 +380,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/bignum-arithmetic.html/">BIGNUM-ARITHMETIC.HTML</a></li>
+          <li><a href="/algorithm-course/tony/bignum-arithmetic.html/">BIGNUM-ARITHMETIC.HTML</a></li>
           
             
           
@@ -402,7 +402,7 @@
         
           <h1 id="高精度计算"><a href="#高精度计算" class="headerlink" title="高精度计算"></a>高精度计算</h1><p>严格的来说，高精度计算并不算是一种算法，只是作为一种扩充的计算方法。先来看一下wiki上对于<strong>高精度计算</strong>的定义：</p>
 <p><strong>高精度计算</strong>是一种<a href="https://zh.wikipedia.org/wiki/%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1" target="_blank" rel="noopener">程序设计</a>的<a href="https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>。由于<a href="https://zh.wikipedia.org/wiki/%E4%B8%AD%E5%A4%AE%E8%99%95%E7%90%86%E5%99%A8" target="_blank" rel="noopener">中央处理器</a>的<a href="https://zh.wikipedia.org/wiki/%E5%AD%97_(%E8%AE%A1%E7%AE%97%E6%9C%BA" target="_blank" rel="noopener">字长</a>)限制，如32位CPU中一个整数最大只能取值4,294,967,295 $2^{32}$ 。 因此在进行更大范围的数值计算中，往往要采取模拟手段。通常通过分离字符的方法通过数字<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E7%BB%84" target="_blank" rel="noopener">数组</a>进行输入。通过数组倒序输出。通过模拟<a href="https://zh.wikipedia.org/w/index.php?title=%E7%AB%96%E5%BC%8F&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">竖式</a>计算进行计算。一般而言，主要模拟的是按位运算，可以用不同的<a href="https://zh.wikipedia.org/wiki/%E9%80%B2%E4%BD%8D%E5%88%B6" target="_blank" rel="noopener">进位制</a>达成不同的目的。</p>
-<p>在介绍完概念之后，我们需要注意的是，虽然在以前的信息学竞赛中出现过实现大数相乘的算法，但是毕竟只是很简单的模拟计算。所以这个问题很大可能性在你的竞赛生涯中是不会遇到的，即使遇到，你见到的题目可能也是使用相关算法去优化大数计算的时间复杂度（之后你会看到整数乘法的时间复杂度是$m \times n$）而不会要求你去实现该算法。</p>
+<p>在介绍完概念之后，我们需要注意的是，虽然在以前的信息学竞赛中出现过实现大数相乘的算法，但是毕竟只是很简单的模拟计算。所以这个问题很大可能性在你的竞赛生涯中是不会遇到的，即使遇到，你见到的题目可能也是使用相关算法去优化大数计算的时间复杂度（之后你会看到整数乘法的时间复杂度是$m \times n$）而不会要求你去实现该算法。我们虽然不会具体去实现它，但这仍然是最为基础的算法，是的，入门算法。</p>
 <p>可以看到的是，上述定义中关于高精度计算是指大数计算。那么既然提到精度的话，你可能会产生疑问：为什么不是浮点数的高精度计算呢？实际上，浮点数的高精度计算与大数的高精度计算并没有任何差别，计算方法是一致的，我们可以很容易将大数计算移植到浮点数计算上，只要你掌握手工计算方法。高精度计算的分类：</p>
 <ul>
 <li>高精度加法</li>
@@ -487,7 +487,7 @@
 <li>进制问题：可能需要实现任意进制的加法运算。</li>
 <li>输出格式问题：除了符号需要处理外，我们前面提到的是”可能“会达到最大位数，如果达不到呢？提示：前导0</li>
 </ul>
-<p>可以打开java的BigInteger看看别人的实现方法。</p>
+<p>可以打开java的BigInteger看看实现方法。</p>
 <p>注：实际上在竞赛中需要实现的要比日常中我们实现的更简单，竞赛实现不同的要求，或许会要求各种类型（可能包括各种进制的相互转换以及相互计算）而不用考虑不合法输入或输入正确性检查。所以如果你想挑战自己，就尝试实现一个非常全面的，包括输入正确性检查，合法计算，以及合适的接口（从工程角度考虑）。</p>
 <h2 id="高精度减法"><a href="#高精度减法" class="headerlink" title="高精度减法"></a>高精度减法</h2><p>类似的，我们给出一个竖式减法的样例：</p>
 <script type="math/tex; mode=display">
@@ -504,6 +504,9 @@
 }
 \quad</script><p>类似的，我们给出竖式减法的运算特征：</p>
 <p>按位对齐，考虑借位。复杂输入，考虑符号。</p>
+<p>注：同大数相加一样，在执行减法的过程中，我们依然需要考虑对齐与借位的问题，减法的设计过程要比加法稍微复杂一点。但是我们可以做出一点工作使得设计过程更为顺畅。我们可以先实现一位减法，通过一位减数与被减数给出借位与差。</p>
+<p>在实现多位减法时，我们便可以组合一位减法。</p>
+<p>类似的，在加法中我们也可以这样做，但是我们没有，为什么？加法的设计过程较为简单。所以，我们在实际设计程序时，根据工程量的大小，挑选合适的步骤来解决问题。</p>
 <h2 id="高精度乘法"><a href="#高精度乘法" class="headerlink" title="高精度乘法"></a>高精度乘法</h2><p>类似的，给出一个竖式乘法的样例：</p>
 <script type="math/tex; mode=display">
 \frac{
@@ -529,8 +532,13 @@
 <p>按位相乘，部分积移位相加。积的最大位数为$m\times n$</p>
 <p>分析一下乘法的时间复杂度。</p>
 <p>可以分析时间复杂度$O(m \times n)$.</p>
+<p>类比于前面，我们在这里提出，使用模块化方法实现乘法，我们需要实现的模块如下：</p>
+<p>一位乘法：乘数(one bit)$\times$被乘数 (one bit)= 积(one bit) 与 进位(one bit)</p>
+<p>一位加法：进位+加数+被加数=和与进位</p>
+<p>多位加法：</p>
 <p>存在一些算法去优化大数乘法，后面会讲。</p>
-<h2 id="高精度除法"><a href="#高精度除法" class="headerlink" title="高精度除法"></a>高精度除法</h2><h3 id="高精除以低精"><a href="#高精除以低精" class="headerlink" title="高精除以低精"></a>高精除以低精</h3><h3 id="高精除以低精-1"><a href="#高精除以低精-1" class="headerlink" title="高精除以低精"></a>高精除以低精</h3><h1 id="Java-语言提供的大数计算"><a href="#Java-语言提供的大数计算" class="headerlink" title="$Java$语言提供的大数计算"></a>$Java$语言提供的大数计算</h1><p>在$Java$中有两个类用于$BigInteger$与$BigDecimal$分别表示大整数类与大浮点数类，这两个类存在于$java.math.^*$包中，我们来看看其文档</p>
+<h2 id="高精度除法"><a href="#高精度除法" class="headerlink" title="高精度除法"></a>高精度除法</h2><h3 id="高精除以低精"><a href="#高精除以低精" class="headerlink" title="高精除以低精"></a>高精除以低精</h3><h3 id="高精除以低精-1"><a href="#高精除以低精-1" class="headerlink" title="高精除以低精"></a>高精除以低精</h3><p>没有必要学习。</p>
+<h1 id="Java-语言提供的大数计算"><a href="#Java-语言提供的大数计算" class="headerlink" title="$Java$语言提供的大数计算"></a>$Java$语言提供的大数计算</h1><p>在$Java$中有两个类用于$BigInteger$与$BigDecimal$分别表示大整数类与大浮点数类，这两个类存在于$java.math.^*$包中，我们来看看其文档</p>
 <p><a href="https://docs.oracle.com/javase/7/docs/api/java/math/BigInteger.html" target="_blank" rel="noopener">class BigInteger</a></p>
 <p><a href="https://docs.oracle.com/javase/7/docs/api/java/math/BigDecimal.html" target="_blank" rel="noopener">class BigDecimal</a></p>
 
@@ -550,7 +558,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/">ALGORITHM-COURSE</a></li>
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
           
             
           
@@ -560,7 +568,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/">TONY</a></li>
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
@@ -577,7 +585,7 @@
       
       
         
-          <li><a href="/Algorithm-Course/Tony/bignum-arithmetic.html/">BIGNUM-ARITHMETIC.HTML</a></li>
+          <li><a href="/algorithm-course/tony/bignum-arithmetic.html/">BIGNUM-ARITHMETIC.HTML</a></li>
           
             
           
