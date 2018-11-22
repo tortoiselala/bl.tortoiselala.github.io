@@ -108,17 +108,17 @@
 
 
 
-  <meta name="description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列$​$。 输出：输入序列的一个排列$$，满足$$。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 算法原理：数组分为两">
+  <meta name="description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列&amp;lt;$a_1, a_2, a_3,\cdots a_n​$&amp;gt;。 输出：输入序列的一个排列&amp;lt;$a_1^，, a_2^，, \cdots, a_n^，$&amp;gt;，满足&amp;lt;$a_1^，\leq a_2^，\leq \cdots a_n^，$&amp;gt;。 插入排序(Insertion Sort)我们开始讲">
 <meta property="og:type" content="website">
 <meta property="og:title" content="sorting algorithm">
 <meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181123/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列$​$。 输出：输入序列的一个排列$$，满足$$。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 算法原理：数组分为两">
+<meta property="og:description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列&amp;lt;$a_1, a_2, a_3,\cdots a_n​$&amp;gt;。 输出：输入序列的一个排列&amp;lt;$a_1^，, a_2^，, \cdots, a_n^，$&amp;gt;，满足&amp;lt;$a_1^，\leq a_2^，\leq \cdots a_n^，$&amp;gt;。 插入排序(Insertion Sort)我们开始讲">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-22T15:43:30.699Z">
+<meta property="og:updated_time" content="2018-11-22T15:45:50.706Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sorting algorithm">
-<meta name="twitter:description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列$​$。 输出：输入序列的一个排列$$，满足$$。 插入排序(Insertion Sort)我们开始讲解的第一个排序算法是插入排序。 对于少量元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。 算法原理：数组分为两">
+<meta name="twitter:description" content="排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列&amp;lt;$a_1, a_2, a_3,\cdots a_n​$&amp;gt;。 输出：输入序列的一个排列&amp;lt;$a_1^，, a_2^，, \cdots, a_n^，$&amp;gt;，满足&amp;lt;$a_1^，\leq a_2^，\leq \cdots a_n^，$&amp;gt;。 插入排序(Insertion Sort)我们开始讲">
 
 
 
@@ -394,8 +394,8 @@
         
         
           <h1 id="排序算法"><a href="#排序算法" class="headerlink" title="排序算法"></a>排序算法</h1><p>对于排序问题，我们给出这样的一般性形式化定义：</p>
-<p><strong>输入：</strong>$n​$个数的一个序列$<a_1, a_2,="" a_3,\cdots="" a_n="">​$。</a_1,></p>
-<p><strong>输出：</strong>输入序列的一个排列$<a_1^，, a_2^，,="" \cdots,="" a_n^，="">$，满足$<a_1^，\leq a_2^，\leq="" \cdots="" a_n^，="">$。</a_1^，\leq></a_1^，,></p>
+<p><strong>输入：</strong>$n​$个数的一个序列&lt;$a_1, a_2, a_3,\cdots a_n​$&gt;。</p>
+<p><strong>输出：</strong>输入序列的一个排列&lt;$a_1^，, a_2^，, \cdots, a_n^，$&gt;，满足&lt;$a_1^，\leq a_2^，\leq \cdots a_n^，$&gt;。</p>
 <h2 id="插入排序-Insertion-Sort"><a href="#插入排序-Insertion-Sort" class="headerlink" title="插入排序(Insertion Sort)"></a>插入排序(Insertion Sort)</h2><p>我们开始讲解的第一个排序算法是插入排序。</p>
 <p>对于<strong>少量</strong>元素，插入排序是一个非常有效的算法。插入排序的执行过程就像是打牌过程中，我们每抽到一张牌，便寻找合适的位置将它插进去。问题在于，我们寻找合适位置的依据。</p>
 <p>算法原理：数组分为两部分，已排序集合$Q$，未排序集合$P$，每次检查集合$P$是否为空，为空则结束算法运行，否则从集合$P$中选择该集合中的任何一个元素尝试插入到有序集合$P$中。</p>
