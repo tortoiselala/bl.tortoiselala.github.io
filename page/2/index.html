@@ -317,6 +317,197 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/钢条切割-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/钢条切割-Introduction-to-Algorithms/" itemprop="url">
+                  钢条切割.Introduction to Algorithms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-02 09:41:00 / Modified: 11:04:04" itemprop="dateCreated datePublished" datetime="2018-11-02T09:41:00+08:00">2018-11-02</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h1><p>某公司出售一段长度为i英寸的钢条的价格为Pi（i=1，2…单位：美元），下面给出了价格表</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>长度$i$</th>
+<th style="text-align:center">1</th>
+<th style="text-align:center">2</th>
+<th style="text-align:center">3</th>
+<th style="text-align:center">4</th>
+<th style="text-align:center">5</th>
+<th style="text-align:center">6</th>
+<th style="text-align:center">7</th>
+<th style="text-align:center">8</th>
+<th style="text-align:center">9</th>
+<th style="text-align:center">10</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>价格$ p_i $</td>
+<td style="text-align:center">1</td>
+<td style="text-align:center">5</td>
+<td style="text-align:center">8</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">10</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">17</td>
+<td style="text-align:center">20</td>
+<td style="text-align:center">24</td>
+<td style="text-align:center">30</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一段长度为$n$英寸的钢条与价格表$p_i(i = 1, 2, \cdot\cdot \cdot, n)$，求钢条切割方案，是的销售收益$r_n$最大。</p>
+<h2 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h2><p>钢条切割问题满足最优子结构(optimal substructure)性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
+<h3 id="Approach-1：An-expression"><a href="#Approach-1：An-expression" class="headerlink" title="Approach 1：An expression"></a>Approach 1：An expression</h3><p>对于长度为$n$的钢条共有$2^{n-1}$中不同的切割方案，因为可以在距离钢条左侧$i(i = 1, 2, \cdot\cdot\cdot, n-1)$英寸处，我们总可以选择切割或不切割。如果一个最优解将钢条切割为$k$段，那么最优切割方案</p>
+<center>$$  n = i_1 + i_2 + \cdot\cdot\cdot + i_k $$</center>
+
+<p>将钢条切割为长度分别为$ i_1, i_2, \cdot\cdot\cdot, i_k$的小段，得到最大收益</p>
+<script type="math/tex; mode=display">r_n = p_1 + p_2 + \cdot\cdot\cdot + p_n</script><p>更一般的，我们使用下面的公式来描述$r_n(n\geq1)$：</p>
+<script type="math/tex; mode=display">r_n = max(p_n, r_1 + r_{n-1}, r_2 + r_{n-2}, \cdot\cdot\cdot, r_{n_1} + r_1)</script><p>第一个参数$p_n$表示不切割，其他$n-1$个参数对应另外$n-1$中方案：对于每个$i = 1, 2, \cdot\cdot\cdot, n-1$，首先将钢条切割为长度为$i$和$n-i$的两段，接着求解这两段的最优切割收益$r_i$和$r_{n-i}$。选择$n$中方案中收益最大的作为最终切割方案。</p>
+<h3 id="Approach-2：Dynamic-Programming"><a href="#Approach-2：Dynamic-Programming" class="headerlink" title="Approach 2：Dynamic Programming"></a>Approach 2：Dynamic Programming</h3><p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">	q = INT_MIN</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">		q = max(q, p[i]+r[j-i])</span><br><span class="line">	r[j] = q</span><br><span class="line"><span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
+<p><strong>java实现</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">result</span><span class="params">(<span class="keyword">int</span>[] p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] r = <span class="keyword">new</span> <span class="keyword">int</span>[p.length+<span class="number">1</span>];</span><br><span class="line">        r[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">            <span class="keyword">int</span> q = Integer.min;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; ++i)&#123;</span><br><span class="line">                q = max(q, p[i] + r[j-i]);</span><br><span class="line">            &#125;</span><br><span class="line">            r[j] = q;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="Approach-3：重构-Approach-2"><a href="#Approach-3：重构-Approach-2" class="headerlink" title="Approach 3：重构 Approach 2"></a>Approach 3：重构 Approach 2</h3><p>重写算法，使得计算最优解的过程中能够记录下具体的切割方案。</p>
+<p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">EXTENDED-CUT-ROD(p,n)</span><br><span class="line">    let r[<span class="number">0</span>...n] and s[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">	r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">		q = INT_MIN</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">			<span class="keyword">if</span> q &lt; p[i] + r[j-i]</span><br><span class="line">				q =  p[i]+r[j-i]</span><br><span class="line">				s[j] = i</span><br><span class="line">		r[j] = q</span><br><span class="line">	<span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
+<p>打印切割方案的伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PRINT-CUT-ROD-SOLUTION(s,n)</span><br><span class="line">	<span class="keyword">while</span> n&gt;<span class="number">0</span></span><br><span class="line">		print s[n]</span><br><span class="line">		n = n - s[n]</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Dynamic-Programming-Introduction-to-Algorithms/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1699,163 +1890,6 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/01/leetcode-problem-11-Container-with-Most-Water/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/leetcode-problem-11-Container-with-Most-Water/" itemprop="url">
-                  leetcode problem 11:Container with Most Water
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-01 23:05:27" itemprop="dateCreated datePublished" datetime="2018-10-01T23:05:27+08:00">2018-10-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2018-10-02 11:55:22" itemprop="dateModified" datetime="2018-10-02T11:55:22+08:00">2018-10-02</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-暴力破解"><a href="#Approach-1-暴力破解" class="headerlink" title="Approach 1: 暴力破解"></a>Approach 1: 暴力破解</h3><p>尝试遍历所有的解法。时间复杂度为$ O(n^2) $ </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxWater = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> tmp = (j - i) * Integer.min(height[i], height[j]);</span><br><span class="line">				<span class="keyword">if</span> (maxWater &lt; tmp) &#123;</span><br><span class="line">					maxWater = tmp;</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j + <span class="string">", tmp = "</span> + tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxWater;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Two-Pointer-Approach"><a href="#Approach-2-Two-Pointer-Approach" class="headerlink" title="Approach 2: Two Pointer Approach"></a>Approach 2: Two Pointer Approach</h3><p>要寻找到装水最多的容器，其装水能力又最短的那根板所决定。所以求得的容器大小由两根板中最短的以及两板之间的距离决定。</p>
-<p>使用两个指针，分别从收尾开始向内收束，收束条件是短的那根板子向内收束。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxAreaDivideConquer</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> right = height.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			max = Integer.max(max, Integer.min(height[left], height[right]) * (right - left));</span><br><span class="line">			<span class="keyword">if</span> (height[left] &lt; height[right]) &#123;</span><br><span class="line">				left++;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				right--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> max;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1903,7 +1937,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2140,9 +2174,9 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
   
     
       
-    
-      
         
+      
+    
       
     
       
