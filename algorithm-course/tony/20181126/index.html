@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-23T16:48:12.048Z">
+<meta property="og:updated_time" content="2018-11-24T02:25:09.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
@@ -404,9 +404,95 @@
 <p><strong>递归式</strong>($recurrence$)：使用递归式可以很自然的描述分治算法的运行时间。$MERGE-SORT$过程的最坏运行时间$T(n)$：</p>
 <script type="math/tex; mode=display">
 T(n) = 
-\begin{}
+\begin{cases}
+\Theta(1), & \text{若n  = 1}\\
+2T(n/2)+\Theta(n), & \text{若n>1}\\
+\end{cases}</script><p>求解该递归式可得</p>
+<script type="math/tex; mode=display">
+T(n) = \Theta(nlgn)</script><p>递归式有很多形式。对于不同的问题划分，可以得到不同的递归式。</p>
+<p>例如：每次将问题划分为$1/3$与$2/3$。假设分解与合并都是线性时间，我们会得到这样的递归式：</p>
+<script type="math/tex; mode=display">
+T(n) = T(2n/3) + T(n/3) + \Theta(n)</script><p>通过以上划分，我们得知：子问题的划分不一定是以原问题的固定比例划分的。例如：我们查找一个数列中的最小值的过程。如果使用递归方法，子问题的规模仅仅是比原问题的规模少一个元素。每次递归调用的花费时间再加下一层递归调用的时间，因此我们可以得到这样一个递归式：</p>
+<script type="math/tex; mode=display">
+T(n) = T(n - 1) + \Theta(1)</script><p>在这里，我们加上了$\Theta(1)$，我们之前提到了，每次递归调用的时间，这个时间可以认为是固定的，所以加上一个常数。</p>
+<p>求解递归表达式的方法：代入法，递归树。</p>
+<h2 id="最大子数组问题-Maximum-subarray-problem"><a href="#最大子数组问题-Maximum-subarray-problem" class="headerlink" title="最大子数组问题(Maximum subarray problem)"></a>最大子数组问题(Maximum subarray problem)</h2><p>输入：给定的一个数列&lt;$a_1, a_2, \cdots , a_n$&gt;</p>
+<p>输出：一个数字，代表在给定数列中一个连续的子数列之和最大值。</p>
+<p>问题来源：股票购买问题，得到一段时间内的股票价格基于前一天的涨跌序列，求得如果在该段时间内购买与抛售，何时买入，何时抛售，获得的收益最多。</p>
+<p>给定一段时间内的股票价格：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>天</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>价格</td>
+<td>100</td>
+<td>113</td>
+<td>110</td>
+<td>85</td>
+<td>105</td>
+<td>102</td>
+<td>86</td>
+<td>63</td>
+<td>81</td>
+<td>101</td>
+<td>94</td>
+<td>106</td>
+<td>101</td>
+<td>79</td>
+<td>94</td>
+<td>90</td>
+<td>97</td>
+</tr>
+<tr>
+<td>变化</td>
+<td></td>
+<td>13</td>
+<td>-3</td>
+<td>-25</td>
+<td>20</td>
+<td>-3</td>
+<td>-16</td>
+<td>-23</td>
+<td>18</td>
+<td>20</td>
+<td>-7</td>
+<td>12</td>
+<td>-5</td>
+<td>-22</td>
+<td>15</td>
+<td>-4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Approach-1-Brute-Force"><a href="#Approach-1-Brute-Force" class="headerlink" title="Approach 1:Brute Force"></a>Approach 1:Brute Force</h3><p>对于所有可能的结果，我们可以很容易列举出来，我们首先尝试这种方法。</p>
+<p>简单分析一下：买入时间定是在卖出时间之前。对于n个元素，共有$C_n^2$中组合，所以我们的计算规模是$\Theta(n^2)$，同之前一样，我们认为，处理一对组合花费的时间是常数。</p>
+<p><strong>优化</strong></p>
+<p>一个值得注意的问题：最大子数组问题仅仅在数列中存在负值的时候才有价值，如果全部是非负整数，仅需要将所有元素加起来就行</p>
 
-\end</script>
         
       </div>
       
@@ -583,7 +669,7 @@ T(n) =
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治策略"><span class="nav-number">1.</span> <span class="nav-text">分治策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治策略"><span class="nav-number">1.</span> <span class="nav-text">分治策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大子数组问题-Maximum-subarray-problem"><span class="nav-number">1.2.</span> <span class="nav-text">最大子数组问题(Maximum subarray problem)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1-Brute-Force"><span class="nav-number">1.2.1.</span> <span class="nav-text">Approach 1:Brute Force</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
