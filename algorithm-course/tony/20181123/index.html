@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="T(n) \text{代表最坏时间复杂度} = n\times ( n-1)/2\\ O(n) = n^2排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列&amp;lt;$a_1, a_2, a_3,\cdots a_n​$&amp;gt;。 输出：输入序列的一个排列&amp;lt;$a_1^，, a_2^，, \cdots, a_n^，$&amp;gt;，满足&amp;lt;$a_1^，\leq">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-24T04:06:48.216Z">
+<meta property="og:updated_time" content="2018-11-24T05:01:56.850Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="sorting algorithm">
 <meta name="twitter:description" content="T(n) \text{代表最坏时间复杂度} = n\times ( n-1)/2\\ O(n) = n^2排序算法对于排序问题，我们给出这样的一般性形式化定义： 输入：$n​$个数的一个序列&amp;lt;$a_1, a_2, a_3,\cdots a_n​$&amp;gt;。 输出：输入序列的一个排列&amp;lt;$a_1^，, a_2^，, \cdots, a_n^，$&amp;gt;，满足&amp;lt;$a_1^，\leq">
@@ -477,7 +477,10 @@ O(n) = n^2</script><h1 id="排序算法"><a href="#排序算法" class="headerli
 <p>值得注意的是，算法中的一个条件是：<strong>数量有限</strong>。所以，我们在实际应用中，何时用到桶排序呢？</p>
 <p>如果，待排序数组的数据范围有限（类似于计数排序）即：对于任意的元素$x,\text{有}m\leq x \leq k$.可以设立k个桶（注意该处消耗的空间。</p>
 <h2 id="基数排序-Radix-sort"><a href="#基数排序-Radix-sort" class="headerlink" title="基数排序(Radix sort)"></a>基数排序(Radix sort)</h2><p>基数排序也不依赖于比较.</p>
-<h2 id="快速排序-Quick-sort"><a href="#快速排序-Quick-sort" class="headerlink" title="快速排序(Quick sort)"></a>快速排序(Quick sort)</h2><h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><h2 id="解析java-Arrays-sort-的工作原理"><a href="#解析java-Arrays-sort-的工作原理" class="headerlink" title="解析java Arrays.sort()的工作原理"></a>解析java Arrays.sort()的工作原理</h2><h2 id="逆序对问题"><a href="#逆序对问题" class="headerlink" title="逆序对问题"></a>逆序对问题</h2><h2 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h2><h2 id="时间复杂度对比"><a href="#时间复杂度对比" class="headerlink" title="时间复杂度对比"></a>时间复杂度对比</h2><h2 id="最大值与最小值"><a href="#最大值与最小值" class="headerlink" title="最大值与最小值"></a>最大值与最小值</h2><p>如何去寻找最大值与最小值</p>
+<h2 id="快速排序-Quick-sort"><a href="#快速排序-Quick-sort" class="headerlink" title="快速排序(Quick sort)"></a>快速排序(Quick sort)</h2><p>与归并排序一样，快速排序依然使用了分治的思想。下面是对一个典型的子数组$A[p \cdots r]$进行快速排序的三步分治过程。</p>
+<p><strong>分解</strong>:数组$A[p \cdots r]$被划分为两个（可能为空）子数组</p>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>20181125课件</p>
+<h2 id="解析java-Arrays-sort-的工作原理"><a href="#解析java-Arrays-sort-的工作原理" class="headerlink" title="解析java Arrays.sort()的工作原理"></a>解析java Arrays.sort()的工作原理</h2><h2 id="逆序对问题"><a href="#逆序对问题" class="headerlink" title="逆序对问题"></a>逆序对问题</h2><h2 id="稳定性分析"><a href="#稳定性分析" class="headerlink" title="稳定性分析"></a>稳定性分析</h2><h2 id="时间复杂度对比"><a href="#时间复杂度对比" class="headerlink" title="时间复杂度对比"></a>时间复杂度对比</h2><h2 id="最大值与最小值"><a href="#最大值与最小值" class="headerlink" title="最大值与最小值"></a>最大值与最小值</h2><p>如何去寻找最大值与最小值</p>
 <p>1.如果分别寻找一个数列中的最大值，需要多少次比较。n</p>
 <p>2.如果分别寻找一个数列中的最小值，需要多少次比较。n</p>
 <p>3.如果分别寻找一个数列中的最大值与最小值，需要多少次比较。2n</p>
