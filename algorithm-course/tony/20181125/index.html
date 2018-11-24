@@ -108,21 +108,24 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="next-index">
-<meta property="og:url" content="http://tortoiselala.github.com/2018/11/18/next-index/index.html">
+  <meta name="description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
+<meta property="og:type" content="website">
+<meta property="og:title" content="index">
+<meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181125/index.html">
 <meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-18T03:16:43.793Z">
+<meta property="og:updated_time" content="2018-11-24T03:02:31.856Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="next-index">
+<meta name="twitter:title" content="index">
+<meta name="twitter:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/2018/11/18/next-index/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/algorithm-course/tony/20181125/"/>
 
 
 
@@ -132,7 +135,7 @@
   };
 </script>
 
-  <title>next-index | tortoiselala</title>
+  <title>index | tortoiselala</title>
   
 
 
@@ -277,6 +280,34 @@
   
     
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
   
 
   
@@ -303,151 +334,267 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/18/next-index/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
+<h1 class="post-title" itemprop="name headline">index</h1>
+
+<div class="post-meta">
+  
+  
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
         
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
+          
+            
+          
         
-          <h1 class="post-title" itemprop="name headline">next-index
-              
-            
-          </h1>
+      
+    
+      
+      
         
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-18 11:16:43" itemprop="dateCreated datePublished" datetime="2018-11-18T11:16:43+08:00">2018-11-18</time>
-            
-
-            
-          </span>
-
-          
-
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
+        
+      
     
+      
+      
+        
+          <li>20181125</li>
+        
+      
+    
+      
+      
+    
+  </ul>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+
+</div>
+
+</header>
 
       
       
-
       
+      <div class="post-body">
         
+        
+          <h1 id="分治策略"><a href="#分治策略" class="headerlink" title="分治策略"></a>分治策略</h1><p>归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：</p>
+<ul>
+<li><strong>分解</strong>$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。</li>
+<li><strong>解决</strong>$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。</li>
+<li><strong>合并</strong>$(Combine)$步骤将子问题的解组合成原问题的解。</li>
+</ul>
+<h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p><strong>递归情况</strong>$(recursive\, \, case)$当子问题足够大，需要递归求解时。</p>
+<p><strong>基本情况</strong>$(base case)$当子问题足够小，不需要递归求解时，我们称递归已经“触底”。</p>
+<p><strong>递归式</strong>($recurrence$)：使用递归式可以很自然的描述分治算法的运行时间。$MERGE-SORT$过程的最坏运行时间$T(n)$：</p>
+<script type="math/tex; mode=display">
+T(n) = 
+\begin{cases}
+\Theta(1), & \text{若n  = 1}\\
+2T(n/2)+\Theta(n), & \text{若n>1}\\
+\end{cases}</script><p>求解该递归式可得</p>
+<script type="math/tex; mode=display">
+T(n) = \Theta(nlgn)</script><p>递归式有很多形式。对于不同的问题划分，可以得到不同的递归式。</p>
+<p>例如：每次将问题划分为$1/3$与$2/3$。假设分解与合并都是线性时间，我们会得到这样的递归式：</p>
+<script type="math/tex; mode=display">
+T(n) = T(2n/3) + T(n/3) + \Theta(n)</script><p>通过以上划分，我们得知：子问题的划分不一定是以原问题的固定比例划分的。例如：我们查找一个数列中的最小值的过程。如果使用递归方法，子问题的规模仅仅是比原问题的规模少一个元素。每次递归调用的花费时间再加下一层递归调用的时间，因此我们可以得到这样一个递归式：</p>
+<script type="math/tex; mode=display">
+T(n) = T(n - 1) + \Theta(1)</script><p>在这里，我们加上了$\Theta(1)$，我们之前提到了，每次递归调用的时间，这个时间可以认为是固定的，所以加上一个常数。</p>
+<p>求解递归表达式的方法：代入法，递归树。</p>
+<h2 id="最大子数组问题-Maximum-subarray-problem"><a href="#最大子数组问题-Maximum-subarray-problem" class="headerlink" title="最大子数组问题(Maximum subarray problem)"></a>最大子数组问题(Maximum subarray problem)</h2><p>输入：给定的一个数列&lt;$a_1, a_2, \cdots , a_n$&gt;</p>
+<p>输出：一个数字，代表在给定数列中一个连续的子数列之和最大值。</p>
+<p>问题来源：股票购买问题，得到一段时间内的股票价格基于前一天的涨跌序列，求得如果在该段时间内购买与抛售，何时买入，何时抛售，获得的收益最多。</p>
+<p>给定一段时间内的股票价格：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>天</th>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+<th>16</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>价格</td>
+<td>100</td>
+<td>113</td>
+<td>110</td>
+<td>85</td>
+<td>105</td>
+<td>102</td>
+<td>86</td>
+<td>63</td>
+<td>81</td>
+<td>101</td>
+<td>94</td>
+<td>106</td>
+<td>101</td>
+<td>79</td>
+<td>94</td>
+<td>90</td>
+<td>97</td>
+</tr>
+<tr>
+<td>变化</td>
+<td></td>
+<td>13</td>
+<td>-3</td>
+<td>-25</td>
+<td>20</td>
+<td>-3</td>
+<td>-16</td>
+<td>-23</td>
+<td>18</td>
+<td>20</td>
+<td>-7</td>
+<td>12</td>
+<td>-5</td>
+<td>-22</td>
+<td>15</td>
+<td>-4</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Approach-1-暴力求解"><a href="#Approach-1-暴力求解" class="headerlink" title="Approach 1:暴力求解"></a>Approach 1:暴力求解</h3><p>对于所有可能的结果，我们可以很容易列举出来，我们首先尝试这种方法。</p>
+<p>简单分析一下：买入时间定是在卖出时间之前。对于n个元素，共有$C_n^2$中组合，所以我们的计算规模是$\Theta(n^2)$，同之前一样，我们认为，处理一对组合花费的时间是常数。</p>
+<p><strong>问题变换</strong></p>
+<p>对于输入数据，我们不去考察每天的价格，而是考察每天的价格变化，第$i$天的价格定义为第$i$天价格与第$i-1$天价格差。如果称这个数组为$A$，这样我们就将问题转化为寻找$A$的和最大的非空连续子数组。这样的连续子数组成为<strong>最大子数组</strong>($maximum\, subarray$).在之后的计算中，你会发现，这种转化对于优化常量时间有帮助。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>0</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+<th>12</th>
+<th>13</th>
+<th>14</th>
+<th>15</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>13</td>
+<td>-3</td>
+<td>-25</td>
+<td>20</td>
+<td>-3</td>
+<td>-16</td>
+<td>-23</td>
+<td>18</td>
+<td>20</td>
+<td>-7</td>
+<td>12</td>
+<td>-5</td>
+<td>-22</td>
+<td>15</td>
+<td>-4</td>
+<td>7</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>一个值得注意的问题：最大子数组问题仅仅在数列中存在负值的时候才有价值，如果全部是非负整数，仅需要将所有元素加起来就行。</p>
+<p>如果我们将子问题的计算结果存储起来，之后的计算利用之前的计算结果可以使得每次子问题的和的计算时间为$O(1)$。</p>
+<h3 id="Approach-2-分治策略"><a href="#Approach-2-分治策略" class="headerlink" title="Approach 2:分治策略"></a>Approach 2:分治策略</h3><p>我们下面来思考如何使用分治策略求解该问题。分治意味着我们要将问题划分为子问题（无论子问题划分的形式），显然对于该问题最好的划分方法是尽量将数组划分为两个相等大小的子数组。也就是说，找到子数组的中央位置，比如$mid$，然后考虑子问题：$[low\cdots mid],[mid\cdots high]$。给出这样一个结论，对于这样的划分，任何一个子数组$[i \cdots j]$必然是以下三种情况之一：</p>
+<ul>
+<li>完全位于子数组$A[low \cdots mid]$中,因此$low \leq i \leq j \leq mid$.</li>
+<li>完全位于子数组$A[mid \cdots high]$中，因此$mid &lt; i \leq j \leq high$.</li>
+<li>跨越了中点，因此$low \leq i \leq mid \leq j \leq high$.</li>
+</ul>
+<p>显然，最大子数组必然是这些子数组中的一。两个子问题依然是最大子数组问题，只不过问题规模是原问题的一半。我们只需要寻找跨越中点的最大子数组，然后在三者之中选取最大值。</p>
+
+        
+      </div>
+      
+      
       
     </div>
-
     
 
-    
-    
-    
 
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/" rel="next" title="Elementery Graph Algorithms Introduction to Algorithms">
-                <i class="fa fa-chevron-left"></i> Elementery Graph Algorithms Introduction to Algorithms
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/18/next-index - 副本/" rel="prev" title="next-index">
-                next-index <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
   
   
-  
-  </article>
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
+          
+            
+          
+        
+      
+    
+      
+      
+        
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
+          
+            
+          
+        
+      
+    
+      
+      
+        
+          <li>20181125</li>
+        
+      
+    
+      
+      
+    
+  </ul>
 
 
+    
+    
+    
   </div>
 
 
@@ -477,8 +624,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -556,6 +712,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#分治策略"><span class="nav-number">1.</span> <span class="nav-text">分治策略</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#基本概念"><span class="nav-number">1.1.</span> <span class="nav-text">基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最大子数组问题-Maximum-subarray-problem"><span class="nav-number">1.2.</span> <span class="nav-text">最大子数组问题(Maximum subarray problem)</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-1-暴力求解"><span class="nav-number">1.2.1.</span> <span class="nav-text">Approach 1:暴力求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Approach-2-分治策略"><span class="nav-number">1.2.2.</span> <span class="nav-text">Approach 2:分治策略</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -733,6 +905,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
