@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-24T03:02:31.856Z">
+<meta property="og:updated_time" content="2018-11-24T03:40:25.935Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="分治策略归并排序中我们使用了分治策略，在这里我们提出一个分治策略的执行步骤：  分解$(Divide)$步骤将问题划分为一些子问题，子问题的形式与原问题一样，只是规模更小。 解决$(Conquer)$步骤递归的解决子问题。如果子问题的规模足够小，则停止递归，直接求解。 合并$(Combine)$步骤将子问题的解组合成原问题的解。  基本概念递归情况$(recursive\, \, case)$当子">
@@ -544,8 +544,20 @@ T(n) = T(n - 1) + \Theta(1)</script><p>在这里，我们加上了$\Theta(1)$，
 <li>完全位于子数组$A[mid \cdots high]$中，因此$mid &lt; i \leq j \leq high$.</li>
 <li>跨越了中点，因此$low \leq i \leq mid \leq j \leq high$.</li>
 </ul>
-<p>显然，最大子数组必然是这些子数组中的一。两个子问题依然是最大子数组问题，只不过问题规模是原问题的一半。我们只需要寻找跨越中点的最大子数组，然后在三者之中选取最大值。</p>
-
+<p>显然，最大子数组必然是这些子数组治意之一。两个子问题依然是最大子数组问题，只不过问题规模是原问题的一半。我们只需要寻找跨越中点的最大子数组，然后在三者之中选取最大值。</p>
+<p>对于两个子问题来说求解并不难，所以现在的关键在于寻找到跨越中点的最大子序列。我们提到了跨越了中点的子数组的范围是有限制的，任何跨越中点的子数组都是由两个子数组$[i \cdots mid]$和$[mid+1 \cdots j]$组成，其中$low \leq i \leq mid\text{且}mid &lt; j \leq high$，因此我们仅需要找出$[i \cdots mid]$和$[mid+1 \cdots j]$的最大子数组，然后合并即可，这在线性时间内是可以做到的。给出这样一个伪代码描述：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FIND-MAX-CROSSING-SUBARRAY(A, low, mid, high)</span><br><span class="line">left-sum = INT_MIN;</span><br><span class="line">sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i = mid downto low</span><br><span class="line">	sum  = sum + A[i]</span><br><span class="line">	<span class="keyword">if</span> sum &gt; left-sum</span><br><span class="line">		left-sum = sum;</span><br><span class="line">		max-left = i;</span><br><span class="line">right-sum = INT_MIN</span><br><span class="line">sum = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> i = mid + <span class="number">1</span> to high</span><br><span class="line">	sum = sum + A[j]</span><br><span class="line">		right-sum = sum</span><br><span class="line">		max-right = j</span><br><span class="line"><span class="keyword">return</span> (max-left, max-right, left-sum + right-sum)</span><br></pre></td></tr></table></figure>
+<p>该伪代码最终返回的是一个由左右边界以及最大和组成的用于描述跨越中点的最大数组的三元组。</p>
+<p>我们已经解决最大子数组问题最重要的一部分：跨越中点的最大子数组。下面给出完整的最大子数组求解方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">FIND-MAXIMUM-SUBARRAY(A, low, high)</span><br><span class="line"><span class="comment">//当该数组中仅有一个元素时，表示已经划分为最小单位</span></span><br><span class="line"><span class="keyword">if</span>(high == low)</span><br><span class="line">	<span class="keyword">return</span>(low, high, A[low])</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">	mid = (low + high)/<span class="number">2</span></span><br><span class="line">	(left-low, left-high, left-sum) = FIND-MAXIMUM-SUBARRAY(A, low, mid)</span><br><span class="line">	(right-low, right-high, right-sum) = FIND-MAXIMUM-SUBARRAY(A, mid + <span class="number">1</span>, high)</span><br><span class="line">	(cross-low, cross-high, cross-sum) = FIND-MAX-CROSSING-SUBARRAY(A, low, mid, high)</span><br><span class="line">	<span class="keyword">if</span> left-sum &gt;= right-sum and left-sum &gt;= cross-sum</span><br><span class="line">		<span class="keyword">return</span> (left-low, left-high, left-sum)</span><br><span class="line">	elseif right-sum &gt;= left-sum and right-sum &gt;= cross-sum</span><br><span class="line">		<span class="keyword">return</span> (right-low, right-high, right-sum)</span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		<span class="keyword">return</span> (cross-low, cross-high, cross-sum)</span><br></pre></td></tr></table></figure>
+<p>复杂度分析：</p>
+<p>该算法运行的递归式</p>
+<script type="math/tex; mode=display">
+T(n) = 
+\begin{cases}
+\Theta(1) & 若n = 1\\
+2T(n/2) + \Theta(n) & 若n>1
+\end{cases}</script>
         
       </div>
       
