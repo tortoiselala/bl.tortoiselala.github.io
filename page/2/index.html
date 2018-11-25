@@ -317,6 +317,189 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Matrix-chain-multiplication-Introduction-to-Algorithms/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/02/Matrix-chain-multiplication-Introduction-to-Algorithms/" itemprop="url">
+                  Matrix chain multiplication.Introduction to Algorithms
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-11-02 11:08:43" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-11-14 21:03:21" itemprop="dateModified" datetime="2018-11-14T21:03:21+08:00">2018-11-14</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="矩阵链乘法问题"><a href="#矩阵链乘法问题" class="headerlink" title="矩阵链乘法问题"></a>矩阵链乘法问题</h1><p>矩阵链乘法是可用动态规划解决的最佳化问题。</p>
+<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><pre><code>给定一个$n$个矩阵的序列（矩阵链） &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，我们希望计算它们的乘积
+</code></pre><script type="math/tex; mode=display">
+\begin{equation}
+A_1A_2\cdots A_3
+\label{eq:公式1}
+\end{equation}</script><pre><code>为了计算公式$\eqref {eq:公式1}$，我们可以先用括号明确计算次序，然后利用标准矩阵相乘算法进行计算。矩阵乘法是满足结合律的，因此任何加括号的方法都会得到相同的计算结果。
+</code></pre><p>我们称具有如下性质的矩阵乘积链为<strong>完全括号化的(</strong>$fully\, parenthesized$)：它是单一矩阵，或者是两个完全括号化的矩阵乘积链的积，且已外加括号。例如对于4个矩阵的序列，有如下完全括号化的方法：</p>
+<script type="math/tex; mode=display">
+\begin{equation}
+(A_1(A_2A_3A_4)))\\
+(A_1((A_2A_3)A_4))\\
+((A_1A_2)(A_3A_4))\\
+((A_1A_2A_3))A_4)\\
+(((A_1A_2)A_3)A_4)\\
+\label{eq:公式2}
+\end{equation}</script><pre><code>对矩阵链加括号的方法会对乘积运算的代价产生巨大影响。两个矩阵相乘的代价取决于相乘的两个矩阵的矩阵规模，若矩阵$A, B$的规模分别为$p\times q, q\times r$，则计算矩阵乘积的代价由进行的标量乘法所决定，即：$pqr$.
+
+矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。
+</code></pre><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
+<p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2\cdots, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
+<p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
+<script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$种可能。因此得到下面公式：</p>
+<script type="math/tex; mode=display">
+m[i, j] =
+\begin{cases} 
+0 
+\atop  
+min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
+\end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]​$来存储$k​$值。</p>
+<h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3><p>伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATRIX-CHAN-ORDER(p)</span><br><span class="line">	n = p.length - <span class="number">1</span></span><br><span class="line">	let m[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">1</span>..n] and s[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">2</span>..n] be <span class="keyword">new</span> tables</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">		m[i, i] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> l = <span class="number">2</span> to n</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n - l + <span class="number">1</span></span><br><span class="line">			j = i + l -<span class="number">1</span></span><br><span class="line">			m[i, j] = MAX_INT</span><br><span class="line">			<span class="keyword">for</span> k = i to j - <span class="number">1</span></span><br><span class="line">				q = m[i, k] + m[k + <span class="number">1</span>, j] + p[i-<span class="number">1</span>]*p[k]*p[j]</span><br><span class="line">			<span class="keyword">if</span> q &lt; m[i, j]</span><br><span class="line">				m[i, j] = q</span><br><span class="line">				s[i, j] = k</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/钢条切割-Introduction-to-Algorithms/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1736,160 +1919,6 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/02/leetcode-problem-848-Shifting-Letters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/leetcode-problem-848-Shifting-Letters/" itemprop="url">
-                  leetcode problem 848 Shifting Letters
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-10-02 19:00:17 / Modified: 22:00:47" itemprop="dateCreated datePublished" datetime="2018-10-02T19:00:17+08:00">2018-10-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>We have a string <code>S</code> of lowercase letters, and an integer array <code>shifts</code>.</p>
-<p>Call the <em>shift</em> of a letter, the next letter in the alphabet, (wrapping around so that <code>&#39;z&#39;</code> becomes <code>&#39;a&#39;</code>). </p>
-<p>For example, <code>shift(&#39;a&#39;) = &#39;b&#39;</code>, <code>shift(&#39;t&#39;) = &#39;u&#39;</code>, and <code>shift(&#39;z&#39;) = &#39;a&#39;</code>.</p>
-<p>Now for each <code>shifts[i] = x</code>, we want to shift the first <code>i+1</code> letters of <code>S</code>, <code>x</code> times.</p>
-<p>Return the final string after all such shifts to <code>S</code> are applied.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">Output: &quot;rpl&quot;</span><br><span class="line">Explanation: </span><br><span class="line">We start with &quot;abc&quot;.</span><br><span class="line">After shifting the first 1 letters of S by 3, we have &quot;dbc&quot;.</span><br><span class="line">After shifting the first 2 letters of S by 5, we have &quot;igc&quot;.</span><br><span class="line">After shifting the first 3 letters of S by 9, we have &quot;rpl&quot;, the answer.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><p><code>1 &lt;= S.length = shifts.length &lt;= 20000</code></p>
-</li>
-<li><p><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></p>
-</li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h2 id="Approach1"><a href="#Approach1" class="headerlink" title="Approach1 :"></a>Approach1 :</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">shiftingLetters</span><span class="params">(String S, <span class="keyword">int</span>[] shifts)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">char</span>[] sToCharArray = S.toCharArray();</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = shifts.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			sum += shifts[i];</span><br><span class="line">			sum %= <span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>;</span><br><span class="line">			sToCharArray[i] += sum;</span><br><span class="line">			sToCharArray[i] = (<span class="keyword">char</span>) (sToCharArray[i] &gt; <span class="string">'z'</span> ? sToCharArray[i] - (<span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>) : sToCharArray[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> String(sToCharArray);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1937,7 +1966,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">22</span>
+                    <span class="site-state-item-count">23</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
