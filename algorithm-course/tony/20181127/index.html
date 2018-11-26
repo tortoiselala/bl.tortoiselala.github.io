@@ -116,7 +116,7 @@
 <meta property="og:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-1d8090c991ca13cee3cb43c027b72304_hd.jpg">
-<meta property="og:updated_time" content="2018-11-26T14:31:35.699Z">
+<meta property="og:updated_time" content="2018-11-26T15:48:42.387Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
@@ -398,11 +398,19 @@
           <h1 id="贪心策略-greedy-algorithm"><a href="#贪心策略-greedy-algorithm" class="headerlink" title="贪心策略(greedy algorithm)"></a>贪心策略(greedy algorithm)</h1><p>求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。<strong>贪心算法</strong>$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。</p>
 <p>贪心算法并不能保证得到最优解，但是某些问题确实可以求得最优解。</p>
 <p>我们可以利用贪心策略设计出很多非常好的算法，若：Dijkstra单源最短路径算法。</p>
-<h1 id="动态规划-dynamic-programming"><a href="#动态规划-dynamic-programming" class="headerlink" title="动态规划(dynamic programming)"></a>动态规划(dynamic programming)</h1><p>动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题的话，我们会求解非常多的重复的子问题，这造成了资源的浪费。为了解决这一问题，动态规划是这样做的：对于求解出的子问题的解，使用数组存储下来。</p>
+<h1 id="动态规划-dynamic-programming"><a href="#动态规划-dynamic-programming" class="headerlink" title="动态规划(dynamic programming)"></a>动态规划(dynamic programming)</h1><p>动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。与此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题的话，我们会求解非常多的重复的子问题，这造成了资源的浪费。为了解决这一问题，动态规划是这样做的：对于求解出的子问题的解，使用数组存储下来。</p>
 <p>总结一下就是：</p>
 <p>动态规划是与<a href="https://tortoiselala.github.io/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" target="_blank" rel="noopener">分治法</a>类似的一种计算方法，都是通过组合子问题的解来求解原问题。</p>
 <p>动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
-<p>动态规划方法通常用来求解<strong>最优化问题(optimization problem)</strong>。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最大值或最小值）的解。</p>
+<p>动态规划方法通常用来求解<strong>最优化问题(optimization problem)</strong>。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最大值或最小值）的解（最大子数组问题）。</p>
+<p>注意：可能会有多个最优值。</p>
+<p>通常设计一个动态规划算法需要以下四个步骤：</p>
+<ol>
+<li>刻画一个最优解的结构特征</li>
+<li>递归地定义最优解的值</li>
+<li>计算最优解的值，通常采用自底向上的方法。</li>
+<li>利用计算出的信息构造一个最优解</li>
+</ol>
 <p>动态规划将一个大问题分解为小问题（子问题），再根据子问题的解以得出原问题的解，与分治法不同的是，动态规划方法尝试在计算过程中将子问题的解记录下来，以便下次遇到相同的子问题时可以直接获取答案。</p>
 <p>尝试总结分治法与动态规划适用范围的相同点与不同点。</p>
 <h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><p>动态规划在查找有<strong>重叠子问题</strong>的问题的解时有效。它将问题划分为子问题，分别求解并记录子问题的解，再将子问题的解组合起来。因此，动态规划在遇到具有相同子问题时不会耗费时间。</p>
@@ -444,7 +452,7 @@
 </table>
 </div>
 <h4 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一段长度为$n$英寸的钢条与价格表$p_i(i = 1, 2, \cdot\cdot \cdot, n)$，求钢条切割方案，是的销售收益$r_n$最大。</p>
-<h4 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h4><p>钢条切割问题满足最优子结构(optimal substructure)性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
+<h4 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h4><p>钢条切割问题满足最优子结构($optimal\,substructure$)性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
 <h5 id="Approach-1：An-expression"><a href="#Approach-1：An-expression" class="headerlink" title="Approach 1：An expression"></a>Approach 1：An expression</h5><p>对于长度为$n$的钢条共有$2^{n-1}$中不同的切割方案，因为可以在距离钢条左侧$i(i = 1, 2, \cdot\cdot\cdot, n-1)$英寸处，我们总可以选择切割或不切割。如果一个最优解将钢条切割为$k$段，那么最优切割方案</p>
 <script type="math/tex; mode=display">
 n = i_1 + i_2 + \cdot\cdot\cdot + i_k</script><p>将钢条切割为长度分别为$ i_1, i_2, \cdot\cdot\cdot, i_k$的小段，得到最大收益</p>
@@ -452,6 +460,14 @@ n = i_1 + i_2 + \cdot\cdot\cdot + i_k</script><p>将钢条切割为长度分别�
 r_n = p_1 + p_2 + \cdot\cdot\cdot + p_n</script><p>更一般的，我们使用下面的公式来描述$r_n(n\geq1)$：</p>
 <script type="math/tex; mode=display">
 r_n = max(p_n, r_1 + r_{n-1}, r_2 + r_{n-2}, \cdot\cdot\cdot, r_{n_1} + r_1)</script><p>第一个参数$p_n$表示不切割，其他$n-1$个参数对应另外$n-1$中方案：对于每个$i = 1, 2, \cdot\cdot\cdot, n-1$，首先将钢条切割为长度为$i$和$n-i$的两段，接着求解这两段的最优切割收益$r_i$和$r_{n-i}$。选择$n$中方案中收益最大的作为最终切割方案。</p>
+<p>该问题可以使用递归求解，将问题分解为两部分，切割长度为$i$的钢条的收益加剩余的$n-i$长度的钢条的收益，查高度为$i$的收益是可以在线性时间内计算出来的，我们仅仅需要递归的求解剩余长度为$n-i$的钢条的最大收益。</p>
+<p>可以想一下，之前我们提到了寻找最大值（最小值）的递归版本，递归求解，每次仅从原问题中分解出一个单位，而这个问题中，我们分解的长度是$i,\, (0\leq i \leq n)$.复杂度？</p>
+<p>我们既然能够使用递归式描述该问题，肯定是能够写出该问题的递归解法。</p>
+<p>留作课后题，并尝试分析复杂度。</p>
+<p>给出伪代码</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p, n)</span><br><span class="line"><span class="keyword">if</span> n == <span class="number">0</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">q = MIN_INT</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">	<span class="comment">//分解出长度为i的部分的收益为p[i],余下部分的收益需要递归求解</span></span><br><span class="line">	q = max(q, p[i]+CUT-ROD(p, n-i))</span><br><span class="line"><span class="keyword">return</span> q</span><br></pre></td></tr></table></figure>
+<p>递归树法求解该递归式。</p>
+<p>注意：该算法仅能够算出最优收益是多少，但是并不能得知如何划分。在竞赛题目中，可能不仅会让你求出最优解，构造最优解。</p>
 <h5 id="Approach-2：Dynamic-Programming"><a href="#Approach-2：Dynamic-Programming" class="headerlink" title="Approach 2：Dynamic Programming"></a>Approach 2：Dynamic Programming</h5><p>伪代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">	q = INT_MIN</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">		q = max(q, p[i]+r[j-i])</span><br><span class="line">	r[j] = q</span><br><span class="line"><span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
 <p><strong>java实现</strong></p>
