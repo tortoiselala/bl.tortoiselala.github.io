@@ -115,15 +115,12 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D">
-<meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C">
-<meta property="og:image" content="http://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D">
 <meta property="og:image" content="https://pic1.zhimg.com/80/v2-1d8090c991ca13cee3cb43c027b72304_hd.jpg">
-<meta property="og:updated_time" content="2018-11-26T14:26:12.086Z">
+<meta property="og:updated_time" content="2018-11-26T14:31:35.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
-<meta name="twitter:image" content="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D">
+<meta name="twitter:image" content="https://pic1.zhimg.com/80/v2-1d8090c991ca13cee3cb43c027b72304_hd.jpg">
 
 
 
@@ -407,8 +404,9 @@
 <p>动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
 <p>动态规划方法通常用来求解<strong>最优化问题(optimization problem)</strong>。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最大值或最小值）的解。</p>
 <p>动态规划将一个大问题分解为小问题（子问题），再根据子问题的解以得出原问题的解，与分治法不同的是，动态规划方法尝试在计算过程中将子问题的解记录下来，以便下次遇到相同的子问题时可以直接获取答案。</p>
+<p>尝试总结分治法与动态规划适用范围的相同点与不同点。</p>
 <h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><p>动态规划在查找有<strong>重叠子问题</strong>的问题的解时有效。它将问题划分为子问题，分别求解并记录子问题的解，再将子问题的解组合起来。因此，动态规划在遇到具有相同子问题时不会耗费时间。</p>
-<p>动态规划只能应用于有<strong>最后子结构</strong>的问题。最优子结构的意思是局部最优解能够决定全局最优解（并不一定能满足，有时需要近似）。</p>
+<p>动态规划只能应用于有<strong>最优子结构</strong>的问题。最优子结构的意思是局部最优解能够决定全局最优解（并不一定能满足，有时需要近似）。</p>
 <p>无后效性。即子问题的解一旦确定，就不再改变，不再受这之后、包含它的更大的问题的求解决策影响。</p>
 <h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><h3 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h3><p>某公司出售一段长度为i英寸的钢条的价格为Pi（i=1，2…单位：美元），下面给出了价格表</p>
 <div class="table-container">
@@ -499,8 +497,9 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
 <p>给定一组多个（物品，每种物品都有自己的重量和价值（，在限定的总重量/总容量（![C]内，选择其中若干个（也即每种物品可以选0个或1个），设计选择方案使得物品的总价值最高。</p>
 <p>形式化的定义：</p>
 <p>给定正整数、给定正整数，求解0-1规划问题：</p>
-<p><img src="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D" alt=""> ， s.t. <img src="http://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C" alt=""> ， <img src="http://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D" alt=""> 。</p>
-<p><strong>分数背包问题</strong></p>
+<script type="math/tex; mode=display">
+max \sum^{n}_{i = 1}{x_iv_i}, s.t.\\
+\sum^{n}_{i = 1}\leq C,\, x\in \{0,1\}</script><p><strong>分数背包问题</strong></p>
 <h4 id="问题求解-2"><a href="#问题求解-2" class="headerlink" title="问题求解"></a>问题求解</h4><p>0-1背包问题</p>
 <p>定义子问题 $P(i, W)$ 为：在前 个物品$i$中挑选总重量不超过$W$的物品，每种物品至多只能挑选1个，使得总价值最大；这时的最优值记作$m(i, W)$ ，其中 $1 \leq i \leq n$，<script type="math/tex">1 \leq W \leq C</script>  。</p>
 <p>考虑第$i$个物品，无外乎两种可能：选，或者不选。</p>
