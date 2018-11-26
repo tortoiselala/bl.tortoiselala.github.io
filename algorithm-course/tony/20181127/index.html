@@ -108,17 +108,22 @@
 
 
 
-  <meta name="description" content="贪心策略(greedy algorithm)动态规划(dynamic programming)动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题">
+  <meta name="description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="index">
 <meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181127/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="贪心策略(greedy algorithm)动态规划(dynamic programming)动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题">
+<meta property="og:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-25T13:14:38.058Z">
+<meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D">
+<meta property="og:image" content="http://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C">
+<meta property="og:image" content="http://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D">
+<meta property="og:image" content="https://pic1.zhimg.com/80/v2-1d8090c991ca13cee3cb43c027b72304_hd.jpg">
+<meta property="og:updated_time" content="2018-11-26T14:24:10.065Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
-<meta name="twitter:description" content="贪心策略(greedy algorithm)动态规划(dynamic programming)动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题">
+<meta name="twitter:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
+<meta name="twitter:image" content="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D">
 
 
 
@@ -393,7 +398,10 @@
       <div class="post-body">
         
         
-          <h1 id="贪心策略-greedy-algorithm"><a href="#贪心策略-greedy-algorithm" class="headerlink" title="贪心策略(greedy algorithm)"></a>贪心策略(greedy algorithm)</h1><h1 id="动态规划-dynamic-programming"><a href="#动态规划-dynamic-programming" class="headerlink" title="动态规划(dynamic programming)"></a>动态规划(dynamic programming)</h1><p>动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题的话，我们会求解非常多的重复的子问题，这造成了资源的浪费。为了解决这一问题，动态规划是这样做的：对于求解出的子问题的解，使用数组存储下来。</p>
+          <h1 id="贪心策略-greedy-algorithm"><a href="#贪心策略-greedy-algorithm" class="headerlink" title="贪心策略(greedy algorithm)"></a>贪心策略(greedy algorithm)</h1><p>求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。<strong>贪心算法</strong>$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。</p>
+<p>贪心算法并不能保证得到最优解，但是某些问题确实可以求得最优解。</p>
+<p>我们可以利用贪心策略设计出很多非常好的算法，若：Dijkstra单源最短路径算法。</p>
+<h1 id="动态规划-dynamic-programming"><a href="#动态规划-dynamic-programming" class="headerlink" title="动态规划(dynamic programming)"></a>动态规划(dynamic programming)</h1><p>动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。于此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题的话，我们会求解非常多的重复的子问题，这造成了资源的浪费。为了解决这一问题，动态规划是这样做的：对于求解出的子问题的解，使用数组存储下来。</p>
 <p>总结一下就是：</p>
 <p>动态规划是与<a href="https://tortoiselala.github.io/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" target="_blank" rel="noopener">分治法</a>类似的一种计算方法，都是通过组合子问题的解来求解原问题。</p>
 <p>动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
@@ -486,7 +494,33 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
 \end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]$来存储$k$值。</p>
 <h5 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h5><p>伪代码</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATRIX-CHAN-ORDER(p)</span><br><span class="line">	n = p.length - <span class="number">1</span></span><br><span class="line">	let m[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">1</span>..n] and s[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">2</span>..n] be <span class="keyword">new</span> tables</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">		m[i, i] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> l = <span class="number">2</span> to n</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n - l + <span class="number">1</span></span><br><span class="line">			j = i + l -<span class="number">1</span></span><br><span class="line">			m[i, j] = MAX_INT</span><br><span class="line">			<span class="keyword">for</span> k = i to j - <span class="number">1</span></span><br><span class="line">				q = m[i, k] + m[k + <span class="number">1</span>, j] + p[i-<span class="number">1</span>]*p[k]*p[j]</span><br><span class="line">			<span class="keyword">if</span> q &lt; m[i, j]</span><br><span class="line">				m[i, j] = q</span><br><span class="line">				s[i, j] = k</span><br></pre></td></tr></table></figure>
-<h3 id="背包问题"><a href="#背包问题" class="headerlink" title="背包问题"></a>背包问题</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><h4 id="问题求解-2"><a href="#问题求解-2" class="headerlink" title="问题求解"></a>问题求解</h4>
+<h3 id="背包问题-Knapsack-problem"><a href="#背包问题-Knapsack-problem" class="headerlink" title="背包问题(Knapsack problem)"></a>背包问题(Knapsack problem)</h3><h4 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h4><p>给定一组物品，每种物品都有自己的重量和价格，在限定的总重量内，我们如何选择，才能使得物品的总价格最高</p>
+<h4 id="问题分类"><a href="#问题分类" class="headerlink" title="问题分类"></a>问题分类</h4><p><strong>0-1背包问题</strong></p>
+<p>给定一组多个（物品，每种物品都有自己的重量和价值（，在限定的总重量/总容量（![C]内，选择其中若干个（也即每种物品可以选0个或1个），设计选择方案使得物品的总价值最高。</p>
+<p>形式化的定义：</p>
+<p>给定正整数、给定正整数，求解0-1规划问题：</p>
+<p><img src="http://www.zhihu.com/equation?tex=%5Cmax+%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iv_i%7D" alt="\max \sum_{i=1}^{n}{x_iv_i}"> ， s.t. <img src="http://www.zhihu.com/equation?tex=%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%7Bx_iw_i%7D%5Cleq+C" alt="\sum_{i=1}^{n}{x_iw_i}\leq C"> ， <img src="http://www.zhihu.com/equation?tex=x_i%5Cin%5C%7B0%2C1%5C%7D" alt="x_i\in\{0,1\}"> 。</p>
+<p><strong>分数背包问题</strong></p>
+<h4 id="问题求解-2"><a href="#问题求解-2" class="headerlink" title="问题求解"></a>问题求解</h4><p>0-1背包问题</p>
+<p>定义子问题 $P(i, W)$ 为：在前 个物品$i$中挑选总重量不超过$W$的物品，每种物品至多只能挑选1个，使得总价值最大；这时的最优值记作$m(i, W)$ ，其中 $1 \leq i \leq n$，<script type="math/tex">1 \leq W \leq C</script>  。</p>
+<p>考虑第$i$个物品，无外乎两种可能：选，或者不选。</p>
+<ul>
+<li>不选的话，背包的容量不变，改变为问题$P(i-1, W)$; </li>
+<li>选的话，背包的容量变小，改变为问题$P(i -1, W-W_i)$。</li>
+</ul>
+<p>最优方案就是比较这两种方案，哪个会更好些：</p>
+<script type="math/tex; mode=display">
+m(i, W) = max\{ m(i-1, W), m(i -1, W-W_i) +v_i\}</script><p><img src="https://pic1.zhimg.com/80/v2-1d8090c991ca13cee3cb43c027b72304_hd.jpg" alt="img"></p>
+<p>得到</p>
+<script type="math/tex; mode=display">
+m(i,W)=
+
+\begin{cases}
+        0 & if\, i = 0 \\
+        0 & if\, W = 0 \\
+        m(i - 1, W) & if(w_i > W) \\
+        max\{m(i - 1, W), v_i + m(i - 1, W - w_i)\} & otherwise\\
+\end{cases}</script>
         
       </div>
       
@@ -663,7 +697,7 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心策略-greedy-algorithm"><span class="nav-number">1.</span> <span class="nav-text">贪心策略(greedy algorithm)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划-dynamic-programming"><span class="nav-number">2.</span> <span class="nav-text">动态规划(dynamic programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用范围"><span class="nav-number">2.1.</span> <span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#钢条切割"><span class="nav-number">2.2.1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">2.2.1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：Dynamic-Programming"><span class="nav-number">2.2.1.2.2.</span> <span class="nav-text">Approach 2：Dynamic Programming</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-3：重构-Approach-2"><span class="nav-number">2.2.1.2.3.</span> <span class="nav-text">Approach 3：重构 Approach 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.2.2.</span> <span class="nav-text">矩阵链乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：递归解法"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">Approach 1：递归解法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：自底向上的方法"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">Approach 2：自底向上的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题"><span class="nav-number">2.2.3.</span> <span class="nav-text">背包问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-2"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">问题求解</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心策略-greedy-algorithm"><span class="nav-number">1.</span> <span class="nav-text">贪心策略(greedy algorithm)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划-dynamic-programming"><span class="nav-number">2.</span> <span class="nav-text">动态规划(dynamic programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用范围"><span class="nav-number">2.1.</span> <span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#钢条切割"><span class="nav-number">2.2.1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">2.2.1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：Dynamic-Programming"><span class="nav-number">2.2.1.2.2.</span> <span class="nav-text">Approach 2：Dynamic Programming</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-3：重构-Approach-2"><span class="nav-number">2.2.1.2.3.</span> <span class="nav-text">Approach 3：重构 Approach 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.2.2.</span> <span class="nav-text">矩阵链乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：递归解法"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">Approach 1：递归解法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：自底向上的方法"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">Approach 2：自底向上的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题-Knapsack-problem"><span class="nav-number">2.2.3.</span> <span class="nav-text">背包问题(Knapsack problem)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题分类"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">问题分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-2"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">问题求解</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
