@@ -116,7 +116,7 @@
 <meta property="og:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/CUT-ROD-SOLUTION.jpg">
-<meta property="og:updated_time" content="2018-11-26T16:14:15.217Z">
+<meta property="og:updated_time" content="2018-11-26T16:51:22.695Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
@@ -398,6 +398,105 @@
           <h1 id="贪心策略-greedy-algorithm"><a href="#贪心策略-greedy-algorithm" class="headerlink" title="贪心策略(greedy algorithm)"></a>贪心策略(greedy algorithm)</h1><p>求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。<strong>贪心算法</strong>$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。</p>
 <p>贪心算法并不能保证得到最优解，但是某些问题确实可以求得最优解。</p>
 <p>我们可以利用贪心策略设计出很多非常好的算法，若：Dijkstra单源最短路径算法。</p>
+<h2 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h2><p>假定有一个$n$个活动的集合$S=\{a_1,a_2,…,a_n\}$，这些活动都要求使用同一资源(如演讲会场)，而这个资源在某个时刻只能供一个活动使用。每个活动$a_i$都有一个开始时间$s_i$和一个结束时间$f_i$，且$0≤s_i&lt;f_i&lt;∞$.</p>
+<p>若两个活动$a_i$和$a_j$满足[$s_i, f_i$]与区间$[s_j, f_j]$不重叠，则称它们是兼容的。</p>
+<p>活动选择问题就是从活动集合中选出最大兼容活动的集合。</p>
+<p>设活动已经按照结束时间单调递增排序：</p>
+<script type="math/tex; mode=display">
+f_1 \leq f_2 \leq f_3 \cdots \leq f_n</script><p>设有以下待安排的11个活动的开始时间和结束时间，并按结束时间的非减序排列如下：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>$i$</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+<th>10</th>
+<th>11</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$S_i$</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>5</td>
+<td>3</td>
+<td>5</td>
+<td>6</td>
+<td>8</td>
+<td>8</td>
+<td>2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>$f_i$</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>9</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>14</td>
+<td>16</td>
+</tr>
+</tbody>
+</table>
+</div>
+<script type="math/tex; mode=display">
+\{a_3,a_9,a_{11}\}
+\{a_1,a_4,a_8,a_11\}
+\{a_2,a_4,a_9,a_{11}\}
+\text{都是兼容的集合}</script><h3 id="活动选择问题的最优子结构"><a href="#活动选择问题的最优子结构" class="headerlink" title="活动选择问题的最优子结构"></a>活动选择问题的最优子结构</h3><p> 活动选择问题具有最优子结构：</p>
+<p>令$S_{ij}$表示在$a_i$结束之后开始且在$a_j$开始之前结束的那些活动的集合。设$A_{ij}$是$S_{ij}$的一个最大兼容活动集，并设$A_{ij}$包含活动$a_k$，Aik表示$A_{ij}$中$a_k$之前的活动子集，$A_{kj}$表示$A_{ij}$中$a_k$之后的活动子集。同时得到两个子问题：寻找$S_{ik}$的最大兼容活动集合和寻找$S_{kj}$的最大兼容活动集合。</p>
+<p>则必有$A_{ik}$是$S_{ik}$一个最大兼容活动子集，$A_{kj}$是$S_{kj}$一个最大兼容活动子集。而$A_{ij}= A_{ik}∪{a_k}∪Ak_{j} $。</p>
+<p>贪心算法：</p>
+<p>在贪心算法的每一步所做的局部最优选择就叫做贪心选择。</p>
+<p>活动选择问题的贪心选择：每次选择最早结束时间的活动加入集合$A$。</p>
+<p>首次选择的活动是$a_1$，其后选择的是结束时间最早且开始时间不早于前面已选择的最后一个活动的结束时间的活动 。</p>
+<p>当输入的活动已按结束时间的递增顺序排列，贪心算法只需$O(n)$的时间即可选择出来$n$个活动的最大兼容活动集合.</p>
+<p>在首次选择$a_1$后，下面寻找$a_1$结束后开始的活动。</p>
+<p>令$S_k={a_i∈S: s_i≥f_k}$，即在$a_k$结束之后开始的任务集合。</p>
+<p> 则在首次选择$a_1$后，$S_1$是接下来要求解的（唯一）子问题。</p>
+<p>最优子结构性：如果$a_1$在最优解中，那么原问题的最优解由活动$a_1$及子问题$S_1$的最优子解构成。</p>
+<p><strong>定理：</strong></p>
+<p>考虑任意非空子问题$S_k$，令$a_m$是$S_k$中结束时间最早的活动，则$a_m$必在$S_k$的某个最大兼容活动子集中.</p>
+<p>证明：</p>
+<p>令$A_k$是$S_k$的一个最大兼容活动子集，且$a_j$是$A_k$中结束最早的活动。若$a_j=a_m$，则得证。否则， $A_{k’}=A_k-{a_j}∪{a_m}$，且$A_{k’}$中的活动不相交。</p>
+<p>所以$A_{k’}$也是$S_k$的一个最大兼容活动子集，且包含$a_m$。定理得证。</p>
+<p><strong>所以:</strong>从$S_0$开始，反复选择结束时间最早的活动，重复这一过程，直至不再有剩余的兼容活动。所得的子集就是最大兼容活动集合</p>
+<p>.<strong>活动选择问题的贪心算法</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">RECURISVE-ACTIVITY-SELECTOR(s, f, k, n)</span><br><span class="line">m = k + 1</span><br><span class="line">while m &lt;= n and s[m] &lt; f[k]</span><br><span class="line">	m = m + 1</span><br><span class="line">if m&lt;= n</span><br><span class="line">	return &#123;am&#125; &#123;集合并符号&#125; RECURESIVE-ACTIVITY-SELECTOR(s, f, m, n)</span><br><span class="line">else</span><br><span class="line">	return 0</span><br></pre></td></tr></table></figure>
+<p>为了方便处理，引入一个虚拟活动$a_0$，其结束时间为$f_0 = 0$，求解问题，第一次调用为$RECURSIVE-ACTIVITY-SELECTOR(s, f,0, n)$.</p>
+<p><strong>非递归版本(迭代)</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//假定活动已经按照结束时间单调递增的顺序排列好</span></span><br><span class="line"><span class="comment">//集合A用于收集选出的活动。</span></span><br><span class="line"><span class="comment">//k对应最后一个加入A的活动，fk是A中活动的最大结束时间，若m的开始时间大于fk，则m就是下一个被选中的活动。</span></span><br><span class="line"><span class="comment">//算法的运行时间是O(n)。</span></span><br><span class="line"></span><br><span class="line">GREEDY-ACTIVITY-SELECTOR(s, f)</span><br><span class="line">n = s.length</span><br><span class="line">A = &#123;a_1&#125;</span><br><span class="line">k = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> m = <span class="number">2</span> to n</span><br><span class="line">	<span class="keyword">if</span> s[m] &gt;= f[k]</span><br><span class="line">		A = A &#123;集合并符号&#125; &#123;a_m&#125;</span><br><span class="line">		k = m</span><br><span class="line"><span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<h2 id="贪心算法原理"><a href="#贪心算法原理" class="headerlink" title="贪心算法原理"></a>贪心算法原理</h2><p>贪心算法通过做出一系列选择来求出问题的最优解。在每次决策中，做出当时看来是最佳的选择。这种启发式的策略并不能保证总能找到最优解，但对有些问题确实有效。</p>
+<p>贪心算法通常采用自顶向下的设计，做出一个选择，然后求解剩下的子问题</p>
+<p><strong>贪心求解的一般步骤</strong></p>
+<ol>
+<li>确定问题的最优子结构；</li>
+<li>每次对其作出一次选择；</li>
+<li>证明作出贪心选择后，原问题总是存在最优解，即安全；</li>
+<li>证明作出贪心选择后，剩余的子问题满足：其最优解与贪心选择组合即可得到原问题的最优解。</li>
+</ol>
+<p>贪心算法中<strong>贪心选择性质</strong>和<strong>最优子结构性</strong>是两个关键要素.</p>
+<ul>
+<li>贪心选择性质：可以通过做出局部最优（贪心）选择来构造全局最优解。</li>
+<li>最优子结构性质是能否应用动态规划和贪心方法的关键要素.</li>
+</ul>
+<p>Q:如何证明每个步骤贪心选择能生成全局最优解?</p>
+<p>A:通常先考查某个子问题的最优解，然后用贪心选择替换某个其它选择来修改此解，从而得到一个相似但更小的子问题,类似于上面定理的证明。</p>
 <h1 id="动态规划-dynamic-programming"><a href="#动态规划-dynamic-programming" class="headerlink" title="动态规划(dynamic programming)"></a>动态规划(dynamic programming)</h1><p>动态规划与分治策略相似，都是用过组合子问题的解来求解原问题。之前我们学习的分治方法，将原问题划分为互不相交的子问题来求解，递归的求解子问题，再组合子问题的解，得到原问题的解。与此不同的是，动态规划可用于求解子问题重叠的问题，即不同的子问题具有公共的子问题（子问题的子问题）。如果我们使用分治方法求解这个问题的话，我们会求解非常多的重复的子问题，这造成了资源的浪费。为了解决这一问题，动态规划是这样做的：对于求解出的子问题的解，使用数组存储下来。</p>
 <p>总结一下就是：</p>
 <p>动态规划是与<a href="https://tortoiselala.github.io/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" target="_blank" rel="noopener">分治法</a>类似的一种计算方法，都是通过组合子问题的解来求解原问题。</p>
@@ -533,7 +632,8 @@ max \sum^{n}_{i = 1}{x_iv_i}, s.t.\\
 </ul>
 <p>最优方案就是比较这两种方案，哪个会更好些：</p>
 <script type="math/tex; mode=display">
-m(i, W) = max\{ m(i-1, W), m(i -1, W-W_i) +v_i\}</script><p>得到</p>
+m(i, W) = max\{ m(i-1, W), m(i -1, W-W_i) +v_i\}</script><p>《图片》</p>
+<p>得到</p>
 <script type="math/tex; mode=display">
 m(i,W)=
 
@@ -542,7 +642,8 @@ m(i,W)=
         0 & if\, W = 0 \\
         m(i - 1, W) & if(w_i > W) \\
         max\{m(i - 1, W), v_i + m(i - 1, W - w_i)\} & otherwise\\
-\end{cases}</script>
+\end{cases}</script><p>写出代码求解。</p>
+
         
       </div>
       
@@ -719,7 +820,7 @@ m(i,W)=
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心策略-greedy-algorithm"><span class="nav-number">1.</span> <span class="nav-text">贪心策略(greedy algorithm)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划-dynamic-programming"><span class="nav-number">2.</span> <span class="nav-text">动态规划(dynamic programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用范围"><span class="nav-number">2.1.</span> <span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#钢条切割"><span class="nav-number">2.2.1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">2.2.1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：Dynamic-Programming"><span class="nav-number">2.2.1.2.2.</span> <span class="nav-text">Approach 2：Dynamic Programming</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-3：重构-Approach-2"><span class="nav-number">2.2.1.2.3.</span> <span class="nav-text">Approach 3：重构 Approach 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.2.2.</span> <span class="nav-text">矩阵链乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：递归解法"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">Approach 1：递归解法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：自底向上的方法"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">Approach 2：自底向上的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题-Knapsack-problem"><span class="nav-number">2.2.3.</span> <span class="nav-text">背包问题(Knapsack problem)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题分类"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">问题分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-2"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">问题求解</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#贪心策略-greedy-algorithm"><span class="nav-number">1.</span> <span class="nav-text">贪心策略(greedy algorithm)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#活动选择问题"><span class="nav-number">1.1.</span> <span class="nav-text">活动选择问题</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#活动选择问题的最优子结构"><span class="nav-number">1.1.1.</span> <span class="nav-text">活动选择问题的最优子结构</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#贪心算法原理"><span class="nav-number">1.2.</span> <span class="nav-text">贪心算法原理</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态规划-dynamic-programming"><span class="nav-number">2.</span> <span class="nav-text">动态规划(dynamic programming)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#适用范围"><span class="nav-number">2.1.</span> <span class="nav-text">适用范围</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实例"><span class="nav-number">2.2.</span> <span class="nav-text">实例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#钢条切割"><span class="nav-number">2.2.1.</span> <span class="nav-text">钢条切割</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解"><span class="nav-number">2.2.1.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：An-expression"><span class="nav-number">2.2.1.2.1.</span> <span class="nav-text">Approach 1：An expression</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：Dynamic-Programming"><span class="nav-number">2.2.1.2.2.</span> <span class="nav-text">Approach 2：Dynamic Programming</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-3：重构-Approach-2"><span class="nav-number">2.2.1.2.3.</span> <span class="nav-text">Approach 3：重构 Approach 2</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵链乘法"><span class="nav-number">2.2.2.</span> <span class="nav-text">矩阵链乘法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-1"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-1"><span class="nav-number">2.2.2.2.</span> <span class="nav-text">问题求解</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-1：递归解法"><span class="nav-number">2.2.2.2.1.</span> <span class="nav-text">Approach 1：递归解法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#Approach-2：自底向上的方法"><span class="nav-number">2.2.2.2.2.</span> <span class="nav-text">Approach 2：自底向上的方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#背包问题-Knapsack-problem"><span class="nav-number">2.2.3.</span> <span class="nav-text">背包问题(Knapsack problem)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#问题描述-2"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">问题描述</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题分类"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">问题分类</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#问题求解-2"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">问题求解</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
