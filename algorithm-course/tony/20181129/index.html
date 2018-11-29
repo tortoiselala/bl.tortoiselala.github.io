@@ -108,17 +108,24 @@
 
 
 
-  <meta name="description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
+  <meta name="description" content="图广度优先搜索广度优先搜索（BFS）是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的">
 <meta property="og:type" content="website">
 <meta property="og:title" content="index">
 <meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181129/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
+<meta property="og:description" content="图广度优先搜索广度优先搜索（BFS）是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-29T11:42:19.712Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-3.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-1.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-2.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-3.jpg">
+<meta property="og:updated_time" content="2018-11-29T11:54:24.468Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
-<meta name="twitter:description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
+<meta name="twitter:description" content="图广度优先搜索广度优先搜索（BFS）是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-1.jpg">
 
 
 
@@ -393,18 +400,27 @@
       <div class="post-body">
         
         
-          <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p><strong>广度优先搜索</strong>是最简单的图算法之一，同样也是许多图算法的原型。</p>
+          <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p><strong>广度优先搜索</strong>（BFS）是最简单的图算法之一，同样也是许多图算法的原型。</p>
 <p>给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就是图$G$从结点$s$到结点$v$的“最短路径”，即包含最少边数的路径。该算法同时适用于有向图与无向图。</p>
-<p>广度优先搜索的基本思想就是：沿着已经发现的结点与未发现的结点的边界不断向外扩展，每次扩展一个单位，直到发现所有的结点。</p>
-<p>我们使用染色法来标记图中的定点，白色为未访问的，灰色为边界结点，黑色为已访问结点。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BFFS(G, s)</span><br><span class="line"><span class="keyword">for</span> each vertex u in G.v - &#123;s&#125;</span><br><span class="line">	u.color = WHITE</span><br></pre></td></tr></table></figure>
-<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>最小生成树是这样一个问题，对于一个连通无向图，我们希望找到一个无环子集，既能够将所有的顶点连接起来，而且具有最小的权重（花费最小）。由于是无环的，并且连通所有的顶点，因此这样一个子集能够构成一棵树。我们称这样的树为$G$的生成树。求解该生成树的问题为<strong>最小生成树问题</strong>.</p>
+<p>广度优先搜索的基本思想就是：沿着已经发现的结点与未发现的结点的边界不断向外扩展，每次扩展一个单位，直到发现所有的结点.</p>
+<p>使用队列</p>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><p><strong>深度优先搜索算法</strong>（Depth-First-Search，DFS）是一种用于遍历或搜索<a href="https://zh.wikipedia.org/wiki/%E6%A0%91_(%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84" target="_blank" rel="noopener">树</a>)或<a href="https://zh.wikipedia.org/wiki/%E5%9B%BE_(%E6%95%B0%E5%AD%A6" target="_blank" rel="noopener">图</a>)的<a href="https://zh.wikipedia.org/wiki/%E7%AE%97%E6%B3%95" target="_blank" rel="noopener">算法</a>。沿着树的深度遍历树的节点，尽可能深的搜索树的分支。当节点v的所在边都己被探寻过，搜索将回溯到发现节点v的那条边的起始节点。这一过程一直进行到已发现从源节点可达的所有节点为止。如果还存在未被发现的节点，则选择其中一个作为源节点并重复以上过程，整个进程反复进行直到所有节点都被访问为止。</p>
+<p>深度优先搜索与广度优先搜索均属于盲目搜搜索。</p>
+<p>使用栈</p>
+<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>最小生成树是这样一个问题，对于一个连通无向图，我们希望找到一个无环子集，既能够将所有的顶点连接起来，而且具有最小的权重（花费最小）。由于是无环的，并且连通所有的顶点，因此这样一个子集能够构成一棵树。我们称这样的树为$G$的生成树。求解该生成树的问题为<strong>最小生成树问题</strong>.</p>
 <p>我们将学习两种用于求解最小生成树的算法。$Kruskal$算法与$Prim$算法。这两种算法都是贪心算法，我们提到，贪心算法的每一步都在多步中选择，以寻求最优解。这种策略一般并不能找到全局最优的解决方案。但是，对于最小生成树问题来说，我们可以证明，某些贪心策略确实能够找到一棵权重最小的生成树。</p>
 <h3 id="最小生成树的形成"><a href="#最小生成树的形成" class="headerlink" title="最小生成树的形成"></a>最小生成树的形成</h3><p>一句话描述两个算法：</p>
 <p>$Kruskal$算法：每次从未选择边集中选择一条最小的边，且能够保证不形成环路，直到拥有了n-1条边。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MST-KURSKAL(G, w)</span><br><span class="line">MST_TREE = NULL<span class="comment">//集合A初始为空</span></span><br><span class="line">sort the edges of G into nondecreasing order by weight w</span><br><span class="line"><span class="keyword">for</span> each vertex v in G, taken in nondecreasing order by weight</span><br><span class="line">	<span class="keyword">if</span> vertex is not visited and there is no cicle after add vertex in MST-SET and sum &lt; n -<span class="number">1</span></span><br><span class="line">		add vertex in MST-SET</span><br><span class="line"><span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
 <p>$Prim$算法：每次从任意的根节点出发，每次访问已访问结点相连边中的最小值，且能够保证不行成环路，直到拥有了n-1条边。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MST-PRIM(G, w)</span><br><span class="line">A = NULL//存储已访问过的边</span><br><span class="line">B = NULL//存储已访问过的点</span><br><span class="line">for each point of G</span><br><span class="line">	add vertex </span><br><span class="line">	vertex is belong to points in set B</span><br><span class="line">	vertex has the minisim weight</span><br><span class="line">	no circle in Tree</span><br><span class="line">	sum &lt; n - 1</span><br><span class="line">return A</span><br></pre></td></tr></table></figure>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-2.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-bfs-3.jpg" alt=""></p>
+<p>DFS</p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-1.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-2.jpg" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/MST/mst-dfs-3.jpg" alt=""></p>
 
         
       </div>
