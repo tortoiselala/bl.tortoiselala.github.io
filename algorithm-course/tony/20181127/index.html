@@ -116,7 +116,7 @@
 <meta property="og:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/CUT-ROD-SOLUTION.jpg">
-<meta property="og:updated_time" content="2018-11-27T14:53:50.152Z">
+<meta property="og:updated_time" content="2018-11-29T12:11:19.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="index">
 <meta name="twitter:description" content="贪心策略(greedy algorithm)求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。贪心算法$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。">
@@ -398,6 +398,15 @@
           <h1 id="贪心策略-greedy-algorithm"><a href="#贪心策略-greedy-algorithm" class="headerlink" title="贪心策略(greedy algorithm)"></a>贪心策略(greedy algorithm)</h1><p>求解最优化问题的算法通常经过一系列的步骤，在每个步骤中面临多种选择。对于许多最优化问题，使用动态规划来求解最优解则显得有些复杂。实际上，某些问题使用贪心算法能够得到更好的效率。<strong>贪心算法</strong>$(greedy\, algorthm)$算法可以在每一步都做出看起来是”当时最佳的选择”。也就是说，贪心算法专心于在局部产生最优解，寄希望这样的算则能够导致全局的最优解。</p>
 <p>贪心算法并不能保证得到最优解，但是某些问题确实可以求得最优解。</p>
 <p>我们可以利用贪心策略设计出很多非常好的算法，若：Dijkstra单源最短路径算法。</p>
+<p>贪心方法适用于这样一类最优化问题的求解：</p>
+<p>问题有n个输入，问题的解是由这n个输入的某个子集组成，而子集必须满足某些事先给定的条件。</p>
+<ul>
+<li>约束条件：子集必须满足的条件；</li>
+<li>可  行  解：满足约束条件的子集；可行解可能不唯一；</li>
+<li>目标函数：用来衡量可行解优劣的标准，一般以函数的形式给出；</li>
+<li>最  优  解：能够使目标函数取极值（极大或极小）的</li>
+<li>可行解。最优解也可能不唯一。</li>
+</ul>
 <h2 id="活动选择问题"><a href="#活动选择问题" class="headerlink" title="活动选择问题"></a>活动选择问题</h2><p>假定有一个$n$个活动的集合$S=\{a_1,a_2,…,a_n\}$，这些活动都要求使用同一资源(如演讲会场)，而这个资源在某个时刻只能供一个活动使用。每个活动$a_i$都有一个开始时间$s_i$和一个结束时间$f_i$，且$0≤s_i&lt;f_i&lt;∞$.</p>
 <p>若两个活动$a_i$和$a_j$满足[$s_i, f_i$]与区间$[s_j, f_j]$不重叠，则称它们是兼容的。</p>
 <p>活动选择问题就是从活动集合中选出最大兼容活动的集合。</p>
