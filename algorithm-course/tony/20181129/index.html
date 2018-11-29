@@ -108,25 +108,24 @@
 
 
 
-  <meta name="description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
-<meta name="keywords" content="Introduction-to-Algorithms">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Elementery Graph Algorithms Introduction to Algorithms">
-<meta property="og:url" content="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/index.html">
+  <meta name="description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
+<meta property="og:type" content="website">
+<meta property="og:title" content="index">
+<meta property="og:url" content="http://tortoiselala.github.com/algorithm-course/tony/20181129/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
+<meta property="og:description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-16T03:50:20.065Z">
+<meta property="og:updated_time" content="2018-11-29T11:42:19.712Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Elementery Graph Algorithms Introduction to Algorithms">
-<meta name="twitter:description" content="图概念稀疏图：边的条数$|E|$远远小于$|V^2|$的图 稠密图：$|E|$接近$|V^2|$的图 图的表示对于图$G=(V,E)$，可以用两种标准方法表示。  邻接表 邻接矩阵  两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单">
+<meta name="twitter:title" content="index">
+<meta name="twitter:description" content="图广度优先搜索广度优先搜索是最简单的图算法之一，同样也是许多图算法的原型。 给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/algorithm-course/tony/20181129/"/>
 
 
 
@@ -136,7 +135,7 @@
   };
 </script>
 
-  <title>Elementery Graph Algorithms Introduction to Algorithms | tortoiselala</title>
+  <title>index | tortoiselala</title>
   
 
 
@@ -281,6 +280,34 @@
   
     
 
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
   
 
   
@@ -307,169 +334,127 @@
 
   <div id="posts" class="posts-expand">
     
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/16/Elementery-Graph-Algorithms-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
     
+    
+    <div class="post-block page">
       <header class="post-header">
 
+<h1 class="post-title" itemprop="name headline">index</h1>
+
+<div class="post-meta">
+  
+  
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
         
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
+          
+            
+          
         
-          <h1 class="post-title" itemprop="name headline">Elementery Graph Algorithms Introduction to Algorithms
-              
-            
-          </h1>
+      
+    
+      
+      
         
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2018-11-16 10:55:20 / Modified: 11:50:20" itemprop="dateCreated datePublished" datetime="2018-11-16T10:55:20+08:00">2018-11-16</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
           
             
           
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
+        
+      
     
+      
+      
+        
+          <li>20181129</li>
+        
+      
+    
+      
+      
+    
+  </ul>
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
+
+</div>
+
+</header>
 
       
       
-
       
-        <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>稀疏图：边的条数$|E|$远远小于$|V^2|$的图</p>
-<p>稠密图：$|E|$接近$|V^2|$的图</p>
-<h2 id="图的表示"><a href="#图的表示" class="headerlink" title="图的表示"></a>图的表示</h2><p>对于图$G=(V,E)$，可以用两种标准方法表示。</p>
-<ul>
-<li>邻接表</li>
-<li>邻接矩阵</li>
-</ul>
-<p>两种方式都可以表示无向图和有向图。在表示稀疏图时我们更趋向于使用邻接矩阵表示法，而在表示稠密图时邻接矩阵则更为方便。此外，邻接矩阵表示法允许我们快速判断两点之间是否有边相连。但是由于临界矩阵的建立要比邻接矩阵更为简单，所以大多数情况下，我们使用临界矩阵。</p>
-<h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2>
+      <div class="post-body">
+        
+        
+          <h1 id="图"><a href="#图" class="headerlink" title="图"></a>图</h1><h2 id="广度优先搜索"><a href="#广度优先搜索" class="headerlink" title="广度优先搜索"></a>广度优先搜索</h2><p><strong>广度优先搜索</strong>是最简单的图算法之一，同样也是许多图算法的原型。</p>
+<p>给定图$G = (V, E)$和一个可以识别的源结点$s$，广度优先搜索对图$G$中的边进行系统性探索来发现可以从源结点到达所有的结点。该算法能够计算从源结点到所有可到达结点的距离（最少的边数），同时生成一棵“广度优先搜索树”。生成的广度优先搜索树以结点$s$为根节点，在广度优先搜索树中从结点$s$到结点$v$的简单路径就是图$G$从结点$s$到结点$v$的“最短路径”，即包含最少边数的路径。该算法同时适用于有向图与无向图。</p>
+<p>广度优先搜索的基本思想就是：沿着已经发现的结点与未发现的结点的边界不断向外扩展，每次扩展一个单位，直到发现所有的结点。</p>
+<p>我们使用染色法来标记图中的定点，白色为未访问的，灰色为边界结点，黑色为已访问结点。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">BFFS(G, s)</span><br><span class="line"><span class="keyword">for</span> each vertex u in G.v - &#123;s&#125;</span><br><span class="line">	u.color = WHITE</span><br></pre></td></tr></table></figure>
+<h2 id="深度优先搜索"><a href="#深度优先搜索" class="headerlink" title="深度优先搜索"></a>深度优先搜索</h2><h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><p>最小生成树是这样一个问题，对于一个连通无向图，我们希望找到一个无环子集，既能够将所有的顶点连接起来，而且具有最小的权重（花费最小）。由于是无环的，并且连通所有的顶点，因此这样一个子集能够构成一棵树。我们称这样的树为$G$的生成树。求解该生成树的问题为<strong>最小生成树问题</strong>.</p>
+<p>我们将学习两种用于求解最小生成树的算法。$Kruskal$算法与$Prim$算法。这两种算法都是贪心算法，我们提到，贪心算法的每一步都在多步中选择，以寻求最优解。这种策略一般并不能找到全局最优的解决方案。但是，对于最小生成树问题来说，我们可以证明，某些贪心策略确实能够找到一棵权重最小的生成树。</p>
+<h3 id="最小生成树的形成"><a href="#最小生成树的形成" class="headerlink" title="最小生成树的形成"></a>最小生成树的形成</h3><p>一句话描述两个算法：</p>
+<p>$Kruskal$算法：每次从未选择边集中选择一条最小的边，且能够保证不形成环路，直到拥有了n-1条边。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">MST-KURSKAL(G, w)</span><br><span class="line">MST_TREE = NULL<span class="comment">//集合A初始为空</span></span><br><span class="line">sort the edges of G into nondecreasing order by weight w</span><br><span class="line"><span class="keyword">for</span> each vertex v in G, taken in nondecreasing order by weight</span><br><span class="line">	<span class="keyword">if</span> vertex is not visited and there is no cicle after add vertex in MST-SET and sum &lt; n -<span class="number">1</span></span><br><span class="line">		add vertex in MST-SET</span><br><span class="line"><span class="keyword">return</span> A</span><br></pre></td></tr></table></figure>
+<p>$Prim$算法：每次从任意的根节点出发，每次访问已访问结点相连边中的最小值，且能够保证不行成环路，直到拥有了n-1条边。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MST-PRIM(G, w)</span><br><span class="line">A = NULL//存储已访问过的边</span><br><span class="line">B = NULL//存储已访问过的点</span><br><span class="line">for each point of G</span><br><span class="line">	add vertex </span><br><span class="line">	vertex is belong to points in set B</span><br><span class="line">	vertex has the minisim weight</span><br><span class="line">	no circle in Tree</span><br><span class="line">	sum &lt; n - 1</span><br><span class="line">return A</span><br></pre></td></tr></table></figure>
+
+        
+      </div>
+      
+      
       
     </div>
-
     
 
-    
-    
-    
 
+  
+  
+  <ul class="breadcrumb">
     
-
-    
-
-    
-
-    <footer class="post-footer">
       
-        <div class="post-tags">
+      
+        
+          <li><a href="/algorithm-course/">ALGORITHM-COURSE</a></li>
           
-            <a href="/tags/Introduction-to-Algorithms/" rel="tag"># Introduction-to-Algorithms</a>
+            
           
-        </div>
+        
       
-
+    
       
       
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
+        
+          <li><a href="/algorithm-course/tony/">TONY</a></li>
+          
             
-              <a href="/2018/11/14/Single-source-Shortest-Path-Problem-Introduction-to-Algorithms/" rel="next" title="Single-source Shortest Path Problem  -Introduction-to-Algorithms">
-                <i class="fa fa-chevron-left"></i> Single-source Shortest Path Problem  -Introduction-to-Algorithms
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/18/next-index - 副本/" rel="prev" title="next-index">
-                next-index <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
+          
+        
       
-
+    
       
       
-    </footer>
-  </div>
-  
-  
-  
-  </article>
+        
+          <li>20181129</li>
+        
+      
+    
+      
+      
+    
+  </ul>
 
 
+    
+    
+    
   </div>
 
 
@@ -597,7 +582,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">1.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#概念"><span class="nav-number">1.1.</span> <span class="nav-text">概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#图的表示"><span class="nav-number">1.2.</span> <span class="nav-text">图的表示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.3.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.4.</span> <span class="nav-text">深度优先搜索</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#图"><span class="nav-number">1.</span> <span class="nav-text">图</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#广度优先搜索"><span class="nav-number">1.1.</span> <span class="nav-text">广度优先搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#深度优先搜索"><span class="nav-number">1.2.</span> <span class="nav-text">深度优先搜索</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#最小生成树"><span class="nav-number">1.3.</span> <span class="nav-text">最小生成树</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#最小生成树的形成"><span class="nav-number">1.3.1.</span> <span class="nav-text">最小生成树的形成</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
