@@ -117,7 +117,7 @@
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%202.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%201.jpg">
-<meta property="og:updated_time" content="2018-10-29T10:33:30.606Z">
+<meta property="og:updated_time" content="2018-12-10T20:01:14.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Optimal Binary Search Tree">
 <meta name="twitter:description" content="最优二叉搜索树（最优二叉查找树）问题描述给定一个$n$个不同关键字的已排序的序列K=（因此$ k_1&amp;lt;k_2&amp;lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所">
@@ -224,7 +224,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -232,7 +232,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
   </li>
         
         
@@ -248,7 +248,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
   </li>
         
         
@@ -256,7 +256,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
         
         
@@ -358,19 +358,31 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Created: 2018-10-29 14:53:48 / Modified: 18:33:30" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
+              <time title="Post created: 2018-10-29 14:53:48" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2018-12-11 04:01:14" itemprop="dateModified" datetime="2018-12-11T04:01:14+08:00">2018-12-11</time>
               
             
           </span>
@@ -403,7 +415,8 @@
       
 
       
-        <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列<script type="math/tex">K=<k_1, k_2, ..., k_n></script>（因此$ k_1&lt;k_2&lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。图a与图b显示了对于一个$n=5$个关键字的集合构造的两棵二叉搜索树。么个关键字$k_i$是一个内部节点，每个伪关键字$d_i$是一个叶节点。每次要么搜索成功（找到某个关键字$k_i$），要么失败（找到某个伪关键字$d_i$)，对于所有的关键字与伪关键字的频率满足如下公式：</p>
+        <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列<script type="math/tex">K=<k_1, k_2, ..., k_n></script>（因此$ k_1&lt;k_2&lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。</p>
+<p>图a与图b显示了对于一个$n=5$个关键字的集合构造的两棵二叉搜索树。么个关键字$k_i$是一个内部节点，每个伪关键字$d_i$是一个叶节点。每次要么搜索成功（找到某个关键字$k_i$），要么失败（找到某个伪关键字$d_i$)，对于所有的关键字与伪关键字的频率满足如下公式：</p>
 <script type="math/tex; mode=display">\sum_{i = 1}^{n}{p_i} + \sum_{i = 0}^{n}{q_i} = 1</script><center><p>
 <img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%202.jpg" width="25%" height="25%">
     Figure (a) 期望搜索代价为2.80的二叉搜索树</p><br>
@@ -539,10 +552,10 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -563,7 +576,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">23</span>
-                    <span class="site-state-item-name">posts</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -586,7 +599,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   
                 </div>
               
@@ -655,7 +668,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-tortoiselala"></i>
   </span>
@@ -669,7 +682,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
