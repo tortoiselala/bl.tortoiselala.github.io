@@ -108,17 +108,19 @@
 
 
 
-  <meta name="description" content="什么是Servlet">
+  <meta name="description" content="什么是ServletJava Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。 使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：  性能更优 Servl">
 <meta property="og:type" content="website">
 <meta property="og:title" content="servlet">
 <meta property="og:url" content="http://tortoiselala.github.com/java-notes/servlet/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="什么是Servlet">
+<meta property="og:description" content="什么是ServletJava Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。 使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：  性能更优 Servl">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-18T16:19:46.029Z">
+<meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg">
+<meta property="og:updated_time" content="2019-01-20T10:27:19.736Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="servlet">
-<meta name="twitter:description" content="什么是Servlet">
+<meta name="twitter:description" content="什么是ServletJava Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。 使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：  性能更优 Servl">
+<meta name="twitter:image" content="http://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg">
 
 
 
@@ -383,7 +385,56 @@
       <div class="post-body">
         
         
-          <h1 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h1>
+          <h1 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h1><p>Java Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。</p>
+<p>使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：</p>
+<ul>
+<li>性能更优</li>
+<li>Servlet在Web服务器的地址空间内执行。这样就不必要创建一个单独的进程来处理每个客户端请求。</li>
+<li>Servlet独立于平台，使用Java编写。</li>
+</ul>
+<h1 id="Servlet架构"><a href="#Servlet架构" class="headerlink" title="Servlet架构"></a>Servlet架构</h1><p><img src="http://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg" alt=""></p>
+<h1 id="Servlet任务"><a href="#Servlet任务" class="headerlink" title="Servlet任务"></a>Servlet任务</h1><p>Servlet主要执行以下任务：</p>
+<ul>
+<li>读取客户端（浏览器）发送的显式数据。包括HTML表单，或者其他形式的表单。</li>
+<li>读取客户端（浏览器）发送的隐式的HTTP请求数据。这包括cookie，媒体类型和浏览器能理解的压缩格式等。</li>
+<li>处理数据并生成结果。</li>
+<li>发送显式的数据（即文档）到客户端（浏览器）。</li>
+<li>发送隐式的HTTP响应到客户端（浏览器）。</li>
+</ul>
+<h1 id="Servlet包"><a href="#Servlet包" class="headerlink" title="Servlet包"></a>Servlet包</h1><p>Java Servlet是运行在带有Java Servlet规范的解释器的web服务器上的Java类。</p>
+<p>Servlet可以使用<em>Javax.servlet</em>和<em>java.servlet.http</em>包创建。</p>
+<h1 id="Servlet的生命周期"><a href="#Servlet的生命周期" class="headerlink" title="Servlet的生命周期"></a>Servlet的生命周期</h1><p>Servlet的生命周期可被定义为从创建直到毁灭的整个过程。以下是Servlet遵循的过程：</p>
+<ul>
+<li>Servlet通过调用<strong>init()</strong>方法进行初始化。</li>
+<li>Servlet通过调用<strong>service()</strong>方法来处理客户端的请求。</li>
+<li>Servlet通过调用<strong>destroy()</strong>方法终止服务</li>
+<li>最后，Servlet由JVM的垃圾回收器进行垃圾回收。</li>
+</ul>
+<h2 id="init-方法"><a href="#init-方法" class="headerlink" title="init()方法"></a>init()方法</h2><p>init方法被设计为只调用一次，它在第一次创建Servlet时被调用，在后续每次用户请求时不再调用。因此init方法是用于一次性初始化。</p>
+<p>Servlet创建于用户第一次调用对应于该Servlet的URl时，但是也可以指定Servlet在服务器第一次启动时被加载。</p>
+<p>当用户调用一个Servlet时，就会创建一个Servlet的实例，每一个用户请求都会产生一个新的线程，适当的时候移交给doGet或doPost方法。init方法简单的创建或加载一些数据，这些数据将被应用于Servlet的整个生命周期。</p>
+<p>init方法的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException</span>&#123;</span><br><span class="line">    <span class="comment">//To Do</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="service-方法"><a href="#service-方法" class="headerlink" title="service()方法"></a>service()方法</h2><p>service()方法是执行实际任务的主要方法。Servlet容器（即Web服务器）调用service()方法来处理来自客户端的请求，并把格式化的响应写回客户端。</p>
+<p>每当服务器接受到一个Servlet请求时，服务器会产生一个新的线程并调用服务。service()方法检查HTTP请求类型（GET, POST, PUT, DELETE等），并在适当的时候调用相应的方法。</p>
+<p>service()方法的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request, ServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>service()方法由容器调用，service方法在适当的时候调用doGet， doPost, doPut, doDelete等方法，所以service方法并不需要任何改动，只需要根据实际的请求重写doGet()或doPost()即可。</p>
+<p>doGet()和doPost()方法是每次服务请求中最常用的方法，下面是这两种方法的特征。</p>
+<h2 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet()方法"></a>doGet()方法</h2><p>GET请求来自于一个URL的正常请求，或者来自于一个未指定METHOD的HTML表单，它由doGet()方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost()方法"></a>doPost()方法</h2><p>POST方法来自于一个特别指定了METHOD为POST的HTML表单，它由doPost()方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request, HttpServletResponse response)</span> <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy()方法"></a>destroy()方法</h2><p>destroy()方法只会被调用一次，在Servlet生命周期时被调用。destroy()方法可以让Servlet关闭数据库连接，停止后台县城，把Cookie列表或点击计数器写入到磁盘中，并执行其他类似的清理活动。</p>
+<p>在调用destroy()方法之后，servlet对象被标记为垃圾回收。destroy方法定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="架构图"><a href="#架构图" class="headerlink" title="架构图"></a>架构图</h2><p>下面是一个典型的Servlet生命周期方案。</p>
+<ul>
+<li>第一个到达服务器的HTTP请求被委派到Servlet容器</li>
+<li>Servlet在调用service方法之前旧爱在Servlet。</li>
+<li>然后Servlet容器处理由多个线程产生的多个请求，每个线程执行一个单一的Servlet实例的service()方法。</li>
+</ul>
+<h1 id="javax-servlet"><a href="#javax-servlet" class="headerlink" title="javax.servlet"></a>javax.servlet</h1><h1 id="java-servlet-http"><a href="#java-servlet-http" class="headerlink" title="java.servlet.http"></a>java.servlet.http</h1>
         
       </div>
       
@@ -550,7 +601,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Servlet"><span class="nav-number">1.</span> <span class="nav-text">什么是Servlet</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Servlet"><span class="nav-number">1.</span> <span class="nav-text">什么是Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet架构"><span class="nav-number">2.</span> <span class="nav-text">Servlet架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet任务"><span class="nav-number">3.</span> <span class="nav-text">Servlet任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet包"><span class="nav-number">4.</span> <span class="nav-text">Servlet包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet的生命周期"><span class="nav-number">5.</span> <span class="nav-text">Servlet的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init-方法"><span class="nav-number">5.1.</span> <span class="nav-text">init()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-方法"><span class="nav-number">5.2.</span> <span class="nav-text">service()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doGet-方法"><span class="nav-number">5.3.</span> <span class="nav-text">doGet()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doPost-方法"><span class="nav-number">5.4.</span> <span class="nav-text">doPost()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destroy-方法"><span class="nav-number">5.5.</span> <span class="nav-text">destroy()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构图"><span class="nav-number">5.6.</span> <span class="nav-text">架构图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javax-servlet"><span class="nav-number">6.</span> <span class="nav-text">javax.servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-servlet-http"><span class="nav-number">7.</span> <span class="nav-text">java.servlet.http</span></a></li></ol></div>
             
 
           </div>
