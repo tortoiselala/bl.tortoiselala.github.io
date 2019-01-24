@@ -116,7 +116,7 @@
 <meta property="og:description" content="什么是ServletJava Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。 使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：  性能更优 Servl">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg">
-<meta property="og:updated_time" content="2019-01-23T13:04:47.847Z">
+<meta property="og:updated_time" content="2019-01-24T10:18:12.877Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="servlet">
 <meta name="twitter:description" content="什么是ServletJava Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。 使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：  性能更优 Servl">
@@ -223,7 +223,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -231,7 +231,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
   </li>
         
         
@@ -247,7 +247,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
         
         
@@ -255,7 +255,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
         
         
@@ -432,10 +432,22 @@
 <ul>
 <li>第一个到达服务器的HTTP请求被委派到Servlet容器</li>
 <li>Servlet在调用service方法之前旧爱在Servlet。</li>
-<li>然后Servlet容器处理由多个线程产生的多个请求，每个线程执行一个单一的Servlet实例的service()方法。</li>
+<li>然后Servlet容器处理由多个线程产生的多个请求，每个线程执行一个单一的Servlet实例的dfauservice()方法。</li>
 </ul>
 <h1 id="Servlet实例"><a href="#Servlet实例" class="headerlink" title="Servlet实例"></a>Servlet实例</h1><p>Servlet是服务HTTP请求并实现javax.servlet.Servlet接口的Java类，通常扩展javax.servlet.http.HttpServlet，并实现Servlet接口的抽象类来专门处理HTTP请求。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> io.totortoiselala.example;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.io.IOException;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> javax.servlet.ServletException;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.annotation.WebServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServlet;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletRequest;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.HttpServletResponse;</span><br><span class="line"></span><br><span class="line"><span class="meta">@WebServlet</span>(<span class="string">"/SayHello"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SayHello</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line">	<span class="comment">/**</span></span><br><span class="line"><span class="comment">	 * </span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> serialVersionUID = <span class="number">1651496083052046987L</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">private</span> String helloString;</span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 * @see javax.servlet.http.HttpServlet#doGet(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		resp.setContentType(<span class="string">"text/html"</span>);</span><br><span class="line">		resp.getWriter().print(<span class="string">"&lt;h1&gt;Hello&lt;/h1&gt;"</span>);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * @see javax.servlet.http.HttpServlet#doPost(javax.servlet.http.HttpServletRequest, javax.servlet.http.HttpServletResponse)</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest req, HttpServletResponse resp)</span> <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.doGet(req, resp);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/*</span></span><br><span class="line"><span class="comment">	 * @see javax.servlet.GenericServlet#destroy()</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">super</span>.destroy();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">/* </span></span><br><span class="line"><span class="comment">	 * @see javax.servlet.GenericServlet#init()</span></span><br><span class="line"><span class="comment">	 */</span></span><br><span class="line">	<span class="meta">@Override</span></span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">		<span class="keyword">this</span>.helloString = <span class="string">"Hello"</span>;</span><br><span class="line">		<span class="keyword">super</span>.init();</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="Servlet表单数据"><a href="#Servlet表单数据" class="headerlink" title="Servlet表单数据"></a>Servlet表单数据</h1><h2 id="GET方法"><a href="#GET方法" class="headerlink" title="GET方法"></a>GET方法</h2><p>GET方法向页面请求发送已编码的用户信息。页面和已编码的信息中间用？分割，例如：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://tortoiselala.github.io/hello?key1=value&amp;key2=value2</span><br></pre></td></tr></table></figure>
+<p>GET方法是默认的从浏览器向Web服务器传递信息的方法，它会产生一个很长的字符串，出现在浏览器的地址中。GET方法不能用于发送敏感信息，例如密码等。GET方法有大小限制：请求字符串中最多只能有1024个字符。</p>
+<p>这些信息使用QUERY_STRING头传递，并可以通过QUERY_STRING环境变量访问，Servlet使用doGet()方法处理这种类型的请求。</p>
+<h2 id="POST方法"><a href="#POST方法" class="headerlink" title="POST方法"></a>POST方法</h2><p>向后台传递信息的另一个比较可靠的办法是使用POST方法。POST方法打包信息的方式与GET方法基本相同，但是POST方法不是把信息作为URL中?之后的文本字符串进行发送，而是把这些信息作为一个单独的消息。消息以标准输出的形式传到后台程序，可以解析这些标准输出。Servlet使用doPost()方法处理这种类型的请求。</p>
+<h2 id="使用Servlet读取表单数据"><a href="#使用Servlet读取表单数据" class="headerlink" title="使用Servlet读取表单数据"></a>使用Servlet读取表单数据</h2><p>Servlet处理表单数据，这些数据会根据不同的情况使用不同的方法自动解析：</p>
+<ul>
+<li>getParameter()，使用req.getParameter()方法来获取表单参数的值。</li>
+<li>getParameterValues()，如果参数出现一次以上，则调用该方法，并返回多个值，例如复选框</li>
+<li>getParameterNames()，该方法可以获取当前请求中所有参数的完整列表。</li>
+</ul>
+<h2 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h2><h3 id="使用GET获取数据"><a href="#使用GET获取数据" class="headerlink" title="使用GET获取数据"></a>使用GET获取数据</h3><p>​     </p>
 <h1 id="javax-servlet"><a href="#javax-servlet" class="headerlink" title="javax.servlet"></a>javax.servlet</h1><h1 id="java-servlet-http"><a href="#java-servlet-http" class="headerlink" title="java.servlet.http"></a>java.servlet.http</h1>
         
       </div>
@@ -507,10 +519,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -531,7 +543,7 @@
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">23</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -554,7 +566,7 @@
                       
                     
                     <span class="site-state-item-count">4</span>
-                    <span class="site-state-item-name">Tags</span>
+                    <span class="site-state-item-name">tags</span>
                   
                 </div>
               
@@ -603,7 +615,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Servlet"><span class="nav-number">1.</span> <span class="nav-text">什么是Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet架构"><span class="nav-number">2.</span> <span class="nav-text">Servlet架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet任务"><span class="nav-number">3.</span> <span class="nav-text">Servlet任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet包"><span class="nav-number">4.</span> <span class="nav-text">Servlet包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet的生命周期"><span class="nav-number">5.</span> <span class="nav-text">Servlet的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init-方法"><span class="nav-number">5.1.</span> <span class="nav-text">init()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-方法"><span class="nav-number">5.2.</span> <span class="nav-text">service()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doGet-方法"><span class="nav-number">5.3.</span> <span class="nav-text">doGet()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doPost-方法"><span class="nav-number">5.4.</span> <span class="nav-text">doPost()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destroy-方法"><span class="nav-number">5.5.</span> <span class="nav-text">destroy()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构图"><span class="nav-number">5.6.</span> <span class="nav-text">架构图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet实例"><span class="nav-number">6.</span> <span class="nav-text">Servlet实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javax-servlet"><span class="nav-number">7.</span> <span class="nav-text">javax.servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-servlet-http"><span class="nav-number">8.</span> <span class="nav-text">java.servlet.http</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#什么是Servlet"><span class="nav-number">1.</span> <span class="nav-text">什么是Servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet架构"><span class="nav-number">2.</span> <span class="nav-text">Servlet架构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet任务"><span class="nav-number">3.</span> <span class="nav-text">Servlet任务</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet包"><span class="nav-number">4.</span> <span class="nav-text">Servlet包</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet的生命周期"><span class="nav-number">5.</span> <span class="nav-text">Servlet的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#init-方法"><span class="nav-number">5.1.</span> <span class="nav-text">init()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#service-方法"><span class="nav-number">5.2.</span> <span class="nav-text">service()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doGet-方法"><span class="nav-number">5.3.</span> <span class="nav-text">doGet()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#doPost-方法"><span class="nav-number">5.4.</span> <span class="nav-text">doPost()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#destroy-方法"><span class="nav-number">5.5.</span> <span class="nav-text">destroy()方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#架构图"><span class="nav-number">5.6.</span> <span class="nav-text">架构图</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet实例"><span class="nav-number">6.</span> <span class="nav-text">Servlet实例</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Servlet表单数据"><span class="nav-number">7.</span> <span class="nav-text">Servlet表单数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GET方法"><span class="nav-number">7.1.</span> <span class="nav-text">GET方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#POST方法"><span class="nav-number">7.2.</span> <span class="nav-text">POST方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Servlet读取表单数据"><span class="nav-number">7.3.</span> <span class="nav-text">使用Servlet读取表单数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#例子"><span class="nav-number">7.4.</span> <span class="nav-text">例子</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用GET获取数据"><span class="nav-number">7.4.1.</span> <span class="nav-text">使用GET获取数据</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#javax-servlet"><span class="nav-number">8.</span> <span class="nav-text">javax.servlet</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java-servlet-http"><span class="nav-number">9.</span> <span class="nav-text">java.servlet.http</span></a></li></ol></div>
             
 
           </div>
@@ -637,7 +649,7 @@
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
