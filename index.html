@@ -218,7 +218,7 @@
           
           <li class="menu-item menu-item-home menu-item-active">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Accueil</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
   </li>
         
         
@@ -226,7 +226,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />A propos</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
   </li>
         
         
@@ -242,7 +242,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
   </li>
         
         
@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
   </li>
         
         
@@ -348,19 +348,31 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-11-25 03:07:26 / Updated at: 11:30:46" itemprop="dateCreated datePublished" datetime="2018-11-25T03:07:26+08:00">2018-11-25</time>
+              <time title="Post created: 2018-11-25 03:07:26" itemprop="dateCreated datePublished" datetime="2018-11-25T03:07:26+08:00">2018-11-25</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Updated at: 2019-01-31 19:59:17" itemprop="dateModified" datetime="2019-01-31T19:59:17+08:00">2019-01-31</time>
               
             
           </span>
@@ -394,14 +406,13 @@
 
       
         
-          
-          Arrays.sort() method in Java$Java$中提供的sort静态函数非常强大，它会以最优的方法对一个输入序列进行排序。下面这段话是源码中的说明：
-123456789101112131415161718/*     * Sorting methods. Note that all public "sort" methods take the     * same form: Performing argument checks if necessary, and then     * expanding arguments into those required for 
-          ...
+          <h1 id="Arrays-sort-method-in-Java"><a href="#Arrays-sort-method-in-Java" class="headerlink" title="Arrays.sort() method in Java"></a>Arrays.sort() method in Java</h1><p>$Java$中提供的sort静态函数非常强大，它会以最优的方法对一个输入序列进行排序。下面这段话是源码中的说明：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">     * Sorting methods. Note that all public "sort" methods take the</span></span><br><span class="line"><span class="comment">     * same form: Performing argument checks if necessary, and then</span></span><br><span class="line"><span class="comment">     * expanding arguments into those required for the internal</span></span><br><span class="line"><span class="comment">     * implementation methods residing in other package-private</span></span><br><span class="line"><span class="comment">     * classes (except for legacyMergeSort, included in this class).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sorts the specified array into ascending numerical order.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;Implementation note: The sorting algorithm is a Dual-Pivot Quicksort</span></span><br><span class="line"><span class="comment">     * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm</span></span><br><span class="line"><span class="comment">     * offers O(n log(n)) performance on many data sets that cause other</span></span><br><span class="line"><span class="comment">     * quicksorts to degrade to quadratic performance, and is typically</span></span><br><span class="line"><span class="comment">     * faster than traditional (one-pivot) Quicksort implementations.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
+<p>这里提到在排序算法中使用到了$Dual-Pivot\, Quicksort$(双基准快速排序)，该算法由$Vladimir\, Yaroslavskiy$于2009年开发出来。这个算法对于大多数的数据集都能够提供$O(n\, log(n))$的运行时间，相比较而言比经典的快速排序要快。<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/25/Arrays-sort-in-Java/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -495,7 +506,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -519,7 +530,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-11-11 01:46:08" itemprop="dateModified" datetime="2018-11-11T01:46:08+08:00">2018-11-11</time>
+                <time title="Updated at: 2019-01-31 19:58:50" itemprop="dateModified" datetime="2019-01-31T19:58:50+08:00">2019-01-31</time>
               
             
           </span>
@@ -554,15 +565,8 @@
       
         
           
+            <a id="more"></a>
           
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/11/10/计算机网络-运输层/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -653,7 +657,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -677,7 +681,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-11-15 08:49:12" itemprop="dateModified" datetime="2018-11-15T08:49:12+08:00">2018-11-15</time>
+                <time title="Updated at: 2019-01-31 19:58:54" itemprop="dateModified" datetime="2019-01-31T19:58:54+08:00">2019-01-31</time>
               
             
           </span>
@@ -711,25 +715,43 @@
 
       
         
-          
-          前言：
-
-两种用于构造网络层分组交付的方法，即数据报模式和虚电路模式
-编址
-网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。
-网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。
-网络地址转换($NAT$)、数据报分段、因特网控制报文协议（$ICMP$）和$IPv6$。
-网络层的路由选择功能：链路状态算法和距离矢量算法。
-
-概述
-网络层实现的是主机与主机之间的通信。
-
-网络层在计算机网络中
-          ...
+          <p>前言：</p>
+<ul>
+<li>两种用于构造网络层分组交付的方法，即<strong>数据报模式</strong>和<strong>虚电路模式</strong></li>
+<li>编址</li>
+<li>网络层的<strong>转发</strong>($forwarding$)功能和<strong>路由选择</strong>($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。</li>
+<li>网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。</li>
+<li>网络地址转换($NAT$)、数据报分段、因特网控制报文协议（$ICMP$）和$IPv6$。</li>
+<li>网络层的路由选择功能：链路状态算法和距离矢量算法。</li>
+</ul>
+<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
+<li><p>网络层实现的是主机与主机之间的通信。</p>
+</li>
+<li><p>网络层在计算机网络中为运输层提供支持：</p>
+<ul>
+<li><p>运输层实现进程到进程的通行</p>
+</li>
+<li><p>运输层功能的实现依赖于网络层提供的服务</p>
+</li>
+</ul>
+</li>
+<li><p>在数据报文传输的路径上，每一台分组交换机都需要实现网络层以完成数据分组交付</p>
+</li>
+<li><p>网络层的主要功能：</p>
+<ul>
+<li><p>在全局范围内为主机间通信选路，选路的结果反映为分组交换机上的转发表。</p>
+</li>
+<li><p>分组交换机上的网络层根据转发表以及分组头部信息，将分组向适当的链路进行转发。</p>
+</li>
+<li><p>对于面向连接的网络层服务，提供建立连接的功能。</p>
+</li>
+</ul>
+</li>
+</ul>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/11/08/计算机网络-网络层/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -823,7 +845,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -847,7 +869,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-25 04:16:56" itemprop="dateModified" datetime="2018-10-25T04:16:56+08:00">2018-10-25</time>
+                <time title="Updated at: 2019-01-31 19:59:33" itemprop="dateModified" datetime="2019-01-31T19:59:33+08:00">2019-01-31</time>
               
             
           </span>
@@ -882,15 +904,8 @@
       
         
           
+            <a id="more"></a>
           
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/24/java-thread/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -981,7 +996,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1005,7 +1020,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-07 00:27:28" itemprop="dateModified" datetime="2018-10-07T00:27:28+08:00">2018-10-07</time>
+                <time title="Updated at: 2019-01-31 19:59:29" itemprop="dateModified" datetime="2019-01-31T19:59:29+08:00">2019-01-31</time>
               
             
           </span>
@@ -1040,15 +1055,8 @@
       
         
           
+            <a id="more"></a>
           
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/10/06/java-final-methond-and-java-inline-function/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1139,7 +1147,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1163,7 +1171,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-04 02:25:46" itemprop="dateModified" datetime="2018-10-04T02:25:46+08:00">2018-10-04</time>
+                <time title="Updated at: 2019-01-31 19:59:58" itemprop="dateModified" datetime="2019-01-31T19:59:58+08:00">2019-01-31</time>
               
             
           </span>
@@ -1197,14 +1205,16 @@
 
       
         
-          
-          Question DescriptionA car travels from a starting position to a destination which is target miles east of the starting position.
-Along the way, there are gas stations.  Each station[i] represents a gas station that is station[i][0] miles east of the starting position, and has station[i][1] liters of
-          ...
+          <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p>
+<p>Along the way, there are gas stations.  Each <code>station[i]</code> represents a gas station that is <code>station[i][0]</code> miles east of the starting position, and has <code>station[i][1]</code> liters of gas.</p>
+<p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.</p>
+<p>When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p>
+<p>What is the least number of refueling stops the car must make in order to reach its destination?  If it cannot reach the destination, return <code>-1</code>.</p>
+<p>Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there.  If the car reaches the destination with 0 fuel left, it is still considered to have arrived.</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1298,7 +1308,7 @@ Along the way, there are gas stations.  Each station[i] represents a gas station
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1322,7 +1332,7 @@ Along the way, there are gas stations.  Each station[i] represents a gas station
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-03 06:00:48" itemprop="dateModified" datetime="2018-10-03T06:00:48+08:00">2018-10-03</time>
+                <time title="Updated at: 2019-01-31 19:59:52" itemprop="dateModified" datetime="2019-01-31T19:59:52+08:00">2019-01-31</time>
               
             
           </span>
@@ -1356,15 +1366,17 @@ Along the way, there are gas stations.  Each station[i] represents a gas station
 
       
         
-          
-          Question DescriptionWe have a string S of lowercase letters, and an integer array shifts.
-Call the shift of a letter, the next letter in the alphabet, (wrapping around so that &#39;z&#39; becomes &#39;a&#39;). 
-For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;, and shif
-          ...
+          <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>We have a string <code>S</code> of lowercase letters, and an integer array <code>shifts</code>.</p>
+<p>Call the <em>shift</em> of a letter, the next letter in the alphabet, (wrapping around so that <code>&#39;z&#39;</code> becomes <code>&#39;a&#39;</code>). </p>
+<p>For example, <code>shift(&#39;a&#39;) = &#39;b&#39;</code>, <code>shift(&#39;t&#39;) = &#39;u&#39;</code>, and <code>shift(&#39;z&#39;) = &#39;a&#39;</code>.</p>
+<p>Now for each <code>shifts[i] = x</code>, we want to shift the first <code>i+1</code> letters of <code>S</code>, <code>x</code> times.</p>
+<p>Return the final string after all such shifts to <code>S</code> are applied.</p>
+<p><strong>Example 1:</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">Output: &quot;rpl&quot;</span><br><span class="line">Explanation: </span><br><span class="line">We start with &quot;abc&quot;.</span><br><span class="line">After shifting the first 1 letters of S by 3, we have &quot;dbc&quot;.</span><br><span class="line">After shifting the first 2 letters of S by 5, we have &quot;igc&quot;.</span><br><span class="line">After shifting the first 3 letters of S by 9, we have &quot;rpl&quot;, the answer.</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/02/leetcode-problem-848-Shifting-Letters/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1458,7 +1470,7 @@ For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;,
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1482,7 +1494,7 @@ For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;,
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-10-02 19:55:24" itemprop="dateModified" datetime="2018-10-02T19:55:24+08:00">2018-10-02</time>
+                <time title="Updated at: 2019-01-31 19:59:41" itemprop="dateModified" datetime="2019-01-31T19:59:41+08:00">2019-01-31</time>
               
             
           </span>
@@ -1516,13 +1528,13 @@ For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;,
 
       
         
-          
-          Question DescriptionGiven n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such that the two endpoints of line i is at (i, ai) and (i, 0). Find two lines, which together with x-axis forms a container, such that the container cont
-          ...
+          <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-暴力破解"><a href="#Approach-1-暴力破解" class="headerlink" title="Approach 1: 暴力破解"></a>Approach 1: 暴力破解</h3><p>尝试遍历所有的解法。时间复杂度为$ O(n^2) $ </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxWater = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> tmp = (j - i) * Integer.min(height[i], height[j]);</span><br><span class="line">				<span class="keyword">if</span> (maxWater &lt; tmp) &#123;</span><br><span class="line">					maxWater = tmp;</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j + <span class="string">", tmp = "</span> + tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxWater;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/10/01/leetcode-problem-11-Container-with-Most-Water/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1616,7 +1628,7 @@ For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;,
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1675,19 +1687,12 @@ For example, shift(&#39;a&#39;) = &#39;b&#39;, shift(&#39;t&#39;) = &#39;u&#39;,
       
         
           
-          what can you see here?
+            <center>what can you see here?</center>
 
-javadoc and my notes
-a database nots
+<p><a href="https://tortoiselala.github.io/javadoc-and-notes/" target="_blank" rel="noopener">javadoc and my notes</a></p>
+<p><a href="https://tortoiselala.github.io/database/" target="_blank" rel="noopener">a database nots</a></p>
 
           
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/09/19/index/#more" rel="contents">
-              Lire la suite &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
         
       
     </div>
@@ -1778,7 +1783,7 @@ a database nots
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posté le</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
 
               
@@ -1802,7 +1807,7 @@ a database nots
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-09-25 06:39:48" itemprop="dateModified" datetime="2018-09-25T06:39:48+08:00">2018-09-25</time>
+                <time title="Updated at: 2019-01-31 19:59:07" itemprop="dateModified" datetime="2019-01-31T19:59:07+08:00">2019-01-31</time>
               
             
           </span>
@@ -1836,25 +1841,13 @@ a database nots
 
       
         
-          
-          database
-数据库学习笔记学习准备安装12345sudo apt-get install mysql-seversudo apt-get install mysql-clientsudo apt install libmysqlclient-dev
-登录安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码123456shell&gt;mysql -u root -p#-u为用户选项后加用户名#-p为密码选项表示该用户需要密码回车之后会出现密码输入提示mysql&gt;#输入密码正确后进入mysql
-linux平台下MySQL安装目录
-
-
-
-文件夹
-文件夹内容
-
-
-
-
-          ...
+          <p>database</p>
+<h1 id="数据库学习笔记"><a href="#数据库学习笔记" class="headerlink" title="数据库学习笔记"></a>数据库学习笔记</h1><h2 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-sever</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line"></span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/19/数据库笔记/#more" rel="contents">
-              Lire la suite &raquo;
+              Weiterlesen &raquo;
             </a>
           </div>
           <!--/noindex-->
@@ -1938,7 +1931,7 @@ linux平台下MySQL安装目录
                   <a href="/archives/">
                 
                     <span class="site-state-item-count">10</span>
-                    <span class="site-state-item-name">articles</span>
+                    <span class="site-state-item-name">Artikel</span>
                   </a>
                 </div>
               
@@ -1959,7 +1952,7 @@ linux平台下MySQL安装目录
                       
                     
                     <span class="site-state-item-count">3</span>
-                    <span class="site-state-item-name">tags</span>
+                    <span class="site-state-item-name">Tags</span>
                   </a>
                 </div>
               
@@ -2026,7 +2019,7 @@ linux平台下MySQL安装目录
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2034,7 +2027,7 @@ linux平台下MySQL安装目录
 
 
 
-  <div class="theme-info">Thème – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Muse</a> v6.4.1</div>
 
 
 
