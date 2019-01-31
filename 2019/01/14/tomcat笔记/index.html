@@ -108,21 +108,25 @@
 
 
 
-  <meta property="og:type" content="article">
-<meta property="og:title" content="java thread">
-<meta property="og:url" content="http://tortoiselala.github.com/2018/10/24/java-thread/index.html">
+  <meta name="description" content="tomcat的目录结构*表示安装版本     路径 用途     /etc/tomcat* 配置文件。包括： tomcat-users.xml (defines users allowed to use administration tools and their roles), server.xml (Main Tomcat configuration file), catalina.polic">
+<meta name="keywords" content="java,java web,tomcat">
+<meta property="og:type" content="article">
+<meta property="og:title" content="tomcat">
+<meta property="og:url" content="http://tortoiselala.github.com/2019/01/14/tomcat笔记/index.html">
 <meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="tomcat的目录结构*表示安装版本     路径 用途     /etc/tomcat* 配置文件。包括： tomcat-users.xml (defines users allowed to use administration tools and their roles), server.xml (Main Tomcat configuration file), catalina.polic">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-01-31T11:59:33.048Z">
+<meta property="og:updated_time" content="2019-01-31T12:14:55.607Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="java thread">
+<meta name="twitter:title" content="tomcat">
+<meta name="twitter:description" content="tomcat的目录结构*表示安装版本     路径 用途     /etc/tomcat* 配置文件。包括： tomcat-users.xml (defines users allowed to use administration tools and their roles), server.xml (Main Tomcat configuration file), catalina.polic">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/2018/10/24/java-thread/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/2019/01/14/tomcat笔记/"/>
 
 
 
@@ -132,7 +136,7 @@
   };
 </script>
 
-  <title>java thread | tortoiselala</title>
+  <title>tomcat | tortoiselala</title>
   
 
 
@@ -309,7 +313,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/java-thread/">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/tomcat笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tortoiselala">
@@ -326,7 +330,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">java thread
+          <h1 class="post-title" itemprop="name headline">tomcat
               
             
           </h1>
@@ -351,7 +355,7 @@
                 
               
 
-              <time title="Post created: 2018-10-24 18:34:12" itemprop="dateCreated datePublished" datetime="2018-10-24T18:34:12+08:00">2018-10-24</time>
+              <time title="Post created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
             
 
             
@@ -368,7 +372,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2019-01-31 19:59:33" itemprop="dateModified" datetime="2019-01-31T19:59:33+08:00">2019-01-31</time>
+                <time title="Updated at: 2019-01-31 20:14:55" itemprop="dateModified" datetime="2019-01-31T20:14:55+08:00">2019-01-31</time>
               
             
           </span>
@@ -401,7 +405,44 @@
       
 
       
-        <a id="more"></a>
+        <p>tomcat的目录结构*表示安装版本</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>/etc/tomcat*</code></td>
+<td>配置文件。包括： <code>tomcat-users.xml</code> (defines users allowed to use administration tools and their roles), <code>server.xml</code> (Main Tomcat configuration file), <code>catalina.policy</code> (security policies configuration file)</td>
+</tr>
+<tr>
+<td><code>/usr/share/tomcat*</code></td>
+<td>Tomcat 主文件夹。包括脚本文件及到其它文件夹的链接</td>
+</tr>
+<tr>
+<td><code>/usr/share/java/tomcat*</code></td>
+<td>Tomcat 的 Java 库（jar文件）</td>
+</tr>
+<tr>
+<td><code>/var/log/tomcat*</code></td>
+<td><strong>不</strong>被 <code>systemd</code> 记录的日志文件 (参阅 <a href="https://wiki.archlinux.org/index.php/Tomcat_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">#日志记录</a>#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95))</td>
+</tr>
+<tr>
+<td><code>/var/lib/tomcat*/webapps</code></td>
+<td>Tomcat 部署你的 Web 程序的地方</td>
+</tr>
+<tr>
+<td><code>/var/tmp/tomcat*</code></td>
+<td>Tomcat 存储你的 Web 程序数据的地方</td>
+</tr>
+</tbody>
+</table>
+</div>
+<a id="more"></a>
       
     </div>
 
@@ -419,6 +460,16 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/java-web/" rel="tag"># java web</a>
+          
+            <a href="/tags/tomcat/" rel="tag"># tomcat</a>
+          
+        </div>
+      
 
       
       
@@ -428,8 +479,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/06/java-final-methond-and-java-inline-function/" rel="next" title="java final方法与java内联函数">
-                <i class="fa fa-chevron-left"></i> java final方法与java内联函数
+              <a href="/2019/01/14/java web 简介/" rel="next" title="java web 简介">
+                <i class="fa fa-chevron-left"></i> java web 简介
               </a>
             
           </div>
@@ -438,8 +489,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/08/计算机网络-网络层/" rel="prev" title="计算机网络-网络层">
-                计算机网络-网络层 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/01/14/jsp笔记/" rel="prev" title="jsp">
+                jsp <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -751,6 +802,30 @@
   
   
 
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      },
+      TeX: {equationNumbers: { autoNumber: "AMS" }}
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
   
 
 
