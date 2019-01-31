@@ -403,12 +403,16 @@
       
         
           
-            <h1 id="Arrays-sort-method-in-Java"><a href="#Arrays-sort-method-in-Java" class="headerlink" title="Arrays.sort() method in Java"></a>Arrays.sort() method in Java</h1><p>$Java$中提供的sort静态函数非常强大，它会以最优的方法对一个输入序列进行排序。下面这段话是源码中的说明：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">     * Sorting methods. Note that all public "sort" methods take the</span></span><br><span class="line"><span class="comment">     * same form: Performing argument checks if necessary, and then</span></span><br><span class="line"><span class="comment">     * expanding arguments into those required for the internal</span></span><br><span class="line"><span class="comment">     * implementation methods residing in other package-private</span></span><br><span class="line"><span class="comment">     * classes (except for legacyMergeSort, included in this class).</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * Sorts the specified array into ascending numerical order.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * &lt;p&gt;Implementation note: The sorting algorithm is a Dual-Pivot Quicksort</span></span><br><span class="line"><span class="comment">     * by Vladimir Yaroslavskiy, Jon Bentley, and Joshua Bloch. This algorithm</span></span><br><span class="line"><span class="comment">     * offers O(n log(n)) performance on many data sets that cause other</span></span><br><span class="line"><span class="comment">     * quicksorts to degrade to quadratic performance, and is typically</span></span><br><span class="line"><span class="comment">     * faster than traditional (one-pivot) Quicksort implementations.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     */</span></span><br></pre></td></tr></table></figure>
-<p>这里提到在排序算法中使用到了$Dual-Pivot\, Quicksort$(双基准快速排序)，该算法由$Vladimir\, Yaroslavskiy$于2009年开发出来。这个算法对于大多数的数据集都能够提供$O(n\, log(n))$的运行时间，相比较而言比经典的快速排序要快。</p>
-<p>在经典的快速排序中，我们使用的是$one\, pivot$.传统算法告诉我们，衡量算法时间复杂度是基于比较次数的，但是随着</p>
-
-          
+          Arrays.sort() method in Java$Java$中提供的sort静态函数非常强大，它会以最优的方法对一个输入序列进行排序。下面这段话是源码中的说明：
+123456789101112131415161718/*     * Sorting methods. Note that al
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/25/Arrays-sort-in-Java/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -558,8 +562,15 @@
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/10/计算机网络-运输层/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -709,180 +720,19 @@
       
         
           
-            <p>前言：</p>
-<ul>
-<li>两种用于构造网络层分组交付的方法，即<strong>数据报模式</strong>和<strong>虚电路模式</strong></li>
-<li>编址</li>
-<li>网络层的<strong>转发</strong>($forwarding$)功能和<strong>路由选择</strong>($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的地节点所采用的路径。</li>
-<li>网际协议($ IP $)。网络层编址和$IPv4$的数据报格式。</li>
-<li>网络地址转换($NAT$)、数据报分段、因特网控制报文协议（$ICMP$）和$IPv6$。</li>
-<li>网络层的路由选择功能：链路状态算法和距离矢量算法。</li>
-</ul>
-<h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><ul>
-<li><p>网络层实现的是主机与主机之间的通信。</p>
-</li>
-<li><p>网络层在计算机网络中为运输层提供支持：</p>
-<ul>
-<li><p>运输层实现进程到进程的通行</p>
-</li>
-<li><p>运输层功能的实现依赖于网络层提供的服务</p>
-</li>
-</ul>
-</li>
-<li><p>在数据报文传输的路径上，每一台分组交换机都需要实现网络层以完成数据分组交付</p>
-</li>
-<li><p>网络层的主要功能：</p>
-<ul>
-<li><p>在全局范围内为主机间通信选路，选路的结果反映为分组交换机上的转发表。</p>
-</li>
-<li><p>分组交换机上的网络层根据转发表以及分组头部信息，将分组向适当的链路进行转发。</p>
-</li>
-<li><p>对于面向连接的网络层服务，提供建立连接的功能。</p>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="转发和路由选择"><a href="#转发和路由选择" class="headerlink" title="转发和路由选择"></a>转发和路由选择</h2><p>网络层提供的功能看似极为简单：将分组从一台发送主机移动到一台接收主机。为此，需要两种重要的网络层功能：</p>
-<ul>
-<li><p>转发。当一个分组到达路由器的一条输入链路时，路由器必须将改分组移动到合适的输出链路。</p>
-</li>
-<li><p>路由选择。当分组从发送方流向接收方时，网络层必须决定这些分组所采用的路由或路径。计算这些路径的算法被称为路由选择算法$(rounting \, algorithm)$。</p>
-</li>
-</ul>
-<p>每台路由器都有一张<strong>转发表</strong>($forwardning \, table$)。转发表是由路由选择算法计算得出的。路由选择算法可能是集中式的，或是分布式的</p>
-<p>分组交换机是指一台通用分组交换设备。它根据分组首部字段中的值，从输入链路到输出链路接口转移分组。某些分组交换机称为<strong>链路层交换机</strong>$(link-layer  switches)$，基于链路层字段中的值做转发决定。其他分组交换机称为<strong>路由器</strong>(router)。</p>
-<p>网络层除了转发和路由选择两个重要功能外，还有第三个重要的功能，即<strong>连接建立</strong>（$connection \, setup$）。</p>
-<h1 id="虚电路和数据报网络"><a href="#虚电路和数据报网络" class="headerlink" title="虚电路和数据报网络"></a>虚电路和数据报网络</h1><p>在运输层中，每个应用程序都能够选择两种服务：UDP，一种无连接的服务；TCP，一种面向连接的服务。类似的，网络层也能够在两台主机间提供无连接服务或者连接服务。网络层的连接和无连接服务在许多方面与运输层的面向连接和无连接服务类似。但是虽然运输层与网络层在这方面拥有相似性，但是，依然存在巨大差异：</p>
-<ul>
-<li>在网络层中，这种服务是由网络层想运输层提供的主机到主机的服务。在运输层，这些服务则是运输层向应用层提供的进程到进程的服务。</li>
-<li>至今为止的所有主要的计算机网络体系结构中，网络层或者提供了主机到主机之间的无连接服务，或者提供了主机到主机之间的有连接服务，但是不同时提供这两种服务。提供连接的计算机网络成为<strong>虚电路</strong>$(Virtual-Circuit\, VC)$<strong>网络</strong>；仅在网络层提供无连接服务的计算机网络成为<strong>数据报网络</strong>($datagram\, network)。$</li>
-<li>在运输层实现面向连接的服务与在网络层实现连接服务是根本不同的。运输层面向连接是在位于网络边缘的端系统中实现的；网络层连接服务除了在端系统中，也在位于网络核心的路由器实现。</li>
-</ul>
-<h2 id="虚电路网络"><a href="#虚电路网络" class="headerlink" title="虚电路网络"></a>虚电路网络</h2><h2 id="数据报网络"><a href="#数据报网络" class="headerlink" title="数据报网络"></a>数据报网络</h2><h1 id="路由器的工作原理"><a href="#路由器的工作原理" class="headerlink" title="路由器的工作原理"></a>路由器的工作原理</h1><h1 id="网际协议：因特网中的转发和编址"><a href="#网际协议：因特网中的转发和编址" class="headerlink" title="网际协议：因特网中的转发和编址"></a>网际协议：因特网中的转发和编址</h1><p>因特网编址和转发是网际协议$（IP）$的重要组件。目前有两个版本的$IP$在使用。$IP$协议版本4，简称为$IPv4$；$IPv6$。</p>
-<h2 id="数据报格式"><a href="#数据报格式" class="headerlink" title="数据报格式"></a>数据报格式</h2><p>网络层分组被称为<strong>数据报</strong>。$IPv4$数据报格式如下：</p>
-<p><img src="https://github.com/tortoiselala/tortoiselala.github.io/blob/master/src/img/ipv4-datagram-type.png?raw=true" alt="IPv4数据报格式"></p>
-<script type="math/tex; mode=display">
-IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Bytes$可选组成。</p>
-<p>$IPv4$数据报中的关键字段如下：</p>
-<ul>
-<li><strong>版本(号)</strong>。版本号占用了4个$bits$，规定了数据报的$IP$协议版本，即$IPv4$或$IPv6$。</li>
-<li><strong>首部长度</strong>。一个$IPv4$数据报可包含一些可变数量的选项，所以需要使用4个$bits$来确定数据报中数据部分实际从哪里开始。大多数的$IP$数据报不包含该选项，所以一般的$IP$数据报包含20个字节的首部。</li>
-<li><strong>服务类型</strong>。该选项并不为所有的路由器所支持，所以该选项基本没用。</li>
-<li><strong>数据报长度</strong>。指明$IP$数据报的总长度（首部加数据），以字节计。该字段占用16$bits$，理论上数据报的最大长度可以达到65535个字节，实际上，数据报很少有超过1500个字节的。（链路层限制不能超过1500个字节）。</li>
-<li><strong>标识、标志、片偏移</strong>。与$IP$分片有关。其中13$bits$是以字节为单位的。</li>
-<li><strong>寿命</strong>。寿命$(Time-ToLive, \, TTL)$字段用来确保数据报不会永远（如长时间的路由选择环路）在网络中循环。每当数据报由一台路由器处理时，该字段的值减1.若$TTL$字段减为0，则该数据报必须丢弃（每一跳减一）。</li>
-<li><strong>协议</strong>。该字段仅在一个$IP$数据报到达最终目的地才会有用。该字段指示了$IP$数据报的数据部分应交给哪个特定的运输层协议。例如：值为6表明数据部分要交给$TCP$，而值为17表明数据要交给$UDP$。所有可能值的列表，参见$[IANA\, Protocol\, Number 2012]$。协议号是将网络层与运输层绑定到一起的粘合剂，而端口号是将运输层和应用层绑定到一起的粘合剂。在链路层帧中也有一个特殊字段用于将链路层与网络层绑定到一起。</li>
-<li><strong>首部检验和</strong>。（为什么$TCP$/$IP$在运输层与网络层都执行差错检测？这种重复检测有几种原因。首先，注意到在$IP$层只对$IP$首部计算了校验和，而$TCP$/$UDP$检验和是对整个$TCP$/$UDP$报文段进行的。其次$TCP$/$UDP$与$IP$不一定都必须属于同一个协议栈。原则上$TCP$能运行在一个不同的协议(如：$ATM$）上，而$IP$能够携带不一定要传递给$TCP$/$UDP$的数据。</li>
-<li><strong>源和目的</strong> $ IP $<strong>地址</strong>。</li>
-<li><strong>选项</strong>。</li>
-<li><strong>数据(有效载荷)</strong>。<h3 id="IP数据报分片"><a href="#IP数据报分片" class="headerlink" title="IP数据报分片"></a>IP数据报分片</h3></li>
-</ul>
-<p>并不是所有链路层协议都能承载相同长度的网络层分组。有的协议能承载大数据报，而有的协议只能承载小分组。例字节的数据。如以太网帧能够承载不超过字节的数据，而某些广域网链路的帧可承载不超过576字节的数据。一个链路层帧能承载的最大数据量叫做<strong>最大传送单元</strong>($Maximum\, Transmission\, Unit,\, MTU$)。每个数据报$IP$数据报封装在链路层帧中从一台路由器到下一台路由器，故链路层协议的$MTU$严格限制着$IP$数据报的长度。数据传送路径上的每段链路可能使用不同的链路层协议，且每种协议可能具有不同的$MTU$。</p>
-<p>一个路由器可能会连接几条使用不同链路层协议的链路。当从一条链路接收到一个分组较大发现目的链路所允许的$MTU$小于当前数据报长度时，便可以进行数据报分片，然后使用单独的链路层帧封装较小的$IP$数据报，然后再发送。这些较小的数据报称为<strong>片</strong>($fragment$)。</p>
-<p>在到达端系统之后进行重新组装。组装的依据便是数据报头部的表示、标志以及片偏移字段。</p>
-<p>分片得到的数据报片与原始数据报具有相同的原地址、目的地址和标识号。目的主机进行组装是就会通过相同的标识号确定哪些片是属于一个大的数据报的。为了保证能够准确的接收到所有的分片以及确定接收到最后一个分片，最后一个片的标志比特将被置为0，其他片的标志比特将被置为1。偏移字段指明某一片应该处于原始数据报的位置（按照正确顺序组装）。值得注意的是，片偏移是以8字节为一单位的。即片偏移$offset = 100$则表明。该片数据属于原数据报第$100 \times 8 = 800$个字节的地方</p>
-<p>当数据报到达目的主机时，分片的数据报会在$IP$层完全组装完成后再交付给运输层。如果出现分片丢失，该数据报会被丢弃，不会交给运输层。</p>
-<h2 id="IPv4-编址"><a href="#IPv4-编址" class="headerlink" title="$IPv4$编址"></a>$IPv4$编址</h2><p>一台主机通常只有一条链路连接到网络。主机与物理链路之间的边界叫<strong>接口</strong>（$interface$）。一台路由器有多个接口，每个接口有其链路，所以一个$IP$地址技术上是与接口相关联的，而不是与主机或路由器相关联的。</p>
-<p>每个$IP$地址长度为32比特（等价为4字节），因此总共有$2^{32}$个可能的$IP$地址。这些地址一般按所谓<strong>点分十进制</strong>（$dotted-decimal\, notation$）书写。</p>
-<h2 id="IP-地址的结构"><a href="#IP-地址的结构" class="headerlink" title="$IP$地址的结构"></a>$IP$地址的结构</h2><p>$IP$地址 = 网络号（$Net-id$） + 主机号（$Host-id$）.</p>
-<p>$IP$地址依据格式分为5类：$A类， B类， C类， D类， E类$。</p>
-<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/IP-classification.png" alt="IP分类"></p>
-<center>IP分类</center>
+          前言：
 
-<p>$A类地址范围$:1.0.0.0-127.255.255.255（7位网络号+24位主机号）</p>
-<p>$B类地址范围$:128.0.0.0-191.255.255.255（14位网络号+16位主机号）</p>
-<p>$C类地址范围$:192.0.0.0-223.255.255.255（21位网络号+8位主机号）</p>
-<p>$D类地址范围$:224.0.0.0-239.255.255.255（28位组播地址）</p>
-<p>$E类地址范围$:240.0.0.0-247.255.255.255.</p>
-<p>主机号全0称为网络地址。</p>
-<p>主机号全1称为广播地址。</p>
-<p>同一局域网中的主机或路由器的$IP$地址中的网络号必须是一致的。</p>
-<h2 id="子网划分"><a href="#子网划分" class="headerlink" title="子网划分"></a>子网划分</h2><p>子网掩码是用来区别网络位与主机位的。用1表示网络位，用0表示主机位。</p>
-<p>比如$A$类地址的掩码:</p>
-<center>11111111.00000000.00000000.00000000</center>
-
-<p>也可以用</p>
-<center>/8</center>
-
-<p>来表示，表示前8位为网络号。</p>
-<p>子网掩码可以向外隐藏子网的存在，对内指示网络号和主机号的位置。</p>
-<p>所以对于$IP$地址，存在这样的划分：两级$IP$地址， 三级$IP$地址。</p>
-<p>两级$IP$地址:$Net-id$ + $Host -id$</p>
-<p>三级$IP$地址:$Net-id + SubNet-id+Host-id$.</p>
-<p>在网络地址运算中，可以使用子网掩码与$IP$地址进行$AND$运算获得网络号。</p>
-<p>在引入子网掩码之后，路由器的寻址过程将演变为一个两级寻址过程：</p>
-<ul>
-<li><p>检查分组目的$IP$地址中的网络号：若网络号不是本网络，则从路由表中找出相应的转发节点地址将其转发出去。</p>
-</li>
-<li><p>检查子网号：当网络号是本网络时，路由器将检查子网号，向相应的子网转发此分组。</p>
-</li>
-</ul>
-<h2 id="无类别域间路由-CIDR-构造超网"><a href="#无类别域间路由-CIDR-构造超网" class="headerlink" title="无类别域间路由(CIDR)-构造超网"></a>无类别域间路由(CIDR)-构造超网</h2><p>划分子网面临的问题</p>
-<ul>
-<li>B类地址在1992年已分配了近一半，眼看就将全部分配完毕</li>
-<li>因特网主干网上的路由表中的项目数急剧增长</li>
-<li>整个IPv4的地址空间最终将全部耗尽</li>
-</ul>
-<p><strong>无类别域间路由</strong>（Classless Inter-Domain Routing、<strong>CIDR</strong>）是一个用于给用户分配<a href="https://zh.wikipedia.org/wiki/IP%E5%9C%B0%E5%9D%80" target="_blank" rel="noopener">IP地址</a>以及在<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91" target="_blank" rel="noopener">互联网</a>上有效地路由IP<a href="https://zh.wikipedia.org/wiki/%E6%95%B0%E6%8D%AE%E5%8C%85" target="_blank" rel="noopener">数据包</a>的对IP地址进行归类的方法。</p>
-<p>在<a href="https://zh.wikipedia.org/wiki/%E5%9F%9F%E5%90%8D%E7%B3%BB%E7%BB%9F" target="_blank" rel="noopener">域名系统</a>出现之后的第一个十年里，基于<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E7%B1%BB%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">分类网络</a>进行地址分配和路由IP数据包的设计就已明显显得<a href="https://zh.wikipedia.org/wiki/%E5%8F%AF%E6%89%A9%E6%94%BE%E6%80%A7" target="_blank" rel="noopener">可扩充性</a>不足 （参见RFC 1517）。为了解决这个问题，<a href="https://zh.wikipedia.org/wiki/%E4%BA%92%E8%81%94%E7%BD%91%E5%B7%A5%E7%A8%8B%E5%B7%A5%E4%BD%9C%E5%B0%8F%E7%BB%84" target="_blank" rel="noopener">互联网工程工作小组</a>在1993年发布了一新系列的标准——RFC 1518和RFC 1519——以定义新的分配IP地址块和路由<a href="https://zh.wikipedia.org/wiki/IPv4" target="_blank" rel="noopener">IPv4</a>数据包的方法。</p>
-<p>一个IP地址包含两部分：标识网络的<strong>前缀</strong>和紧接着的在这个网络内的<strong>主机地址</strong>。在之前的<a href="https://zh.wikipedia.org/wiki/%E5%88%86%E7%B1%BB%E7%BD%91%E7%BB%9C" target="_blank" rel="noopener">分类网络</a>中，IP地址的分配把IP地址的32位按每8位为一段分开。这使得前缀必须为8，16或者24位。因此，可分配的最小的地址块有256（24位前缀，8位主机地址，28=256）个地址，而这对大多数企业来说太少了。大一点的地址块包含65536（16位前缀，16位主机，216=65536）个地址，而这对大公司来说都太多了。这导致不能充分使用IP地址和在路由上的不便，因为大量的需要单独路由的小型网络（C类网络）因在地域上分得很开而很难进行<a href="https://zh.wikipedia.org/w/index.php?title=%E8%81%9A%E5%90%88%E8%B7%AF%E7%94%B1&amp;action=edit&amp;redlink=1" target="_blank" rel="noopener">聚合路由</a>，于是给路由设备增加了很多负担。</p>
-<p>无类别域间路由是基于<strong>可变长子网掩码（VLSM）</strong>来进行任意长度的前缀的分配的。在RFC 950（1985）中有关于可变长子网掩码的说明。CIDR包括：</p>
-<ul>
-<li>指定任意长度的前缀的可变长子网掩码技术。遵从CIDR规则的地址有一个后缀说明前缀的位数，例如：192.168.0.0/16。这使得对日益缺乏的IPv4地址的使用更加有效。</li>
-<li>将多个连续的前缀聚合成<strong>超网</strong>，以及，在互联网中，只要有可能，就显示为一个聚合的网络，因此在总体上可以减少路由表的表项数目。聚合使得互联网的路由表不用分为多级，并通过VLSM逆转“划分子网”的过程。</li>
-<li>根据机构的实际需要和短期预期需要而不是分类网络中所限定的过大或过小的地址块来管理IP地址的分配的过程。</li>
-</ul>
-<p>因为在<a href="https://zh.wikipedia.org/wiki/IPv6" target="_blank" rel="noopener">IPv6</a>中也使用了IPv4的用后缀指示前缀长度的CIDR，所以IPv4中的<em>分类</em>在IPv6中已不再使用。</p>
-<p><strong>CIDR编址格式</strong></p>
-<ul>
-<li>IP地址 ::= {&lt;网络前缀&gt;, &lt;主机号&gt;} </li>
-<li>斜线记法：192.168.0.1/24</li>
-<li>简写记法：10.0.0.0/10         10/10</li>
-</ul>
-<p><strong>最长前缀匹配</strong></p>
-<ul>
-<li>使用 CIDR 时，路由表中的每个项目由“网络前缀”和“下一跳地址”组成。在查找路由表时可能会得到不止一个匹配结果。 </li>
-<li>应当从匹配结果中选择具有最长网络前缀的路由：最长前缀匹配(longest-prefix matching)。</li>
-<li>网络前缀越长，其地址块就越小，因而路由就越具体。</li>
-<li>最长前缀匹配又称为最长匹配或最佳匹配。</li>
-</ul>
-<h3 id="动态主机设置协议-DHCP"><a href="#动态主机设置协议-DHCP" class="headerlink" title="动态主机设置协议(DHCP)"></a>动态主机设置协议(DHCP)</h3><p><strong>Dynamic Host Configuration Protocol, DHCP</strong>是一个局域网的网络协议，使用UDP工作，主要有两个用途：</p>
-<ul>
-<li>用于内部网或网络服务供应商自动分配<a href="https://zh.wikipedia.org/wiki/IP" target="_blank" rel="noopener">IP</a>地址给用户</li>
-<li>用于内部网管理员作为对所有计算机作中央管理的手段</li>
-</ul>
-<h3 id="网络地址转换-NAT"><a href="#网络地址转换-NAT" class="headerlink" title="网络地址转换(NAT)"></a>网络地址转换(NAT)</h3><p><strong>网络地址转换</strong>（Network Address Translation，NAT），也叫做<strong>网络掩蔽</strong>或者<strong>IP掩蔽</strong>（IP masquerading），是一种在IP数据包通过<a href="https://zh.wikipedia.org/wiki/%E8%B7%AF%E7%94%B1%E5%99%A8" target="_blank" rel="noopener">路由器</a>或<a href="https://zh.wikipedia.org/wiki/%E9%98%B2%E7%81%AB%E5%A2%99" target="_blank" rel="noopener">防火墙</a>时重写来源IP地址或目的<a href="https://zh.wikipedia.org/wiki/IP%E5%9C%B0%E5%9D%80" target="_blank" rel="noopener">IP地址</a>的技术。这种技术被普遍使用在有多台主机但只通过一个公有IP地址访问<a href="https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%B6%B2" target="_blank" rel="noopener">因特网</a>的私有网络中。它是一个方便且得到了广泛应用的技术。当然，NAT也让主机之间的通信变得复杂，导致了通信效率的降低。</p>
-<p><img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/NAT-Sample.png" alt="NAT"></p>
-<pre><code>在一个典型的配置中，一个本地网络使用一个专有网络的指定子网（比如192.168.x.x或10.x.x.x）和连在这个网络上的一个路由器。这个路由器占有这个网络地址空间的一个专有地址（比如192.168.0.1），同时它还通过一个或多个[因特网服务提供商](https://zh.wikipedia.org/wiki/%E5%9B%A0%E7%89%B9%E7%BD%91%E6%9C%8D%E5%8A%A1%E6%8F%90%E4%BE%9B%E5%95%86)提供的公有的IP地址（叫做“过载”NAT）连接到因特网上。当信息由本地网络向因特网传递时，源地址从专有地址转换为公用地址。由路由器跟踪每个连接上的基本数据，主要是目的地址和端口。当有回复返回路由器时，它通过输出阶段记录的连接跟踪数据来决定该转发给内部网的哪个主机；如果有多个公用地址可用，当数据包返回时，[TCP](https://zh.wikipedia.org/wiki/TCP)或[UDP](https://zh.wikipedia.org/wiki/UDP)客户机的端口号可以用来分解数据包。对于因特网上的通信，路由器本身充源和目的。
-</code></pre><p>两类地址</p>
-<ul>
-<li>本地地址</li>
-<li><ul>
-<li>10/8</li>
-<li>172.16/12 </li>
-<li>192.168/16</li>
-</ul>
-</li>
-<li>全球地址</li>
-</ul>
-<p>三种地址转换方式</p>
-<ul>
-<li>静态NAT：一个本地地址对应一个全球地址</li>
-<li>动态NAT：一个全球地址对应多个本地地址</li>
-<li>端口NAT：一个本地地址的端口对应到一个全球地址的端口</li>
-</ul>
-<h1 id="因特网控制报文协议-ICMP"><a href="#因特网控制报文协议-ICMP" class="headerlink" title="因特网控制报文协议(ICMP)"></a>因特网控制报文协议(ICMP)</h1><p>因特网网络层的三个重要组件：</p>
-<ul>
-<li>IP协议</li>
-<li>因特网路由选择协议（包括RIP，OSPF和BGP）</li>
-<li>因特网控制报文协议（ICMP）</li>
-</ul>
-<p>$ICMP$由[RFC 792]定义，被主机用来沟通网络层的信息。$ICMP$最典型的用途是差错报告。例如：”目的网络不可达“之类的错误报文。这种报文就是在$ICMP$中产生的，在某个位置，IP路由器不能找到一条路径，以通往$Telnet， FTP, HTTP$应用所指定的主机。该路由器就会向你的主机创建和发送一个类型3的$ICMP$报文以指示该错误。</p>
-<pre><code>ping程序使用的就是$ICMP$协议
-</code></pre><h1 id="IPv6"><a href="#IPv6" class="headerlink" title="$IPv6$"></a>$IPv6$</h1><p>$IPv4$地址消耗殆尽</p>
-<h2 id="IPv6-数据报格式"><a href="#IPv6-数据报格式" class="headerlink" title="$IPv6$数据报格式"></a>$IPv6$数据报格式</h2><p>$IPv6$引入的最重要的变化显示在其数据报格式中</p>
-
-          
+两种用于构造网络层分组交付的方法，即数据报模式和虚电路模式
+编址
+网络层的转发($forwarding$)功能和路由选择($routing$)功能。转发涉及分组在单一的路由器中从一条入链路到一条出链路的传送。路由选择涉及一个网络的所有路由器，它们经路由选择协议共同交互，以决定分组从源到目的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/11/08/计算机网络-网络层/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1032,8 +882,15 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/24/java-thread/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1183,8 +1040,15 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            
           
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/06/java-final-methond-and-java-inline-function/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1334,28 +1198,16 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p>
-<p>Along the way, there are gas stations.  Each <code>station[i]</code> represents a gas station that is <code>station[i][0]</code> miles east of the starting position, and has <code>station[i][1]</code> liters of gas.</p>
-<p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.</p>
-<p>When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p>
-<p>What is the least number of refueling stops the car must make in order to reach its destination?  If it cannot reach the destination, return <code>-1</code>.</p>
-<p>Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there.  If the car reaches the destination with 0 fuel left, it is still considered to have arrived.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 1, startFuel = 1, stations = []</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: We can reach the target without refueling.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 1, stations = [[10,100]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: We can&apos;t reach the target (or even the first gas station).</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">We start with 10 liters of fuel.</span><br><span class="line">We drive to position 10, expending 10 liters of fuel.  We refuel from 0 liters to 60 liters of gas.</span><br><span class="line">Then, we drive from position 10 to position 60 (expending 50 liters of fuel),</span><br><span class="line">and refuel from 10 liters to 50 liters of gas.  We then drive to and reach the target.</span><br><span class="line">We made 2 refueling stops along the way, so we return 2.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>1 &lt;= target, startFuel, stations[i][1] &lt;= 10^9</code></li>
-<li><code>0 &lt;= stations.length &lt;= 500</code></li>
-<li><code>0 &lt; stations[0][0] &lt; stations[1][0] &lt; ... &lt; stations[stations.length-1][0] &lt; target</code></li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-Dymanic-Programming-Time-Limited"><a href="#Approach-1-Dymanic-Programming-Time-Limited" class="headerlink" title="Approach 1:Dymanic Programming(Time Limited)"></a>Approach 1:Dymanic Programming(Time Limited)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations, <span class="keyword">int</span> sumStation, <span class="keyword">int</span> indexStations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (startFuel &gt;= target) &#123;</span><br><span class="line">			<span class="keyword">if</span> (sumStation &lt; min) &#123;</span><br><span class="line">				min = sumStation;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (indexStations &gt;= stations.length) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (startFuel &gt;= stations[indexStations][<span class="number">0</span>]) &#123;</span><br><span class="line">				minRefuelStops(target, startFuel, stations, sumStation, ++indexStations);</span><br><span class="line">				--indexStations;</span><br><span class="line">				startFuel += stations[indexStations][<span class="number">1</span>];</span><br><span class="line">				minRefuelStops(target, startFuel, stations, ++sumStation, ++indexStations);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Dymanic-Programming-Accepted"><a href="#Approach-2-Dymanic-Programming-Accepted" class="headerlink" title="Approach 2:Dymanic Programming(Accepted)"></a>Approach 2:Dymanic Programming(Accepted)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span>[] dp = <span class="keyword">new</span> <span class="keyword">long</span>[stations.length + <span class="number">1</span>];</span><br><span class="line">		dp[<span class="number">0</span>] = startFuel;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stations.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[j] &gt;= stations[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					dp[j + <span class="number">1</span>] = Math.max(dp[j + <span class="number">1</span>], dp[j] + (<span class="keyword">long</span>) stations[i][<span class="number">1</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i] &gt;= target) &#123;</span><br><span class="line">				<span class="keyword">return</span> i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          Question DescriptionA car travels from a starting position to a destination which is target miles east of the starting position.
+Along the way, there 
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1505,23 +1357,16 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>We have a string <code>S</code> of lowercase letters, and an integer array <code>shifts</code>.</p>
-<p>Call the <em>shift</em> of a letter, the next letter in the alphabet, (wrapping around so that <code>&#39;z&#39;</code> becomes <code>&#39;a&#39;</code>). </p>
-<p>For example, <code>shift(&#39;a&#39;) = &#39;b&#39;</code>, <code>shift(&#39;t&#39;) = &#39;u&#39;</code>, and <code>shift(&#39;z&#39;) = &#39;a&#39;</code>.</p>
-<p>Now for each <code>shifts[i] = x</code>, we want to shift the first <code>i+1</code> letters of <code>S</code>, <code>x</code> times.</p>
-<p>Return the final string after all such shifts to <code>S</code> are applied.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">Output: &quot;rpl&quot;</span><br><span class="line">Explanation: </span><br><span class="line">We start with &quot;abc&quot;.</span><br><span class="line">After shifting the first 1 letters of S by 3, we have &quot;dbc&quot;.</span><br><span class="line">After shifting the first 2 letters of S by 5, we have &quot;igc&quot;.</span><br><span class="line">After shifting the first 3 letters of S by 9, we have &quot;rpl&quot;, the answer.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><p><code>1 &lt;= S.length = shifts.length &lt;= 20000</code></p>
-</li>
-<li><p><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></p>
-</li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h2 id="Approach1"><a href="#Approach1" class="headerlink" title="Approach1 :"></a>Approach1 :</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">shiftingLetters</span><span class="params">(String S, <span class="keyword">int</span>[] shifts)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">char</span>[] sToCharArray = S.toCharArray();</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = shifts.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			sum += shifts[i];</span><br><span class="line">			sum %= <span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>;</span><br><span class="line">			sToCharArray[i] += sum;</span><br><span class="line">			sToCharArray[i] = (<span class="keyword">char</span>) (sToCharArray[i] &gt; <span class="string">'z'</span> ? sToCharArray[i] - (<span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>) : sToCharArray[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> String(sToCharArray);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          Question DescriptionWe have a string S of lowercase letters, and an integer array shifts.
+Call the shift of a letter, the next letter in the alphabet,
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/02/leetcode-problem-848-Shifting-Letters/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1671,14 +1516,15 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-暴力破解"><a href="#Approach-1-暴力破解" class="headerlink" title="Approach 1: 暴力破解"></a>Approach 1: 暴力破解</h3><p>尝试遍历所有的解法。时间复杂度为$ O(n^2) $ </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxWater = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> tmp = (j - i) * Integer.min(height[i], height[j]);</span><br><span class="line">				<span class="keyword">if</span> (maxWater &lt; tmp) &#123;</span><br><span class="line">					maxWater = tmp;</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j + <span class="string">", tmp = "</span> + tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxWater;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Two-Pointer-Approach"><a href="#Approach-2-Two-Pointer-Approach" class="headerlink" title="Approach 2: Two Pointer Approach"></a>Approach 2: Two Pointer Approach</h3><p>要寻找到装水最多的容器，其装水能力又最短的那根板所决定。所以求得的容器大小由两根板中最短的以及两板之间的距离决定。</p>
-<p>使用两个指针，分别从收尾开始向内收束，收束条件是短的那根板子向内收束。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxAreaDivideConquer</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> right = height.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			max = Integer.max(max, Integer.min(height[left], height[right]) * (right - left));</span><br><span class="line">			<span class="keyword">if</span> (height[left] &lt; height[right]) &#123;</span><br><span class="line">				left++;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				right--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> max;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          Question DescriptionGiven n non-negative integers a1, a2, …, an , where each represents a point at coordinate (i, ai). n vertical lines are drawn such
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/10/01/leetcode-problem-11-Container-with-Most-Water/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1828,12 +1674,19 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            <center>what can you see here?</center>
+          what can you see here?
 
-<p><a href="https://tortoiselala.github.io/javadoc-and-notes/" target="_blank" rel="noopener">javadoc and my notes</a></p>
-<p><a href="https://tortoiselala.github.io/database/" target="_blank" rel="noopener">a database nots</a></p>
+javadoc and my notes
+a database nots
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/19/index/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1983,111 +1836,17 @@ IPv4数据报格式</script><p>$IPv4$数据报通常有20$Bytes$头部与40$Byte
       
         
           
-            <p>database</p>
-<h1 id="数据库学习笔记"><a href="#数据库学习笔记" class="headerlink" title="数据库学习笔记"></a>数据库学习笔记</h1><h2 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-sever</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line"></span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
-<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -u root -p</span><br><span class="line">#-u为用户选项后加用户名</span><br><span class="line">#-p为密码选项表示该用户需要密码回车之后会出现密码输入提示</span><br><span class="line">mysql&gt;</span><br><span class="line">#输入密码正确后进入mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
-<h3 id="linux平台下MySQL安装目录"><a href="#linux平台下MySQL安装目录" class="headerlink" title="linux平台下MySQL安装目录"></a>linux平台下MySQL安装目录</h3><div class="table-container">
-<table>
-<thead>
-<tr>
-<th>文件夹</th>
-<th>文件夹内容</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>/usr/bin</td>
-<td>客户端和脚本</td>
-</tr>
-<tr>
-<td>/usr/sbin</td>
-<td>mysqld服务器</td>
-</tr>
-<tr>
-<td>/var/lib/mysql</td>
-<td>日志文件和数据库</td>
-</tr>
-<tr>
-<td>/usr/share/info</td>
-<td>信息格式的手册</td>
-</tr>
-<tr>
-<td>/usr/share/man</td>
-<td>UNIX帮助页/</td>
-</tr>
-<tr>
-<td>/usr/include/mysql</td>
-<td>头文件</td>
-</tr>
-<tr>
-<td>/usr/lib/mysql</td>
-<td>库</td>
-</tr>
-<tr>
-<td>/usr/share/mysql</td>
-<td>错误消息、字符集、实例配置文件等</td>
-</tr>
-</tbody>
-</table>
-</div>
-<h2 id="数据库的基本操作"><a href="#数据库的基本操作" class="headerlink" title="数据库的基本操作"></a>数据库的基本操作</h2><ul>
-<li>查看当前存在的数据库<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW DATABASES;</span><br></pre></td></tr></table></figure></li>
-<li>创建数据库<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CREATE DATABASE database_name;</span><br></pre></td></tr></table></figure></li>
-<li>查看数据库的定义<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE DATABASE database_name;</span><br></pre></td></tr></table></figure></li>
-<li>删除数据库<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP DATABASE database_name;</span><br></pre></td></tr></table></figure></li>
-<li>查看数据库支持的引擎<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW ENGINES;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="数据表的基本操作"><a href="#数据表的基本操作" class="headerlink" title="数据表的基本操作"></a>数据表的基本操作</h2><h3 id="选择数据库"><a href="#选择数据库" class="headerlink" title="选择数据库"></a>选择数据库</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">USE database_name;</span><br></pre></td></tr></table></figure>
-<h3 id="创建数据表"><a href="#创建数据表" class="headerlink" title="创建数据表"></a>创建数据表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE &lt;表名&gt;</span><br><span class="line">(</span><br><span class="line">	字段名<span class="number">1</span>， 数据类型 [列级别的约束条件] [默认值]，</span><br><span class="line">    字段名<span class="number">2</span>， 数据类型 [列级别的约束条件] [默认值]，</span><br><span class="line">    ...</span><br><span class="line">    [表级别约束条件]</span><br><span class="line">)</span><br><span class="line">$ eg: $</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_name</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span>,</span></span><br><span class="line"><span class="function">    deptid <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure>
-<h3 id="查看所有的表"><a href="#查看所有的表" class="headerlink" title="查看所有的表"></a>查看所有的表</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SHOW TABLES;</span><br></pre></td></tr></table></figure>
-<h3 id="使用主键约束"><a href="#使用主键约束" class="headerlink" title="使用主键约束"></a>使用主键约束</h3><h4 id="单字段主键"><a href="#单字段主键" class="headerlink" title="单字段主键"></a>单字段主键</h4><p>主键又称主码，是表中一列或多列的组合。主键约束($ Primary Key Constraint $)要求主键列的数据唯一，且不为空。主键能够唯一地标示表中的</p>
-<p>两种定义方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 PRIMARY KEY [默认值]</span><br><span class="line">#该方法在定义列的同时指定主键</span><br><span class="line">[CONSTRAINT &lt;约束名&gt;] PRIMARY KEY [字段名]</span><br><span class="line">#该方法在定义完所有列后定义主键</span><br><span class="line">$eg:$</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_name</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY,</span></span><br><span class="line"><span class="function">    name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span>,</span></span><br><span class="line"><span class="function">    deptid <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line">CREATE TABLE table_name</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span>,</span></span><br><span class="line"><span class="function">    deptid <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    salary FLOAT,</span></span><br><span class="line"><span class="function">    PRIMARY <span class="title">KEY</span><span class="params">(id)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure></p>
-<h4 id="多字段联合主键"><a href="#多字段联合主键" class="headerlink" title="多字段联合主键"></a>多字段联合主键</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">PRIMARY KEY [字段<span class="number">1</span>， 字段<span class="number">2</span>...， 字段 n]</span><br><span class="line">$ eg: $</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_name</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY,</span></span><br><span class="line"><span class="function">    name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span>,</span></span><br><span class="line"><span class="function">    deptid <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">    salary FLOAT,</span></span><br><span class="line"><span class="function">    PRIMARY <span class="title">KEY</span> <span class="params">(name, deptid)</span></span></span><br><span class="line"><span class="function"> )</span>;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
-<h3 id="使用外键约束"><a href="#使用外键约束" class="headerlink" title="使用外键约束"></a>使用外键约束</h3><p>外键的作用是在两个表的数据之间建立链接，可以是一列或多列。一个表可以有一个或多个外键。外键对应的是参照完整性，一个表的外键可以为空值，若不为空值，则每一个外键值必须等于另一个表中的主键的某个值。</p>
-<p>外键首先是表中的一个字段，可以不是本表的主键，但是要对应另外一个表中的主键。外键的主要作用是保证数据引用的完整性，定义外键后，不允许删除在另一个表中具有关联关系的行。外键的主要作用是保持数据的一致性、完整性</p>
-<p>主表（父表）：对于两个具有关联关系的表而言，相关联字段中主键所在的那个表。</p>
-<p>从表 （子表）：对于两个具有关联关系的表而言，相关联字段中外键所在的那个表。</p>
-<p>创建外键的语法规则：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[CONSTARAINT &lt;外键名&gt;] FOREIGN KEY 字段名<span class="number">1</span> [字段名<span class="number">2</span>， ...]  REFERENCES &lt;主键名&gt; 主键列<span class="number">1</span> [ ,主键列<span class="number">2</span>,...]</span><br></pre></td></tr></table></figure><br>“外键名”为定义的外键约束的名称，一个表中不能有相同名称的外键；</p>
-<p>“字段名” 表示子表需要添加外键约束的字段列；</p>
-<p>“主表名”表示被子表外键所依赖的表的名称；</p>
-<p>“主键列”表示主表中定义的主键列，或者列组合。</p>
-<p>$ eg: $<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE student_constraint</span><br><span class="line">(</span><br><span class="line">	<span class="function">id	<span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMART KEY,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span>,</span></span><br><span class="line"><span class="function">	deptId <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">	salary FLOAT,</span></span><br><span class="line"><span class="function">	CONSTRAINT con_student_id_deptId FOREIGN <span class="title">KEY</span><span class="params">(deptId)</span> PEFERENCES student</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure><br>注：关联指的是在关系型数据库中，相关表之间的联系。它是通过相容或相同属性或属性组来表示的。子表的外键必须关联父表的主键，且关联字段的数据类型必须匹配，如果类型不一样，那么创建子表时就会出现错误<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ERROR <span class="number">1005</span> (HY000): Can<span class="string">'t create table '</span>database.tablename<span class="string">'(error:150)</span></span><br></pre></td></tr></table></figure></p>
-<h3 id="使用非空约束"><a href="#使用非空约束" class="headerlink" title="使用非空约束"></a>使用非空约束</h3><p>非空约束(Not Null Constraint)指字段不能位空。对于使用了非空约束的字段，如果用户在添加数据时没有指定值，数据库系统就会报错。</p>
-<p>非空约束的语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 NOT NULL</span><br></pre></td></tr></table></figure></p>
-<h3 id="使用唯一性约束"><a href="#使用唯一性约束" class="headerlink" title="使用唯一性约束"></a>使用唯一性约束</h3><p>唯一性约束（Unique Constraint）要求该列唯一，允许为空，但只能出现一个空值。唯一约束可以确保一列或几列不出现重复值。</p>
-<p>唯一性约束的语法规则不出现重复值。<br>唯一性约束的语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">规则<span class="number">1</span></span><br><span class="line">字段名 数据类型 UNIQUE</span><br><span class="line"># 指定名称唯一</span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIOMARY KEY,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">22</span>)</span> UNIQUE,</span></span><br><span class="line"><span class="function">	location <span class="title">VARCHAR</span><span class="params">(<span class="number">50</span>)</span></span></span><br><span class="line"><span class="function">)</span>;</span><br><span class="line">规则<span class="number">2</span></span><br><span class="line">[CONSTRAINT &lt;约束名&gt;] UNIQUE (&lt;字段名&gt;)</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">22</span>)</span>,</span></span><br><span class="line"><span class="function">	location <span class="title">CARCHAR</span><span class="params">(<span class="number">50</span>)</span>,</span></span><br><span class="line"><span class="function">	CONSTRAINT STH UNIQUE（name)</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure><br>UNIQUE 与PRIMARY KEY的区别是：一个表中可以有多个字段声明为UNIQUE，但只能有一个字段声明位PRIMARY KEY；声明为PRIMARY KEY的列不允许有空值，但是声明UNIQUE的字段允许有空值。</p>
-<h3 id="使用默认约束"><a href="#使用默认约束" class="headerlink" title="使用默认约束"></a>使用默认约束</h3><p>默认约束（Default Constraint）是指某列的默认值。例如，男性同学较多，性别就可以默认为‘男’。如果插入一条新的记录时没有为这个字段赋值，那么系统会自动为这个字段赋值为‘男’。<br>语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 DEFAULT 默认值</span><br><span class="line"></span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">22</span>)</span> NOT NULL,</span></span><br><span class="line"><span class="function">	deptId <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>, DEFAULT 1111,</span></span><br><span class="line"><span class="function">	salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="设置表的属性值自动增加"><a href="#设置表的属性值自动增加" class="headerlink" title="设置表的属性值自动增加"></a>设置表的属性值自动增加</h3><p>在某些时候希望插入新的记录的时候，系统能自动生成字段的主键值。可以通过为表添加AUTO_INCREMENT 关键字来实现。默认的，在MySQL中AUTO_INCREMENT的初始值为1，每新增一条记录，字段值自动加1.一个表中只能有一个字段使用AUTO_INCREMENT约束，且该字段必须为主键的一部分。AUTO_INCREMENT约束的字段可以是任何整数类型（TINYINT, SMALLINT, INT, BIGINT）等。</p>
-<p>设置表的属性值自动增加的语法规则如下：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">字段名 数据类型 AUTO_INCREMENT</span><br><span class="line">CREATE TABLE table_test</span><br><span class="line">(</span><br><span class="line">	<span class="function">id <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span> PRIMARY KEY AUTO_INCRMENT,</span></span><br><span class="line"><span class="function">	name <span class="title">VARCHAR</span><span class="params">(<span class="number">25</span>)</span> NOT NULL,</span></span><br><span class="line"><span class="function">	deptId <span class="title">INT</span><span class="params">(<span class="number">11</span>)</span>,</span></span><br><span class="line"><span class="function">	salary FLOAT</span></span><br><span class="line"><span class="function">)</span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="查看数据表结构"><a href="#查看数据表结构" class="headerlink" title="查看数据表结构"></a>查看数据表结构</h3><p>查看表基本结构语句DESCRIBE<br>DESCRIBE/DESC语句可以查看表的字段信息，包括字段名、字段类型数据、是否为主键、是否有默认值等。语法规则如下：<br><figure class="highlight java"><figcaption><span>:</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">DESCRIBE 表名；</span><br><span class="line">#简写：</span><br><span class="line">DESC 表名;</span><br><span class="line"></span><br><span class="line">eg:</span><br><span class="line">mysql&gt; desc student;</span><br></pre></td></tr></table></figure><br>+————+——————-+———+——-+————-+———-+<br>| Field  | Type        | Null | Key | Default | Extra |<br>+————+——————-+———+——-+————-+———-+<br>| id     | int(11)     | YES  |     | NULL    |       |<br>| name   | varchar(25) | YES  |     | NULL    |       |<br>| deptid | int(11)     | YES  |     | NULL    |       |<br>| salary | float       | YES  |     | NULL    |       |<br>+————+——————-+———+——-+————-+———-+<br>4 rows in set (0.00 sec)</p>
-<p>mysql&gt; </p>
-<p>其中，各个字段的含义分别解释如下：</p>
-<p>Null：表示该列是否可以存储NULL值<br>Key：表示该列是否已编制索引。PRI表示该列是表主键的一部分；UNI表示该列是UNIQUE的索引的一部分；MUL表示在列中某个给定值允许出现多次<br>Default：表示该列是否有默认值，如果有的话是多少​<br>Extra：表示可以获取的与给定列有关的附加信息，例如AUTO_INCREMENT</p>
-<h3 id="查看表详细结构"><a href="#查看表详细结构" class="headerlink" title="查看表详细结构"></a>查看表详细结构</h3><p>SHOW CREATE TABLE语句可以用来显示创建表时的CREATE TABLE 语句，语法格式如下<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SHOW CREATE TABLE &lt;表名\G&gt;;</span><br><span class="line"># '\G'参数能够让结果显示的更加直观</span><br></pre></td></tr></table></figure></p>
-<h3 id="修改数据表"><a href="#修改数据表" class="headerlink" title="修改数据表"></a>修改数据表</h3><h4 id="修改表名"><a href="#修改表名" class="headerlink" title="修改表名"></a>修改表名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;旧表名&gt; RENAME [TO] &lt;新表名&gt;；</span><br></pre></td></tr></table></figure>
-<p>TO为可选参数，使用与否不影响结果</p>
-<h4 id="修改字段的数据类型"><a href="#修改字段的数据类型" class="headerlink" title="修改字段的数据类型"></a>修改字段的数据类型</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALERT TABLE &lt;表名&gt; MODIFY &lt;字段名&gt; &lt;数据类型&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="修改字段名"><a href="#修改字段名" class="headerlink" title="修改字段名"></a>修改字段名</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALERT TABLE &lt;表名&gt; CHANGE &lt;旧字段名&gt; &lt;新字段名&gt; &lt;新数据类型&gt;;</span><br></pre></td></tr></table></figure>
-<h4 id="添加字段"><a href="#添加字段" class="headerlink" title="添加字段"></a>添加字段</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALERT TABLE &lt;表名&gt; ADD &lt;新字段名&gt; &lt;数据类型&gt; [约束条件] [FIRST | AFTER 已存在字段名];</span><br></pre></td></tr></table></figure>
-<p>新字段名为需要添加的字段名称；“FIRST”为可选参数，其作用是将新添加的字段设为表的第一个字段；“AFTER”为可选参数，其作用是将新添加的字段添加到“已存在字段名“后面。</p>
-<p>注：如果SQL语句没有这两个关键字，默认添加到数据表的最后列。</p>
-<h4 id="删除字段"><a href="#删除字段" class="headerlink" title="删除字段"></a>删除字段</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; DROP &lt;字段名&gt;;</span><br></pre></td></tr></table></figure>
-<h4 id="修改字段的排列位置"><a href="#修改字段的排列位置" class="headerlink" title="修改字段的排列位置"></a>修改字段的排列位置</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt;  MODIFY &lt;字段<span class="number">1</span>&gt; &lt;数据类型&gt; FIRST|AFTER &lt;字段<span class="number">2</span>&gt;</span><br></pre></td></tr></table></figure>
-<h4 id="更改表的存储引擎"><a href="#更改表的存储引擎" class="headerlink" title="更改表的存储引擎"></a>更改表的存储引擎</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; ENGINE=&lt;更改后的存储引擎名&gt;;</span><br></pre></td></tr></table></figure>
-<h4 id="删除表的外键约束"><a href="#删除表的外键约束" class="headerlink" title="删除表的外键约束"></a>删除表的外键约束</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ALTER TABLE &lt;表名&gt; DROP FOREIGN KEY &lt;字段名&gt;;</span><br></pre></td></tr></table></figure>
-<h3 id="删除数据表"><a href="#删除数据表" class="headerlink" title="删除数据表"></a>删除数据表</h3><h4 id="删除没有被关联的表"><a href="#删除没有被关联的表" class="headerlink" title="删除没有被关联的表"></a>删除没有被关联的表</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE [IF EXISTS] 表<span class="number">1</span>，表<span class="number">2</span>， ...表<span class="number">3</span>；</span><br></pre></td></tr></table></figure>
-<p>其中，“表n”是要删除的表的名称，后面可以同时删除多个表，只需要将要删除的表名一次写在后面，相互之间用逗号隔开即可。如果要删除的数据表不存在，则MySQL会提示一条错误信息。<br>参数IF EXISTS用于在删除前判断要删除的表是否存在，加上该参数后，再删除表的时候，如果表不存在，SQL语句可以顺利执行，但是会发出警告。</p>
-<h4 id="删除被其他表关联的主表"><a href="#删除被其他表关联的主表" class="headerlink" title="删除被其他表关联的主表"></a>删除被其他表关联的主表</h4><p>在数据表存在外键关联的情况下，如果直接删除父表，结果会显示失败。原因是直接删除将破坏表的参照完整性，如果必须要删除，可以先删除与他关联的子表，再删除父表,只是这样同时删除了两个表中的数据。有些情况下可能要保留子表，这时要单独删除父表，只需将关联的表的外键约束条件取消，然后删除父表。</p>
-<h2 id="数据类型和运算符"><a href="#数据类型和运算符" class="headerlink" title="数据类型和运算符"></a>数据类型和运算符</h2><h3 id="MySQL数据类型"><a href="#MySQL数据类型" class="headerlink" title="MySQL数据类型"></a>MySQL数据类型</h3><p>MySQL支持多种数据类型，主要由数值类型，日期/时间类型和字符串类型。</p>
-<ul>
-<li>数值数据类型：包括整数类型$ TINYINT, SMALLINT, MEDIUMINT, INT, BIGINT$，浮点小数数据类型$ FLOAT,DOUBLE$， 顶点小数类型$ DECIMAL $。</li>
-<li>日期/时间类型：包括$  YEAR, TIME, DATE, DATETIME, TIMESTAMP$。</li>
-<li>字符串类型：包括 $ CHAR, VARCHAR, BINARY, VARBINARY, BLOB, TEXT, ENUM, SET$等， 字符串又分为文本字符串和二进制字符串。</li>
-</ul>
-<h4 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h4><p> 数值型数据类型主要用来存储数字。MySQL提供了多种数值数据类型，不同的数据类型提供不同的取值范围，可以存储的值范围越大，其所需要的存储空间也会越大。MySQL主要提供的整数类型有$ TINYINT, SMALLINT, MEDIUMINT, INT(INTEGER), BIGINT$，整数类型的属性字段可以添加$ AUTO$_$INCEEMENT$自增约束条件。下表为MySQL的数值类型。</p>
-
-          
+          database
+数据库学习笔记学习准备安装12345sudo apt-get install mysql-seversudo apt-get install mysql-clientsudo apt install libmysqlclient-dev
+登录安装完成后会出现界面要求输入密码（两次）
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/19/数据库笔记/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
