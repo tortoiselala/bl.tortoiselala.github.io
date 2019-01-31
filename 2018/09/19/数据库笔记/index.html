@@ -108,20 +108,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="tortoiselala">
-<meta property="og:url" content="http://tortoiselala.github.com/page/3/index.html">
+  <meta name="description" content="database 数据库学习笔记学习准备安装12345sudo apt-get install mysql-seversudo apt-get install mysql-clientsudo apt install libmysqlclient-dev 登录安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码123456shell&amp;gt;mysql -u root -p#-">
+<meta name="keywords" content="database">
+<meta property="og:type" content="article">
+<meta property="og:title" content="database">
+<meta property="og:url" content="http://tortoiselala.github.com/2018/09/19/数据库笔记/index.html">
 <meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="database 数据库学习笔记学习准备安装12345sudo apt-get install mysql-seversudo apt-get install mysql-clientsudo apt install libmysqlclient-dev 登录安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码123456shell&amp;gt;mysql -u root -p#-">
 <meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-09-24T22:39:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="tortoiselala">
+<meta name="twitter:title" content="database">
+<meta name="twitter:description" content="database 数据库学习笔记学习准备安装12345sudo apt-get install mysql-seversudo apt-get install mysql-clientsudo apt install libmysqlclient-dev 登录安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码123456shell&amp;gt;mysql -u root -p#-">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/page/3/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/2018/09/19/数据库笔记/"/>
 
 
 
@@ -131,7 +136,7 @@
   };
 </script>
 
-  <title>tortoiselala</title>
+  <title>database | tortoiselala</title>
   
 
 
@@ -178,8 +183,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left 
-  page-home">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -300,487 +304,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/02/leetcode-problem-848-Shifting-Letters/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/leetcode-problem-848-Shifting-Letters/" itemprop="url">
-                  leetcode problem 848 Shifting Letters
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-02 19:00:17" itemprop="dateCreated datePublished" datetime="2018-10-02T19:00:17+08:00">2018-10-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-03 06:00:48" itemprop="dateModified" datetime="2018-10-03T06:00:48+08:00">2018-10-03</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>We have a string <code>S</code> of lowercase letters, and an integer array <code>shifts</code>.</p>
-<p>Call the <em>shift</em> of a letter, the next letter in the alphabet, (wrapping around so that <code>&#39;z&#39;</code> becomes <code>&#39;a&#39;</code>). </p>
-<p>For example, <code>shift(&#39;a&#39;) = &#39;b&#39;</code>, <code>shift(&#39;t&#39;) = &#39;u&#39;</code>, and <code>shift(&#39;z&#39;) = &#39;a&#39;</code>.</p>
-<p>Now for each <code>shifts[i] = x</code>, we want to shift the first <code>i+1</code> letters of <code>S</code>, <code>x</code> times.</p>
-<p>Return the final string after all such shifts to <code>S</code> are applied.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;abc&quot;, shifts = [3,5,9]</span><br><span class="line">Output: &quot;rpl&quot;</span><br><span class="line">Explanation: </span><br><span class="line">We start with &quot;abc&quot;.</span><br><span class="line">After shifting the first 1 letters of S by 3, we have &quot;dbc&quot;.</span><br><span class="line">After shifting the first 2 letters of S by 5, we have &quot;igc&quot;.</span><br><span class="line">After shifting the first 3 letters of S by 9, we have &quot;rpl&quot;, the answer.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><p><code>1 &lt;= S.length = shifts.length &lt;= 20000</code></p>
-</li>
-<li><p><code>0 &lt;= shifts[i] &lt;= 10 ^ 9</code></p>
-</li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h2 id="Approach1"><a href="#Approach1" class="headerlink" title="Approach1 :"></a>Approach1 :</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">shiftingLetters</span><span class="params">(String S, <span class="keyword">int</span>[] shifts)</span> </span>&#123;</span><br><span class="line">       <span class="keyword">char</span>[] sToCharArray = S.toCharArray();</span><br><span class="line">		<span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = shifts.length - <span class="number">1</span>; i &gt;= <span class="number">0</span>; i--) &#123;</span><br><span class="line">			sum += shifts[i];</span><br><span class="line">			sum %= <span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>;</span><br><span class="line">			sToCharArray[i] += sum;</span><br><span class="line">			sToCharArray[i] = (<span class="keyword">char</span>) (sToCharArray[i] &gt; <span class="string">'z'</span> ? sToCharArray[i] - (<span class="string">'z'</span> - <span class="string">'a'</span> + <span class="number">1</span>) : sToCharArray[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">new</span> String(sToCharArray);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/01/leetcode-problem-11-Container-with-Most-Water/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/leetcode-problem-11-Container-with-Most-Water/" itemprop="url">
-                  leetcode problem 11:Container with Most Water
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-01 23:05:27" itemprop="dateCreated datePublished" datetime="2018-10-01T23:05:27+08:00">2018-10-01</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-02 19:55:24" itemprop="dateModified" datetime="2018-10-02T19:55:24+08:00">2018-10-02</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>Given <em>n</em> non-negative integers <em>a1</em>, <em>a2</em>, …, <em>an</em> , where each represents a point at coordinate (<em>i</em>, <em>ai</em>). <em>n</em> vertical lines are drawn such that the two endpoints of line <em>i</em> is at (<em>i</em>, <em>ai</em>) and (<em>i</em>, 0). Find two lines, which together with x-axis forms a container, such that the container contains the most water.</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-暴力破解"><a href="#Approach-1-暴力破解" class="headerlink" title="Approach 1: 暴力破解"></a>Approach 1: 暴力破解</h3><p>尝试遍历所有的解法。时间复杂度为$ O(n^2) $ </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxArea</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">int</span> maxWater = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; height.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; height.length; j++) &#123;</span><br><span class="line">				<span class="keyword">int</span> tmp = (j - i) * Integer.min(height[i], height[j]);</span><br><span class="line">				<span class="keyword">if</span> (maxWater &lt; tmp) &#123;</span><br><span class="line">					maxWater = tmp;</span><br><span class="line">				&#125;</span><br><span class="line">				System.out.println(<span class="string">"i = "</span> + i + <span class="string">", j = "</span> + j + <span class="string">", tmp = "</span> + tmp);</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> maxWater;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Two-Pointer-Approach"><a href="#Approach-2-Two-Pointer-Approach" class="headerlink" title="Approach 2: Two Pointer Approach"></a>Approach 2: Two Pointer Approach</h3><p>要寻找到装水最多的容器，其装水能力又最短的那根板所决定。所以求得的容器大小由两根板中最短的以及两板之间的距离决定。</p>
-<p>使用两个指针，分别从收尾开始向内收束，收束条件是短的那根板子向内收束。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">maxAreaDivideConquer</span><span class="params">(<span class="keyword">int</span>[] height)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">		<span class="keyword">int</span> max = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> left = <span class="number">0</span>;</span><br><span class="line">		<span class="keyword">int</span> right = height.length - <span class="number">1</span>;</span><br><span class="line">		<span class="keyword">while</span> (left &lt; right) &#123;</span><br><span class="line">			max = Integer.max(max, Integer.min(height[left], height[right]) * (right - left));</span><br><span class="line">			<span class="keyword">if</span> (height[left] &lt; height[right]) &#123;</span><br><span class="line">				left++;</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				right--;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> max;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/09/19/index/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/19/index/" itemprop="url">
-                  tortoiselala main page
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-09-19 10:27:37" itemprop="dateCreated datePublished" datetime="2018-09-19T10:27:37+08:00">2018-09-19</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-09-20 07:48:36" itemprop="dateModified" datetime="2018-09-20T07:48:36+08:00">2018-09-20</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <center>what can you see here?</center>
-
-<p><a href="https://tortoiselala.github.io/javadoc-and-notes/" target="_blank" rel="noopener">javadoc and my notes</a></p>
-<p><a href="https://tortoiselala.github.io/database/" target="_blank" rel="noopener">a database nots</a></p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -812,11 +338,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/09/19/数据库笔记/" itemprop="url">
-                  database
-                </a>
+          <h1 class="post-title" itemprop="name headline">database
               
             
           </h1>
@@ -891,9 +413,7 @@
       
 
       
-        
-          
-            <p>database</p>
+        <p>database</p>
 <h1 id="数据库学习笔记"><a href="#数据库学习笔记" class="headerlink" title="数据库学习笔记"></a>数据库学习笔记</h1><h2 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-sever</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line"></span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
 <h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -u root -p</span><br><span class="line">#-u为用户选项后加用户名</span><br><span class="line">#-p为密码选项表示该用户需要密码回车之后会出现密码输入提示</span><br><span class="line">mysql&gt;</span><br><span class="line">#输入密码正确后进入mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
 <h3 id="linux平台下MySQL安装目录"><a href="#linux平台下MySQL安装目录" class="headerlink" title="linux平台下MySQL安装目录"></a>linux平台下MySQL安装目录</h3><div class="table-container">
@@ -997,8 +517,6 @@
 </ul>
 <h4 id="整数类型"><a href="#整数类型" class="headerlink" title="整数类型"></a>整数类型</h4><p> 数值型数据类型主要用来存储数字。MySQL提供了多种数值数据类型，不同的数据类型提供不同的取值范围，可以存储的值范围越大，其所需要的存储空间也会越大。MySQL主要提供的整数类型有$ TINYINT, SMALLINT, MEDIUMINT, INT(INTEGER), BIGINT$，整数类型的属性字段可以添加$ AUTO$_$INCEEMENT$自增约束条件。下表为MySQL的数值类型。</p>
 
-          
-        
       
     </div>
 
@@ -1016,14 +534,36 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/database/" rel="tag"># database</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/19/index/" rel="prev" title="tortoiselala main page">
+                tortoiselala main page <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -1033,18 +573,15 @@
   </article>
 
 
-    
-  </section>
-
-  
-  <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
-  </nav>
-
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -1065,8 +602,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1146,6 +692,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据库学习笔记"><span class="nav-number">1.</span> <span class="nav-text">数据库学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#学习准备"><span class="nav-number">1.1.</span> <span class="nav-text">学习准备</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">1.1.1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#登录"><span class="nav-number">1.1.2.</span> <span class="nav-text">登录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#linux平台下MySQL安装目录"><span class="nav-number">1.1.3.</span> <span class="nav-text">linux平台下MySQL安装目录</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库的基本操作"><span class="nav-number">1.2.</span> <span class="nav-text">数据库的基本操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据表的基本操作"><span class="nav-number">1.3.</span> <span class="nav-text">数据表的基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#选择数据库"><span class="nav-number">1.3.1.</span> <span class="nav-text">选择数据库</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建数据表"><span class="nav-number">1.3.2.</span> <span class="nav-text">创建数据表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看所有的表"><span class="nav-number">1.3.3.</span> <span class="nav-text">查看所有的表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用主键约束"><span class="nav-number">1.3.4.</span> <span class="nav-text">使用主键约束</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#单字段主键"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">单字段主键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#多字段联合主键"><span class="nav-number">1.3.4.2.</span> <span class="nav-text">多字段联合主键</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用外键约束"><span class="nav-number">1.3.5.</span> <span class="nav-text">使用外键约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用非空约束"><span class="nav-number">1.3.6.</span> <span class="nav-text">使用非空约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用唯一性约束"><span class="nav-number">1.3.7.</span> <span class="nav-text">使用唯一性约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用默认约束"><span class="nav-number">1.3.8.</span> <span class="nav-text">使用默认约束</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#设置表的属性值自动增加"><span class="nav-number">1.3.9.</span> <span class="nav-text">设置表的属性值自动增加</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看数据表结构"><span class="nav-number">1.3.10.</span> <span class="nav-text">查看数据表结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#查看表详细结构"><span class="nav-number">1.3.11.</span> <span class="nav-text">查看表详细结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#修改数据表"><span class="nav-number">1.3.12.</span> <span class="nav-text">修改数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#修改表名"><span class="nav-number">1.3.12.1.</span> <span class="nav-text">修改表名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改字段的数据类型"><span class="nav-number">1.3.12.2.</span> <span class="nav-text">修改字段的数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改字段名"><span class="nav-number">1.3.12.3.</span> <span class="nav-text">修改字段名</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#添加字段"><span class="nav-number">1.3.12.4.</span> <span class="nav-text">添加字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除字段"><span class="nav-number">1.3.12.5.</span> <span class="nav-text">删除字段</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#修改字段的排列位置"><span class="nav-number">1.3.12.6.</span> <span class="nav-text">修改字段的排列位置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#更改表的存储引擎"><span class="nav-number">1.3.12.7.</span> <span class="nav-text">更改表的存储引擎</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除表的外键约束"><span class="nav-number">1.3.12.8.</span> <span class="nav-text">删除表的外键约束</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除数据表"><span class="nav-number">1.3.13.</span> <span class="nav-text">删除数据表</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#删除没有被关联的表"><span class="nav-number">1.3.13.1.</span> <span class="nav-text">删除没有被关联的表</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#删除被其他表关联的主表"><span class="nav-number">1.3.13.2.</span> <span class="nav-text">删除被其他表关联的主表</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型和运算符"><span class="nav-number">1.4.</span> <span class="nav-text">数据类型和运算符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#MySQL数据类型"><span class="nav-number">1.4.1.</span> <span class="nav-text">MySQL数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#整数类型"><span class="nav-number">1.4.1.1.</span> <span class="nav-text">整数类型</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1278,6 +840,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
 
   
 
@@ -1317,16 +883,6 @@
   
 
   
-  
-    
-      
-    
-      
-    
-      
-    
-      
-    
   
 
   
