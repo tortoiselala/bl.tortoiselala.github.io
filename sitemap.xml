@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tortoiselala.github.com/2019/01/14/servlet%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-31T12:11:51.809Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tortoiselala.github.com/2019/01/14/jdbc%E7%AC%94%E8%AE%B0/</loc>
     
     <lastmod>2019-01-31T12:05:42.957Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>http://tortoiselala.github.com/2018/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</loc>
     
     <lastmod>2019-01-31T12:04:15.496Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tortoiselala.github.com/2019/01/14/servlet%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-31T12:03:59.223Z</lastmod>
     
   </url>
   
