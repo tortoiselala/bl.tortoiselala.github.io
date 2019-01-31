@@ -218,7 +218,7 @@
           
           <li class="menu-item menu-item-home">
     <a href="/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Startseite</a>
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
   </li>
         
         
@@ -226,7 +226,7 @@
           
           <li class="menu-item menu-item-about">
     <a href="/about/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />Über</a>
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
   </li>
         
         
@@ -242,7 +242,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Kategorien</a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
   </li>
         
         
@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archiv</a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
   </li>
         
         
@@ -259,14 +259,6 @@
           <li class="menu-item menu-item-sitemap">
     <a href="/sitemap.xml" rel="section">
       <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
-  </li>
-        
-        
-        
-          
-          <li class="menu-item menu-item-javadoc-and-notes">
-    <a href="/javadoc-and-notes/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-java"></i> <br />javadoc and notes</a>
   </li>
 
       
@@ -317,7 +309,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Matrix-chain-multiplication-Introduction-to-Algorithms/">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/09/19/index/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tortoiselala">
@@ -336,8 +328,8 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/02/Matrix-chain-multiplication-Introduction-to-Algorithms/" itemprop="url">
-                  Matrix chain multiplication.Introduction to Algorithms
+                <a class="post-title-link" href="/2018/09/19/index/" itemprop="url">
+                  tortoiselala main page
                 </a>
               
             
@@ -356,14 +348,14 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-11-02 11:08:43" itemprop="dateCreated datePublished" datetime="2018-11-02T11:08:43+08:00">2018-11-02</time>
+              <time title="Created: 2018-09-19 10:27:37" itemprop="dateCreated datePublished" datetime="2018-09-19T10:27:37+08:00">2018-09-19</time>
             
 
             
@@ -380,7 +372,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Updated at: 2018-11-15 05:03:22" itemprop="dateModified" datetime="2018-11-15T05:03:22+08:00">2018-11-15</time>
+                <time title="Modified: 2018-09-20 07:48:36" itemprop="dateModified" datetime="2018-09-20T07:48:36+08:00">2018-09-20</time>
               
             
           </span>
@@ -415,38 +407,10 @@
       
         
           
-            <h1 id="矩阵链乘法问题"><a href="#矩阵链乘法问题" class="headerlink" title="矩阵链乘法问题"></a>矩阵链乘法问题</h1><p>矩阵链乘法是可用动态规划解决的最佳化问题。</p>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><pre><code>给定一个$n$个矩阵的序列（矩阵链） &lt; $ A_1, A_2, \cdot\cdot\cdot, A_n $&gt; ，我们希望计算它们的乘积
-</code></pre><script type="math/tex; mode=display">
-\begin{equation}
-A_1A_2\cdots A_3
-\label{eq:公式1}
-\end{equation}</script><pre><code>为了计算公式$\eqref {eq:公式1}$，我们可以先用括号明确计算次序，然后利用标准矩阵相乘算法进行计算。矩阵乘法是满足结合律的，因此任何加括号的方法都会得到相同的计算结果。
-</code></pre><p>我们称具有如下性质的矩阵乘积链为<strong>完全括号化的(</strong>$fully\, parenthesized$)：它是单一矩阵，或者是两个完全括号化的矩阵乘积链的积，且已外加括号。例如对于4个矩阵的序列，有如下完全括号化的方法：</p>
-<script type="math/tex; mode=display">
-\begin{equation}
-(A_1(A_2A_3A_4)))\\
-(A_1((A_2A_3)A_4))\\
-((A_1A_2)(A_3A_4))\\
-((A_1A_2A_3))A_4)\\
-(((A_1A_2)A_3)A_4)\\
-\label{eq:公式2}
-\end{equation}</script><pre><code>对矩阵链加括号的方法会对乘积运算的代价产生巨大影响。两个矩阵相乘的代价取决于相乘的两个矩阵的矩阵规模，若矩阵$A, B$的规模分别为$p\times q, q\times r$，则计算矩阵乘积的代价由进行的标量乘法所决定，即：$pqr$.
+            <center>what can you see here?</center>
 
-矩阵 $ A_i $ 的规模为 $ p_{i-1} \times p_i （1\leq i \leq n）$，求完全括号化方案，使得计算乘积 $ A_1, A_2, \cdot\cdot\cdot, A_n $ 所需标量乘法次数最少。
-</code></pre><h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1：递归解法"><a href="#Approach-1：递归解法" class="headerlink" title="Approach 1：递归解法"></a>Approach 1：递归解法</h3><p>使用符号$A_{i, \cdot\cdot\cdot j}(i\leq j)$表示$A_iA_{i+1}\cdot\cdot\cdot A_j$乘积的结果矩阵。令$m[i,j]$表示计算矩阵$A_{i, \cdot\cdot\cdot j}(i\leq j)$所需的标量乘法次数的最小值，那么原问题的解-计算$A_{1, \cdot\cdot\cdot n}$所需的最低代价就是$m[1, n]$。</p>
-<p>进行如下的对于$m[i, j]$的递归定义。对于$i = j$时的平凡问题，矩阵链只包含唯一的矩阵$A_{i, \cdot\cdot\cdot i} = A_i$，因此不需要做任何的标量乘法运算。对于所有的$i = 1, 2\cdots, n m[i, j] = 0$。当$i&lt;j$时可以使用最优子结构来计算$m[i,j]$。</p>
-<p>计算$m[i, j]$:假设$A_iA_{i+1}\cdot\cdot\cdot A_j$的最优括号化方案的分割点在矩阵$A_k$和$A_{k+1}$之间，其中$i\leq k&lt;j$。那么，$,[i, j]$就等于计算$A_{i, \cdot\cdot\cdot, k}$和$A_{k+1, \cdot\cdot\cdot, j}$的代价加上两个相乘的代价的最小值。因此可以得到</p>
-<script type="math/tex; mode=display">m[i, j] = m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j</script><p>以上公式是在假设$k$已知的情况下推导出来的，在此基础上，对$k$进行限制。$k$只有$j-i$种可能。因此得到下面公式：</p>
-<script type="math/tex; mode=display">
-m[i, j] =
-\begin{cases} 
-0 
-\atop  
-min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
-\end{cases} { 如果i = j \atop  如果 i<j}</script><p>类似于<a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割问题</a>我们做出补充来为我们提供足够的信息知道，如何构造最优解。我们提供$s[i, j]​$来存储$k​$值。</p>
-<h3 id="Approach-2：自底向上的方法"><a href="#Approach-2：自底向上的方法" class="headerlink" title="Approach 2：自底向上的方法"></a>Approach 2：自底向上的方法</h3><p>伪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">MATRIX-CHAN-ORDER(p)</span><br><span class="line">	n = p.length - <span class="number">1</span></span><br><span class="line">	let m[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">1</span>..n] and s[<span class="number">1</span>..n-<span class="number">1</span>, <span class="number">2</span>..n] be <span class="keyword">new</span> tables</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to n</span><br><span class="line">		m[i, i] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> l = <span class="number">2</span> to n</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to n - l + <span class="number">1</span></span><br><span class="line">			j = i + l -<span class="number">1</span></span><br><span class="line">			m[i, j] = MAX_INT</span><br><span class="line">			<span class="keyword">for</span> k = i to j - <span class="number">1</span></span><br><span class="line">				q = m[i, k] + m[k + <span class="number">1</span>, j] + p[i-<span class="number">1</span>]*p[k]*p[j]</span><br><span class="line">			<span class="keyword">if</span> q &lt; m[i, j]</span><br><span class="line">				m[i, j] = q</span><br><span class="line">				s[i, j] = k</span><br></pre></td></tr></table></figure>
+<p><a href="https://tortoiselala.github.io/javadoc-and-notes/" target="_blank" rel="noopener">javadoc and my notes</a></p>
+<p><a href="https://tortoiselala.github.io/database/" target="_blank" rel="noopener">a database nots</a></p>
 
           
         
@@ -500,7 +464,7 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/钢条切割-Introduction-to-Algorithms/">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/09/19/数据库笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tortoiselala">
@@ -519,8 +483,8 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/11/02/钢条切割-Introduction-to-Algorithms/" itemprop="url">
-                  钢条切割.Introduction to Algorithms
+                <a class="post-title-link" href="/2018/09/19/数据库笔记/" itemprop="url">
+                  database
                 </a>
               
             
@@ -539,19 +503,31 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Veröffentlicht am</span>
+                <span class="post-meta-item-text">Posted on</span>
               
 
               
                 
               
 
-              <time title="Post created: 2018-11-02 09:41:00 / Updated at: 19:04:06" itemprop="dateCreated datePublished" datetime="2018-11-02T09:41:00+08:00">2018-11-02</time>
+              <time title="Created: 2018-09-19 07:41:09" itemprop="dateCreated datePublished" datetime="2018-09-19T07:41:09+08:00">2018-09-19</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 20:01:29" itemprop="dateModified" datetime="2019-01-31T20:01:29+08:00">2019-01-31</time>
               
             
           </span>
@@ -585,1381 +561,59 @@ min_{i\leq k< j}\{m[i, k] + m[k + 1, j] + p_{i-1}p_kp_j\}
 
       
         
-          
-            <h1 id="钢条切割"><a href="#钢条切割" class="headerlink" title="钢条切割"></a>钢条切割</h1><p>某公司出售一段长度为i英寸的钢条的价格为Pi（i=1，2…单位：美元），下面给出了价格表</p>
-<div class="table-container">
+          <h1 id="数据库笔记"><a href="#数据库笔记" class="headerlink" title="数据库笔记"></a>数据库笔记</h1><h2 id="学习准备"><a href="#学习准备" class="headerlink" title="学习准备"></a>学习准备</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install mysql-sever</span><br><span class="line"></span><br><span class="line">sudo apt-get install mysql-client</span><br><span class="line"></span><br><span class="line">sudo apt install libmysqlclient-dev</span><br></pre></td></tr></table></figure>
+<h3 id="登录"><a href="#登录" class="headerlink" title="登录"></a>登录</h3><p>安装完成后会出现界面要求输入密码（两次），该密码即为初始登录时root密码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">shell&gt;mysql -u root -p</span><br><span class="line">#-u为用户选项后加用户名</span><br><span class="line">#-p为密码选项表示该用户需要密码回车之后会出现密码输入提示</span><br><span class="line">mysql&gt;</span><br><span class="line">#输入密码正确后进入mysql</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h3 id="linux平台下MySQL安装目录"><a href="#linux平台下MySQL安装目录" class="headerlink" title="linux平台下MySQL安装目录"></a>linux平台下MySQL安装目录</h3><div class="table-container">
 <table>
 <thead>
 <tr>
-<th>长度$i$</th>
-<th style="text-align:center">1</th>
-<th style="text-align:center">2</th>
-<th style="text-align:center">3</th>
-<th style="text-align:center">4</th>
-<th style="text-align:center">5</th>
-<th style="text-align:center">6</th>
-<th style="text-align:center">7</th>
-<th style="text-align:center">8</th>
-<th style="text-align:center">9</th>
-<th style="text-align:center">10</th>
+<th>文件夹</th>
+<th>文件夹内容</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>价格$ p_i $</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">8</td>
-<td style="text-align:center">9</td>
-<td style="text-align:center">10</td>
-<td style="text-align:center">17</td>
-<td style="text-align:center">17</td>
-<td style="text-align:center">20</td>
-<td style="text-align:center">24</td>
-<td style="text-align:center">30</td>
+<td>/usr/bin</td>
+<td>客户端和脚本</td>
+</tr>
+<tr>
+<td>/usr/sbin</td>
+<td>mysqld服务器</td>
+</tr>
+<tr>
+<td>/var/lib/mysql</td>
+<td>日志文件和数据库</td>
+</tr>
+<tr>
+<td>/usr/share/info</td>
+<td>信息格式的手册</td>
+</tr>
+<tr>
+<td>/usr/share/man</td>
+<td>UNIX帮助页/</td>
+</tr>
+<tr>
+<td>/usr/include/mysql</td>
+<td>头文件</td>
+</tr>
+<tr>
+<td>/usr/lib/mysql</td>
+<td>库</td>
+</tr>
+<tr>
+<td>/usr/share/mysql</td>
+<td>错误消息、字符集、实例配置文件等</td>
 </tr>
 </tbody>
 </table>
 </div>
-<h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一段长度为$n$英寸的钢条与价格表$p_i(i = 1, 2, \cdot\cdot \cdot, n)$，求钢条切割方案，是的销售收益$r_n$最大。</p>
-<h2 id="问题求解"><a href="#问题求解" class="headerlink" title="问题求解"></a>问题求解</h2><p>钢条切割问题满足最优子结构(optimal substructure)性质：问题的最优解由相关子问题的最优解组合而成，而这些子问题可以独立求解。</p>
-<h3 id="Approach-1：An-expression"><a href="#Approach-1：An-expression" class="headerlink" title="Approach 1：An expression"></a>Approach 1：An expression</h3><p>对于长度为$n$的钢条共有$2^{n-1}$中不同的切割方案，因为可以在距离钢条左侧$i(i = 1, 2, \cdot\cdot\cdot, n-1)$英寸处，我们总可以选择切割或不切割。如果一个最优解将钢条切割为$k$段，那么最优切割方案</p>
-<center>$$  n = i_1 + i_2 + \cdot\cdot\cdot + i_k $$</center>
-
-<p>将钢条切割为长度分别为$ i_1, i_2, \cdot\cdot\cdot, i_k$的小段，得到最大收益</p>
-<script type="math/tex; mode=display">r_n = p_1 + p_2 + \cdot\cdot\cdot + p_n</script><p>更一般的，我们使用下面的公式来描述$r_n(n\geq1)$：</p>
-<script type="math/tex; mode=display">r_n = max(p_n, r_1 + r_{n-1}, r_2 + r_{n-2}, \cdot\cdot\cdot, r_{n_1} + r_1)</script><p>第一个参数$p_n$表示不切割，其他$n-1$个参数对应另外$n-1$中方案：对于每个$i = 1, 2, \cdot\cdot\cdot, n-1$，首先将钢条切割为长度为$i$和$n-i$的两段，接着求解这两段的最优切割收益$r_i$和$r_{n-i}$。选择$n$中方案中收益最大的作为最终切割方案。</p>
-<h3 id="Approach-2：Dynamic-Programming"><a href="#Approach-2：Dynamic-Programming" class="headerlink" title="Approach 2：Dynamic Programming"></a>Approach 2：Dynamic Programming</h3><p>伪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CUT-ROD(p,n)</span><br><span class="line">let r[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">	q = INT_MIN</span><br><span class="line">	<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">		q = max(q, p[i]+r[j-i])</span><br><span class="line">	r[j] = q</span><br><span class="line"><span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
-<p><strong>java实现</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Solution</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">result</span><span class="params">(<span class="keyword">int</span>[] p)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span>[] r = <span class="keyword">new</span> <span class="keyword">int</span>[p.length+<span class="number">1</span>];</span><br><span class="line">        r[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; ++j)&#123;</span><br><span class="line">            <span class="keyword">int</span> q = Integer.min;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= j; ++i)&#123;</span><br><span class="line">                q = max(q, p[i] + r[j-i]);</span><br><span class="line">            &#125;</span><br><span class="line">            r[j] = q;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> r[n];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-3：重构-Approach-2"><a href="#Approach-3：重构-Approach-2" class="headerlink" title="Approach 3：重构 Approach 2"></a>Approach 3：重构 Approach 2</h3><p>重写算法，使得计算最优解的过程中能够记录下具体的切割方案。</p>
-<p>伪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">EXTENDED-CUT-ROD(p,n)</span><br><span class="line">    let r[<span class="number">0</span>...n] and s[<span class="number">0</span>...n] be a <span class="keyword">new</span> array</span><br><span class="line">	r[<span class="number">0</span>] = <span class="number">0</span></span><br><span class="line">	<span class="keyword">for</span> j = <span class="number">1</span> to n</span><br><span class="line">		q = INT_MIN</span><br><span class="line">		<span class="keyword">for</span> i = <span class="number">1</span> to j</span><br><span class="line">			<span class="keyword">if</span> q &lt; p[i] + r[j-i]</span><br><span class="line">				q =  p[i]+r[j-i]</span><br><span class="line">				s[j] = i</span><br><span class="line">		r[j] = q</span><br><span class="line">	<span class="keyword">return</span> r[n]</span><br></pre></td></tr></table></figure>
-<p>打印切割方案的伪代码</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">PRINT-CUT-ROD-SOLUTION(s,n)</span><br><span class="line">	<span class="keyword">while</span> n&gt;<span class="number">0</span></span><br><span class="line">		print s[n]</span><br><span class="line">		n = n - s[n]</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/11/02/Dynamic-Programming-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/02/Dynamic-Programming-Introduction-to-Algorithms/" itemprop="url">
-                  Dynamic Programming.Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-11-02 09:09:08 / Updated at: 19:07:28" itemprop="dateCreated datePublished" datetime="2018-11-02T09:09:08+08:00">2018-11-02</time>
-            
-
-            
-              
-
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="动态规划-Dynamic-Programming"><a href="#动态规划-Dynamic-Programming" class="headerlink" title="动态规划(Dynamic Programming)"></a>动态规划(Dynamic Programming)</h1><p>动态规划是与<a href="https://tortoiselala.github.io/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" target="_blank" rel="noopener">分治法</a>类似的一种计算方法，都是通过组合子问题的解来求解原问题。</p>
-<p>动态规划常常适用于有<strong>重叠子问题</strong>和<strong>最优子结构性质</strong>的问题，动态规划方法所耗时间往往远少于朴素解法。</p>
-<p>动态规划方法通常用来求解<strong>最优化问题(optimization problem)</strong>。这类问题可以有很多可行解，每个解都有一个值，我们希望寻找具有最优值（最大值或最小值）的解。</p>
-<p>动态规划将一个大问题分解为小问题（子问题），再根据子问题的解以得出原问题的解，与分治法不同的是，动态规划方法尝试在计算过程中将子问题的解记录下来，以便下次遇到相同的子问题时可以直接获取答案。</p>
-<h2 id="适用范围"><a href="#适用范围" class="headerlink" title="适用范围"></a>适用范围</h2><p>动态规划在查找有<strong>重叠子问题</strong>的问题的解时有效。它将问题划分为子问题，分别求解并记录子问题的解，再将子问题的解组合起来。因此，动态规划在遇到具有相同子问题时不会耗费时间。</p>
-<p>动态规划只能应用于有<strong>最后子结构</strong>的问题。最优子结构的意思是局部最优解能够决定全局最优解（并不一定能满足，有时需要近似）。</p>
-<p>无后效性。即子问题的解一旦确定，就不再改变，不再受这之后、包含它的更大的问题的求解决策影响。</p>
-<h2 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h2><ul>
-<li><a href="https://tortoiselala.github.io/2018/11/02/%E9%92%A2%E6%9D%A1%E5%88%87%E5%89%B2-Introduction-to-Algorithms/" target="_blank" rel="noopener">钢条切割</a></li>
-<li>斐波那契数列</li>
-<li>背包问题</li>
-</ul>
-<h2 id="使用动态规划的算法"><a href="#使用动态规划的算法" class="headerlink" title="使用动态规划的算法"></a>使用动态规划的算法</h2><ul>
-<li>最长公共子序列</li>
-<li>Floyed-Warshall算法</li>
-</ul>
-<h3 id=""><a href="#" class="headerlink" title=" "></a> </h3>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/29/Optimal-Binary-Search-Tree/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/29/Optimal-Binary-Search-Tree/" itemprop="url">
-                  Optimal Binary Search Tree
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-29 14:53:48" itemprop="dateCreated datePublished" datetime="2018-10-29T14:53:48+08:00">2018-10-29</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-12-11 04:01:14" itemprop="dateModified" datetime="2018-12-11T04:01:14+08:00">2018-12-11</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="最优二叉搜索树（最优二叉查找树）"><a href="#最优二叉搜索树（最优二叉查找树）" class="headerlink" title="最优二叉搜索树（最优二叉查找树）"></a>最优二叉搜索树（最优二叉查找树）</h1><h2 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h2><p>给定一个$n$个不同关键字的已排序的序列<script type="math/tex">K=<k_1, k_2, ..., k_n></script>（因此$ k_1&lt;k_2&lt;…k_n $），我们希望用这些关键字构造一颗二叉搜索树。对每个关键字$k_i$，都有一个概率$p_i$表示其搜索频率。有些要搜索的值可能不在$K$中，因此我们还有$ n+1 $个”伪关键字“，$d_0, d_1, d_2, …., d_n$表示不在$K$中的值，$d_0$表示所有小于$k_1$的值，$d_n$表示所有大于$k_n$的值，对$i = 1, 2, …, n-1$，伪关键字$d_i$表示所有在$k_i$和$k_{i-1}$之间的值。对每个伪关键字$d_i$，也都有一个概率$p_i$表示对应的搜索频率。</p>
-<p>图a与图b显示了对于一个$n=5$个关键字的集合构造的两棵二叉搜索树。么个关键字$k_i$是一个内部节点，每个伪关键字$d_i$是一个叶节点。每次要么搜索成功（找到某个关键字$k_i$），要么失败（找到某个伪关键字$d_i$)，对于所有的关键字与伪关键字的频率满足如下公式：</p>
-<script type="math/tex; mode=display">\sum_{i = 1}^{n}{p_i} + \sum_{i = 0}^{n}{q_i} = 1</script><center><p>
-<img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%202.jpg" width="25%" height="25%">
-    Figure (a) 期望搜索代价为2.80的二叉搜索树</p><br>
-<img src="https://raw.githubusercontent.com/tortoiselala/tortoiselala.github.io/master/src/img/Optimal%20Binary%20Search%20Tree%201.jpg" width="25%" height="25%">
-Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
-</center>
-
-<p>对于一个$n=5$的关键字集合及如下的搜索概率，构造的两棵二叉搜索树：</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>$i$</th>
-<th>0</th>
-<th>1</th>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>5</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>$ p_i $</td>
-<td></td>
-<td>0.15</td>
-<td>0.10</td>
-<td>0.05</td>
-<td>0.10</td>
-<td>0.20</td>
-</tr>
-<tr>
-<td>$ q_i $</td>
-<td>0.05</td>
-<td>0.10</td>
-<td>0.05</td>
-<td>0.05</td>
-<td>0.05</td>
-<td>0.10</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>由于我们知道每个关键字和伪关键字的搜索概率，因而可以确定在一棵给定的二叉搜索树$T$中进行一次搜索的期望代价。假定一次搜索的代价等于访问的节点数，即此次搜索找到的节点在$T$中的深度再加1.那么在$T$中进行一次搜索的期望代价为：</p>
-<script type="math/tex; mode=display">E[T中的搜索代价] = \sum_{i = 1}^{n}(depth_T(k_i)+1) \cdot p_i + \sum_{i = 0}^n(depth_T(d_i) + 1)\cdot q_i</script><script type="math/tex; mode=display">= 1+\sum_{i = 1}^n{depth}_T \cdot {p_i} + \sum_{i = 0}^n {depth}_T(d_i) \cdot q_i</script><p>其中${depth}_T$表示一个节点在树$T$中的深度    。</p>
-<p>对于给定的概率集合，我们希望构造一棵期望搜索代价最小的二叉搜索树，我们称之为最优二叉搜索树。</p>
-<p>最优二叉搜索树不一定是高度最矮的。</p>
-<p>出现概率最高的关键字不一定出现在二叉搜索树的根节点。</p>
-<p>接下来介绍使用动态规划解决该问题。</p>
-<h2 id="步骤1：最优二叉搜索树的结构"><a href="#步骤1：最优二叉搜索树的结构" class="headerlink" title="步骤1：最优二叉搜索树的结构"></a>步骤1：最优二叉搜索树的结构</h2>
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/Merge-Sort-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/Merge-Sort-Introduction-to-Algorithms/" itemprop="url">
-                  Merge Sort . Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-24 23:19:45" itemprop="dateCreated datePublished" datetime="2018-10-24T23:19:45+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-25 08:30:32" itemprop="dateModified" datetime="2018-10-25T08:30:32+08:00">2018-10-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="分治法"><a href="#分治法" class="headerlink" title="分治法"></a>分治法</h2><h3 id="算法思想"><a href="#算法思想" class="headerlink" title="算法思想"></a>算法思想</h3><p>将原问题分解为几个规模较小大但类似于原问题的子问题，递归的求解这些子问题，然后再合并这些子问题的解来建立原问题的解。</p>
-<p>分治模式在每层递归时都有三个步骤：</p>
-<ul>
-<li><strong>分解</strong>原问题为若干子问题，这些子问题是原问题的规模较小的实例。</li>
-<li><strong>解决</strong>这些子问题，递归地求解各子问题。然而，若子问题的规模足够小，则直接求解。</li>
-<li><strong>合并</strong>这些子问题成原问题的解</li>
-</ul>
-<p><strong>归并排序</strong>算法完全遵循分治模式。直观上其操作如下：</p>
-<ul>
-<li><p><strong>分解</strong>：分解待排序的n个元素的序列成各具$n/2$个元素的两个子序列。</p>
-</li>
-<li><p><strong>解决</strong>：使用归并排序递归地排序两个子序列。</p>
-</li>
-<li><p><strong>合并</strong>：合并两个已排序的子序列以 产生已排序的答案。</p>
-<p>当待排序的序列长度达到可分解的最小单元长度时，递归“开始回升”。</p>
-<p>归并排序算法的关键操作是“合并”步骤中两个已排序序列的合并。</p>
-<p><strong>合并过程伪代码描述</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">MERGE(A, p, q, r)</span><br><span class="line">n_front = q - p + <span class="number">1</span></span><br><span class="line">n_back = r - q</span><br><span class="line">let L[<span class="number">1</span>..n_front + <span class="number">1</span>] and R[<span class="number">1</span>..n_back + <span class="number">1</span>]be <span class="keyword">new</span> arrays</span><br><span class="line"><span class="keyword">for</span> i = <span class="number">1</span> to n_front</span><br><span class="line">	L[i] = A[p + i - <span class="number">1</span>]</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">1</span> to n_back</span><br><span class="line">	R[j] = A[q + j]</span><br><span class="line">L[n_front + <span class="number">1</span>] = MAX_INTEGER</span><br><span class="line">R[n_back + <span class="number">1</span>] = MAX_INTEGER</span><br><span class="line">i = <span class="number">1</span></span><br><span class="line">j = <span class="number">1</span></span><br><span class="line"><span class="keyword">for</span> k = p to r</span><br><span class="line">	<span class="keyword">if</span> L[i] &lt;= R[j]</span><br><span class="line">		A[k] = L[i]</span><br><span class="line">		i = i + <span class="number">1</span></span><br><span class="line">	<span class="keyword">else</span></span><br><span class="line">		A[k] = R[j]</span><br><span class="line">		j = j + <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<p>将过程$MERGE$作为归并排序的一个子程序用。使用伪代码$MERGE-SORT$来描述归并排序的过程，其中p大于等于r时，分得的子数组最多只有一个元素，所以已经排好序。否则，继续分解。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MERGE-SORT(A, p, r)</span><br><span class="line"><span class="keyword">if</span> p &lt; r</span><br><span class="line">	q = (p + r) / <span class="number">2</span></span><br><span class="line">	MERGE-SORT(A, p, q)</span><br><span class="line">	MERGE-SORT(A, q + <span class="number">1</span>, r)</span><br><span class="line">	MERGE(A, p, q, r)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h3><p>  对于递归问题总能够找到合适的递归方程式或递归式来描述其运行方式。</p>
-<p>  归并算法的时间复杂度分析$O(nlg n)$</p>
-<h3 id="使用分治算法求解最大子数组问题"><a href="#使用分治算法求解最大子数组问题" class="headerlink" title="使用分治算法求解最大子数组问题"></a>使用分治算法求解最大子数组问题</h3><p>求解序列$A[low, high]$的最大子数组。使用分治算法意味着我们需要将数组A划分为大小相同的两部分，$ A[low, mid], A[mid, high]$考虑序列$A$的最大子数组$ A[i, j] $出现的位置为如下三种情况之一：</p>
-<ul>
-<li><p>完全位于子数组$ A[low，mid] $中，因此$ low &lt;= i &lt;= j &lt;= mid$。</p>
-</li>
-<li><p>完全位于子数组$ A[mid, high] $中，因此$ mid &lt;= i &lt;= j &lt;= high$。</p>
-</li>
-<li><p>跨越了中点，因此$ low &lt;= i &lt;= mid &lt;= j &lt;= high $</p>
-</li>
-</ul>
-<p>我们可以递归的求解</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/Insertion-sort-Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/Insertion-sort-Introduction-to-Algorithms/" itemprop="url">
-                  Insertion sort . Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-24 22:26:49" itemprop="dateCreated datePublished" datetime="2018-10-24T22:26:49+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-25 07:18:24" itemprop="dateModified" datetime="2018-10-25T07:18:24+08:00">2018-10-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="插入排序"><a href="#插入排序" class="headerlink" title="插入排序"></a>插入排序</h2><p><strong>插入排序</strong>(Insertion Sort)通过构建有序序列将待排序序列分为两部分：已排序，未排序。对于未排序序列，在已排序序列中从后向前扫描，找到相应位置并插入。</p>
-<h3 id="伪代码描述"><a href="#伪代码描述" class="headerlink" title="伪代码描述"></a>伪代码描述</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">INSERTION-SORT(A)</span><br><span class="line"><span class="keyword">for</span> j = <span class="number">2</span> to A.length</span><br><span class="line">	key = A[j]</span><br><span class="line">	<span class="comment">//Insert A[j] into the sorted sequance A[1m..j-1]</span></span><br><span class="line">	i = j - <span class="number">1</span></span><br><span class="line">	<span class="keyword">while</span> i &gt; <span class="number">0</span> and A[i] &gt; key</span><br><span class="line">		A[i + <span class="number">1</span>] = A[i]</span><br><span class="line">		i = i -<span class="number">1</span></span><br><span class="line">	A[i + <span class="number">1</span>] = key</span><br></pre></td></tr></table></figure>
-<h3 id="Java实现"><a href="#Java实现" class="headerlink" title="Java实现"></a>Java实现</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Sort</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">InsertionSort</span><span class="params">(<span class="keyword">int</span>[] A)</span></span>&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>;i &lt; A.length; ++i)&#123;</span><br><span class="line">            <span class="keyword">int</span> key = A[i];</span><br><span class="line">            <span class="keyword">int</span> j = i - <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">while</span>(i &gt;= <span class="number">0</span> &amp;&amp; A[i] &gt; key)&#123;</span><br><span class="line">                A[i+<span class="number">1</span>] = A[i];</span><br><span class="line">                i = i - <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            A[i + <span class="number">1</span>] = key;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/Introduction-to-Algorithms/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/Introduction-to-Algorithms/" itemprop="url">
-                  Introduction to Algorithms
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-24 22:15:38" itemprop="dateCreated datePublished" datetime="2018-10-24T22:15:38+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-25 06:15:40" itemprop="dateModified" datetime="2018-10-25T06:15:40+08:00">2018-10-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/24/java-thread/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/24/java-thread/" itemprop="url">
-                  java thread
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-24 18:34:12" itemprop="dateCreated datePublished" datetime="2018-10-24T18:34:12+08:00">2018-10-24</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-25 04:16:56" itemprop="dateModified" datetime="2018-10-25T04:16:56+08:00">2018-10-25</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/06/java-final-methond-and-java-inline-function/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/06/java-final-methond-and-java-inline-function/" itemprop="url">
-                  java final方法与java内联函数
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-06 16:26:35" itemprop="dateCreated datePublished" datetime="2018-10-06T16:26:35+08:00">2018-10-06</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-07 00:27:28" itemprop="dateModified" datetime="2018-10-07T00:27:28+08:00">2018-10-07</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/" itemprop="url">
-                  leetcode problem 871 Minimum Number of Refueling Stops
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Veröffentlicht am</span>
-              
-
-              
-                
-              
-
-              <time title="Post created: 2018-10-03 11:04:16" itemprop="dateCreated datePublished" datetime="2018-10-03T11:04:16+08:00">2018-10-03</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Updated at: 2018-10-04 02:25:46" itemprop="dateModified" datetime="2018-10-04T02:25:46+08:00">2018-10-04</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Question-Description"><a href="#Question-Description" class="headerlink" title="Question Description"></a>Question Description</h2><p>A car travels from a starting position to a destination which is <code>target</code> miles east of the starting position.</p>
-<p>Along the way, there are gas stations.  Each <code>station[i]</code> represents a gas station that is <code>station[i][0]</code> miles east of the starting position, and has <code>station[i][1]</code> liters of gas.</p>
-<p>The car starts with an infinite tank of gas, which initially has <code>startFuel</code> liters of fuel in it.  It uses 1 liter of gas per 1 mile that it drives.</p>
-<p>When the car reaches a gas station, it may stop and refuel, transferring all the gas from the station into the car.</p>
-<p>What is the least number of refueling stops the car must make in order to reach its destination?  If it cannot reach the destination, return <code>-1</code>.</p>
-<p>Note that if the car reaches a gas station with 0 fuel left, the car can still refuel there.  If the car reaches the destination with 0 fuel left, it is still considered to have arrived.</p>
-<p><strong>Example 1:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 1, startFuel = 1, stations = []</span><br><span class="line">Output: 0</span><br><span class="line">Explanation: We can reach the target without refueling.</span><br></pre></td></tr></table></figure>
-<p><strong>Example 2:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 1, stations = [[10,100]]</span><br><span class="line">Output: -1</span><br><span class="line">Explanation: We can&apos;t reach the target (or even the first gas station).</span><br></pre></td></tr></table></figure>
-<p><strong>Example 3:</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Input: target = 100, startFuel = 10, stations = [[10,60],[20,30],[30,30],[60,40]]</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: </span><br><span class="line">We start with 10 liters of fuel.</span><br><span class="line">We drive to position 10, expending 10 liters of fuel.  We refuel from 0 liters to 60 liters of gas.</span><br><span class="line">Then, we drive from position 10 to position 60 (expending 50 liters of fuel),</span><br><span class="line">and refuel from 10 liters to 50 liters of gas.  We then drive to and reach the target.</span><br><span class="line">We made 2 refueling stops along the way, so we return 2.</span><br></pre></td></tr></table></figure>
-<p><strong>Note:</strong></p>
-<ol>
-<li><code>1 &lt;= target, startFuel, stations[i][1] &lt;= 10^9</code></li>
-<li><code>0 &lt;= stations.length &lt;= 500</code></li>
-<li><code>0 &lt; stations[0][0] &lt; stations[1][0] &lt; ... &lt; stations[stations.length-1][0] &lt; target</code></li>
-</ol>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="Approach-1-Dymanic-Programming-Time-Limited"><a href="#Approach-1-Dymanic-Programming-Time-Limited" class="headerlink" title="Approach 1:Dymanic Programming(Time Limited)"></a>Approach 1:Dymanic Programming(Time Limited)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations, <span class="keyword">int</span> sumStation, <span class="keyword">int</span> indexStations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (startFuel &gt;= target) &#123;</span><br><span class="line">			<span class="keyword">if</span> (sumStation &lt; min) &#123;</span><br><span class="line">				min = sumStation;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> (indexStations &gt;= stations.length) &#123;</span><br><span class="line">			<span class="keyword">return</span>;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> (startFuel &gt;= stations[indexStations][<span class="number">0</span>]) &#123;</span><br><span class="line">				minRefuelStops(target, startFuel, stations, sumStation, ++indexStations);</span><br><span class="line">				--indexStations;</span><br><span class="line">				startFuel += stations[indexStations][<span class="number">1</span>];</span><br><span class="line">				minRefuelStops(target, startFuel, stations, ++sumStation, ++indexStations);</span><br><span class="line">			&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">				<span class="keyword">return</span>;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="Approach-2-Dymanic-Programming-Accepted"><a href="#Approach-2-Dymanic-Programming-Accepted" class="headerlink" title="Approach 2:Dymanic Programming(Accepted)"></a>Approach 2:Dymanic Programming(Accepted)</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">minRefuelStops</span><span class="params">(<span class="keyword">int</span> target, <span class="keyword">int</span> startFuel, <span class="keyword">int</span>[][] stations)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">long</span>[] dp = <span class="keyword">new</span> <span class="keyword">long</span>[stations.length + <span class="number">1</span>];</span><br><span class="line">		dp[<span class="number">0</span>] = startFuel;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; stations.length; i++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &gt;= <span class="number">0</span>; --j) &#123;</span><br><span class="line">				<span class="keyword">if</span> (dp[j] &gt;= stations[i][<span class="number">0</span>]) &#123;</span><br><span class="line">					dp[j + <span class="number">1</span>] = Math.max(dp[j + <span class="number">1</span>], dp[j] + (<span class="keyword">long</span>) stations[i][<span class="number">1</span>]);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; dp.length; i++) &#123;</span><br><span class="line">			<span class="keyword">if</span> (dp[i] &gt;= target) &#123;</span><br><span class="line">				<span class="keyword">return</span> i;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> -<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/09/19/数据库笔记/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -2000,7 +654,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="Previous page"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -2043,8 +697,8 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
-                    <span class="site-state-item-name">Artikel</span>
+                    <span class="site-state-item-count">12</span>
+                    <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
               
@@ -2055,7 +709,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                 
                 
                 <div class="site-state-item site-state-tags">
-                  
+                  <a href="/tags/index.html">
                     
                     
                       
@@ -2068,9 +722,15 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
                     
                       
                     
-                    <span class="site-state-item-count">5</span>
-                    <span class="site-state-item-name">Tags</span>
-                  
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
                 </div>
               
             </nav>
@@ -2136,7 +796,7 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
 
 
 
-  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -2282,53 +942,11 @@ Figure (b) 期望搜索代价为2.75的二叉搜索树<p></p>
   
     
       
-        
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
     
       
     
   
 
-  
-    
-      <script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-      tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-      },
-      TeX: {equationNumbers: { autoNumber: "AMS" }}
-    });
-</script>
-
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Queue(function() {
-      var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-    });
-</script>
-<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-
-    
   
 
 

@@ -2,6 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://tortoiselala.github.com/2019/01/14/jdbc%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-31T12:05:42.957Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tortoiselala.github.com/2018/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</loc>
+    
+    <lastmod>2019-01-31T12:04:15.496Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tortoiselala.github.com/2019/01/14/servlet%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-31T12:03:59.223Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://tortoiselala.github.com/2018/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-01-31T12:01:29.125Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://tortoiselala.github.com/2018/10/03/leetcode-problem-871-Minimum-Number-of-Refueling-Stops/</loc>
     
     <lastmod>2019-01-31T11:59:58.545Z</lastmod>
@@ -44,20 +72,6 @@
   </url>
   
   <url>
-    <loc>http://tortoiselala.github.com/2018/09/19/%E6%95%B0%E6%8D%AE%E5%BA%93%E7%AC%94%E8%AE%B0/</loc>
-    
-    <lastmod>2019-01-31T11:59:07.688Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tortoiselala.github.com/2018/11/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E7%BD%91%E7%BB%9C%E5%B1%82/</loc>
-    
-    <lastmod>2019-01-31T11:58:54.031Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://tortoiselala.github.com/2018/11/10/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E8%BF%90%E8%BE%93%E5%B1%82/</loc>
     
     <lastmod>2019-01-31T11:58:50.764Z</lastmod>
@@ -82,13 +96,6 @@
     <loc>http://tortoiselala.github.com/tags/index.html</loc>
     
     <lastmod>2019-01-31T11:44:30.769Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tortoiselala.github.com/java-notes/servlet/index.html</loc>
-    
-    <lastmod>2019-01-28T14:44:36.817Z</lastmod>
     
   </url>
   
@@ -131,13 +138,6 @@
     <loc>http://tortoiselala.github.com/java-notes/spring/index.html</loc>
     
     <lastmod>2019-01-14T16:11:46.151Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://tortoiselala.github.com/java-notes/jdbc/index.html</loc>
-    
-    <lastmod>2019-01-14T15:27:52.465Z</lastmod>
     
   </url>
   
