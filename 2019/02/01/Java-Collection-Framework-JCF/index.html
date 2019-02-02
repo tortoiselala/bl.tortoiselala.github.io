@@ -108,19 +108,19 @@
 
 
 
-  <meta name="description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
+  <meta name="description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
 <meta name="keywords" content="java,java 基础知识,Java Collection Framework">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Collection Framework(JCF)">
 <meta property="og:url" content="http://tortoiselala.github.com/2019/02/01/Java-Collection-Framework-JCF/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
+<meta property="og:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://tortoiselala.github.com/src/img/java-collection-framework/JCF-Collection-Interfaces.png">
-<meta property="og:updated_time" content="2019-02-01T15:02:55.791Z">
+<meta property="og:updated_time" content="2019-02-02T03:47:37.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Collection Framework(JCF)">
-<meta name="twitter:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
+<meta name="twitter:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
 <meta name="twitter:image" content="http://tortoiselala.github.com/src/img/java-collection-framework/JCF-Collection-Interfaces.png">
 
 
@@ -358,12 +358,24 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
                 
               
 
-              <time title="Created: 2019-02-01 22:44:47 / Modified: 23:02:55" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:47+08:00">2019-02-01</time>
+              <time title="Created: 2019-02-01 22:44:47" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:47+08:00">2019-02-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-02 11:47:37" itemprop="dateModified" datetime="2019-02-02T11:47:37+08:00">2019-02-02</time>
               
             
           </span>
@@ -399,7 +411,57 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。</p>
 <p>java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。</p>
 <h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><p>JCF共定义了14中容器接口，其关系如下所示：<br><img src="/src/img/java-collection-framework/JCF-Collection-Interfaces.png" alt="JCF Collection Interfaces"></p>
-
+<p><code>Map</code>接口没有继承自<code>Collection</code>，因为<code>Map</code>表示的是关联式容器而不是集合。但是java提供了从<code>Map</code>转换到集合视图的方法。</p>
+<h1 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h1><p>上述接口的通用实现如下</p>
+<table algin="center">
+   <tr>
+      <td></td>
+      <td></td>
+      <td colspan="5">Implementations</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td>Hash Table</td>
+      <td>Resizeable Array</td>
+      <td>Balanced Tree</td>
+      <td>Linked List</td>
+      <td>Hash Table + Linked List</td>
+   </tr>
+   <tr>
+      <td rowspan="4">Interfaces</td>
+      <td>Set</td>
+      <td>Hash Set</td>
+      <td></td>
+      <td>TreeSet</td>
+      <td></td>
+      <td>LinkedHashSet</td>
+   </tr>
+   <tr>
+      <td>List</td>
+      <td></td>
+      <td>ArrayList</td>
+      <td></td>
+      <td>LinkedList</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Deque</td>
+      <td></td>
+      <td>ArrayDeque</td>
+      <td></td>
+      <td>LinkedList</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Map</td>
+      <td>Hash Map</td>
+      <td></td>
+      <td>TreeMap</td>
+      <td></td>
+      <td>LinkedHashMap</td>
+   </tr>
+</table>
       
     </div>
 
@@ -605,7 +667,7 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection接口"><span class="nav-number">2.</span> <span class="nav-text">Collection接口</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Collection接口"><span class="nav-number">2.</span> <span class="nav-text">Collection接口</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#接口实现"><span class="nav-number">3.</span> <span class="nav-text">接口实现</span></a></li></ol></div>
             
 
           </div>

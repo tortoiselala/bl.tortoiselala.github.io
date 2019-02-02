@@ -356,12 +356,24 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
                 
               
 
-              <time title="Created: 2019-02-01 22:44:47 / Modified: 23:02:55" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:47+08:00">2019-02-01</time>
+              <time title="Created: 2019-02-01 22:44:47" itemprop="dateCreated datePublished" datetime="2019-02-01T22:44:47+08:00">2019-02-01</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-02 11:47:37" itemprop="dateModified" datetime="2019-02-02T11:47:37+08:00">2019-02-02</time>
               
             
           </span>
@@ -399,7 +411,57 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
             <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。</p>
 <p>java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。</p>
 <h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><p>JCF共定义了14中容器接口，其关系如下所示：<br><img src="/src/img/java-collection-framework/JCF-Collection-Interfaces.png" alt="JCF Collection Interfaces"></p>
-
+<p><code>Map</code>接口没有继承自<code>Collection</code>，因为<code>Map</code>表示的是关联式容器而不是集合。但是java提供了从<code>Map</code>转换到集合视图的方法。</p>
+<h1 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h1><p>上述接口的通用实现如下</p>
+<table algin="center">
+   <tr>
+      <td></td>
+      <td></td>
+      <td colspan="5">Implementations</td>
+   </tr>
+   <tr>
+      <td></td>
+      <td></td>
+      <td>Hash Table</td>
+      <td>Resizeable Array</td>
+      <td>Balanced Tree</td>
+      <td>Linked List</td>
+      <td>Hash Table + Linked List</td>
+   </tr>
+   <tr>
+      <td rowspan="4">Interfaces</td>
+      <td>Set</td>
+      <td>Hash Set</td>
+      <td></td>
+      <td>TreeSet</td>
+      <td></td>
+      <td>LinkedHashSet</td>
+   </tr>
+   <tr>
+      <td>List</td>
+      <td></td>
+      <td>ArrayList</td>
+      <td></td>
+      <td>LinkedList</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Deque</td>
+      <td></td>
+      <td>ArrayDeque</td>
+      <td></td>
+      <td>LinkedList</td>
+      <td></td>
+   </tr>
+   <tr>
+      <td>Map</td>
+      <td>Hash Map</td>
+      <td></td>
+      <td>TreeMap</td>
+      <td></td>
+      <td>LinkedHashMap</td>
+   </tr>
+</table>
           
         
       
@@ -901,6 +963,157 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jdbc笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/14/jdbc笔记/" itemprop="url">
+                  jdbc
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 20:05:42" itemprop="dateModified" datetime="2019-01-31T20:05:42+08:00">2019-01-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jsp笔记/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1235,157 +1448,6 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
             </a>
           </div>
           <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jdbc笔记/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/14/jdbc笔记/" itemprop="url">
-                  jdbc
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-31 20:05:42" itemprop="dateModified" datetime="2019-01-31T20:05:42+08:00">2019-01-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
         
       
     </div>
