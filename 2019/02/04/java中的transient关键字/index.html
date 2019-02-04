@@ -108,25 +108,25 @@
 
 
 
-  <meta name="description" content="ArrayList notes">
-<meta name="keywords" content="java notes">
-<meta property="og:type" content="website">
-<meta property="og:title" content="util Notes">
-<meta property="og:url" content="http://tortoiselala.github.com/javadoc-and-notes/notes/util/index.html">
+  <meta name="description" content="transient用法 被transient修饰的变量不会被序列化或写到磁盘中。 一旦对象被transient修饰，变量将不再是对象持久化的一部分，该变量内容无法在序列化后被访问。 该方法只能够修饰变量，而不能够修饰方法和类。  注：实现序列化的方法是通过实现Serializable接口。 transient 踩坑一个静态变量无论是否被transient修饰，均不能序列化。 不能够序列话的变量并不">
+<meta name="keywords" content="java,java 基础知识">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java中的transient关键字">
+<meta property="og:url" content="http://tortoiselala.github.com/2019/02/04/java中的transient关键字/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="ArrayList notes">
+<meta property="og:description" content="transient用法 被transient修饰的变量不会被序列化或写到磁盘中。 一旦对象被transient修饰，变量将不再是对象持久化的一部分，该变量内容无法在序列化后被访问。 该方法只能够修饰变量，而不能够修饰方法和类。  注：实现序列化的方法是通过实现Serializable接口。 transient 踩坑一个静态变量无论是否被transient修饰，均不能序列化。 不能够序列话的变量并不">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-19T23:11:40.000Z">
+<meta property="og:updated_time" content="2019-02-04T00:48:15.029Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="util Notes">
-<meta name="twitter:description" content="ArrayList notes">
+<meta name="twitter:title" content="java中的transient关键字">
+<meta name="twitter:description" content="transient用法 被transient修饰的变量不会被序列化或写到磁盘中。 一旦对象被transient修饰，变量将不再是对象持久化的一部分，该变量内容无法在序列化后被访问。 该方法只能够修饰变量，而不能够修饰方法和类。  注：实现序列化的方法是通过实现Serializable接口。 transient 踩坑一个静态变量无论是否被transient修饰，均不能序列化。 不能够序列话的变量并不">
 
 
 
 
 
 
-  <link rel="canonical" href="http://tortoiselala.github.com/javadoc-and-notes/notes/util/"/>
+  <link rel="canonical" href="http://tortoiselala.github.com/2019/02/04/java中的transient关键字/"/>
 
 
 
@@ -136,7 +136,7 @@
   };
 </script>
 
-  <title>util Notes | tortoiselala</title>
+  <title>java中的transient关键字 | tortoiselala</title>
   
 
 
@@ -274,28 +274,6 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
   
     
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
   
 
   
@@ -322,116 +300,168 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
 
   <div id="posts" class="posts-expand">
     
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/02/04/java中的transient关键字/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala">
+    </span>
+
     
-    
-    <div class="post-block page">
       <header class="post-header">
 
-<h1 class="post-title" itemprop="name headline">util Notes</h1>
-
-<div class="post-meta">
-  
-  
-
-
-  
-  
-  <ul class="breadcrumb">
-    
-      
-      
         
-          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
+        
+          <h1 class="post-title" itemprop="name headline">java中的transient关键字
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-04 08:28:25 / Modified: 08:48:15" itemprop="dateCreated datePublished" datetime="2019-02-04T08:28:25+08:00">2019-02-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
           
             
           
-        
-      
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/notes/">NOTES</a></li>
+
           
-            
           
-        
-      
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
     
-      
-      
-        
-          <li>UTIL</li>
-        
-      
+
     
-      
-      
     
-  </ul>
-
-
-</div>
-
-</header>
+    
+    <div class="post-body" itemprop="articleBody">
 
       
       
-      
-      <div class="post-body">
-        
-        
-          <p><a href="https://tortoiselala.github.io/Java/util/arrayListNotes/" target="_blank" rel="noopener">ArrayList notes</a></p>
 
-        
-      </div>
       
-      
+        <h1 id="transient用法"><a href="#transient用法" class="headerlink" title="transient用法"></a>transient用法</h1><ul>
+<li>被<code>transient</code>修饰的变量不会被序列化或写到磁盘中。</li>
+<li>一旦对象被<code>transient</code>修饰，变量将不再是对象持久化的一部分，该变量内容无法在序列化后被访问。</li>
+<li>该方法只能够修饰变量，而不能够修饰方法和类。</li>
+</ul>
+<p>注：实现序列化的方法是通过实现<code>Serializable</code>接口。</p>
+<h1 id="transient-踩坑"><a href="#transient-踩坑" class="headerlink" title="transient 踩坑"></a>transient 踩坑</h1><p>一个静态变量无论是否被<code>transient</code>修饰，均不能序列化。</p>
+<p>不能够序列话的变量并不是说存储时，存储的null，而是什么都不进行存储。</p>
+<h2 id="并不一定被transient修饰的变量就一定不能被序列化"><a href="#并不一定被transient修饰的变量就一定不能被序列化" class="headerlink" title="并不一定被transient修饰的变量就一定不能被序列化"></a>并不一定被<code>transient</code>修饰的变量就一定不能被序列化</h2><p>在Java中，对象的序列化可以通过两种接口来实现，若实现的<code>Serializable</code>接口，所有的序列化会自动进行，但是如果实现的是<code>Externalizable</code>接口，则没有任何东西可以自动进行序列化，需要在<code>writeExternal<code>中指定所要序列化的变量，这与是否被<code>transient</code>修饰无关。</code></code></p>
+
       
     </div>
+
     
 
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java/" rel="tag"># java</a>
+          
+            <a href="/tags/java-基础知识/" rel="tag"># java 基础知识</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/01/Java-Collection-Framework-JCF/" rel="next" title="Java Collection Framework(JCF)">
+                <i class="fa fa-chevron-left"></i> Java Collection Framework(JCF)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
   
   
-  <ul class="breadcrumb">
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
-          
-            
-          
-        
-      
-    
-      
-      
-        
-          <li><a href="/javadoc-and-notes/notes/">NOTES</a></li>
-          
-            
-          
-        
-      
-    
-      
-      
-        
-          <li>UTIL</li>
-        
-      
-    
-      
-      
-    
-  </ul>
+  
+  </article>
 
 
-    
-    
-    
   </div>
 
 
@@ -461,8 +491,17 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -558,6 +597,22 @@ style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,1
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#transient用法"><span class="nav-number">1.</span> <span class="nav-text">transient用法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#transient-踩坑"><span class="nav-number">2.</span> <span class="nav-text">transient 踩坑</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并不一定被transient修饰的变量就一定不能被序列化"><span class="nav-number">2.1.</span> <span class="nav-text">并不一定被transient修饰的变量就一定不能被序列化</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
