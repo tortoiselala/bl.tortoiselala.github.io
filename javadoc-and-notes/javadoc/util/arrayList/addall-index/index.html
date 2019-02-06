@@ -2,26 +2,24 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next mist use-motion" lang="en">
+<html class="theme-next muse use-motion" lang="en">
 <head>
   <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
-<meta name="theme-color" content="#222">
-
-
-
-
-
-
-
-
-
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
 
 
 
@@ -36,76 +34,69 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
 
   
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
 
 
 
 
-  
-  
-  
-  
-
-  
-    
-    
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
-
-
-
-
-
-
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
-
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
-
-
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
-
-
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
-
-
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
-
-
-
-
-
-
-
-
-
-
-<meta name="description" content="java.util.ArrayList.addAll(int index, Collection&amp;lt;? extends E&amp;gt; c)方法将给定的集合中的所有元素以给定的位置插入到列表中，插入顺序按照Collection返回的迭代器的顺序。将指定索引之后的元素右移到合适位置。 声明1public boolean addAll(int index, Collection&amp;lt;? extend">
+  <meta name="description" content="java.util.ArrayList.addAll(int index, Collection&amp;lt;? extends E&amp;gt; c)方法将给定的集合中的所有元素以给定的位置插入到列表中，插入顺序按照Collection返回的迭代器的顺序。将指定索引之后的元素右移到合适位置。 声明1public boolean addAll(int index, Collection&amp;lt;? extend">
 <meta property="og:type" content="website">
 <meta property="og:title" content="addAll">
 <meta property="og:url" content="http://tortoiselala.github.com/javadoc-and-notes/javadoc/util/arrayList/addall-index/index.html">
@@ -119,29 +110,6 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Mist',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
 
@@ -149,9 +117,13 @@
 
 
 
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
-
-  <title>addAll | tortoiselala</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>addAll | tortoiselala</title>
   
 
 
@@ -160,6 +132,35 @@
 
 
 
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 </head>
 
@@ -175,23 +176,22 @@
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
       <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
+  <div class="site-meta">
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">tortoiselala</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
-      
-        <p class="site-subtitle"></p>
-      
+    
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -199,65 +199,68 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-archives">
-          <a href="/archives/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            Archives
-          </a>
-        </li>
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
       
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
 
       
+      
     </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
   
 
   
@@ -265,12 +268,20 @@
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
           <div id="content" class="content">
             
 
@@ -281,9 +292,73 @@
     <div class="post-block page">
       <header class="post-header">
 
-	<h1 class="post-title" itemprop="name headline">addAll</h1>
+<h1 class="post-title" itemprop="name headline">addAll
+
+</h1>
+
+<div class="post-meta">
+  
+  
 
 
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/">JAVADOC</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/util/">UTIL</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/util/arrayList/">ARRAYLIST</a></li>
+        
+      
+    
+      
+      
+        
+          <li>ADDALL-INDEX</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+</div>
 
 </header>
 
@@ -313,15 +388,72 @@
       
     </div>
     
+
+
+  
+  
+  <ul class="breadcrumb">
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/">JAVADOC-AND-NOTES</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/">JAVADOC</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/util/">UTIL</a></li>
+        
+      
+    
+      
+      
+        
+          
+            
+          
+          <li><a href="/javadoc-and-notes/javadoc/util/arrayList/">ARRAYLIST</a></li>
+        
+      
+    
+      
+      
+        
+          <li>ADDALL-INDEX</li>
+        
+      
+    
+      
+      
+    
+  </ul>
+
+
+    
     
     
   </div>
 
 
           </div>
-          
-
-
           
 
   
@@ -357,7 +489,7 @@
         </ul>
       
 
-      <section class="site-overview-wrap sidebar-panel">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -365,56 +497,87 @@
               <p class="site-description motion-element" itemprop="description"></p>
           </div>
 
-          <nav class="site-state motion-element">
-
-            
-              <div class="site-state-item site-state-posts">
+          
+            <nav class="site-state motion-element">
               
-                <a href="/archives/">
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
 
-            
-
-            
               
+
               
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">tags</span>
-                </a>
-              </div>
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">13</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
             
-
-          </nav>
-
           
-
-          
-
-          
-          
-
-          
-          
-
           
 
         </div>
-      </section>
+      </div>
 
       
       <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
           <div class="post-toc">
 
             
-              
+            
+            
             
 
             
@@ -422,7 +585,7 @@
             
 
           </div>
-        </section>
+        </div>
       <!--/noindex-->
       
 
@@ -439,16 +602,18 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">tortoiselala</span>
 
   
+
+  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
 
 
 
@@ -456,12 +621,13 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Mist</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.0.0</div>
 
 
 
 
         
+
 
 
 
@@ -482,11 +648,14 @@
 
     
 
+    
+
+    
   </div>
 
   
 
-<script type="text/javascript">
+<script>
   if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
     window.Promise = null;
   }
@@ -500,10 +669,6 @@
 
 
 
-  
-
-
-  
 
 
 
@@ -515,64 +680,49 @@
 
 
 
-  
-  
-    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
-  
+
+
+
+
+
 
   
-  
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
 
   
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
-  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
 
 
   
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+  <script src="/js/src/utils.js?v=7.0.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+  <script src="/js/src/motion.js?v=7.0.0"></script>
 
 
 
   
   
 
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
 
 
 
   
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config("");
 </script>
@@ -599,35 +749,7 @@
   
 
 
-
-
-	
-
-
-
-
-
   
-
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-
-
-
-  
-
 
 
 
@@ -639,11 +761,20 @@
   
 
   
+
   
 
   
+
   
 
+  
+
+  
+
+  
+
+  
 
   
 
