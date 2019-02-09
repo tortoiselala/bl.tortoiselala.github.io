@@ -336,6 +336,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/02/09/java-util-ArrayList部分源码分析/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/02/09/java-util-ArrayList部分源码分析/" class="post-title-link" itemprop="url">java.util.ArrayList部分源码分析</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-09 14:54:18 / Modified: 14:56:27" itemprop="dateCreated datePublished" datetime="2019-02-09T14:54:18+08:00">2019-02-09</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h1 id="java-util-ArrayList的继承关系视图"><a href="#java-util-ArrayList的继承关系视图" class="headerlink" title="java.util.ArrayList的继承关系视图"></a>java.util.ArrayList的继承关系视图</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">java.lang.Object</span><br><span class="line">    java.util.AbstractCollection&lt;E&gt;</span><br><span class="line">        java.util.AbstractList&lt;E&gt;</span><br><span class="line">            java.util.ArrayList&lt;E&gt;</span><br></pre></td></tr></table></figure>
+<h1 id="java-util-ArrayList实现的接口"><a href="#java-util-ArrayList实现的接口" class="headerlink" title="java.util.ArrayList实现的接口"></a>java.util.ArrayList实现的接口</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Serializable</span><br><span class="line">Cloneable</span><br><span class="line">Iterable&lt;E&gt;</span><br><span class="line">Collection&lt;E&gt;</span><br><span class="line">List&lt;E&gt;</span><br><span class="line">RandomAcess</span><br></pre></td></tr></table></figure>
+<h1 id="子类"><a href="#子类" class="headerlink" title="子类"></a>子类</h1><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">AttributeList</span><br><span class="line">RoleList</span><br><span class="line">RoleUnresolvedList</span><br></pre></td></tr></table></figure>
+<p>java.util.ArrayList 类提供了可调整大小的数组，并实现了List接口。ArrayList的特点：</p>
+<ul>
+<li><p>实现了所有可选的列表操作，并且允许所有元素，包括空值null。</p>
+</li>
+<li><p>提供了一些方法来操作内部用来存储列表的数组的大小。</p>
+</li>
+<li><p>相较于LinkedList实现的常数因子较低。</p>
+</li>
+</ul>
+<p>这里E代表元素。例如，如果构建一个字符串数组列表，那么初始化为<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ArrayList&lt;String&gt; stringList = <span class="keyword">new</span> ArrayList&lt;String&gt;();</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/02/09/java-util-ArrayList部分源码分析/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/02/04/java中的transient关键字/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -549,7 +710,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-09 14:47:57" itemprop="dateModified" datetime="2019-02-09T14:47:57+08:00">2019-02-09</time>
+                <time title="Modified: 2019-02-09 14:59:20" itemprop="dateModified" datetime="2019-02-09T14:59:20+08:00">2019-02-09</time>
               
             
           </span>
@@ -1869,180 +2030,11 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/servlet笔记/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/14/servlet笔记/" class="post-title-link" itemprop="url">servlet</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-31 20:11:51" itemprop="dateModified" datetime="2019-01-31T20:11:51+08:00">2019-01-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <h1 id="什么是Servlet"><a href="#什么是Servlet" class="headerlink" title="什么是Servlet"></a>什么是Servlet</h1><p>Java Servlet是运行在Web服务器或应用服务器上的程序，它是作为Web浏览器或其他HTTP客户端的请求和HTTP服务器上的数据库或应用程序之间的中间层。</p>
-<p>使用Servlet通常情况下，可以达到与CGI（Common Gateway Interface，公共网关接口）实现的程序可以达到相同的效果。但是相比与CGI，servlet有更为明显的优势：</p>
-<ul>
-<li>性能更优</li>
-<li>Servlet在Web服务器的地址空间内执行。这样就不必要创建一个单独的进程来处理每个客户端请求。</li>
-<li>Servlet独立于平台，使用Java编写。</li>
-</ul>
-<h1 id="Servlet架构"><a href="#Servlet架构" class="headerlink" title="Servlet架构"></a>Servlet架构</h1><p><img src="http://www.runoob.com/wp-content/uploads/2014/07/servlet-arch.jpg" alt=""></p>
-<h1 id="Servlet任务"><a href="#Servlet任务" class="headerlink" title="Servlet任务"></a>Servlet任务</h1>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/01/14/servlet笔记/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2085,7 +2077,7 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-count">21</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2126,7 +2118,11 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2332,9 +2328,9 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
       
     
       
-        
-      
     
+      
+        
       
     
       
