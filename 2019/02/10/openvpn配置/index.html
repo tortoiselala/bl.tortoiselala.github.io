@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="openvpn原理openvpn通过使用公开秘钥（非对称秘钥，加密解密使用不同的key，一个称为Public key，另外一个称为Private key）对数据进行加密。这种方式称为TLS加密。 openvpn使用TSL加密方式的工作过程是，首先server与client使用想同的CA证书，双方通过交换证书的方式验证双方的合法性，用于决定是否建立VPN连接。 然后使用对方的CA证书，将数据加密后发">
+<meta name="keywords" content="openvpn">
+<meta property="og:type" content="article">
+<meta property="og:title" content="openvpn配置">
+<meta property="og:url" content="http://tortoiselala.github.com/2019/02/10/openvpn配置/index.html">
+<meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="openvpn原理openvpn通过使用公开秘钥（非对称秘钥，加密解密使用不同的key，一个称为Public key，另外一个称为Private key）对数据进行加密。这种方式称为TLS加密。 openvpn使用TSL加密方式的工作过程是，首先server与client使用想同的CA证书，双方通过交换证书的方式验证双方的合法性，用于决定是否建立VPN连接。 然后使用对方的CA证书，将数据加密后发">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-02-10T12:43:38.430Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="openvpn配置">
+<meta name="twitter:description" content="openvpn原理openvpn通过使用公开秘钥（非对称秘钥，加密解密使用不同的key，一个称为Public key，另外一个称为Private key）对数据进行加密。这种方式称为TLS加密。 openvpn使用TSL加密方式的工作过程是，首先server与client使用想同的CA证书，双方通过交换证书的方式验证双方的合法性，用于决定是否建立VPN连接。 然后使用对方的CA证书，将数据加密后发">
+
+
+
+
+
+
+  <link rel="canonical" href="http://tortoiselala.github.com/2019/02/10/openvpn配置/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>openvpn配置 | tortoiselala</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tortoiselala</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/02/10/openvpn配置/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">openvpn配置<a href="https://github.com/tortoiselala/blog-src_posts/openvpn配置.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-02-10 09:32:10 / Modified: 20:43:38" itemprop="dateCreated datePublished" datetime="2019-02-10T09:32:10+08:00">2019-02-10</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="openvpn原理"><a href="#openvpn原理" class="headerlink" title="openvpn原理"></a>openvpn原理</h1><p>openvpn通过使用公开秘钥（非对称秘钥，加密解密使用不同的key，一个称为Public key，另外一个称为Private key）对数据进行加密。这种方式称为TLS加密。</p>
+<p>openvpn使用TSL加密方式的工作过程是，首先server与client使用想同的CA证书，双方通过交换证书的方式验证双方的合法性，用于决定是否建立VPN连接。</p>
+<p>然后使用对方的CA证书，将数据加密后发送给对方，由于使用的是对方CA证书加密，所以只有对方CA证书的Private key才能够解密数据，这就保证了此秘钥的安全性，并且该秘钥是定期改变的，对于窃听者来说，可能还没有破解出此秘钥，VPN通信双方可能就已经更换秘钥了。</p>
+<h1 id="opencpn安装加密后"><a href="#opencpn安装加密后" class="headerlink" title="opencpn安装加密后"></a>opencpn安装加密后</h1><p>ubuntu下可以使用apt安装（也可以使用源码安装）。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install openvpn libssl-dev openssl</span><br></pre></td></tr></table></figure>
+<p>安装完毕后，可以使用</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openvpn --version</span><br></pre></td></tr></table></figure>
+<p>查看版本号，如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">OpenVPN 2.4.4 x86_64-pc-linux-gnu [SSL (OpenSSL)] [LZO] [LZ4] [EPOLL] [PKCS11] [MH/PKTINFO] [AEAD] built on Sep  5 2018</span><br><span class="line">library versions: OpenSSL 1.1.0g  2 Nov 2017, LZO 2.08</span><br><span class="line">Originally developed by James Yonan</span><br><span class="line">Copyright (C) 2002-2017 OpenVPN Technologies, Inc. &lt;sales@openvpn.net&gt;</span><br><span class="line">Compile time defines: enable_async_push=no enable_comp_stub=no enable_crypto=yes enable_crypto_ofb_cfb=yes enable_debug=yes enable_def_auth=yes enable_dependency_tracking=no enable_dlopen=unknown enable_dlopen_self=unknown enable_dlopen_self_static=unknown enable_fast_install=needless enable_fragment=yes enable_iproute2=yes enable_libtool_lock=yes enable_lz4=yes enable_lzo=yes enable_maintainer_mode=no enable_management=yes enable_multihome=yes enable_pam_dlopen=no enable_pedantic=no enable_pf=yes enable_pkcs11=yes enable_plugin_auth_pam=yes enable_plugin_down_root=yes enable_plugins=yes enable_port_share=yes enable_selinux=no enable_server=yes enable_shared=yes enable_shared_with_static_runtimes=no enable_silent_rules=no enable_small=no enable_static=yes enable_strict=no enable_strict_options=no enable_systemd=yes enable_werror=no enable_win32_dll=yes enable_x509_alt_username=yes with_aix_soname=aix with_crypto_library=openssl with_gnu_ld=yes with_mem_check=no with_sysroot=no</span><br></pre></td></tr></table></figure>
+<p>该版本号为2.4.4</p>
+<p>安装easy-rsa可以使用apt安装或源码安装</p>
+<p>源码安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -l https://github.com/OpenVPN/easy-rsa/releases/download/v3.0.6/EasyRSA-unix-v3.0.6.tgz</span><br></pre></td></tr></table></figure></p>
+<p>apt安装<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install easy-rsa</span><br></pre></td></tr></table></figure></p>
+<p>后面的链接可以在github的仓库找到最新版本的链接替换。</p>
+<p>open-rsa可以用于制作相关证书。</p>
+<h1 id="制作相关证书"><a href="#制作相关证书" class="headerlink" title="制作相关证书"></a>制作相关证书</h1><p>openvpn的证书分为三部分：CA证书、server证书、client证书</p>
+<h2 id="制作CA证书"><a href="#制作CA证书" class="headerlink" title="制作CA证书"></a>制作CA证书</h2><p>源码方式安装easy-rsa和apt安装的easy-rsa证书制作方式有所不同，以下是源码安装方式。</p>
+<p>使用源码下载后的包，使用如下命令解压<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf EasyRSA-unix-v3.0.6.tgz</span><br></pre></td></tr></table></figure></p>
+<p>包的名称要更改为相应的名称。</p>
+<p>解压完成后进入easy-rsa文件夹，当前所处的文件夹可能类似于这样：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~/easyrsa/EasyRSA-v3.0.6</span><br></pre></td></tr></table></figure>
+<p>首先复制一个执行以下命令复制一个vars文件：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cp vars.example vars</span><br></pre></td></tr></table></figure></p>
+<p>在制作CA证书之前,需要先编辑vars文件，所有需要修改的项目如下：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_COUNTRY	"US"</span><br><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_PROVINCE	"California"</span><br><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_CITY	"San Francisco"</span><br><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_ORG	"Copyleft Certificate Co"</span><br><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_EMAIL	"me@example.net"</span><br><span class="line"><span class="meta">#</span>set_var EASYRSA_REQ_OU		"My Organizational Unit"</span><br></pre></td></tr></table></figure>
+<p>将以上项目取消注释，并将相关信息更改为自己的信息。</p>
+<p>修改完成后，运行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./easyrsa init-pki</span><br></pre></td></tr></table></figure></p>
+<p>该步骤用于生成公钥,如果没有问题，将看到以下信息：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Note: using Easy-RSA configuration from: ./vars</span><br><span class="line"></span><br><span class="line">init-pki complete; you may now create a CA or requests.</span><br><span class="line">Your newly created PKI dir is: /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki</span><br></pre></td></tr></table></figure></p>
+<p>接下来执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ./easyrsa build-ca nopass</span><br></pre></td></tr></table></figure></p>
+<p>该步骤用于生成ca证书，如果没有问题将看到以下信息：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">Note: using Easy-RSA configuration from: ./vars</span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.0g  2 Nov 2017</span><br><span class="line">Generating RSA private key, 2048 bit long modulus</span><br><span class="line">..............................................................+++</span><br><span class="line">.........................................+++</span><br><span class="line">e is 65537 (0x010001)</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter '.', the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Common Name (eg: your user, host, or server name) [Easy-RSA CA]:</span><br><span class="line"></span><br><span class="line">CA creation complete and you may now import and sign cert requests.</span><br><span class="line">Your new CA certificate file for publishing is at:</span><br><span class="line">/home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/ca.crt</span><br></pre></td></tr></table></figure></p>
+<p>“nopass”是可选项，避免每次都需要输入密码。</p>
+<p>这一步完成后，会在pki目录下生成ca.crt，在pki/private目录下生成ca.key。</p>
+<h1 id="生成服务器证书与加密文件"><a href="#生成服务器证书与加密文件" class="headerlink" title="生成服务器证书与加密文件"></a>生成服务器证书与加密文件</h1><p>执行<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sduo ./easyrsa gen-req your_server_name nopass</span><br></pre></td></tr></table></figure></p>
+<p>将看到以下信息：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">Note: using Easy-RSA configuration from: ./vars</span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.0g  2 Nov 2017</span><br><span class="line">Generating a 2048 bit RSA private key</span><br><span class="line">.............................................................................................................................+++</span><br><span class="line">......+++</span><br><span class="line">writing new private key to '/home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/private/your_server_name.key.V5KGQ2JJBp'</span><br><span class="line">-----</span><br><span class="line">You are about to be asked to enter information that will be incorporated</span><br><span class="line">into your certificate request.</span><br><span class="line">What you are about to enter is what is called a Distinguished Name or a DN.</span><br><span class="line">There are quite a few fields but you can leave some blank</span><br><span class="line">For some fields there will be a default value,</span><br><span class="line">If you enter '.', the field will be left blank.</span><br><span class="line">-----</span><br><span class="line">Common Name (eg: your user, host, or server name) [your_server_name]:</span><br><span class="line"></span><br><span class="line">Keypair and certificate request completed. Your files are:</span><br><span class="line">req: /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/reqs/syour_server_name.req</span><br><span class="line">key: /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/private/your_server_name.key</span><br></pre></td></tr></table></figure>
+<p>这里将生成两个文件，在pki/private目录下，your_server_name.req和your_server_name.key。</p>
+<p>将服务器私钥拷贝到openvpn配置文件目录下：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">sudo su</span><br><span class="line">cp pki/private/your_server_name.key /etc/openvpn</span><br></pre></td></tr></table></figure></p>
+<h1 id="生成公钥"><a href="#生成公钥" class="headerlink" title="生成公钥"></a>生成公钥</h1><p>由于使用同一台服务器即做CA服务器又做VPN服务器，自己给自己签发的时候会生成同名文件，先把服务器的请求文件改个名，再导入请求。</p>
+<p>执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mv pki/reqs/your_server_name.req pki/reqs/your_server_name_2.req </span><br><span class="line">./easyrsa import-req pki/reqs/your_server_name.req your_server_name</span><br></pre></td></tr></table></figure>
+<p>签发请求：</p>
+<p>执行：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easyrsa sign-req server your_server_name</span><br></pre></td></tr></table></figure></p>
+<p>执行结果：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">Note: using Easy-RSA configuration from: ./vars</span><br><span class="line"></span><br><span class="line">Using SSL: openssl OpenSSL 1.1.0g  2 Nov 2017</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">You are about to sign the following certificate.</span><br><span class="line">Please check over the details shown below for accuracy. Note that this request</span><br><span class="line">has not been cryptographically verified. Please be sure it came from a trusted</span><br><span class="line">source or that you have verified the request checksum with the sender.</span><br><span class="line"></span><br><span class="line">Request subject, to be signed as a server certificate for 1080 days:</span><br><span class="line"></span><br><span class="line">subject=</span><br><span class="line">    commonName                = your_server_name</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Type the word 'yes' to continue, or any other input to abort.</span><br><span class="line">  Confirm request details: yes</span><br><span class="line">Using configuration from /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/safessl-easyrsa.cnf</span><br><span class="line">Can't open /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/index.txt.attr for reading, No such file or directory</span><br><span class="line">140647351640512:error:02001002:system library:fopen:No such file or directory:../crypto/bio/bss_file.c:74:fopen('/home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/index.txt.attr','r')</span><br><span class="line">140647351640512:error:2006D080:BIO routines:BIO_new_file:no such file:../crypto/bio/bss_file.c:81:</span><br><span class="line">Check that the request matches the signature</span><br><span class="line">Signature ok</span><br><span class="line">The Subject's Distinguished Name is as follows</span><br><span class="line">commonName            :ASN.1 12:'your_server_name'</span><br><span class="line">Certificate is to be certified until Jan 25 11:59:59 2022 GMT (1080 days)</span><br><span class="line"></span><br><span class="line">Write out database with 1 new entries</span><br><span class="line">Data Base Updated</span><br><span class="line"></span><br><span class="line">Certificate created at: /home/ubuntu/easyrsa/EasyRSA-v3.0.6/pki/issued/your_server_name.crt</span><br></pre></td></tr></table></figure>
+<p>将your_server_name.crt文件和ca.crt文件一起复制到openvpn配置目录下，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cp pki/ca.crt /etc/openvpn/</span><br><span class="line">cp pki/issued/your_server_name.crt /etc/openvpn/</span><br></pre></td></tr></table></figure>
+<p>到现在位置，客户端已经准备好了。</p>
+<h1 id="生成客户端证书和秘钥"><a href="#生成客户端证书和秘钥" class="headerlink" title="生成客户端证书和秘钥"></a>生成客户端证书和秘钥</h1><p>新建一个文件夹存放客户端文件。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p client-conf/key</span><br><span class="line">chmod -R 700 client-conf</span><br></pre></td></tr></table></figure>
+<p>客户端命名为client，执行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./easyrsa gen-req client nopass</span><br></pre></td></tr></table></figure>
+<p>在pki下会生成client.req，在pki/private下生成了client.key，将这个文件放到客户端文件中，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp pki/private/client.key client-conf/key/</span><br></pre></td></tr></table></figure>
+<p>与服务器一样操作，同样会生成同名文件，先修改一下文件名称，再导入请求文件，最后签发请求。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mv pki/reqs/client.req pki/reqs/client2.req</span><br><span class="line">./easyrsa import-req pki/reqs/client2.req</span><br><span class="line">./easyrsa sign-req client client</span><br></pre></td></tr></table></figure>
+<p>现在生成了client.crt，将这几个文件复制到客户文件目录中。到这一步客户端文件准备好了。</p>
+<h1 id="启动服务器"><a href="#启动服务器" class="headerlink" title="启动服务器"></a>启动服务器</h1><p>先将模板拷贝到配置文件目录，执行：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cp /usr/share/doc/openvpn/examples/sample-config-files/server.conf.gz /etc/openvpn/</span><br><span class="line"> gzip -d /etc/openvpn/server.conf.gz</span><br><span class="line"> vim /etc/openvpn/server.conf</span><br></pre></td></tr></table></figure>
+<p>下面是配置文件可能修改的项目：<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<h1 id="创建客户端配置文件"><a href="#创建客户端配置文件" class="headerlink" title="创建客户端配置文件"></a>创建客户端配置文件</h1>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/openvpn/" rel="tag"># openvpn</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/09/java-util-ArrayList部分源码分析/" rel="next" title="java.util.ArrayList部分源码分析">
+                <i class="fa fa-chevron-left"></i> java.util.ArrayList部分源码分析
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/02/24/计算机网络-概览/" rel="prev" title="计算机网络-概览">
+                计算机网络-概览 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tortoiselala</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#openvpn原理"><span class="nav-number">1.</span> <span class="nav-text">openvpn原理</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#opencpn安装加密后"><span class="nav-number">2.</span> <span class="nav-text">opencpn安装加密后</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#制作相关证书"><span class="nav-number">3.</span> <span class="nav-text">制作相关证书</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#制作CA证书"><span class="nav-number">3.1.</span> <span class="nav-text">制作CA证书</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成服务器证书与加密文件"><span class="nav-number">4.</span> <span class="nav-text">生成服务器证书与加密文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成公钥"><span class="nav-number">5.</span> <span class="nav-text">生成公钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#生成客户端证书和秘钥"><span class="nav-number">6.</span> <span class="nav-text">生成客户端证书和秘钥</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#启动服务器"><span class="nav-number">7.</span> <span class="nav-text">启动服务器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建客户端配置文件"><span class="nav-number">8.</span> <span class="nav-text">创建客户端配置文件</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tortoiselala</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>
