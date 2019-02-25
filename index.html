@@ -873,12 +873,24 @@
                 
               
 
-              <time title="Created: 2019-02-09 14:54:18 / Modified: 14:56:27" itemprop="dateCreated datePublished" datetime="2019-02-09T14:54:18+08:00">2019-02-09</time>
+              <time title="Created: 2019-02-09 14:54:18" itemprop="dateCreated datePublished" datetime="2019-02-09T14:54:18+08:00">2019-02-09</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-02-25 00:31:45" itemprop="dateModified" datetime="2019-02-25T00:31:45+08:00">2019-02-25</time>
               
             
           </span>
@@ -1569,7 +1581,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-01 19:43:21" itemprop="dateModified" datetime="2019-02-01T19:43:21+08:00">2019-02-01</time>
+                <time title="Modified: 2019-02-25 00:23:01" itemprop="dateModified" datetime="2019-02-25T00:23:01+08:00">2019-02-25</time>
               
             
           </span>
@@ -1605,8 +1617,7 @@
       
         
           <h1 id="悲观锁与乐观锁"><a href="#悲观锁与乐观锁" class="headerlink" title="悲观锁与乐观锁"></a>悲观锁与乐观锁</h1><h2 id="什么是悲观锁与乐观锁"><a href="#什么是悲观锁与乐观锁" class="headerlink" title="什么是悲观锁与乐观锁"></a>什么是悲观锁与乐观锁</h2><p>乐观锁对应于生活中乐观的人总是想着事情往好的方向发展，悲观锁对应于生活中悲观的人总是想着事情往坏的方向发展。这两种人各有优缺点，不能不以场景而定说一种人好于另外一种人。</p>
-<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（<strong>共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线程</strong>）。传统的关系型数据库中便是用到了这种锁机制，比如：行锁，表锁等，读锁，写锁等，都是在操作之前先上锁。java中的<code>synchronized</code>和<code>Reentrantlock</code>等独占锁都是悲观锁思想的实现。</p>
-<h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>总是假设最好的情况，每次拿数据时都认为别人不会修改，所以不会上锁，但是在更新的时候会判断以下在此期间别人有没有更新这个数据，可以使用版本号机制和CAS算法实现。<strong>乐观锁适用于多读的应用类型，这样可以提高吞吐量</strong>，像数据库提供的类似于<code>write_condition</code>机制，其实都是提供的乐观锁。在java中<code>java.util.cocurrent.atomic</code>包下面的原子变量类就是使用了乐观锁的一种实现方法CAS实现的。</p>
+<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（<strong>共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线程</strong>）。传统的关系型数据库中便是用到了这种锁机制，比如：行锁，表锁等，读锁，写锁等，都是在操作之前先上锁。java中的<code>synchronized</code>和<code>Reentrantlock</code>等独占锁都是悲观锁思想的实现。<br>
           <!--noindex-->
           
             <div class="post-button text-center">
@@ -1670,7 +1681,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/31/java后端面试题目集合/"/>
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jdbc笔记/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="tortoiselala"/>
@@ -1690,7 +1701,7 @@
           <h1 class="post-title" itemprop="name headline">
                 
                 
-                <a href="/2019/01/31/java后端面试题目集合/" class="post-title-link" itemprop="url">java后端面试题目集合</a>
+                <a href="/2019/01/14/jdbc笔记/" class="post-title-link" itemprop="url">jdbc</a>
               
             
           </h1>
@@ -1715,12 +1726,24 @@
                 
               
 
-              <time title="Created: 2019-01-31 21:42:35 / Modified: 22:01:47" itemprop="dateCreated datePublished" datetime="2019-01-31T21:42:35+08:00">2019-01-31</time>
+              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 20:05:42" itemprop="dateModified" datetime="2019-01-31T20:05:42+08:00">2019-01-31</time>
               
             
           </span>
@@ -1756,11 +1779,7 @@
       
         
           
-            <ol>
-<li>java是值传递还是引用传递？<br>答：值传递。java中方法参数的传递方式是按值传递，如果参数是基本类型，传递的是基本类型的字面量值的拷贝；如果参数是引用类型，传递的是该参量所引用的对象在堆中地址值的拷贝。</li>
-<li>悲观锁与乐观锁。</li>
-</ol>
-
+            
           
         
       
@@ -2046,7 +2065,7 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2307,9 +2326,9 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
       
     
       
-    
-      
         
+      
+    
       
     
   

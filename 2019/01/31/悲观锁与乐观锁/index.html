@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="悲观锁与乐观锁什么是悲观锁与乐观锁乐观锁对应于生活中乐观的人总是想着事情往好的方向发展，悲观锁对应于生活中悲观的人总是想着事情往坏的方向发展。这两种人各有优缺点，不能不以场景而定说一种人好于另外一种人。 悲观锁总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-02-01T11:43:21.896Z">
+<meta property="og:updated_time" content="2019-02-24T16:23:01.405Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="悲观锁与乐观锁">
 <meta name="twitter:description" content="悲观锁与乐观锁什么是悲观锁与乐观锁乐观锁对应于生活中乐观的人总是想着事情往好的方向发展，悲观锁对应于生活中悲观的人总是想着事情往坏的方向发展。这两种人各有优缺点，不能不以场景而定说一种人好于另外一种人。 悲观锁总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-01 19:43:21" itemprop="dateModified" datetime="2019-02-01T19:43:21+08:00">2019-02-01</time>
+                <time title="Modified: 2019-02-25 00:23:01" itemprop="dateModified" datetime="2019-02-25T00:23:01+08:00">2019-02-25</time>
               
             
           </span>
@@ -435,9 +435,8 @@
 
       
         <h1 id="悲观锁与乐观锁"><a href="#悲观锁与乐观锁" class="headerlink" title="悲观锁与乐观锁"></a>悲观锁与乐观锁</h1><h2 id="什么是悲观锁与乐观锁"><a href="#什么是悲观锁与乐观锁" class="headerlink" title="什么是悲观锁与乐观锁"></a>什么是悲观锁与乐观锁</h2><p>乐观锁对应于生活中乐观的人总是想着事情往好的方向发展，悲观锁对应于生活中悲观的人总是想着事情往坏的方向发展。这两种人各有优缺点，不能不以场景而定说一种人好于另外一种人。</p>
-<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（<strong>共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线程</strong>）。传统的关系型数据库中便是用到了这种锁机制，比如：行锁，表锁等，读锁，写锁等，都是在操作之前先上锁。java中的<code>synchronized</code>和<code>Reentrantlock</code>等独占锁都是悲观锁思想的实现。</p>
+<h2 id="悲观锁"><a href="#悲观锁" class="headerlink" title="悲观锁"></a>悲观锁</h2><p>总是假设最坏的情况，每次拿数据时都认为别人会修改，所以每次拿数据时都会上锁，这样别人想拿这个数据就会阻塞知道它拿到锁（<strong>共享资源每次只给一个线程使用，其他线程阻塞，用完之后再把资源转让给其他线程</strong>）。传统的关系型数据库中便是用到了这种锁机制，比如：行锁，表锁等，读锁，写锁等，都是在操作之前先上锁。java中的<code>synchronized</code>和<code>Reentrantlock</code>等独占锁都是悲观锁思想的实现。<br><a id="more"></a></p>
 <h2 id="乐观锁"><a href="#乐观锁" class="headerlink" title="乐观锁"></a>乐观锁</h2><p>总是假设最好的情况，每次拿数据时都认为别人不会修改，所以不会上锁，但是在更新的时候会判断以下在此期间别人有没有更新这个数据，可以使用版本号机制和CAS算法实现。<strong>乐观锁适用于多读的应用类型，这样可以提高吞吐量</strong>，像数据库提供的类似于<code>write_condition</code>机制，其实都是提供的乐观锁。在java中<code>java.util.cocurrent.atomic</code>包下面的原子变量类就是使用了乐观锁的一种实现方法CAS实现的。</p>
-<a id="more"></a>
 <h2 id="两种锁的使用场景"><a href="#两种锁的使用场景" class="headerlink" title="两种锁的使用场景"></a>两种锁的使用场景</h2><p>两种锁各有优缺点，不可论一种好而另一种差，两种锁各有适合场景。<strong>乐观锁适用于写比较少的情况下（多读场景）</strong>，一般多写的场景使用悲观锁比较合适。</p>
 <h2 id="乐观锁常见的两种实现机制"><a href="#乐观锁常见的两种实现机制" class="headerlink" title="乐观锁常见的两种实现机制"></a>乐观锁常见的两种实现机制</h2><blockquote>
 <p>乐观锁一般会使用版本号机制或CAS算法实现。</p>
@@ -491,8 +490,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/31/java后端面试题目集合/" rel="next" title="java后端面试题目集合">
-                <i class="fa fa-chevron-left"></i> java后端面试题目集合
+              <a href="/2019/01/14/jdbc笔记/" rel="next" title="jdbc">
+                <i class="fa fa-chevron-left"></i> jdbc
               </a>
             
           </div>
@@ -573,7 +572,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">24</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
