@@ -96,19 +96,20 @@
 
 
 
-  <meta name="description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
+  <meta name="description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
 <meta name="keywords" content="java,Java Collection">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java Collection Framework(JCF)">
 <meta property="og:url" content="http://tortoiselala.github.com/2019/02/01/Java-Collection-Framework-JCF/index.html">
 <meta property="og:site_name" content="tortoiselala">
-<meta property="og:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
+<meta property="og:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
 <meta property="og:locale" content="en">
 <meta property="og:image" content="http://tortoiselala.github.com/src/java/collection/JCF-Collection-Interfaces.png">
-<meta property="og:updated_time" content="2019-02-09T07:00:35.457Z">
+<meta property="og:image" content="http://tortoiselala.github.com/src/java/collection/JCF-tools-package.png">
+<meta property="og:updated_time" content="2019-02-26T07:45:43.814Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java Collection Framework(JCF)">
-<meta name="twitter:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示： Map接口没有继承自Collection，因为Map表示的是关联式容器而不是集合。">
+<meta name="twitter:description" content="概述集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。 java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。 Collection接口JCF共定义了14中容器接口，其关系如下所示：">
 <meta name="twitter:image" content="http://tortoiselala.github.com/src/java/collection/JCF-Collection-Interfaces.png">
 
 
@@ -402,7 +403,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-02-09 15:00:35" itemprop="dateModified" datetime="2019-02-09T15:00:35+08:00">2019-02-09</time>
+                <time title="Modified: 2019-02-26 15:45:43" itemprop="dateModified" datetime="2019-02-26T15:45:43+08:00">2019-02-26</time>
               
             
           </span>
@@ -439,9 +440,11 @@
         <h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>集合，集合可以用于将多个数据组织到一起或将数据关联。集合的作用就是保存、盛装其他数据，因此集合类也可以被称为容器类。</p>
 <p>java的集合类只能用于存放引用类型的数据，而不能存放基本数据类型。对于基本类型想要使用集合存放，必须将其包装成对象类型。</p>
 <h1 id="Collection接口"><a href="#Collection接口" class="headerlink" title="Collection接口"></a>Collection接口</h1><p>JCF共定义了14中容器接口，其关系如下所示：<br><img src="/src/java/collection/JCF-Collection-Interfaces.png" alt="JCF Collection Interfaces"></p>
-<p><code>Map</code>接口没有继承自<code>Collection</code>，因为<code>Map</code>表示的是关联式容器而不是集合。但是java提供了从<code>Map</code>转换到集合视图的方法。</p>
+<a id="more"></a>
+<p>JCF工具包如下</p>
+<p><img src="/src/java/collection/JCF-tools-package.png" alt="JCF Tools Package"><br><code>Map</code>接口没有继承自<code>Collection</code>，因为<code>Map</code>表示的是关联式容器而不是集合。但是java提供了从<code>Map</code>转换到集合视图的方法。</p>
 <h1 id="接口实现"><a href="#接口实现" class="headerlink" title="接口实现"></a>接口实现</h1><p>上述接口的通用实现如下</p>
-<p><table style="float:center">
+<table style="float:center">
    <tr>
       <td></td>
       <td></td>
@@ -489,7 +492,20 @@
       <td></td>
       <td>LinkedHashMap</td>
    </tr>
-</table><br><a id="more"></a></p>
+</table>
+
+<p>Java集合是Java提供的工具包，包含了常用的数据结构：集合，链表，队列，栈，数组，映射等。Java集合工具包位置是java.util.*<br>Java集合主要可以划分为4个部分：List列表、Set集合、Map映射、工具类（Iterator迭代器、Enumeration枚举类、Arrays和Collections）<br>Java工具包的主干是Map和Collection。</p>
+<ul>
+<li>Collection是一个接口，是高度抽象出来的集合，它包含了集合的基本操作和属性。Collection包含了List和Set两大分支。<ul>
+<li>List是一个有序的队列，每个元素都有其索引。List的实现类有LinkedList，ArrayList，Vector，Stack</li>
+<li>Set是一个不允许有重复元素的集合。Set的实现有HashSet和TreeSet。HashSet依赖于HashMap实现；TreeSet依赖于TreeMap。</li>
+</ul>
+</li>
+<li>Map是一个映射接口，即key-value键值对。Map中的每一个元素包含“一个key”和“key对应的value”。AbstractMap是个抽象类，它实现了Map接口中的大部分API。而HashMap，TreeMap，WeakHashMap都是继承于AbstractMap。HashTable虽然继承与Dictionary，但他实现了Map接口。</li>
+<li>Iterator是遍历集合的工具，通常通过Iterator迭代器来遍历结婚。Collection依赖于Iterator，是因为Collection的实现类都要实现iterator()函数，返回一个Iterator对象。ListIterator专为遍历List而存在的。</li>
+<li>Enumeration是JDK1.0引入的抽象类。作用和Iterator一样，也是遍历集合；但是Enumeration的功能要比Iterator的功能要少。在上面的工具包中，Enumeration只能用在HastTable，Vector，Stack中。</li>
+<li>Arrays和Collections是操作数组、集合的两个工具类。</li>
+</ul>
 <p>java Collection 系列源码剖析日志：</p>
 <ul>
 <li><a href="/2019/02/09/java-util-ArrayList部分源码分析"><code>java.util.ArrayList</code></a></li>
