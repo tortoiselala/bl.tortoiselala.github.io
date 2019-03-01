@@ -104,7 +104,7 @@
 <meta property="og:site_name" content="tortoiselala">
 <meta property="og:description" content="并发编程并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：  上下文切换 死锁 资源限制  上下文切换会带来额外的开销线程的运行机制 一个CPU每个时刻只能执行一条线程 操作系统给每条线程分配不同长度的时间片 操作系统会从一堆线程中随机选取一条来执行 每条线程用完自己的时间片后，即使任务还没完成，操作">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-03-01T16:35:09.296Z">
+<meta property="og:updated_time" content="2019-03-01T16:41:24.125Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Java 并发编程">
 <meta name="twitter:description" content="并发编程并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：  上下文切换 死锁 资源限制  上下文切换会带来额外的开销线程的运行机制 一个CPU每个时刻只能执行一条线程 操作系统给每条线程分配不同长度的时间片 操作系统会从一堆线程中随机选取一条来执行 每条线程用完自己的时间片后，即使任务还没完成，操作">
@@ -400,7 +400,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-02 00:35:09" itemprop="dateModified" datetime="2019-03-02T00:35:09+08:00">2019-03-02</time>
+                <time title="Modified: 2019-03-02 00:41:24" itemprop="dateModified" datetime="2019-03-02T00:41:24+08:00">2019-03-02</time>
               
             
           </span>
@@ -446,6 +446,7 @@
 <li>操作系统会从一堆线程中随机选取一条来执行</li>
 <li>每条线程用完自己的时间片后，即使任务还没完成，操作系统也会剥夺它的执行权，让另一条线程执行。</li>
 </ul>
+<a id="more"></a>
 <h3 id="什么是上下文切换"><a href="#什么是上下文切换" class="headerlink" title="什么是上下文切换"></a>什么是上下文切换</h3><p>当一个线程的时间片用完后，操作系统会暂停该线程，并保存该线程的相应信息，然后再随机选择一条线程去执行，这个过程就称为“线程的上下文切换”。</p>
 <h3 id="上下文切换的过程"><a href="#上下文切换的过程" class="headerlink" title="上下文切换的过程"></a>上下文切换的过程</h3><ul>
 <li>暂停正在执行的此案成</li>
