@@ -1,0 +1,1066 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="en">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222"/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2"/>
+
+<link rel="stylesheet" href="/css/main.css?v=7.0.0"/>
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.0.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.0.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.0.0" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    version: '7.0.0',
+    sidebar: {"position":"left","display":"always","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="并发编程并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：  上下文切换 死锁 资源限制  上下文切换会带来额外的开销线程的运行机制 一个CPU每个时刻只能执行一条线程 操作系统给每条线程分配不同长度的时间片 操作系统会从一堆线程中随机选取一条来执行 每条线程用完自己的时间片后，即使任务还没完成，操作">
+<meta name="keywords" content="java 并发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java 并发编程">
+<meta property="og:url" content="http://tortoiselala.github.com/2019/03/01/Java-并发编程/index.html">
+<meta property="og:site_name" content="tortoiselala">
+<meta property="og:description" content="并发编程并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：  上下文切换 死锁 资源限制  上下文切换会带来额外的开销线程的运行机制 一个CPU每个时刻只能执行一条线程 操作系统给每条线程分配不同长度的时间片 操作系统会从一堆线程中随机选取一条来执行 每条线程用完自己的时间片后，即使任务还没完成，操作">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-03-01T16:06:37.992Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Java 并发编程">
+<meta name="twitter:description" content="并发编程并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：  上下文切换 死锁 资源限制  上下文切换会带来额外的开销线程的运行机制 一个CPU每个时刻只能执行一条线程 操作系统给每条线程分配不同长度的时间片 操作系统会从一堆线程中随机选取一条来执行 每条线程用完自己的时间片后，即使任务还没完成，操作">
+
+
+
+
+
+
+  <link rel="canonical" href="http://tortoiselala.github.com/2019/03/01/Java-并发编程/"/>
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Java 并发编程 | tortoiselala</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">tortoiselala</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br/>Home</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br/>About</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br/>Tags</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br/>Categories</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br/>Archives</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+    
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/03/01/Java-并发编程/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Java 并发编程<a href="https://github.com/tortoiselala/blog-src_posts/Java-并发编程.md" class="post-edit-link" title="Edit this post" rel="noopener" target="_blank"><i class="fa fa-pencil"></i></a>
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-01 18:09:08" itemprop="dateCreated datePublished" datetime="2019-03-01T18:09:08+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-02 00:06:37" itemprop="dateModified" datetime="2019-03-02T00:06:37+08:00">2019-03-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h1><p>并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：</p>
+<ul>
+<li>上下文切换</li>
+<li>死锁</li>
+<li>资源限制</li>
+</ul>
+<h2 id="上下文切换会带来额外的开销"><a href="#上下文切换会带来额外的开销" class="headerlink" title="上下文切换会带来额外的开销"></a>上下文切换会带来额外的开销</h2><h3 id="线程的运行机制"><a href="#线程的运行机制" class="headerlink" title="线程的运行机制"></a>线程的运行机制</h3><ul>
+<li>一个CPU每个时刻只能执行一条线程</li>
+<li>操作系统给每条线程分配不同长度的时间片</li>
+<li>操作系统会从一堆线程中随机选取一条来执行</li>
+<li>每条线程用完自己的时间片后，即使任务还没完成，操作系统也会剥夺它的执行权，让另一条线程执行。</li>
+</ul>
+<h3 id="什么是上下文切换"><a href="#什么是上下文切换" class="headerlink" title="什么是上下文切换"></a>什么是上下文切换</h3><p>当一个线程的时间片用完后，操作系统会暂停该线程，并保存该线程的相应信息，然后再随机选择一条线程去执行，这个过程就称为“线程的上下文切换”。</p>
+<h3 id="上下文切换的过程"><a href="#上下文切换的过程" class="headerlink" title="上下文切换的过程"></a>上下文切换的过程</h3><ul>
+<li>暂停正在执行的此案成</li>
+<li>保存该线程的相关信息</li>
+<li>从就绪队列中随机选取一条线程</li>
+<li>读取该线程的上下文信息，继续执行</li>
+</ul>
+<h3 id="上下文切换是有开销的"><a href="#上下文切换是有开销的" class="headerlink" title="上下文切换是有开销的"></a>上下文切换是有开销的</h3><p>每次进行上下文切换时都要保存当前线程的执行状态，并加载新线程线程的状态，如果上下文切换频繁，CPU花在上下文切换上的时间占比就会上升，而真正处理任务的时间占比就会下降。因此，为了提高并发程序的执行效率，让CPU把时间花在刀刃上，我们就要减少上下文切换的次数。</p>
+<h3 id="如何减少上下文切换"><a href="#如何减少上下文切换" class="headerlink" title="如何减少上下文切换"></a>如何减少上下文切换</h3><ul>
+<li>减少线程数量</li>
+<li>控制同一把锁上的线程数量</li>
+<li>采用无锁并发编程<ul>
+<li>需要并发执行的状态是无状态的：HASH分段<ul>
+<li>所谓无状态是指并发执行的任务是没有共享变量，各自独立执行。对于这种类型的任务可以按照ID进行HASH分段，每段任务使用一条线程去执行</li>
+</ul>
+</li>
+<li>需要并发执行的任务是有状态的：CAS算法<ul>
+<li>如果任务需要修改共享变量，那么必须要控制线程的执行顺序，否则会出现安全性问题。可以选择给任务加锁，保证任务的原子性与可见性，但这会引起阻塞，从而发生上下文切换；为了避免上下文切换，可以使用CAS算法，仅在线程内部需要更新共享变量时使用CAS算法来更新，这种方式不会阻塞线程，并保证更新过程的安全。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发不当可能会产生死锁"><a href="#并发不当可能会产生死锁" class="headerlink" title="并发不当可能会产生死锁"></a>并发不当可能会产生死锁</h2><h3 id="什么是死锁"><a href="#什么是死锁" class="headerlink" title="什么是死锁"></a>什么是死锁</h3><p>当多个线程相互等待已经被对方占用的资源时，就会产生死锁。</p>
+<h3 id="如何避免死锁"><a href="#如何避免死锁" class="headerlink" title="如何避免死锁"></a>如何避免死锁</h3><ul>
+<li><p>不要在一条线程中嵌套使用多个锁</p>
+</li>
+<li><p>不要在一条线程中嵌套占用多个计算机资源</p>
+</li>
+<li>给锁和资源加超时时间<ul>
+<li>如果无可避免的在一个线程嵌套使用多个锁或占用多个资源，那么需要给锁、资源加超时时间，从而避免无限期等待。</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机资源会限制并发"><a href="#计算机资源会限制并发" class="headerlink" title="计算机资源会限制并发"></a>计算机资源会限制并发</h2><h3 id="误区：-线程越多速度越快"><a href="#误区：-线程越多速度越快" class="headerlink" title="误区： 线程越多速度越快"></a>误区： 线程越多速度越快</h3><h1 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h1><p>一个单线程程序，我们总以为计算机会一行行的运行代码，然而事实并非如此。</p>
+<h2 id="什么是重排序"><a href="#什么是重排序" class="headerlink" title="什么是重排序"></a>什么是重排序</h2><p>重排序值得是编译器、处理器在不改变程序执行结果的前提下，重新排列指令的执行顺序，以达到最佳的运行效率。</p>
+<h2 id="重排序分类"><a href="#重排序分类" class="headerlink" title="重排序分类"></a>重排序分类</h2><p>重排序分为：编译器重排序和处理器重排序</p>
+<h2 id="数据依赖"><a href="#数据依赖" class="headerlink" title="数据依赖"></a>数据依赖</h2><p>编译器和处理器并不会随意的改变指令的执行顺序，因为有些指令之间是有依赖关系的，若改变了他们的执行顺序，就会出现错误的处理结果。</p>
+<p>因此，编译器和处理器只会对没有依赖关系的指令进行重排序。</p>
+<p><strong>数据依赖</strong>：若相邻的两台指令访问同一便令，并且其中有一条指令执行写操作，那么这样两条指令之间存在数据依赖。对于有数据依赖关系的指令，不会发生重排序。、</p>
+<p>数据依赖总结为以下三种情况：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读后写</td>
+<td>a=b;b=1;</td>
+</tr>
+<tr>
+<td>写后写</td>
+<td>a=1;a=2;</td>
+</tr>
+<tr>
+<td>写后读</td>
+<td>a=1;b=a;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="as-if-serial"><a href="#as-if-serial" class="headerlink" title="as-if-serial"></a>as-if-serial</h2><p>在单线程开发中，程序员不需要知道指令是如何重排序的，只要简单地认为指令是按照顺序依次执行的即可。这就是as-if-serial的语义，即：貌似是串行的。</p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a><code>volatile</code></h1><h2 id="并发编程中的两个关键问题"><a href="#并发编程中的两个关键问题" class="headerlink" title="并发编程中的两个关键问题"></a>并发编程中的两个关键问题</h2><p>并发是让多个线程同时执行，若线程之间是独立的，那并发实现起来很简单。但往往多条线程之间需要共享数据，此时在并发编程过程中就不可避免的要考虑两个问题：通信与同步。</p>
+<ul>
+<li><p>通信</p>
+<p>通信是指消息在两条线程之间传递。</p>
+<p>既然要传递消息，那发送线程和接收线程之间必须要有个先后关系，此时就需要用到同步。通信和同步是相辅相成的。</p>
+</li>
+<li><p>同步</p>
+<p>同步是指控制多条线程之间的执行次序。</p>
+</li>
+</ul>
+<h2 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h2><h3 id="通信方式的种类"><a href="#通信方式的种类" class="headerlink" title="通信方式的种类"></a>通信方式的种类</h3><p>线程之间的通信一共有两种方式：共享内存和消息传递。、</p>
+<ul>
+<li><p>共享内存</p>
+<p>共享内存是指多条线程共享同一片内存，发送者将消息写入内存，接受者存内存中读取消息，从而实现了消息的传递。</p>
+<p>但这种方式需要自己控制线程的同步，即线程的执行次序。</p>
+<p>共享内存的方式并没有真正实现消息传递，只是从结果上来看就是将消息从一条线程传递到了另一条线程</p>
+</li>
+<li><p>消息传递</p>
+<p>消息传递是指发送线程将消息传递给接收线程</p>
+<p>由于执行次序由并发机制完成，因此不需要额外的增加同步机制，但需要声明消息发送和接收的代码。</p>
+</li>
+</ul>
+<p>综上所述：</p>
+<ul>
+<li>对于共享内存的通信方式，需要显式的同步，隐式的通信</li>
+<li>对于消息传递的通信方式，需要隐式的同步，显式的通信</li>
+</ul>
+<h2 id="Java使用的通信方式"><a href="#Java使用的通信方式" class="headerlink" title="Java使用的通信方式"></a>Java使用的通信方式</h2><p>Java使用共享内存的方式实现多线程之间的消息传递。因此，程序员需要写额外的代码用于线程之间的同步。</p>
+<h2 id="Java多线程的内存模型（简化版）"><a href="#Java多线程的内存模型（简化版）" class="headerlink" title="Java多线程的内存模型（简化版）"></a>Java多线程的内存模型（简化版）</h2><p>所有线程都共享一片内存，用于存储共享变量</p>
+<p>此外，每条线程都有各自的存储空间，存储各自的局部变量和、方法参数、异常对象。</p>
+<h2 id="volatile是什么"><a href="#volatile是什么" class="headerlink" title="volatile是什么"></a>volatile是什么</h2><p>Java采用共享内存的方式实现消息传递，而共享内存需要依托于同步。Java提供了<code>synchronized</code>、<code>volatile</code>关键字实现同步。</p>
+<h2 id="volatile特性"><a href="#volatile特性" class="headerlink" title="volatile特性"></a>volatile特性</h2><h3 id="重排序-1"><a href="#重排序-1" class="headerlink" title="重排序"></a>重排序</h3><p>重排序是为了提高程序执行效率而对代码的执行顺序进行调整。</p>
+<p>若两行指令之间没有依赖关系，那么计算机可以对其顺序进行重排序，但若两行之间某个变量被<code>volatile</code>修饰后重排序规则会发生变化。</p>
+<p>以下情况下，即使两行代码之间没有依赖关系，也不会发生重排序。</p>
+<ul>
+<li><code>volatile</code> 读<ul>
+<li>若<code>volatile</code>读操作的前一行为volatile读/写，这两行不会发生重排序</li>
+<li><code>volatile</code>读操作和它后一行代码都不会发生重排序</li>
+</ul>
+</li>
+<li><code>volatile</code> 写<ul>
+<li><code>volatile</code>写操作和它前一行代码都不会发生重排序</li>
+<li>若<code>volatile</code>写操作的后一行代码为<code>volatile</code>读/写，则这两行不会发生重排序</li>
+</ul>
+</li>
+</ul>
+<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2>
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/java-并发/" rel="tag"># java 并发</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/02/24/计算机网络-概览/" rel="next" title="计算机网络-概览">
+                <i class="fa fa-chevron-left"></i> 计算机网络-概览
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">tortoiselala</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">18</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#并发编程"><span class="nav-number">1.</span> <span class="nav-text">并发编程</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#上下文切换会带来额外的开销"><span class="nav-number">1.1.</span> <span class="nav-text">上下文切换会带来额外的开销</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#线程的运行机制"><span class="nav-number">1.1.1.</span> <span class="nav-text">线程的运行机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是上下文切换"><span class="nav-number">1.1.2.</span> <span class="nav-text">什么是上下文切换</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文切换的过程"><span class="nav-number">1.1.3.</span> <span class="nav-text">上下文切换的过程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文切换是有开销的"><span class="nav-number">1.1.4.</span> <span class="nav-text">上下文切换是有开销的</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何减少上下文切换"><span class="nav-number">1.1.5.</span> <span class="nav-text">如何减少上下文切换</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发不当可能会产生死锁"><span class="nav-number">1.2.</span> <span class="nav-text">并发不当可能会产生死锁</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是死锁"><span class="nav-number">1.2.1.</span> <span class="nav-text">什么是死锁</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何避免死锁"><span class="nav-number">1.2.2.</span> <span class="nav-text">如何避免死锁</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#计算机资源会限制并发"><span class="nav-number">1.3.</span> <span class="nav-text">计算机资源会限制并发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误区：-线程越多速度越快"><span class="nav-number">1.3.1.</span> <span class="nav-text">误区： 线程越多速度越快</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#重排序"><span class="nav-number">2.</span> <span class="nav-text">重排序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是重排序"><span class="nav-number">2.1.</span> <span class="nav-text">什么是重排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#重排序分类"><span class="nav-number">2.2.</span> <span class="nav-text">重排序分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据依赖"><span class="nav-number">2.3.</span> <span class="nav-text">数据依赖</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#as-if-serial"><span class="nav-number">2.4.</span> <span class="nav-text">as-if-serial</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#volatile"><span class="nav-number">3.</span> <span class="nav-text">volatile</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#并发编程中的两个关键问题"><span class="nav-number">3.1.</span> <span class="nav-text">并发编程中的两个关键问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通信方式"><span class="nav-number">3.2.</span> <span class="nav-text">通信方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#通信方式的种类"><span class="nav-number">3.2.1.</span> <span class="nav-text">通信方式的种类</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java使用的通信方式"><span class="nav-number">3.3.</span> <span class="nav-text">Java使用的通信方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Java多线程的内存模型（简化版）"><span class="nav-number">3.4.</span> <span class="nav-text">Java多线程的内存模型（简化版）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile是什么"><span class="nav-number">3.5.</span> <span class="nav-text">volatile是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#volatile特性"><span class="nav-number">3.6.</span> <span class="nav-text">volatile特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#重排序-1"><span class="nav-number">3.6.1.</span> <span class="nav-text">重排序</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可见性"><span class="nav-number">3.7.</span> <span class="nav-text">可见性</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tortoiselala</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v7.0.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/three/three.min.js"></script>
+
+  
+  <script src="/lib/three/three-waves.min.js"></script>
+
+
+  
+
+
+  <script src="/js/src/utils.js?v=7.0.0"></script>
+
+  <script src="/js/src/motion.js?v=7.0.0"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/src/schemes/muse.js?v=7.0.0"></script>
+
+
+
+
+  
+  <script src="/js/src/scrollspy.js?v=7.0.0"></script>
+<script src="/js/src/post-details.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  <script src="/js/src/bootstrap.js?v=7.0.0"></script>
+
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+  <script>
+    $('.highlight').each(function(i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap');
+      $(e).after($wrap);
+      $wrap.append($('<button>').addClass('copy-btn').append('Copy').on('click', function(e) {
+        var code = $(this).parent().find('.code').find('.line').map(function(i, e) {
+          return $(e).text();
+        }).toArray().join('\n');
+        var ta = document.createElement('textarea');
+        var range = document.createRange(); //For Chrome
+        var sel = window.getSelection(); //For Chrome
+        var yPosition = window.pageYOffset || document.documentElement.scrollTop;
+        ta.style.top = yPosition + 'px'; //Prevent page scroll
+        ta.style.position = 'absolute';
+        ta.style.opacity = '0';
+        ta.value = code;
+        ta.textContent = code; //For FireFox
+        ta.contentEditable = true;
+        ta.readOnly = false;
+        document.body.appendChild(ta);
+        range.selectNode(ta);
+        sel.removeAllRanges();
+        sel.addRange(range);
+        ta.setSelectionRange(0, code.length);
+        var result = document.execCommand('copy');
+        
+        ta.blur(); //For iOS
+        $(this).blur();
+      })).on('mouseleave', function(e) {
+        var $b = $(this).find('.copy-btn');
+        setTimeout(function() {
+          $b.text('Copy');
+        }, 300);
+      }).append(e);
+    })
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="custom_mathjax_source">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+</body>
+</html>

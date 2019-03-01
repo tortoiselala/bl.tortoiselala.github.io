@@ -336,6 +336,284 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/03/01/Java-并发编程/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/03/01/Java-并发编程/" class="post-title-link" itemprop="url">Java 并发编程</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-03-01 18:09:08" itemprop="dateCreated datePublished" datetime="2019-03-01T18:09:08+08:00">2019-03-01</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-03-02 00:06:37" itemprop="dateModified" datetime="2019-03-02T00:06:37+08:00">2019-03-02</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="并发编程"><a href="#并发编程" class="headerlink" title="并发编程"></a>并发编程</h1><p>并发是为了提升程序的执行速度，但并不是多线程一定比单线程高效，而且并发编程容易出错。若要实现争取且高效的并发，就要在开发过程中时刻注意以下三个问题：</p>
+<ul>
+<li>上下文切换</li>
+<li>死锁</li>
+<li>资源限制</li>
+</ul>
+<h2 id="上下文切换会带来额外的开销"><a href="#上下文切换会带来额外的开销" class="headerlink" title="上下文切换会带来额外的开销"></a>上下文切换会带来额外的开销</h2><h3 id="线程的运行机制"><a href="#线程的运行机制" class="headerlink" title="线程的运行机制"></a>线程的运行机制</h3><ul>
+<li>一个CPU每个时刻只能执行一条线程</li>
+<li>操作系统给每条线程分配不同长度的时间片</li>
+<li>操作系统会从一堆线程中随机选取一条来执行</li>
+<li>每条线程用完自己的时间片后，即使任务还没完成，操作系统也会剥夺它的执行权，让另一条线程执行。</li>
+</ul>
+<h3 id="什么是上下文切换"><a href="#什么是上下文切换" class="headerlink" title="什么是上下文切换"></a>什么是上下文切换</h3><p>当一个线程的时间片用完后，操作系统会暂停该线程，并保存该线程的相应信息，然后再随机选择一条线程去执行，这个过程就称为“线程的上下文切换”。</p>
+<h3 id="上下文切换的过程"><a href="#上下文切换的过程" class="headerlink" title="上下文切换的过程"></a>上下文切换的过程</h3><ul>
+<li>暂停正在执行的此案成</li>
+<li>保存该线程的相关信息</li>
+<li>从就绪队列中随机选取一条线程</li>
+<li>读取该线程的上下文信息，继续执行</li>
+</ul>
+<h3 id="上下文切换是有开销的"><a href="#上下文切换是有开销的" class="headerlink" title="上下文切换是有开销的"></a>上下文切换是有开销的</h3><p>每次进行上下文切换时都要保存当前线程的执行状态，并加载新线程线程的状态，如果上下文切换频繁，CPU花在上下文切换上的时间占比就会上升，而真正处理任务的时间占比就会下降。因此，为了提高并发程序的执行效率，让CPU把时间花在刀刃上，我们就要减少上下文切换的次数。</p>
+<h3 id="如何减少上下文切换"><a href="#如何减少上下文切换" class="headerlink" title="如何减少上下文切换"></a>如何减少上下文切换</h3><ul>
+<li>减少线程数量</li>
+<li>控制同一把锁上的线程数量</li>
+<li>采用无锁并发编程<ul>
+<li>需要并发执行的状态是无状态的：HASH分段<ul>
+<li>所谓无状态是指并发执行的任务是没有共享变量，各自独立执行。对于这种类型的任务可以按照ID进行HASH分段，每段任务使用一条线程去执行</li>
+</ul>
+</li>
+<li>需要并发执行的任务是有状态的：CAS算法<ul>
+<li>如果任务需要修改共享变量，那么必须要控制线程的执行顺序，否则会出现安全性问题。可以选择给任务加锁，保证任务的原子性与可见性，但这会引起阻塞，从而发生上下文切换；为了避免上下文切换，可以使用CAS算法，仅在线程内部需要更新共享变量时使用CAS算法来更新，这种方式不会阻塞线程，并保证更新过程的安全。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="并发不当可能会产生死锁"><a href="#并发不当可能会产生死锁" class="headerlink" title="并发不当可能会产生死锁"></a>并发不当可能会产生死锁</h2><h3 id="什么是死锁"><a href="#什么是死锁" class="headerlink" title="什么是死锁"></a>什么是死锁</h3><p>当多个线程相互等待已经被对方占用的资源时，就会产生死锁。</p>
+<h3 id="如何避免死锁"><a href="#如何避免死锁" class="headerlink" title="如何避免死锁"></a>如何避免死锁</h3><ul>
+<li><p>不要在一条线程中嵌套使用多个锁</p>
+</li>
+<li><p>不要在一条线程中嵌套占用多个计算机资源</p>
+</li>
+<li>给锁和资源加超时时间<ul>
+<li>如果无可避免的在一个线程嵌套使用多个锁或占用多个资源，那么需要给锁、资源加超时时间，从而避免无限期等待。</li>
+</ul>
+</li>
+</ul>
+<h2 id="计算机资源会限制并发"><a href="#计算机资源会限制并发" class="headerlink" title="计算机资源会限制并发"></a>计算机资源会限制并发</h2><h3 id="误区：-线程越多速度越快"><a href="#误区：-线程越多速度越快" class="headerlink" title="误区： 线程越多速度越快"></a>误区： 线程越多速度越快</h3><h1 id="重排序"><a href="#重排序" class="headerlink" title="重排序"></a>重排序</h1><p>一个单线程程序，我们总以为计算机会一行行的运行代码，然而事实并非如此。</p>
+<h2 id="什么是重排序"><a href="#什么是重排序" class="headerlink" title="什么是重排序"></a>什么是重排序</h2><p>重排序值得是编译器、处理器在不改变程序执行结果的前提下，重新排列指令的执行顺序，以达到最佳的运行效率。</p>
+<h2 id="重排序分类"><a href="#重排序分类" class="headerlink" title="重排序分类"></a>重排序分类</h2><p>重排序分为：编译器重排序和处理器重排序</p>
+<h2 id="数据依赖"><a href="#数据依赖" class="headerlink" title="数据依赖"></a>数据依赖</h2><p>编译器和处理器并不会随意的改变指令的执行顺序，因为有些指令之间是有依赖关系的，若改变了他们的执行顺序，就会出现错误的处理结果。</p>
+<p>因此，编译器和处理器只会对没有依赖关系的指令进行重排序。</p>
+<p><strong>数据依赖</strong>：若相邻的两台指令访问同一便令，并且其中有一条指令执行写操作，那么这样两条指令之间存在数据依赖。对于有数据依赖关系的指令，不会发生重排序。、</p>
+<p>数据依赖总结为以下三种情况：</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>指令</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>读后写</td>
+<td>a=b;b=1;</td>
+</tr>
+<tr>
+<td>写后写</td>
+<td>a=1;a=2;</td>
+</tr>
+<tr>
+<td>写后读</td>
+<td>a=1;b=a;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="as-if-serial"><a href="#as-if-serial" class="headerlink" title="as-if-serial"></a>as-if-serial</h2><p>在单线程开发中，程序员不需要知道指令是如何重排序的，只要简单地认为指令是按照顺序依次执行的即可。这就是as-if-serial的语义，即：貌似是串行的。</p>
+<h1 id="volatile"><a href="#volatile" class="headerlink" title="volatile"></a><code>volatile</code></h1><h2 id="并发编程中的两个关键问题"><a href="#并发编程中的两个关键问题" class="headerlink" title="并发编程中的两个关键问题"></a>并发编程中的两个关键问题</h2><p>并发是让多个线程同时执行，若线程之间是独立的，那并发实现起来很简单。但往往多条线程之间需要共享数据，此时在并发编程过程中就不可避免的要考虑两个问题：通信与同步。</p>
+<ul>
+<li><p>通信</p>
+<p>通信是指消息在两条线程之间传递。</p>
+<p>既然要传递消息，那发送线程和接收线程之间必须要有个先后关系，此时就需要用到同步。通信和同步是相辅相成的。</p>
+</li>
+<li><p>同步</p>
+<p>同步是指控制多条线程之间的执行次序。</p>
+</li>
+</ul>
+<h2 id="通信方式"><a href="#通信方式" class="headerlink" title="通信方式"></a>通信方式</h2><h3 id="通信方式的种类"><a href="#通信方式的种类" class="headerlink" title="通信方式的种类"></a>通信方式的种类</h3><p>线程之间的通信一共有两种方式：共享内存和消息传递。、</p>
+<ul>
+<li><p>共享内存</p>
+<p>共享内存是指多条线程共享同一片内存，发送者将消息写入内存，接受者存内存中读取消息，从而实现了消息的传递。</p>
+<p>但这种方式需要自己控制线程的同步，即线程的执行次序。</p>
+<p>共享内存的方式并没有真正实现消息传递，只是从结果上来看就是将消息从一条线程传递到了另一条线程</p>
+</li>
+<li><p>消息传递</p>
+<p>消息传递是指发送线程将消息传递给接收线程</p>
+<p>由于执行次序由并发机制完成，因此不需要额外的增加同步机制，但需要声明消息发送和接收的代码。</p>
+</li>
+</ul>
+<p>综上所述：</p>
+<ul>
+<li>对于共享内存的通信方式，需要显式的同步，隐式的通信</li>
+<li>对于消息传递的通信方式，需要隐式的同步，显式的通信</li>
+</ul>
+<h2 id="Java使用的通信方式"><a href="#Java使用的通信方式" class="headerlink" title="Java使用的通信方式"></a>Java使用的通信方式</h2><p>Java使用共享内存的方式实现多线程之间的消息传递。因此，程序员需要写额外的代码用于线程之间的同步。</p>
+<h2 id="Java多线程的内存模型（简化版）"><a href="#Java多线程的内存模型（简化版）" class="headerlink" title="Java多线程的内存模型（简化版）"></a>Java多线程的内存模型（简化版）</h2><p>所有线程都共享一片内存，用于存储共享变量</p>
+<p>此外，每条线程都有各自的存储空间，存储各自的局部变量和、方法参数、异常对象。</p>
+<h2 id="volatile是什么"><a href="#volatile是什么" class="headerlink" title="volatile是什么"></a>volatile是什么</h2><p>Java采用共享内存的方式实现消息传递，而共享内存需要依托于同步。Java提供了<code>synchronized</code>、<code>volatile</code>关键字实现同步。</p>
+<h2 id="volatile特性"><a href="#volatile特性" class="headerlink" title="volatile特性"></a>volatile特性</h2><h3 id="重排序-1"><a href="#重排序-1" class="headerlink" title="重排序"></a>重排序</h3><p>重排序是为了提高程序执行效率而对代码的执行顺序进行调整。</p>
+<p>若两行指令之间没有依赖关系，那么计算机可以对其顺序进行重排序，但若两行之间某个变量被<code>volatile</code>修饰后重排序规则会发生变化。</p>
+<p>以下情况下，即使两行代码之间没有依赖关系，也不会发生重排序。</p>
+<ul>
+<li><code>volatile</code> 读<ul>
+<li>若<code>volatile</code>读操作的前一行为volatile读/写，这两行不会发生重排序</li>
+<li><code>volatile</code>读操作和它后一行代码都不会发生重排序</li>
+</ul>
+</li>
+<li><code>volatile</code> 写<ul>
+<li><code>volatile</code>写操作和它前一行代码都不会发生重排序</li>
+<li>若<code>volatile</code>写操作的后一行代码为<code>volatile</code>读/写，则这两行不会发生重排序</li>
+</ul>
+</li>
+</ul>
+<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2>
+          
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/02/24/计算机网络-概览/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1799,203 +2077,6 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/tomcat笔记/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/14/tomcat笔记/" class="post-title-link" itemprop="url">tomcat</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-31 20:14:55" itemprop="dateModified" datetime="2019-01-31T20:14:55+08:00">2019-01-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>tomcat的目录结构*表示安装版本</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>路径</th>
-<th>用途</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>/etc/tomcat*</code></td>
-<td>配置文件。包括： <code>tomcat-users.xml</code> (defines users allowed to use administration tools and their roles), <code>server.xml</code> (Main Tomcat configuration file), <code>catalina.policy</code> (security policies configuration file)</td>
-</tr>
-<tr>
-<td><code>/usr/share/tomcat*</code></td>
-<td>Tomcat 主文件夹。包括脚本文件及到其它文件夹的链接</td>
-</tr>
-<tr>
-<td><code>/usr/share/java/tomcat*</code></td>
-<td>Tomcat 的 Java 库（jar文件）</td>
-</tr>
-<tr>
-<td><code>/var/log/tomcat*</code></td>
-<td><strong>不</strong>被 <code>systemd</code> 记录的日志文件 (参阅 <a href="https://wiki.archlinux.org/index.php/Tomcat_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">#日志记录</a>#%E6%97%A5%E5%BF%97%E8%AE%B0%E5%BD%95))</td>
-</tr>
-<tr>
-<td><code>/var/lib/tomcat*/webapps</code></td>
-<td>Tomcat 部署你的 Web 程序的地方</td>
-</tr>
-<tr>
-<td><code>/var/tmp/tomcat*</code></td>
-<td>Tomcat 存储你的 Web 程序数据的地方</td>
-</tr>
-</tbody>
-</table>
-</div>
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/01/14/tomcat笔记/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2043,7 +2124,7 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">24</span>
+                    <span class="site-state-item-count">25</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2092,7 +2173,9 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                    <span class="site-state-item-count">18</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -2302,9 +2385,9 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
       
     
       
-        
-      
     
+      
+        
       
     
       
