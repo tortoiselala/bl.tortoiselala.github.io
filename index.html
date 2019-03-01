@@ -398,7 +398,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-03-02 00:06:37" itemprop="dateModified" datetime="2019-03-02T00:06:37+08:00">2019-03-02</time>
+                <time title="Modified: 2019-03-02 00:35:09" itemprop="dateModified" datetime="2019-03-02T00:35:09+08:00">2019-03-02</time>
               
             
           </span>
@@ -558,7 +558,23 @@
 </ul>
 </li>
 </ul>
-<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2>
+<h2 id="可见性"><a href="#可见性" class="headerlink" title="可见性"></a>可见性</h2><h3 id="什么是内存可见性"><a href="#什么是内存可见性" class="headerlink" title="什么是内存可见性"></a>什么是内存可见性</h3><p>“内存可见性”是指一条线程修改玩一个共享变量后，另一个线程若访问这个变量将会访问到修改后的值。即一条线程对共享变量的修改，对其他线程立即可见。</p>
+<p>如果未对共享变量采用同步机制，那么共享变量的修改不会对其他线程立即可见。</p>
+<h3 id="为什么会出现内存不可见的情况"><a href="#为什么会出现内存不可见的情况" class="headerlink" title="为什么会出现内存不可见的情况"></a>为什么会出现内存不可见的情况</h3><p>通过上文可知，在Java中每条线程都有各自独立的存储空间，此外还有一个所有线程共享的内存空间。<br>当开启线程时，系统会将共享内存中的所有共享变量拷贝一份到线程专属的存储空间中。接下来该线程在结束前的所有操作都是基于自己的存储空间进行的。因此，若一条线程改变了一个共享变量，仅仅改变的是这条线程专属存储空间中的变量值；此时若其他线程访问这个变量，访问的仍然是先前从共享存储空间读出来的值。<br>然而我们希望一条线程将某个共享变量修改后，其他线程能立即访问到这个最新的值，而不是失效值。 </p>
+<p>这时就需要同步机制来解决这个问题。</p>
+<h3 id="如何确保共享变量的可见性"><a href="#如何确保共享变量的可见性" class="headerlink" title="如何确保共享变量的可见性"></a>如何确保共享变量的可见性</h3><p>要确保所有共享变量对所有线程都是可见的，就要给所有共享变量使用同步。在Java中可以选择将共享变量用同步代码块包裹或用<code>volatile</code>修饰共享变量。</p>
+<h3 id="为什么volatile能保证共享变量的内存可见性"><a href="#为什么volatile能保证共享变量的内存可见性" class="headerlink" title="为什么volatile能保证共享变量的内存可见性"></a>为什么<code>volatile</code>能保证共享变量的内存可见性</h3><p>volatile修饰了一个成员变量后，这个变量的读写就会比普通变量多一些步骤。</p>
+<ul>
+<li><p>volatile变量写<br>当被volatile修饰的变量进行写操作时，这个变量将会被直接写入共享内存，而非线程的专属存储空间。</p>
+</li>
+<li><p>volatile变量读<br>当读取一个被volatile修饰的变量时，会直接从共享内存中读，而非线程专属的存储空间中读。</p>
+</li>
+</ul>
+<p>通过对volatile变量读写的限制，就能保证线程每次读到的都是最新的值，从而确保了该变量的内存可见性。</p>
+<h3 id="volatile变量赠送的附加功能"><a href="#volatile变量赠送的附加功能" class="headerlink" title="volatile变量赠送的附加功能"></a><code>volatile</code>变量赠送的附加功能</h3><p>进行volatile写操作时，不仅会将volatile变量写入共享内存，系统还会将当前线程专属空间中的所有共享变量写入共享内存。<br>进行volatile读操作时，系统也会一次性将共享内存中所有共享变量读入线程专属空间。<br>这就意味着，如果普通变量在volatile写操作之前被修改，那么在volatile读操作之后就能正确读到他们。 </p>
+<p>但是，在volatile写操作之后被修改的普通变量 和 在volatile读操作之前被访问的普通变量 都不具有内存可见性。</p>
+<h1 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h1><h2 id="什么是原子性？"><a href="#什么是原子性？" class="headerlink" title="什么是原子性？"></a>什么是原子性？</h2><p>原子性是指一组操作必须一起完成，中途不能被中断。</p>
+<h2 id="volatile能保证long，double读写的原子性"><a href="#volatile能保证long，double读写的原子性" class="headerlink" title="volatile能保证long，double读写的原子性"></a><code>volatile</code>能保证<code>long</code>，<code>double</code>读写的原子性</h2>
           
         
       
@@ -1740,160 +1756,6 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jdbc笔记/"/>
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="tortoiselala"/>
-      <meta itemprop="description" content=""/>
-      <meta itemprop="image" content="/images/avatar.gif"/>
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="tortoiselala"/>
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/01/14/jdbc笔记/" class="post-title-link" itemprop="url">jdbc</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-01-31 20:05:42" itemprop="dateModified" datetime="2019-01-31T20:05:42+08:00">2019-01-31</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jsp笔记/"/>
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2038,6 +1900,160 @@ JSP = HTMl + Java片段 + JSP标签 + JavaScript(CSS)</script><h3 id="JSP的特�
             </div>
           
           <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://tortoiselala.github.com/2019/01/14/jdbc笔记/"/>
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="tortoiselala"/>
+      <meta itemprop="description" content=""/>
+      <meta itemprop="image" content="/images/avatar.gif"/>
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="tortoiselala"/>
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                
+                <a href="/2019/01/14/jdbc笔记/" class="post-title-link" itemprop="url">jdbc</a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2019-01-14 23:06:48" itemprop="dateCreated datePublished" datetime="2019-01-14T23:06:48+08:00">2019-01-14</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-01-31 20:05:42" itemprop="dateModified" datetime="2019-01-31T20:05:42+08:00">2019-01-31</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
         
       
     </div>
